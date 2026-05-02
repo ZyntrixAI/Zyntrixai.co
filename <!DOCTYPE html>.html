@@ -1,0 +1,2970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zyntrix — Website Design Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:       #00c8ff;
+      --blue-dim:   #0099cc;
+      --blue-glow:  rgba(0,200,255,0.35);
+      --bg:         transparent;
+      --bg2:        transparent;
+      --bg3:        rgba(0,200,255,0.04);
+      --surface:    rgba(0,0,0,0.18);
+      --border:     rgba(0,200,255,0.22);
+      --text:       #e0eaf5;
+      --muted:      #9ab0c8;
+      --radius:     10px;
+      --transition: 0.3s ease;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000;
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    #neuro-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.92;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--blue-dim); border-radius: 3px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 70px;
+      background: rgba(5,8,16,0.75);
+      backdrop-filter: blur(12px);
+      border-bottom: none;
+      transition: var(--transition);
+    }
+    .nav-logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: 6px;
+      color: #fff;
+      text-shadow:
+        0 0 8px var(--blue),
+        0 0 20px var(--blue),
+        0 0 45px var(--blue-glow);
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color var(--transition), text-shadow var(--transition);
+      cursor: pointer;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--blue);
+      text-shadow: 0 0 10px var(--blue);
+    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--blue); border-radius: 2px; transition: var(--transition); }
+
+    /* ── PAGE SYSTEM ── */
+    .page { display: none; padding-top: 70px; min-height: 100vh; position: relative; z-index: 1; }
+    .page.active { display: block; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: auto;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 5rem 5% 4rem;
+      overflow: hidden;
+    }
+    .hero-grid { display: none; }
+    .hero-glow  { display: none; }
+    .hero-logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(4rem, 14vw, 9rem);
+      font-weight: 900;
+      letter-spacing: 20px;
+      color: #fff;
+      text-shadow:
+        0 0 10px var(--blue),
+        0 0 30px var(--blue),
+        0 0 70px var(--blue),
+        0 0 120px var(--blue-glow);
+      animation: pulse 4s ease-in-out infinite;
+      position: relative;
+    }
+    @keyframes pulse {
+      0%, 100% { text-shadow: 0 0 10px var(--blue), 0 0 30px var(--blue), 0 0 70px var(--blue), 0 0 120px var(--blue-glow); }
+      50%       { text-shadow: 0 0 15px var(--blue), 0 0 50px var(--blue), 0 0 100px var(--blue), 0 0 160px rgba(0,200,255,0.5); }
+    }
+    .hero-tagline {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 1rem;
+      position: relative;
+    }
+    .hero-tagline span { color: var(--blue); }
+    .hero-sub {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-top: 1.5rem;
+      position: relative;
+    }
+    .hero-btns {
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+      margin-top: 2.5rem;
+      position: relative;
+    }
+    .btn-primary {
+      padding: 0.85rem 2.4rem;
+      border: none;
+      background: var(--blue);
+      color: #000;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 0 20px rgba(0,200,255,0.4);
+    }
+    .btn-primary:hover {
+      background: #fff;
+      box-shadow: 0 0 30px rgba(0,200,255,0.7);
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      padding: 0.85rem 2.4rem;
+      border: 1px solid var(--blue);
+      background: transparent;
+      color: var(--blue);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .btn-outline:hover {
+      background: rgba(0,200,255,0.1);
+      box-shadow: 0 0 20px rgba(0,200,255,0.3);
+      transform: translateY(-2px);
+    }
+    .hero-stats {
+      display: flex; gap: 3rem; flex-wrap: wrap; justify-content: center;
+      margin-top: 4rem;
+      position: relative;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--blue);
+      text-shadow: 0 0 15px var(--blue-glow);
+    }
+    .stat-label { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 0.3rem; }
+
+    /* ── SECTIONS SHARED ── */
+    section { padding: 5rem 5%; }
+    .section-label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-title span { color: var(--blue); }
+    .section-sub { color: var(--muted); font-size: 1rem; line-height: 1.8; max-width: 560px; }
+    .divider { width: 60px; height: 2px; background: var(--blue); box-shadow: 0 0 8px var(--blue); margin: 1.2rem 0; }
+
+    /* ── SERVICES PAGE ── */
+    .services-hero {
+      background: transparent;
+      padding: 5rem 5% 3rem;
+      text-align: center;
+    }
+    .services-hero .section-label,
+    .services-hero .divider { margin-left: auto; margin-right: auto; }
+    .services-hero .section-sub { margin: 0 auto; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      padding: 3rem 5% 5rem;
+    }
+    @media (max-width: 960px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .service-card {
+      background: rgba(0,0,0,0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--blue), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .service-card:hover { border-color: rgba(0,200,255,0.4); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,200,255,0.1); }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      width: 56px; height: 56px;
+      background: rgba(0,200,255,0.08);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+    }
+    .service-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.6rem; }
+    .service-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+    .service-price {
+      display: inline-block;
+      margin-top: 1rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      color: var(--blue);
+      letter-spacing: 1px;
+    }
+
+    /* ── PROCESS ── */
+    .process-section { background: transparent; padding: 5rem 5%; }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .process-step { text-align: center; padding: 1.5rem; }
+    .step-num {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: rgba(0,200,255,0.15);
+      line-height: 1;
+    }
+    .process-step h4 { font-size: 1rem; font-weight: 600; margin: 0.8rem 0 0.5rem; }
+    .process-step p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── ABOUT PAGE ── */
+    .about-hero { padding: 5rem 5% 2rem; }
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      padding: 3rem 5%;
+    }
+    .about-visual {
+      background: rgba(0,0,0,0.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      aspect-ratio: 1;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-visual-logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4rem;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: 10px;
+      text-shadow: 0 0 20px var(--blue), 0 0 50px var(--blue);
+    }
+    .about-visual::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(0,200,255,0.06) 0%, transparent 70%);
+    }
+    .about-text .section-sub { max-width: 100%; }
+    .about-list { list-style: none; margin-top: 1.5rem; }
+    .about-list li {
+      display: flex; align-items: flex-start; gap: 0.8rem;
+      font-size: 0.95rem; color: var(--muted);
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .about-list li::before { content: '▹'; color: var(--blue); flex-shrink: 0; }
+    .values-section { background: transparent; padding: 5rem 5%; }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .value-card {
+      background: rgba(0,0,0,0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.8rem;
+      transition: var(--transition);
+    }
+    .value-card:hover { border-color: rgba(0,200,255,0.3); }
+    .value-card h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .value-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+    .value-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+    .team-section { padding: 5rem 5%; }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .team-card {
+      background: rgba(0,0,0,0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .team-card:hover { border-color: rgba(0,200,255,0.3); transform: translateY(-4px); }
+    .team-avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(0,200,255,0.2), rgba(0,200,255,0.05));
+      border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 1rem;
+    }
+    .team-card h4 { font-size: 1rem; font-weight: 600; }
+    .team-card span { font-size: 0.8rem; color: var(--blue); letter-spacing: 1px; }
+
+    /* ── CONTACT PAGE ── */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      padding: 3rem 5% 5rem;
+      align-items: start;
+    }
+    .contact-info h2 { font-size: 1.8rem; font-weight: 600; margin-bottom: 1rem; }
+    .contact-info p { color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .contact-icon {
+      width: 44px; height: 44px;
+      background: rgba(0,200,255,0.08);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .contact-item h4 { font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
+    .contact-item p { font-size: 0.95rem; color: var(--text); margin: 0; }
+    .form-card {
+      background: rgba(0,0,0,0.2);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.85rem 1rem;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(0,200,255,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-group select option { background: #0a0f1a; }
+
+    /* ── BOOKING PAGE ── */
+    .booking-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      padding: 3rem 5% 5rem;
+      align-items: start;
+    }
+    .booking-info h2 { font-size: 1.8rem; font-weight: 600; margin-bottom: 1rem; }
+    .booking-info p { color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
+    .booking-steps { list-style: none; }
+    .booking-steps li {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .step-dot {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: rgba(0,200,255,0.1);
+      border: 1px solid var(--blue);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.7rem;
+      color: var(--blue);
+      flex-shrink: 0;
+    }
+    .booking-steps h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .booking-steps p { font-size: 0.85rem; color: var(--muted); margin: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: transparent;
+      border-top: none;
+      padding: 3rem 5% 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-brand .nav-logo { font-size: 1.4rem; margin-bottom: 1rem; display: block; }
+    .footer-brand p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; max-width: 300px; }
+    .footer-col h5 {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.6rem; }
+    .footer-col ul li a {
+      font-size: 0.88rem;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color var(--transition);
+    }
+    .footer-col ul li a:hover { color: var(--blue); }
+    .footer-bottom {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 2rem;
+      border-top: none;
+      font-size: 0.8rem;
+      color: var(--muted);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* ── SUCCESS MESSAGE ── */
+    .success-msg {
+      display: none;
+      background: rgba(0,200,255,0.08);
+      border: 1px solid var(--blue);
+      border-radius: var(--radius);
+      padding: 1rem 1.5rem;
+      color: var(--blue);
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    /* ── PORTFOLIO PAGE ── */
+    .filter-btn {
+      padding: 0.5rem 1.3rem;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .filter-btn:hover, .filter-btn.active {
+      border-color: var(--blue);
+      color: var(--blue);
+      box-shadow: 0 0 12px rgba(0,200,255,0.2);
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      padding: 0 5% 5rem;
+    }
+    .project-card {
+      background: rgba(0,0,0,0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .project-card:hover { border-color: rgba(0,200,255,0.4); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,200,255,0.1); }
+    .project-mockup {
+      height: 180px;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.5rem 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .mockup-screen {
+      background: rgba(5,8,16,0.9);
+      border: 1px solid rgba(0,200,255,0.2);
+      border-radius: 8px 8px 0 0;
+      width: 100%;
+      height: 150px;
+      padding: 0.8rem;
+      overflow: hidden;
+    }
+    .mockup-bar { height: 8px; border-radius: 4px; margin-bottom: 0.8rem; width: 40%; opacity: 0.6; }
+    .mockup-lines { display: flex; flex-direction: column; gap: 0.5rem; }
+    .m-line { height: 6px; background: rgba(255,255,255,0.07); border-radius: 3px; }
+    .m-line.long { width: 90%; } .m-line.medium { width: 65%; } .m-line.short { width: 40%; }
+    .project-info { padding: 1.5rem; }
+    .project-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--blue);
+      border: 1px solid rgba(0,200,255,0.3);
+      border-radius: 50px;
+      padding: 0.2rem 0.7rem;
+      margin-bottom: 0.8rem;
+    }
+    .project-info h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .project-info p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; }
+    .project-link { font-size: 0.85rem; color: var(--blue); cursor: pointer; transition: var(--transition); }
+    .project-link:hover { text-shadow: 0 0 8px var(--blue); }
+
+    /* ── PRICING PAGE ── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 3rem 5% 5rem;
+      align-items: start;
+    }
+    .pricing-card {
+      background: rgba(0,0,0,0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      transition: var(--transition);
+      position: relative;
+    }
+    .pricing-card.featured { border-color: var(--blue); box-shadow: 0 0 40px rgba(0,200,255,0.12); }
+    .pricing-card:hover { transform: translateY(-4px); }
+    .pricing-badge {
+      position: absolute;
+      top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--blue);
+      color: #000;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      white-space: nowrap;
+    }
+    .pricing-tier {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .pricing-amount {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .pricing-amount span { font-size: 1.1rem; font-weight: 400; color: var(--muted); }
+    .pricing-desc { font-size: 0.88rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.5; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
+    .pricing-features { list-style: none; margin-bottom: 2rem; }
+    .pricing-features li {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      font-size: 0.88rem; color: var(--text);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(0,200,255,0.05);
+    }
+    .pricing-features li::before { content: '✓'; color: var(--blue); flex-shrink: 0; font-weight: 700; }
+    .pricing-features li.off { color: var(--muted); opacity: 0.45; }
+    .pricing-features li.off::before { content: '✕'; color: var(--muted); }
+    .faq-section { padding: 0 5% 5rem; max-width: 760px; margin: 0 auto; }
+    .faq-item { border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 0.8rem; overflow: hidden; }
+    .faq-q {
+      padding: 1.1rem 1.5rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.1);
+      transition: color var(--transition);
+      user-select: none;
+    }
+    .faq-q:hover { color: var(--blue); }
+    .faq-q::after { content: '+'; font-size: 1.3rem; color: var(--blue); flex-shrink: 0; margin-left: 1rem; }
+    .faq-q.open::after { content: '−'; }
+    .faq-a { display: none; padding: 0 1.5rem 1.2rem; font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── BLOG PAGE ── */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      padding: 0 5% 5rem;
+    }
+    .blog-card {
+      background: rgba(0,0,0,0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    .blog-card:hover { border-color: rgba(0,200,255,0.3); transform: translateY(-4px); }
+    .blog-thumb {
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .blog-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .blog-cat {
+      display: inline-block;
+      font-size: 0.68rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--blue);
+      border: 1px solid rgba(0,200,255,0.3);
+      border-radius: 50px;
+      padding: 0.2rem 0.7rem;
+      margin-bottom: 0.8rem;
+      align-self: flex-start;
+    }
+    .blog-card h3 { font-size: 1rem; font-weight: 600; line-height: 1.4; margin-bottom: 0.6rem; }
+    .blog-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; flex: 1; }
+    .blog-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* ── DETAILED PROCESS TIMELINE ── */
+    .process-detailed {
+      max-width: 860px;
+      margin: 3rem auto 0;
+      padding: 0 5% 5rem;
+    }
+    .process-item {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 2.5rem;
+      position: relative;
+      padding-bottom: 3.5rem;
+    }
+    .process-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 43px;
+      top: 88px;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, rgba(0,200,255,0.3), rgba(0,200,255,0.04));
+    }
+    .process-item-circle {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: rgba(0,200,255,0.06);
+      border: 2px solid rgba(0,200,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .process-item-circle span {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--blue);
+      text-shadow: 0 0 10px var(--blue-glow);
+    }
+    .process-item-body { padding-top: 0.9rem; }
+    .process-item-body h4 { font-size: 1.35rem; font-weight: 600; margin-bottom: 0.8rem; }
+    .process-item-body > p { color: var(--muted); line-height: 1.9; font-size: 0.95rem; margin-bottom: 1.2rem; }
+    .process-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.3rem; }
+    .process-tag {
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      color: var(--blue);
+      border: 1px solid rgba(0,200,255,0.25);
+      border-radius: 50px;
+      padding: 0.25rem 0.85rem;
+    }
+    .process-deliverable {
+      background: rgba(0,200,255,0.03);
+      border: 1px solid rgba(0,200,255,0.12);
+      border-left: 3px solid var(--blue);
+      border-radius: 0 10px 10px 0;
+      padding: 1rem 1.3rem;
+    }
+    .process-deliverable strong {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blue);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .process-deliverable p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin: 0; }
+    @media (max-width: 600px) {
+      .process-item { grid-template-columns: 1fr; }
+      .process-item-circle { display: none; }
+      .process-item::after { display: none; }
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .testimonial-card {
+      background: rgba(0,0,0,0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    .testimonial-card:hover { border-color: rgba(0,200,255,0.3); transform: translateY(-4px); }
+    .quote-mark { font-size: 3.5rem; line-height: 1; color: var(--blue); opacity: 0.35; font-family: Georgia, serif; margin-bottom: -0.3rem; }
+    .testimonial-card p { font-size: 0.95rem; color: var(--text); line-height: 1.8; font-style: italic; flex: 1; }
+    .testimonial-stars { color: var(--blue); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 0.8rem; }
+    .testimonial-author { margin-top: 1.5rem; display: flex; align-items: center; gap: 0.8rem; padding-top: 1.2rem; border-top: 1px solid var(--border); }
+    .author-avatar { width: 44px; height: 44px; border-radius: 50%; background: rgba(0,200,255,0.08); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+    .author-info h5 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.15rem; }
+    .author-info span { font-size: 0.78rem; color: var(--blue); }
+
+    /* ── SERVICE DETAIL PAGES ── */
+    .feature-list { list-style:none; margin-top:0.9rem; flex:1; }
+    .feature-list li { font-size:0.84rem; color:var(--muted); line-height:1.6; padding-left:1.3rem; position:relative; padding-bottom:0.15rem; }
+    .feature-list li::before { content:'→'; color:var(--blue); position:absolute; left:0; font-size:0.75rem; top:0.15rem; }
+    .service-card p { flex:1; }
+    .services-grid { align-items: stretch; }
+    .service-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.6rem; }
+    .svc-stat-strip { display:flex; flex-wrap:wrap; justify-content:center; gap:3rem; padding:3rem 5%; border-top:1px solid var(--border); border-bottom:1px solid var(--border); margin-bottom:0; }
+    .tech-row { display:flex; flex-wrap:wrap; gap:0.6rem; justify-content:center; padding:0 5% 4rem; }
+    .tech-badge { padding:0.4rem 1.1rem; border:1px solid var(--border); border-radius:50px; font-size:0.8rem; color:var(--muted); background:rgba(0,0,0,0.12); transition:var(--transition); cursor:default; }
+    .tech-badge:hover { border-color:var(--blue); color:var(--blue); }
+    .price-bar { background:rgba(0,200,255,0.03); border:1px solid var(--border); border-radius:16px; padding:3rem 2rem; margin:0 5% 5rem; text-align:center; }
+    .price-bar .big-price { font-family:'Orbitron',sans-serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:900; color:#fff; margin:0.5rem 0 0.3rem; }
+    .price-bar .big-price span { font-size:1rem; font-weight:400; color:var(--muted); }
+    .svc-back { display:inline-flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:var(--muted); cursor:pointer; margin-bottom:1rem; transition:color var(--transition); letter-spacing:1px; text-transform:uppercase; }
+    .svc-back:hover { color:var(--blue); }
+
+    /* ── DOT PATTERN + CORNER ACCENTS ── */
+    .service-card,
+    .value-card,
+    .team-card,
+    .testimonial-card,
+    .blog-card,
+    .project-card,
+    .pricing-card,
+    .faq-item {
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Ccircle cx='1' cy='1' r='0.65' fill='rgba(0%2C200%2C255%2C0.08)'/%3E%3C/svg%3E"),
+        linear-gradient(var(--blue),var(--blue)),
+        linear-gradient(var(--blue),var(--blue)),
+        linear-gradient(var(--blue),var(--blue)),
+        linear-gradient(var(--blue),var(--blue)),
+        linear-gradient(var(--blue),var(--blue)),
+        linear-gradient(var(--blue),var(--blue)),
+        linear-gradient(var(--blue),var(--blue)),
+        linear-gradient(var(--blue),var(--blue));
+      background-position:
+        0 0,
+        left top,    left top,
+        right top,   right top,
+        left bottom, left bottom,
+        right bottom,right bottom;
+      background-size:
+        auto,
+        8px 1px, 1px 8px,
+        8px 1px, 1px 8px,
+        8px 1px, 1px 8px,
+        8px 1px, 1px 8px;
+      background-repeat:
+        repeat,
+        no-repeat, no-repeat,
+        no-repeat, no-repeat,
+        no-repeat, no-repeat,
+        no-repeat, no-repeat;
+    }
+
+    /* Main nav logo — border + corner accents + dot pattern */
+    nav .nav-logo {
+      display: inline-block;
+      padding: 0.35rem 0.85rem;
+      border: 1px solid rgba(0,200,255,0.25);
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Ccircle cx='1' cy='1' r='0.65' fill='rgba(0%2C200%2C255%2C0.09)'/%3E%3C/svg%3E"),
+        linear-gradient(var(--blue),var(--blue)),
+        linear-gradient(var(--blue),var(--blue)),
+        linear-gradient(var(--blue),var(--blue)),
+        linear-gradient(var(--blue),var(--blue)),
+        linear-gradient(var(--blue),var(--blue)),
+        linear-gradient(var(--blue),var(--blue)),
+        linear-gradient(var(--blue),var(--blue)),
+        linear-gradient(var(--blue),var(--blue));
+      background-position:
+        0 0,
+        left top,   left top,
+        right top,  right top,
+        left bottom, left bottom,
+        right bottom, right bottom;
+      background-size:
+        auto,
+        7px 1px, 1px 7px,
+        7px 1px, 1px 7px,
+        7px 1px, 1px 7px,
+        7px 1px, 1px 7px;
+      background-repeat:
+        repeat,
+        no-repeat, no-repeat,
+        no-repeat, no-repeat,
+        no-repeat, no-repeat,
+        no-repeat, no-repeat;
+    }
+
+    /* Footer logo — dot pattern only, no border */
+    .footer-brand .nav-logo {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Ccircle cx='1' cy='1' r='0.65' fill='rgba(0%2C200%2C255%2C0.08)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      border: none;
+      padding: 0;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: rgba(5,8,16,0.97); padding: 1.5rem; gap: 1rem; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .about-layout,
+      .contact-layout,
+      .booking-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-stats { gap: 2rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Neural Vortex Background -->
+  <canvas id="neuro-canvas"></canvas>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo" onclick="showPage('home')">ZYNTRIX</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a onclick="showPage('home')"    class="active" data-page="home">Home</a></li>
+      <li><a onclick="showPage('services')"             data-page="services">Services</a></li>
+      <li><a onclick="showPage('portfolio')"            data-page="portfolio">Portfolio</a></li>
+      <li><a onclick="showPage('pricing')"              data-page="pricing">Pricing</a></li>
+      <li><a onclick="showPage('blog')"                 data-page="blog">Blog</a></li>
+      <li><a onclick="showPage('about')"                data-page="about">About</a></li>
+      <li><a onclick="showPage('contact')"              data-page="contact">Contact</a></li>
+      <li><a onclick="showPage('booking')"              data-page="booking">Get a Quote</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ══════════════ HOME ══════════════ -->
+  <div id="page-home" class="page active">
+
+    <section class="hero">
+      <div class="hero-grid"></div>
+      <div class="hero-glow"></div>
+<p class="hero-tagline">Website <span>Design</span> Agency</p>
+      <p class="hero-sub">We craft bold, high-performance websites that turn visitors into clients. Clean code. Stunning design. Real results.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('services')">Our Services</button>
+        <button class="btn-outline"  onclick="showPage('booking')">Get Quote</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Projects Delivered</div></div>
+        <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Client Satisfaction</div></div>
+        <div class="stat"><div class="stat-num">48h</div><div class="stat-label">Avg. Response Time</div></div>
+        <div class="stat"><div class="stat-num">5★</div><div class="stat-label">Average Rating</div></div>
+      </div>
+    </section>
+
+    <!-- Mini services preview -->
+    <section style="background:transparent; padding:4rem 5%;">
+      <div style="text-align:center; margin-bottom:3rem;">
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Built for <span>Results</span></h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem;">
+        <div class="service-card" style="cursor:pointer;" onclick="showPage('svc-design')">
+          <div class="service-icon">🎨</div>
+          <h3>Web Design</h3>
+          <p>Pixel-perfect, responsive designs that reflect your brand identity and impress every visitor.</p>
+        </div>
+        <div class="service-card" style="cursor:pointer;" onclick="showPage('svc-dev')">
+          <div class="service-icon">⚡</div>
+          <h3>Web Development</h3>
+          <p>Fast, secure, and scalable builds using modern technologies and best practices.</p>
+        </div>
+        <div class="service-card" style="cursor:pointer;" onclick="showPage('svc-ecommerce')">
+          <div class="service-icon">🛒</div>
+          <h3>E-Commerce</h3>
+          <p>Online stores built to convert — smooth checkout, mobile-first, payment-ready from day one.</p>
+        </div>
+        <div class="service-card" style="cursor:pointer;" onclick="showPage('svc-seo')">
+          <div class="service-icon">📈</div>
+          <h3>SEO & Growth</h3>
+          <p>We optimise your site so search engines love it and the right customers find you.</p>
+        </div>
+        <div class="service-card" style="cursor:pointer;" onclick="showPage('svc-branding')">
+          <div class="service-icon">✏️</div>
+          <h3>Branding & Identity</h3>
+          <p>Logo design, colour palettes, typography, and brand guidelines that make your business instantly recognisable.</p>
+        </div>
+        <div class="service-card" style="cursor:pointer;" onclick="showPage('svc-maintenance')">
+          <div class="service-icon">🔧</div>
+          <h3>Maintenance & Support</h3>
+          <p>Monthly care plans covering updates, security monitoring, backups, and ongoing content changes — we handle it all.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Zyntrix -->
+    <section style="background:transparent; padding:5rem 5%;">
+      <div style="text-align:center; margin-bottom:3rem;">
+        <div class="section-label">Why Zyntrix</div>
+        <h2 class="section-title">Built Different, <span>By Design</span></h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+        <p class="section-sub" style="margin:0 auto;">We're not a faceless agency. Every project is handled by the same team, from first call to final launch.</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">⚡</div>
+          <h4>Fast Delivery</h4>
+          <p>Most projects delivered in 2–4 weeks. No waiting months to go live — we move at pace without cutting corners.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🎯</div>
+          <h4>Conversion-Focused</h4>
+          <p>Every layout, CTA, and colour choice is made with one goal: turning your visitors into paying clients.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🔓</div>
+          <h4>No Lock-In</h4>
+          <p>You own your files, your code, your domain. No subscriptions, no hidden fees — everything is yours from day one.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">💬</div>
+          <h4>Personal Service</h4>
+          <p>You'll always speak directly with the designer building your site — not a project manager or account rep.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How We Work -->
+    <section style="background:transparent; padding:0 5% 5rem;">
+      <div style="text-align:center; margin-bottom:3rem;">
+        <div class="section-label">The Process</div>
+        <h2 class="section-title">From Idea to <span>Live Site</span></h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+        <p class="section-sub" style="margin:0 auto;">A simple, transparent four-step process — so you always know exactly where your project stands.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="step-num">01</div>
+          <h4>Discovery Call</h4>
+          <p>A free 30-minute call to understand your business, goals, audience, and what success looks like for you.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">02</div>
+          <h4>Design & Plan</h4>
+          <p>We build wireframes and full visual mockups — everything presented for your approval before a line of code is written.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">03</div>
+          <h4>Build & Refine</h4>
+          <p>Your site is developed with clean, fast code. You review, request changes, and we refine until it's exactly right.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">04</div>
+          <h4>Launch & Grow</h4>
+          <p>We handle the full launch — hosting, domain, analytics setup — and keep supporting you as your business scales.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section style="background:transparent; padding:0 5% 5rem;">
+      <div style="text-align:center; margin-bottom:1rem;">
+        <div class="section-label">Client Results</div>
+        <h2 class="section-title">What Our <span>Clients Say</span></h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="quote-mark">"</div>
+          <p>Zyntrix completely transformed our online presence. The new site looks incredible and our enquiries have more than doubled since launch.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">👤</div>
+            <div class="author-info"><h5>Sarah M.</h5><span>Apex Fitness</span></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="quote-mark">"</div>
+          <p>From first call to live site in under 3 weeks. The process was smooth, communication was excellent, and the result speaks for itself.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">👤</div>
+            <div class="author-info"><h5>James K.</h5><span>Nova Law Group</span></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="quote-mark">"</div>
+          <p>We didn't just get a website — we got a brand. Zyntrix handled everything from logo design to launch and we couldn't be happier.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">👤</div>
+            <div class="author-info"><h5>Emma R.</h5><span>Bloom Boutique</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section style="background:transparent; padding:0 5% 5rem; text-align:center;">
+      <div class="section-label">Built With</div>
+      <h2 class="section-title" style="margin-bottom:0.8rem;">Industry-Leading <span>Technology</span></h2>
+      <p class="section-sub" style="margin:0 auto 2.5rem;">We use the same tools trusted by the world's fastest-growing companies.</p>
+      <div class="tech-row">
+        <span class="tech-badge">HTML5</span>
+        <span class="tech-badge">CSS3</span>
+        <span class="tech-badge">JavaScript</span>
+        <span class="tech-badge">React</span>
+        <span class="tech-badge">Next.js</span>
+        <span class="tech-badge">TypeScript</span>
+        <span class="tech-badge">WordPress</span>
+        <span class="tech-badge">Webflow</span>
+        <span class="tech-badge">Shopify</span>
+        <span class="tech-badge">Figma</span>
+        <span class="tech-badge">Vercel</span>
+        <span class="tech-badge">Netlify</span>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section style="background:transparent; text-align:center; padding:5rem 5%;">
+      <div class="section-label">Ready to Start?</div>
+      <h2 class="section-title" style="margin-bottom:1.5rem;">Let's Build Something <span>Amazing</span></h2>
+      <p style="color:var(--muted); max-width:500px; margin:0 auto 2.5rem;">Book a free 30-minute discovery call and let's talk about your project. No commitment, no pressure.</p>
+      <button class="btn-primary" onclick="showPage('booking')">Book Your Free Call</button>
+    </section>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="nav-logo">ZYNTRIX</span>
+          <p>A modern website design agency helping businesses grow their online presence with stunning, high-performance websites.</p>
+          <a href="http://zyntrixai.co/" target="_blank" rel="noopener" style="font-size:0.83rem;color:var(--blue);display:inline-block;margin-top:0.6rem;letter-spacing:0.5px;">🌐 zyntrixai.co</a>
+        </div>
+        <div class="footer-col">
+          <h5>Pages</h5>
+          <ul>
+            <li><a onclick="showPage('home')">Home</a></li>
+            <li><a onclick="showPage('services')">Services</a></li>
+            <li><a onclick="showPage('portfolio')">Portfolio</a></li>
+            <li><a onclick="showPage('pricing')">Pricing</a></li>
+            <li><a onclick="showPage('blog')">Blog</a></li>
+            <li><a onclick="showPage('about')">About</a></li>
+            <li><a onclick="showPage('contact')">Contact</a></li>
+            <li><a onclick="showPage('booking')">Get a Quote</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a onclick="showPage('services')">Web Design</a></li>
+            <li><a onclick="showPage('services')">Web Development</a></li>
+            <li><a onclick="showPage('services')">E-Commerce</a></li>
+            <li><a onclick="showPage('services')">SEO & Growth</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Zyntrix. All rights reserved.</span>
+        <span>Designed & built by Zyntrix</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ══════════════ SERVICES ══════════════ -->
+  <div id="page-services" class="page">
+
+    <div class="services-hero">
+      <div class="section-label">What We Offer</div>
+      <h1 class="section-title">Our <span>Services</span></h1>
+      <div class="divider"></div>
+      <p class="section-sub">From concept to launch, we provide everything your business needs to thrive online.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card" style="cursor:pointer;" onclick="showPage('svc-design')">
+        <div class="service-icon">🎨</div>
+        <h3>Web Design</h3>
+        <p>Bespoke, brand-aligned designs built around your goals. Every layout, colour, and component is crafted to engage and convert.</p>
+        <span class="service-price">From £499 — Learn More →</span>
+      </div>
+      <div class="service-card" style="cursor:pointer;" onclick="showPage('svc-dev')">
+        <div class="service-icon">⚡</div>
+        <h3>Web Development</h3>
+        <p>Clean, fast, and maintainable code. We build with modern frameworks ensuring your site is lightning-quick and future-proof.</p>
+        <span class="service-price">From £799 — Learn More →</span>
+      </div>
+      <div class="service-card" style="cursor:pointer;" onclick="showPage('svc-ecommerce')">
+        <div class="service-icon">🛒</div>
+        <h3>E-Commerce Stores</h3>
+        <p>Complete online stores with product management, secure checkout, discount codes, and full payment gateway integration.</p>
+        <span class="service-price">From £1,200 — Learn More →</span>
+      </div>
+      <div class="service-card" style="cursor:pointer;" onclick="showPage('svc-seo')">
+        <div class="service-icon">📈</div>
+        <h3>SEO & Performance</h3>
+        <p>On-page SEO, speed optimisation, Core Web Vitals, and schema markup — so Google ranks you and customers find you first.</p>
+        <span class="service-price">From £299/mo — Learn More →</span>
+      </div>
+      <div class="service-card" style="cursor:pointer;" onclick="showPage('svc-branding')">
+        <div class="service-icon">✏️</div>
+        <h3>Branding & Identity</h3>
+        <p>Logo design, colour palettes, typography, and brand guidelines that make your business instantly recognisable.</p>
+        <span class="service-price">From £349 — Learn More →</span>
+      </div>
+      <div class="service-card" style="cursor:pointer;" onclick="showPage('svc-maintenance')">
+        <div class="service-icon">🔧</div>
+        <h3>Maintenance & Support</h3>
+        <p>Monthly care plans covering updates, security monitoring, backups, and ongoing content changes — we handle it all.</p>
+        <span class="service-price">From £79/mo — Learn More →</span>
+      </div>
+    </div>
+
+    <div class="process-section">
+      <div style="text-align:center; margin-bottom:1rem;">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">Our <span>Process</span></h2>
+        <div class="divider" style="margin:1rem auto 0.8rem;"></div>
+        <p class="section-sub" style="margin:0 auto;">A clear, step-by-step process that keeps you informed and in control at every stage — from the first call to launch day and beyond.</p>
+      </div>
+
+      <div class="process-detailed">
+
+        <div class="process-item">
+          <div class="process-item-circle"><span>01</span></div>
+          <div class="process-item-body">
+            <h4>Discovery & Brief</h4>
+            <p>Every great website starts with a conversation. We kick off with a free 30-minute discovery call where we learn everything about your business — your goals, your target audience, your competitors, and what success looks like for you. Nothing is rushed. This session sets the strategic foundation for every decision that follows, ensuring the final site is built around your business, not just a template.</p>
+            <div class="process-tags">
+              <span class="process-tag">Free Consultation</span>
+              <span class="process-tag">30 Minutes</span>
+              <span class="process-tag">No Commitment Required</span>
+              <span class="process-tag">Competitor Research</span>
+            </div>
+            <div class="process-deliverable">
+              <strong>What You Get</strong>
+              <p>A detailed project brief document, a confirmed scope of work with transparent pricing, and an agreed delivery timeline — all signed off before any work begins.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-item">
+          <div class="process-item-circle"><span>02</span></div>
+          <div class="process-item-body">
+            <h4>Strategy & Design</h4>
+            <p>Before a single line of code is written, we map out every page. First come low-fidelity wireframes — structural layouts that define the user journey, navigation flow, and information hierarchy. Once approved, we build full-colour visual mockups brought to life in your brand's palette, typography, and tone. You review and approve everything, with two full rounds of revisions included at no extra cost — we don't start building until you're genuinely happy with the design.</p>
+            <div class="process-tags">
+              <span class="process-tag">Wireframes + Full Mockups</span>
+              <span class="process-tag">Desktop & Mobile Designs</span>
+              <span class="process-tag">2 Revision Rounds Included</span>
+              <span class="process-tag">Brand-Consistent</span>
+            </div>
+            <div class="process-deliverable">
+              <strong>What You Get</strong>
+              <p>Complete visual designs for every page across desktop, tablet, and mobile, a style guide covering fonts, colours, and spacing, and Figma source files you own outright.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-item">
+          <div class="process-item-circle"><span>03</span></div>
+          <div class="process-item-body">
+            <h4>Development & Testing</h4>
+            <p>With your designs signed off, we build — clean, semantic, well-structured code optimised for speed, security, and easy future maintenance. Everything is developed in a private staging environment first, so you can review the real, working site before anything goes public. We test across Chrome, Firefox, Safari, and Edge on desktop, tablet, and mobile. Performance is optimised to hit 90+ on Google Lighthouse, and accessibility standards are checked on every page. Nothing ships until it passes our full QA checklist.</p>
+            <div class="process-tags">
+              <span class="process-tag">Cross-Browser & Device Testing</span>
+              <span class="process-tag">Mobile-First Development</span>
+              <span class="process-tag">90+ Lighthouse Target</span>
+              <span class="process-tag">Private Staging Environment</span>
+              <span class="process-tag">Accessibility Compliant</span>
+            </div>
+            <div class="process-deliverable">
+              <strong>What You Get</strong>
+              <p>A fully built, tested website on a staging URL for your review and sign-off, a Google Lighthouse performance report, and a full QA checklist confirming every feature has been verified.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-item">
+          <div class="process-item-circle"><span>04</span></div>
+          <div class="process-item-body">
+            <h4>Launch & Handover</h4>
+            <p>Once every detail is approved, we handle the entire launch process — domain configuration, DNS management, hosting setup, SSL certificate activation, and Google Analytics 4 and Search Console installation. We monitor the live site closely in the first 24 hours to catch anything unexpected. After launch, 1–6 months of free support is included depending on your plan. You'll receive a full handover session so you know exactly how to manage your new site, and every file, credential, and piece of documentation is delivered directly to you. Your site. Your code. Your data.</p>
+            <div class="process-tags">
+              <span class="process-tag">Full Go-Live Support</span>
+              <span class="process-tag">Analytics & Search Console</span>
+              <span class="process-tag">SSL & Hosting Setup</span>
+              <span class="process-tag">1–6 Months Free Support</span>
+              <span class="process-tag">Handover Session Included</span>
+            </div>
+            <div class="process-deliverable">
+              <strong>What You Get</strong>
+              <p>A live, fully indexed website, Google Analytics and Search Console configured from day one, a handover walkthrough, and complete delivery of all source files, login credentials, and project documentation.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <section style="text-align:center; padding:4rem 5%; background:transparent;">
+      <h2 class="section-title">Not sure which service you need?</h2>
+      <p style="color:var(--muted); max-width:480px; margin:1rem auto 2rem;">Book a free call and we'll guide you to the right solution for your budget and goals.</p>
+      <button class="btn-primary" onclick="showPage('booking')">Book a Free Consultation</button>
+    </section>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="nav-logo">ZYNTRIX</span><p>Modern websites built to grow your business.</p><a href="http://zyntrixai.co/" target="_blank" rel="noopener" style="font-size:0.83rem;color:var(--blue);display:inline-block;margin-top:0.6rem;letter-spacing:0.5px;">🌐 zyntrixai.co</a></div>
+        <div class="footer-col"><h5>Pages</h5><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('services')">Services</a></li><li><a onclick="showPage('portfolio')">Portfolio</a></li><li><a onclick="showPage('pricing')">Pricing</a></li><li><a onclick="showPage('blog')">Blog</a></li><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('contact')">Contact</a></li><li><a onclick="showPage('booking')">Get a Quote</a></li></ul></div>
+        <div class="footer-col"><h5>Services</h5><ul><li><a>Web Design</a></li><li><a>Development</a></li><li><a>E-Commerce</a></li><li><a>SEO</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Zyntrix. All rights reserved.</span><span>Designed & built by Zyntrix</span></div>
+    </footer>
+  </div>
+
+  <!-- ══════════════ ABOUT ══════════════ -->
+  <div id="page-about" class="page">
+
+    <div class="about-hero" style="text-align:center; padding-bottom:1rem;">
+      <div class="section-label">Who We Are</div>
+      <h1 class="section-title">About <span>Zyntrix</span></h1>
+      <div class="divider" style="margin:1rem auto;"></div>
+      <p class="section-sub" style="margin:0 auto;">A passionate team of designers and developers on a mission to build the web's most impactful business websites.</p>
+    </div>
+
+    <div class="about-layout">
+      <div class="about-visual">
+        <div class="about-visual-logo">ZYNTRIX</div>
+      </div>
+      <div class="about-text">
+        <div class="section-label">Our Story</div>
+        <h2 class="section-title">Built by <span>Creators</span>, for Business</h2>
+        <div class="divider"></div>
+        <p class="section-sub">Zyntrix was founded with one goal: to give every business — from start-ups to established brands — access to world-class web design that actually drives growth.</p>
+        <p class="section-sub" style="margin-top:1rem;">We combine creative design with technical excellence, delivering websites that look incredible, load fast, and convert visitors into paying customers.</p>
+        <ul class="about-list" style="margin-top:1.5rem;">
+          <li>100% custom designs — no templates, ever</li>
+          <li>Mobile-first development as standard</li>
+          <li>Transparent pricing and clear timelines</li>
+          <li>Ongoing support after every launch</li>
+          <li>Results-focused — we measure what matters</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="values-section">
+      <div style="text-align:center; margin-bottom:1rem;">
+        <div class="section-label">What Drives Us</div>
+        <h2 class="section-title">Our <span>Values</span></h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+      </div>
+      <div class="values-grid">
+        <div class="value-card"><div class="value-icon">💡</div><h4>Innovation</h4><p>We stay ahead of design trends and technology so your site is always cutting-edge.</p></div>
+        <div class="value-card"><div class="value-icon">🤝</div><h4>Partnership</h4><p>We treat every client as a long-term partner, not a one-off project.</p></div>
+        <div class="value-card"><div class="value-icon">🎯</div><h4>Results First</h4><p>Beautiful design is nothing without performance. We measure success by your growth.</p></div>
+        <div class="value-card"><div class="value-icon">🔒</div><h4>Integrity</h4><p>Honest advice, fair pricing, and clear communication from day one to launch.</p></div>
+      </div>
+    </div>
+
+    <div class="team-section">
+      <div style="text-align:center; margin-bottom:1rem;">
+        <div class="section-label">The Team</div>
+        <h2 class="section-title">Meet the <span>People</span> Behind Zyntrix</h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+      </div>
+      <div class="team-grid">
+        <div class="team-card"><div class="team-avatar">👤</div><h4>Founder & CEO</h4><span>Strategy & Design</span></div>
+        <div class="team-card"><div class="team-avatar">👤</div><h4>Lead Developer</h4><span>Frontend & Backend</span></div>
+        <div class="team-card"><div class="team-avatar">👤</div><h4>UI/UX Designer</h4><span>Branding & UX</span></div>
+        <div class="team-card"><div class="team-avatar">👤</div><h4>SEO Specialist</h4><span>Growth & Analytics</span></div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="nav-logo">ZYNTRIX</span><p>Modern websites built to grow your business.</p><a href="http://zyntrixai.co/" target="_blank" rel="noopener" style="font-size:0.83rem;color:var(--blue);display:inline-block;margin-top:0.6rem;letter-spacing:0.5px;">🌐 zyntrixai.co</a></div>
+        <div class="footer-col"><h5>Pages</h5><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('services')">Services</a></li><li><a onclick="showPage('portfolio')">Portfolio</a></li><li><a onclick="showPage('pricing')">Pricing</a></li><li><a onclick="showPage('blog')">Blog</a></li><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('contact')">Contact</a></li><li><a onclick="showPage('booking')">Get a Quote</a></li></ul></div>
+        <div class="footer-col"><h5>Services</h5><ul><li><a>Web Design</a></li><li><a>Development</a></li><li><a>E-Commerce</a></li><li><a>SEO</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Zyntrix. All rights reserved.</span><span>Designed & built by Zyntrix</span></div>
+    </footer>
+  </div>
+
+  <!-- ══════════════ CONTACT ══════════════ -->
+  <div id="page-contact" class="page">
+
+    <div style="text-align:center; padding:4rem 5% 1rem;">
+      <div class="section-label">Get in Touch</div>
+      <h1 class="section-title">Contact <span>Zyntrix</span></h1>
+      <div class="divider" style="margin:1rem auto;"></div>
+      <p class="section-sub" style="margin:0 auto;">Have a project in mind? A question? Or just want to say hello? We'd love to hear from you.</p>
+    </div>
+
+    <div class="contact-layout">
+      <div class="contact-info">
+        <h2>Let's Start a Conversation</h2>
+        <p>Whether you have a full brief or just an idea, reach out and we'll help bring it to life.</p>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div><h4>Email</h4><p>zyntrixautomation@gmail.com</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div><h4>Phone</h4><p>+44 (0) 7700 000000</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div><h4>Location</h4><p>United Kingdom</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div><h4>Website</h4><p><a href="http://zyntrixai.co/" target="_blank" rel="noopener" style="color:var(--blue);">zyntrixai.co</a></p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕒</div>
+          <div><h4>Response Time</h4><p>Within 24–48 hours</p></div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h3 style="font-size:1.2rem; margin-bottom:1.5rem;">Send Us a Message</h3>
+        <form id="contactForm" onsubmit="handleSubmit(event,'contactSuccess')">
+          <div class="form-row">
+            <div class="form-group"><label>First Name</label><input type="text" placeholder="John" required /></div>
+            <div class="form-group"><label>Last Name</label><input type="text" placeholder="Smith" required /></div>
+          </div>
+          <div class="form-group"><label>Email Address</label><input type="email" placeholder="john@example.com" required /></div>
+          <div class="form-group"><label>Subject</label>
+            <select required>
+              <option value="" disabled selected>Select a subject</option>
+              <option>Web Design Enquiry</option>
+              <option>Web Development Enquiry</option>
+              <option>E-Commerce Project</option>
+              <option>SEO Services</option>
+              <option>General Question</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your project..." required></textarea></div>
+          <button type="submit" class="btn-primary" style="width:100%;">Send Message</button>
+          <div class="success-msg" id="contactSuccess">✓ Message sent! We'll be in touch within 48 hours.</div>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="nav-logo">ZYNTRIX</span><p>Modern websites built to grow your business.</p><a href="http://zyntrixai.co/" target="_blank" rel="noopener" style="font-size:0.83rem;color:var(--blue);display:inline-block;margin-top:0.6rem;letter-spacing:0.5px;">🌐 zyntrixai.co</a></div>
+        <div class="footer-col"><h5>Pages</h5><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('services')">Services</a></li><li><a onclick="showPage('portfolio')">Portfolio</a></li><li><a onclick="showPage('pricing')">Pricing</a></li><li><a onclick="showPage('blog')">Blog</a></li><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('contact')">Contact</a></li><li><a onclick="showPage('booking')">Get a Quote</a></li></ul></div>
+        <div class="footer-col"><h5>Services</h5><ul><li><a>Web Design</a></li><li><a>Development</a></li><li><a>E-Commerce</a></li><li><a>SEO</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Zyntrix. All rights reserved.</span><span>Designed & built by Zyntrix</span></div>
+    </footer>
+  </div>
+
+  <!-- ══════════════ BOOKING ══════════════ -->
+  <div id="page-booking" class="page">
+
+    <div style="text-align:center; padding:4rem 5% 1rem;">
+      <div class="section-label">Free Quote</div>
+      <h1 class="section-title">Get a <span>Quote</span></h1>
+      <div class="divider" style="margin:1rem auto;"></div>
+      <p class="section-sub" style="margin:0 auto;">Fill in your details below. We'll scrape your existing site (if you have one), auto-generate a website draft, and send everything straight to your inbox.</p>
+    </div>
+
+    <div class="booking-layout">
+      <div class="booking-info">
+        <h2>How It Works</h2>
+        <p>Submit your details and we handle everything — automatically.</p>
+        <ul class="booking-steps">
+          <li><div class="step-dot">01</div><div><h4>Fill in Your Details</h4><p>Your name, business info, contact details, and services you need.</p></div></li>
+          <li><div class="step-dot">02</div><div><h4>We Analyse Your Site</h4><p>If you have an existing website, we scrape it to understand your business instantly.</p></div></li>
+          <li><div class="step-dot">03</div><div><h4>Website Auto-Generated</h4><p>A custom website draft is built for you using your business info on the spot.</p></div></li>
+          <li><div class="step-dot">04</div><div><h4>Sent to Our Inbox</h4><p>Your details and the generated site land in our inbox — we'll be in touch within 24 hours.</p></div></li>
+        </ul>
+      </div>
+
+      <div class="form-card">
+        <h3 style="font-size:1.2rem; margin-bottom:1.5rem;">Your Information</h3>
+        <form id="bookingForm" onsubmit="submitQuote(event)">
+          <div class="form-row">
+            <div class="form-group"><label>First Name</label><input id="q-firstName" type="text" placeholder="John" required /></div>
+            <div class="form-group"><label>Last Name</label><input id="q-lastName" type="text" placeholder="Smith" required /></div>
+          </div>
+          <div class="form-group"><label>Business Name</label><input id="q-businessName" type="text" placeholder="Smith Creative Ltd" required /></div>
+          <div class="form-group"><label>Email Address</label><input id="q-email" type="email" placeholder="john@example.com" required /></div>
+          <div class="form-group"><label>Phone Number</label><input id="q-phone" type="tel" placeholder="+44 7700 000000" required /></div>
+          <div class="form-group">
+            <label>Services You're Interested In</label>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; margin-top:0.3rem;">
+              <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--text);text-transform:none;letter-spacing:0;cursor:pointer;"><input type="checkbox" value="Web Design" style="width:auto;background:transparent;border:1px solid var(--border);"/> Web Design</label>
+              <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--text);text-transform:none;letter-spacing:0;cursor:pointer;"><input type="checkbox" value="Web Development" style="width:auto;background:transparent;border:1px solid var(--border);"/> Web Development</label>
+              <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--text);text-transform:none;letter-spacing:0;cursor:pointer;"><input type="checkbox" value="E-Commerce Store" style="width:auto;background:transparent;border:1px solid var(--border);"/> E-Commerce Store</label>
+              <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--text);text-transform:none;letter-spacing:0;cursor:pointer;"><input type="checkbox" value="SEO & Growth" style="width:auto;background:transparent;border:1px solid var(--border);"/> SEO & Growth</label>
+              <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--text);text-transform:none;letter-spacing:0;cursor:pointer;"><input type="checkbox" value="Branding & Identity" style="width:auto;background:transparent;border:1px solid var(--border);"/> Branding & Identity</label>
+              <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--text);text-transform:none;letter-spacing:0;cursor:pointer;"><input type="checkbox" value="Maintenance & Support" style="width:auto;background:transparent;border:1px solid var(--border);"/> Maintenance & Support</label>
+            </div>
+          </div>
+          <div class="form-group"><label>Existing Website URL <span style="color:var(--muted);font-size:0.75rem;text-transform:none;letter-spacing:0;">(optional — we'll analyse it)</span></label><input id="q-websiteUrl" type="url" placeholder="https://yourbusiness.com" /></div>
+          <button type="submit" class="btn-primary" style="width:100%;" id="quoteSubmitBtn">Generate My Website & Send Quote</button>
+          <div class="success-msg" id="bookingSuccess">✓ Done! Your website draft has been generated and sent to Zyntrix. We'll be in touch within 24 hours.</div>
+          <div class="success-msg" id="bookingError" style="border-color:#ff4466;color:#ff4466;">✗ Something went wrong. Please email us directly at zyntrixautomation@gmail.com</div>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="nav-logo">ZYNTRIX</span><p>Modern websites built to grow your business.</p><a href="http://zyntrixai.co/" target="_blank" rel="noopener" style="font-size:0.83rem;color:var(--blue);display:inline-block;margin-top:0.6rem;letter-spacing:0.5px;">🌐 zyntrixai.co</a></div>
+        <div class="footer-col"><h5>Pages</h5><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('services')">Services</a></li><li><a onclick="showPage('portfolio')">Portfolio</a></li><li><a onclick="showPage('pricing')">Pricing</a></li><li><a onclick="showPage('blog')">Blog</a></li><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('contact')">Contact</a></li><li><a onclick="showPage('booking')">Get a Quote</a></li></ul></div>
+        <div class="footer-col"><h5>Services</h5><ul><li><a>Web Design</a></li><li><a>Development</a></li><li><a>E-Commerce</a></li><li><a>SEO</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Zyntrix. All rights reserved.</span><span>Designed & built by Zyntrix</span></div>
+    </footer>
+  </div>
+
+  <!-- ══════════════ SERVICE: WEB DESIGN ══════════════ -->
+  <div id="page-svc-design" class="page">
+    <div class="services-hero">
+      <span class="svc-back" onclick="showPage('services')">← All Services</span>
+      <div class="section-label">Service Detail</div>
+      <h1 class="section-title">Web <span>Design</span></h1>
+      <div class="divider"></div>
+      <p class="section-sub">We create stunning, conversion-focused designs crafted around your brand identity — every pixel purposeful, every layout tested.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;margin-top:1.5rem;flex-wrap:wrap;">
+        <button class="btn-primary" onclick="showPage('booking')">Get Quote</button>
+        <button class="btn-outline" onclick="showPage('services')">View All Services</button>
+      </div>
+    </div>
+
+    <div class="svc-stat-strip">
+      <div class="stat"><div class="stat-num">2–3</div><div class="stat-label">Week Turnaround</div></div>
+      <div class="stat"><div class="stat-num">2</div><div class="stat-label">Revision Rounds</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Device Breakpoints</div></div>
+      <div class="stat"><div class="stat-num">6+</div><div class="stat-label">File Formats Delivered</div></div>
+    </div>
+
+    <section style="padding:4rem 5%;">
+      <div style="text-align:center;margin-bottom:3rem;">
+        <div class="section-label">Everything You Get</div>
+        <h2 class="section-title">What's <span>Included</span></h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon">🎯</div>
+          <h3>Strategy & Discovery</h3>
+          <ul class="feature-list">
+            <li>In-depth brand questionnaire & brief</li>
+            <li>Competitor & market landscape research</li>
+            <li>Target audience & persona analysis</li>
+            <li>Site map & content structure planning</li>
+            <li>Visual mood board creation for approval</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📐</div>
+          <h3>Wireframing & Layout</h3>
+          <ul class="feature-list">
+            <li>Low-fidelity wireframes for every page</li>
+            <li>User journey & navigation mapping</li>
+            <li>Information architecture planning</li>
+            <li>Mobile-first layout design</li>
+            <li>Client approval before visual design begins</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🎨</div>
+          <h3>Visual Design</h3>
+          <ul class="feature-list">
+            <li>Full-colour mockups for desktop & mobile</li>
+            <li>Brand-consistent colour & typography system</li>
+            <li>Custom icons, illustrations & graphic elements</li>
+            <li>Hero sections, feature blocks & landing pages</li>
+            <li>Two full rounds of design revisions included</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">✨</div>
+          <h3>Interactions & Animation</h3>
+          <ul class="feature-list">
+            <li>Scroll-triggered reveal animations</li>
+            <li>Hover effects & micro-interactions</li>
+            <li>Page transition & loading state design</li>
+            <li>Smooth scroll & parallax planning</li>
+            <li>Button, form & CTA interaction states</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📱</div>
+          <h3>Responsive Design</h3>
+          <ul class="feature-list">
+            <li>Desktop, tablet & mobile versions of every page</li>
+            <li>Fluid typography & adaptive spacing</li>
+            <li>Touch-friendly tap targets & gestures</li>
+            <li>Optimised image layouts per breakpoint</li>
+            <li>Cross-device visual consistency testing</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📦</div>
+          <h3>Deliverables</h3>
+          <ul class="feature-list">
+            <li>Figma or Adobe XD source files</li>
+            <li>Exported assets (SVG, PNG, WebP)</li>
+            <li>Style guide — colours, fonts, spacing</li>
+            <li>Design handoff documentation</li>
+            <li>You own all files, outright, forever</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="process-section">
+      <div style="text-align:center;margin-bottom:1rem;">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">Our Design <span>Process</span></h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+      </div>
+      <div class="process-grid">
+        <div class="process-step"><div class="step-num">01</div><h4>Discovery Call</h4><p>We learn your brand, goals, target audience, and competitors in a focused 30-minute session.</p></div>
+        <div class="process-step"><div class="step-num">02</div><h4>Wireframes</h4><p>We map out every page's layout and structure and get your approval before a single colour is chosen.</p></div>
+        <div class="process-step"><div class="step-num">03</div><h4>Visual Mockups</h4><p>Full-colour, pixel-perfect designs across desktop and mobile — brought to life in your brand palette.</p></div>
+        <div class="process-step"><div class="step-num">04</div><h4>Revisions</h4><p>Two rounds of feedback and revisions are included to make sure every detail is exactly right.</p></div>
+        <div class="process-step"><div class="step-num">05</div><h4>Handoff</h4><p>Source files, exports, and the style guide are delivered — ready for development or your own team.</p></div>
+      </div>
+    </div>
+
+    <div class="price-bar">
+      <div class="section-label">Investment</div>
+      <div class="big-price">£499 <span>starting price</span></div>
+      <p style="color:var(--muted);max-width:460px;margin:1rem auto 2rem;font-size:0.95rem;line-height:1.8;">Includes complete design for up to 5 pages — desktop, tablet & mobile. Custom quotes available for larger projects.</p>
+      <button class="btn-primary" onclick="showPage('booking')">Get Your Free Quote</button>
+    </div>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="nav-logo">ZYNTRIX</span><p>Modern websites built to grow your business.</p><a href="http://zyntrixai.co/" target="_blank" rel="noopener" style="font-size:0.83rem;color:var(--blue);display:inline-block;margin-top:0.6rem;letter-spacing:0.5px;">🌐 zyntrixai.co</a></div>
+        <div class="footer-col"><h5>Pages</h5><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('services')">Services</a></li><li><a onclick="showPage('portfolio')">Portfolio</a></li><li><a onclick="showPage('pricing')">Pricing</a></li><li><a onclick="showPage('blog')">Blog</a></li><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('contact')">Contact</a></li><li><a onclick="showPage('booking')">Get a Quote</a></li></ul></div>
+        <div class="footer-col"><h5>Services</h5><ul><li><a onclick="showPage('svc-design')">Web Design</a></li><li><a onclick="showPage('svc-dev')">Web Development</a></li><li><a onclick="showPage('svc-ecommerce')">E-Commerce</a></li><li><a onclick="showPage('svc-seo')">SEO & Growth</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Zyntrix. All rights reserved.</span><span>Designed & built by Zyntrix</span></div>
+    </footer>
+  </div>
+
+  <!-- ══════════════ SERVICE: WEB DEVELOPMENT ══════════════ -->
+  <div id="page-svc-dev" class="page">
+    <div class="services-hero">
+      <span class="svc-back" onclick="showPage('services')">← All Services</span>
+      <div class="section-label">Service Detail</div>
+      <h1 class="section-title">Web <span>Development</span></h1>
+      <div class="divider"></div>
+      <p class="section-sub">Clean, fast, and scalable code built with modern technologies — sites that load in under 2 seconds and score 90+ on Google Lighthouse.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;margin-top:1.5rem;flex-wrap:wrap;">
+        <button class="btn-primary" onclick="showPage('booking')">Get Quote</button>
+        <button class="btn-outline" onclick="showPage('services')">View All Services</button>
+      </div>
+    </div>
+
+    <div class="svc-stat-strip">
+      <div class="stat"><div class="stat-num">90+</div><div class="stat-label">Lighthouse Score Target</div></div>
+      <div class="stat"><div class="stat-num">&lt;2s</div><div class="stat-label">Load Time Target</div></div>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Browsers Tested</div></div>
+      <div class="stat"><div class="stat-num">1–6</div><div class="stat-label">Months Free Support</div></div>
+    </div>
+
+    <section style="padding:4rem 5%;">
+      <div style="text-align:center;margin-bottom:3rem;">
+        <div class="section-label">Everything You Get</div>
+        <h2 class="section-title">What's <span>Included</span></h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon">💻</div>
+          <h3>Frontend Development</h3>
+          <ul class="feature-list">
+            <li>Semantic HTML5 & modern CSS</li>
+            <li>Vanilla JavaScript or React / Next.js</li>
+            <li>Component-based, reusable architecture</li>
+            <li>CSS animations & smooth transitions</li>
+            <li>SVG graphics & custom icon integration</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">⚙️</div>
+          <h3>Backend & CMS</h3>
+          <ul class="feature-list">
+            <li>WordPress, Webflow, or custom CMS</li>
+            <li>Admin panel for easy content editing</li>
+            <li>Database design & management</li>
+            <li>API integrations (CRM, booking, payments)</li>
+            <li>Secure server-side logic & validation</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🚀</div>
+          <h3>Performance Optimisation</h3>
+          <ul class="feature-list">
+            <li>Core Web Vitals (LCP, CLS, FID) optimisation</li>
+            <li>Image compression & WebP conversion</li>
+            <li>Lazy loading for off-screen content</li>
+            <li>Code minification, bundling & tree-shaking</li>
+            <li>CDN setup for fast global delivery</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🔒</div>
+          <h3>Security</h3>
+          <ul class="feature-list">
+            <li>SSL certificate setup & automatic renewal</li>
+            <li>Secure form handling & CSRF protection</li>
+            <li>Input sanitisation & SQL injection prevention</li>
+            <li>Bot & spam protection (honeypot / reCAPTCHA)</li>
+            <li>GDPR-compliant cookie consent handling</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🌐</div>
+          <h3>Deployment & Hosting</h3>
+          <ul class="feature-list">
+            <li>Domain configuration & DNS management</li>
+            <li>Hosting setup (Vercel, Netlify, or cPanel)</li>
+            <li>Staging environment for safe pre-launch testing</li>
+            <li>CI/CD pipeline for automatic deployments</li>
+            <li>Full go-live support & monitoring</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🔧</div>
+          <h3>Post-Launch Support</h3>
+          <ul class="feature-list">
+            <li>1–6 months free support (plan dependent)</li>
+            <li>Bug fix guarantee after launch</li>
+            <li>Cross-browser testing documentation</li>
+            <li>Baseline performance report delivered</li>
+            <li>Handover & training session included</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <div style="text-align:center;padding:0 5% 1rem;">
+      <div class="section-label">Technologies We Use</div>
+      <h2 class="section-title">Our <span>Stack</span></h2>
+      <div class="divider" style="margin:1rem auto;"></div>
+    </div>
+    <div class="tech-row">
+      <span class="tech-badge">HTML5</span><span class="tech-badge">CSS3</span><span class="tech-badge">JavaScript</span><span class="tech-badge">TypeScript</span><span class="tech-badge">React</span><span class="tech-badge">Next.js</span><span class="tech-badge">WordPress</span><span class="tech-badge">Webflow</span><span class="tech-badge">Sanity CMS</span><span class="tech-badge">Stripe</span><span class="tech-badge">Vercel</span><span class="tech-badge">Netlify</span><span class="tech-badge">Git</span><span class="tech-badge">Figma</span>
+    </div>
+
+    <div class="process-section">
+      <div style="text-align:center;margin-bottom:1rem;">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">Our Development <span>Process</span></h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+      </div>
+      <div class="process-grid">
+        <div class="process-step"><div class="step-num">01</div><h4>Technical Planning</h4><p>We choose the right tech stack and architecture for your project — scalability, speed, and budget all considered.</p></div>
+        <div class="process-step"><div class="step-num">02</div><h4>Environment Setup</h4><p>Hosting, domain, staging environment, and version control all configured before a single line of production code.</p></div>
+        <div class="process-step"><div class="step-num">03</div><h4>Build Phase</h4><p>We develop page by page, component by component — clean, commented, maintainable code throughout.</p></div>
+        <div class="process-step"><div class="step-num">04</div><h4>QA & Testing</h4><p>Cross-browser testing, performance audits, accessibility checks, and form validation before you see a thing.</p></div>
+        <div class="process-step"><div class="step-num">05</div><h4>Launch & Handover</h4><p>We deploy to production, confirm everything is live and fast, then hand over with full documentation and training.</p></div>
+      </div>
+    </div>
+
+    <div class="price-bar">
+      <div class="section-label">Investment</div>
+      <div class="big-price">£799 <span>starting price</span></div>
+      <p style="color:var(--muted);max-width:460px;margin:1rem auto 2rem;font-size:0.95rem;line-height:1.8;">Includes full build for up to 5 pages with 1 month of free support. Larger projects and custom applications quoted individually.</p>
+      <button class="btn-primary" onclick="showPage('booking')">Get Your Free Quote</button>
+    </div>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="nav-logo">ZYNTRIX</span><p>Modern websites built to grow your business.</p><a href="http://zyntrixai.co/" target="_blank" rel="noopener" style="font-size:0.83rem;color:var(--blue);display:inline-block;margin-top:0.6rem;letter-spacing:0.5px;">🌐 zyntrixai.co</a></div>
+        <div class="footer-col"><h5>Pages</h5><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('services')">Services</a></li><li><a onclick="showPage('portfolio')">Portfolio</a></li><li><a onclick="showPage('pricing')">Pricing</a></li><li><a onclick="showPage('blog')">Blog</a></li><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('contact')">Contact</a></li><li><a onclick="showPage('booking')">Get a Quote</a></li></ul></div>
+        <div class="footer-col"><h5>Services</h5><ul><li><a onclick="showPage('svc-design')">Web Design</a></li><li><a onclick="showPage('svc-dev')">Web Development</a></li><li><a onclick="showPage('svc-ecommerce')">E-Commerce</a></li><li><a onclick="showPage('svc-seo')">SEO & Growth</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Zyntrix. All rights reserved.</span><span>Designed & built by Zyntrix</span></div>
+    </footer>
+  </div>
+
+  <!-- ══════════════ SERVICE: E-COMMERCE ══════════════ -->
+  <div id="page-svc-ecommerce" class="page">
+    <div class="services-hero">
+      <span class="svc-back" onclick="showPage('services')">← All Services</span>
+      <div class="section-label">Service Detail</div>
+      <h1 class="section-title">E-Commerce <span>Stores</span></h1>
+      <div class="divider"></div>
+      <p class="section-sub">Complete online stores built to sell — from product catalogue and checkout to payments, shipping, and customer accounts, all working on day one.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;margin-top:1.5rem;flex-wrap:wrap;">
+        <button class="btn-primary" onclick="showPage('booking')">Get Quote</button>
+        <button class="btn-outline" onclick="showPage('services')">View All Services</button>
+      </div>
+    </div>
+
+    <div class="svc-stat-strip">
+      <div class="stat"><div class="stat-num">4+</div><div class="stat-label">Payment Gateways</div></div>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Platform Options</div></div>
+      <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Products Supported</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Mobile-First Checkout</div></div>
+    </div>
+
+    <section style="padding:4rem 5%;">
+      <div style="text-align:center;margin-bottom:3rem;">
+        <div class="section-label">Everything You Get</div>
+        <h2 class="section-title">What's <span>Included</span></h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon">🛍️</div>
+          <h3>Product Catalogue</h3>
+          <ul class="feature-list">
+            <li>Unlimited product listings (Growth & Enterprise)</li>
+            <li>Product variants — size, colour, material</li>
+            <li>Image galleries with zoom & lightbox</li>
+            <li>SEO-optimised product titles & descriptions</li>
+            <li>Related products & upsell recommendations</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">💳</div>
+          <h3>Payments & Checkout</h3>
+          <ul class="feature-list">
+            <li>Stripe, PayPal, Apple Pay & Google Pay</li>
+            <li>One-page or multi-step checkout flow</li>
+            <li>Guest checkout & registered accounts</li>
+            <li>Discount codes & promotional coupon system</li>
+            <li>VAT, tax rules & currency configuration</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📦</div>
+          <h3>Orders & Fulfilment</h3>
+          <ul class="feature-list">
+            <li>Real-time order management dashboard</li>
+            <li>Automated order confirmation & shipping emails</li>
+            <li>Live shipping rate calculator at checkout</li>
+            <li>Multiple shipping zones, rules & flat rates</li>
+            <li>Customer-facing order tracking page</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">👤</div>
+          <h3>Customer Accounts</h3>
+          <ul class="feature-list">
+            <li>Secure account registration & login</li>
+            <li>Full order history & one-click re-order</li>
+            <li>Wishlist & saved-for-later functionality</li>
+            <li>Address book & delivery preference management</li>
+            <li>Loyalty points system (Growth & Enterprise)</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h3>Analytics & Marketing</h3>
+          <ul class="feature-list">
+            <li>Sales, revenue & conversion rate dashboard</li>
+            <li>Abandoned cart recovery email sequences</li>
+            <li>Product & category performance reports</li>
+            <li>Google Analytics 4 & conversion tracking</li>
+            <li>Facebook Pixel & ad attribution setup</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🔧</div>
+          <h3>Platform Options</h3>
+          <ul class="feature-list">
+            <li>Shopify — hosted, easy daily management</li>
+            <li>WooCommerce — WordPress-based & flexible</li>
+            <li>Webflow Commerce — design-first approach</li>
+            <li>Custom-built — fully bespoke solution</li>
+            <li>Platform migration from your existing store</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <div style="text-align:center;padding:0 5% 1rem;">
+      <div class="section-label">Platforms We Build On</div>
+      <h2 class="section-title">Supported <span>Platforms</span></h2>
+      <div class="divider" style="margin:1rem auto;"></div>
+    </div>
+    <div class="tech-row">
+      <span class="tech-badge">Shopify</span><span class="tech-badge">WooCommerce</span><span class="tech-badge">Webflow Commerce</span><span class="tech-badge">Custom Build</span><span class="tech-badge">Stripe</span><span class="tech-badge">PayPal</span><span class="tech-badge">Apple Pay</span><span class="tech-badge">Google Pay</span><span class="tech-badge">Klarna</span><span class="tech-badge">Mailchimp</span><span class="tech-badge">Klaviyo</span>
+    </div>
+
+    <div class="process-section">
+      <div style="text-align:center;margin-bottom:1rem;">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">Our E-Commerce <span>Process</span></h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+      </div>
+      <div class="process-grid">
+        <div class="process-step"><div class="step-num">01</div><h4>Platform Selection</h4><p>We assess your business model, product volume, and budget to recommend the perfect e-commerce platform.</p></div>
+        <div class="process-step"><div class="step-num">02</div><h4>Store Setup</h4><p>Products, categories, variants, and imagery all configured — your catalogue ready before design begins.</p></div>
+        <div class="process-step"><div class="step-num">03</div><h4>Payment & Shipping</h4><p>Gateways integrated, shipping zones mapped, tax rules configured, and discount codes live.</p></div>
+        <div class="process-step"><div class="step-num">04</div><h4>Design & Build</h4><p>Your store designed to your brand, developed for speed and mobile conversion, tested across all devices.</p></div>
+        <div class="process-step"><div class="step-num">05</div><h4>Test & Launch</h4><p>We place real test orders, verify every flow, then launch — with ongoing support to make sure sales flow in.</p></div>
+      </div>
+    </div>
+
+    <div class="price-bar">
+      <div class="section-label">Investment</div>
+      <div class="big-price">£1,200 <span>starting price</span></div>
+      <p style="color:var(--muted);max-width:460px;margin:1rem auto 2rem;font-size:0.95rem;line-height:1.8;">Includes full store setup with up to 50 products, payment gateway integration, and 3 months of free support.</p>
+      <button class="btn-primary" onclick="showPage('booking')">Get Your Free Quote</button>
+    </div>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="nav-logo">ZYNTRIX</span><p>Modern websites built to grow your business.</p><a href="http://zyntrixai.co/" target="_blank" rel="noopener" style="font-size:0.83rem;color:var(--blue);display:inline-block;margin-top:0.6rem;letter-spacing:0.5px;">🌐 zyntrixai.co</a></div>
+        <div class="footer-col"><h5>Pages</h5><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('services')">Services</a></li><li><a onclick="showPage('portfolio')">Portfolio</a></li><li><a onclick="showPage('pricing')">Pricing</a></li><li><a onclick="showPage('blog')">Blog</a></li><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('contact')">Contact</a></li><li><a onclick="showPage('booking')">Get a Quote</a></li></ul></div>
+        <div class="footer-col"><h5>Services</h5><ul><li><a onclick="showPage('svc-design')">Web Design</a></li><li><a onclick="showPage('svc-dev')">Web Development</a></li><li><a onclick="showPage('svc-ecommerce')">E-Commerce</a></li><li><a onclick="showPage('svc-seo')">SEO & Growth</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Zyntrix. All rights reserved.</span><span>Designed & built by Zyntrix</span></div>
+    </footer>
+  </div>
+
+  <!-- ══════════════ SERVICE: SEO & GROWTH ══════════════ -->
+  <div id="page-svc-seo" class="page">
+    <div class="services-hero">
+      <span class="svc-back" onclick="showPage('services')">← All Services</span>
+      <div class="section-label">Service Detail</div>
+      <h1 class="section-title">SEO & <span>Growth</span></h1>
+      <div class="divider"></div>
+      <p class="section-sub">We optimise your site from the ground up so Google ranks you higher, the right customers find you first, and organic traffic compounds month after month.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;margin-top:1.5rem;flex-wrap:wrap;">
+        <button class="btn-primary" onclick="showPage('booking')">Get Quote</button>
+        <button class="btn-outline" onclick="showPage('services')">View All Services</button>
+      </div>
+    </div>
+
+    <div class="svc-stat-strip">
+      <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Keywords Tracked Monthly</div></div>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Google Tools Configured</div></div>
+      <div class="stat"><div class="stat-num">3mo</div><div class="stat-label">Avg. First Ranking Gains</div></div>
+      <div class="stat"><div class="stat-num">1</div><div class="stat-label">Monthly Strategy Call</div></div>
+    </div>
+
+    <section style="padding:4rem 5%;">
+      <div style="text-align:center;margin-bottom:3rem;">
+        <div class="section-label">Everything You Get</div>
+        <h2 class="section-title">What's <span>Included</span></h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon">🔍</div>
+          <h3>Technical SEO</h3>
+          <ul class="feature-list">
+            <li>Full technical site audit & issue report</li>
+            <li>Site speed & Core Web Vitals optimisation</li>
+            <li>Crawlability & indexability review</li>
+            <li>XML sitemap generation & submission</li>
+            <li>Robots.txt, canonical tags & redirect mapping</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📝</div>
+          <h3>On-Page SEO</h3>
+          <ul class="feature-list">
+            <li>Keyword research & page-level mapping</li>
+            <li>Meta title & description optimisation</li>
+            <li>Heading structure (H1–H6) review & fix</li>
+            <li>Internal linking strategy & implementation</li>
+            <li>Image alt tags & file naming optimisation</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h3>Analytics & Tracking</h3>
+          <ul class="feature-list">
+            <li>Google Analytics 4 full configuration</li>
+            <li>Google Search Console setup & monitoring</li>
+            <li>Conversion tracking & goal configuration</li>
+            <li>Custom performance dashboard creation</li>
+            <li>Monthly analytics report with insights</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📍</div>
+          <h3>Local SEO</h3>
+          <ul class="feature-list">
+            <li>Google Business Profile setup & optimisation</li>
+            <li>Local keyword research & targeting</li>
+            <li>NAP consistency audit (Name, Address, Phone)</li>
+            <li>Local citation building & directory listings</li>
+            <li>Review generation strategy & templates</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📈</div>
+          <h3>Content Strategy</h3>
+          <ul class="feature-list">
+            <li>Content gap & competitor content analysis</li>
+            <li>Blog topic & editorial calendar planning</li>
+            <li>FAQ & schema markup implementation</li>
+            <li>Pillar content & topic cluster planning</li>
+            <li>Landing page copy recommendations</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📋</div>
+          <h3>Monthly Deliverables</h3>
+          <ul class="feature-list">
+            <li>Keyword ranking movement report</li>
+            <li>Organic traffic & conversion analysis</li>
+            <li>Technical issue log with fixes applied</li>
+            <li>Competitor position tracking report</li>
+            <li>30-minute monthly strategy call</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="process-section">
+      <div style="text-align:center;margin-bottom:1rem;">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">Our SEO <span>Process</span></h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+      </div>
+      <div class="process-grid">
+        <div class="process-step"><div class="step-num">01</div><h4>Full Audit</h4><p>We audit your site technically, on-page, and competitively to map out every opportunity and obstacle.</p></div>
+        <div class="process-step"><div class="step-num">02</div><h4>Keyword Strategy</h4><p>We research the exact terms your customers search and map them to the right pages on your site.</p></div>
+        <div class="process-step"><div class="step-num">03</div><h4>Implementation</h4><p>On-page optimisations, technical fixes, and structured data applied — all changes tracked and documented.</p></div>
+        <div class="process-step"><div class="step-num">04</div><h4>Tracking Setup</h4><p>GA4, Search Console, rank tracking, and conversion goals all configured so progress is measurable from day one.</p></div>
+        <div class="process-step"><div class="step-num">05</div><h4>Monthly Reporting</h4><p>Results, insights, and next-month actions delivered to your inbox every month — plus a live strategy call.</p></div>
+      </div>
+    </div>
+
+    <div class="price-bar">
+      <div class="section-label">Investment</div>
+      <div class="big-price">£299 <span>/ month</span></div>
+      <p style="color:var(--muted);max-width:460px;margin:1rem auto 2rem;font-size:0.95rem;line-height:1.8;">Monthly retainer — cancel anytime. Includes technical SEO, on-page optimisation, rank tracking, and a monthly strategy call.</p>
+      <button class="btn-primary" onclick="showPage('booking')">Get Your Free Quote</button>
+    </div>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="nav-logo">ZYNTRIX</span><p>Modern websites built to grow your business.</p><a href="http://zyntrixai.co/" target="_blank" rel="noopener" style="font-size:0.83rem;color:var(--blue);display:inline-block;margin-top:0.6rem;letter-spacing:0.5px;">🌐 zyntrixai.co</a></div>
+        <div class="footer-col"><h5>Pages</h5><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('services')">Services</a></li><li><a onclick="showPage('portfolio')">Portfolio</a></li><li><a onclick="showPage('pricing')">Pricing</a></li><li><a onclick="showPage('blog')">Blog</a></li><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('contact')">Contact</a></li><li><a onclick="showPage('booking')">Get a Quote</a></li></ul></div>
+        <div class="footer-col"><h5>Services</h5><ul><li><a onclick="showPage('svc-design')">Web Design</a></li><li><a onclick="showPage('svc-dev')">Web Development</a></li><li><a onclick="showPage('svc-ecommerce')">E-Commerce</a></li><li><a onclick="showPage('svc-seo')">SEO & Growth</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Zyntrix. All rights reserved.</span><span>Designed & built by Zyntrix</span></div>
+    </footer>
+  </div>
+
+  <!-- ══════════════ SERVICE: BRANDING ══════════════ -->
+  <div id="page-svc-branding" class="page">
+    <div class="services-hero">
+      <span class="svc-back" onclick="showPage('services')">← All Services</span>
+      <div class="section-label">Service Detail</div>
+      <h1 class="section-title">Branding & <span>Identity</span></h1>
+      <div class="divider"></div>
+      <p class="section-sub">More than a logo — a complete visual identity system that makes your business instantly recognisable and memorable across every touchpoint.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;margin-top:1.5rem;flex-wrap:wrap;">
+        <button class="btn-primary" onclick="showPage('booking')">Get Quote</button>
+        <button class="btn-outline" onclick="showPage('services')">View All Services</button>
+      </div>
+    </div>
+
+    <div class="svc-stat-strip">
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Logo Concepts</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Revision Rounds</div></div>
+      <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Files Delivered</div></div>
+      <div class="stat"><div class="stat-num">40pg</div><div class="stat-label">Brand Guidelines</div></div>
+    </div>
+
+    <section style="padding:4rem 5%;">
+      <div style="text-align:center;margin-bottom:3rem;">
+        <div class="section-label">Everything You Get</div>
+        <h2 class="section-title">What's <span>Included</span></h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon">🔍</div>
+          <h3>Brand Discovery</h3>
+          <ul class="feature-list">
+            <li>In-depth brand questionnaire & strategy brief</li>
+            <li>Competitor & market landscape research</li>
+            <li>Target audience persona development</li>
+            <li>Visual mood board creation & direction</li>
+            <li>Brand values & positioning definition</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🎨</div>
+          <h3>Logo Design</h3>
+          <ul class="feature-list">
+            <li>3 distinct initial logo concept directions</li>
+            <li>Primary logo — horizontal & stacked versions</li>
+            <li>Logo mark / standalone icon version</li>
+            <li>Full-colour, reversed & monochrome variants</li>
+            <li>Up to 3 rounds of revisions included</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🎭</div>
+          <h3>Visual Identity System</h3>
+          <ul class="feature-list">
+            <li>Primary & secondary colour palette (Hex, RGB, CMYK)</li>
+            <li>Typography system — heading & body font pairing</li>
+            <li>Custom graphic patterns & brand textures</li>
+            <li>Iconography & illustration style guide</li>
+            <li>Photography & imagery direction guidelines</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📄</div>
+          <h3>Brand Collateral</h3>
+          <ul class="feature-list">
+            <li>Business card design (print-ready)</li>
+            <li>Email signature template</li>
+            <li>Letterhead & document template</li>
+            <li>Social media profile images & banner kit</li>
+            <li>Presentation slide deck template</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📚</div>
+          <h3>Brand Guidelines</h3>
+          <ul class="feature-list">
+            <li>20–40 page brand guidelines document</li>
+            <li>Logo usage rules — do's and don'ts</li>
+            <li>Colour & typography specifications</li>
+            <li>Tone of voice & messaging framework</li>
+            <li>Image & photography style guidelines</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📦</div>
+          <h3>File Deliverables</h3>
+          <ul class="feature-list">
+            <li>All source files — AI, EPS, Figma</li>
+            <li>Web-ready exports — SVG, PNG, WebP</li>
+            <li>Print-ready files — PDF, CMYK values</li>
+            <li>Font licence recommendations</li>
+            <li>You own every file, outright, forever</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="process-section">
+      <div style="text-align:center;margin-bottom:1rem;">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">Our Branding <span>Process</span></h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+      </div>
+      <div class="process-grid">
+        <div class="process-step"><div class="step-num">01</div><h4>Discovery Session</h4><p>We dive into your brand through a detailed questionnaire, competitor research, and a mood board session.</p></div>
+        <div class="process-step"><div class="step-num">02</div><h4>Concept Development</h4><p>Three distinct logo directions are presented — each with rationale and showing your brand's potential direction.</p></div>
+        <div class="process-step"><div class="step-num">03</div><h4>Refinement</h4><p>You choose a direction and we develop it fully — refining every detail through up to three revision rounds.</p></div>
+        <div class="process-step"><div class="step-num">04</div><h4>Full Brand Build</h4><p>Colours, typography, patterns, and all collateral developed to form a cohesive, complete identity system.</p></div>
+        <div class="process-step"><div class="step-num">05</div><h4>Guidelines & Handoff</h4><p>Brand guidelines document and all source files delivered — everything you need to keep your brand consistent.</p></div>
+      </div>
+    </div>
+
+    <div class="price-bar">
+      <div class="section-label">Investment</div>
+      <div class="big-price">£349 <span>starting price</span></div>
+      <p style="color:var(--muted);max-width:460px;margin:1rem auto 2rem;font-size:0.95rem;line-height:1.8;">Includes logo design (3 concepts), full colour & type system, core collateral, and a complete brand guidelines PDF.</p>
+      <button class="btn-primary" onclick="showPage('booking')">Get Your Free Quote</button>
+    </div>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="nav-logo">ZYNTRIX</span><p>Modern websites built to grow your business.</p><a href="http://zyntrixai.co/" target="_blank" rel="noopener" style="font-size:0.83rem;color:var(--blue);display:inline-block;margin-top:0.6rem;letter-spacing:0.5px;">🌐 zyntrixai.co</a></div>
+        <div class="footer-col"><h5>Pages</h5><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('services')">Services</a></li><li><a onclick="showPage('portfolio')">Portfolio</a></li><li><a onclick="showPage('pricing')">Pricing</a></li><li><a onclick="showPage('blog')">Blog</a></li><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('contact')">Contact</a></li><li><a onclick="showPage('booking')">Get a Quote</a></li></ul></div>
+        <div class="footer-col"><h5>Services</h5><ul><li><a onclick="showPage('svc-design')">Web Design</a></li><li><a onclick="showPage('svc-dev')">Web Development</a></li><li><a onclick="showPage('svc-ecommerce')">E-Commerce</a></li><li><a onclick="showPage('svc-seo')">SEO & Growth</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Zyntrix. All rights reserved.</span><span>Designed & built by Zyntrix</span></div>
+    </footer>
+  </div>
+
+  <!-- ══════════════ SERVICE: MAINTENANCE ══════════════ -->
+  <div id="page-svc-maintenance" class="page">
+    <div class="services-hero">
+      <span class="svc-back" onclick="showPage('services')">← All Services</span>
+      <div class="section-label">Service Detail</div>
+      <h1 class="section-title">Maintenance & <span>Support</span></h1>
+      <div class="divider"></div>
+      <p class="section-sub">Monthly care plans that keep your site fast, secure, and up-to-date — so you can focus on your business while we handle everything technical.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;margin-top:1.5rem;flex-wrap:wrap;">
+        <button class="btn-primary" onclick="showPage('booking')">Get Quote</button>
+        <button class="btn-outline" onclick="showPage('services')">View All Services</button>
+      </div>
+    </div>
+
+    <div class="svc-stat-strip">
+      <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Uptime Monitoring</div></div>
+      <div class="stat"><div class="stat-num">Daily</div><div class="stat-label">Automated Backups</div></div>
+      <div class="stat"><div class="stat-num">2h</div><div class="stat-label">Critical Response Time</div></div>
+      <div class="stat"><div class="stat-num">2hrs</div><div class="stat-label">Content Changes / Month</div></div>
+    </div>
+
+    <section style="padding:4rem 5%;">
+      <div style="text-align:center;margin-bottom:3rem;">
+        <div class="section-label">Everything You Get</div>
+        <h2 class="section-title">What's <span>Included</span></h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon">🔒</div>
+          <h3>Security Monitoring</h3>
+          <ul class="feature-list">
+            <li>Daily malware & vulnerability scanning</li>
+            <li>Firewall rules & intrusion detection</li>
+            <li>Brute-force login protection</li>
+            <li>SSL certificate monitoring & auto-renewal</li>
+            <li>Security patch installation within 24 hours</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">💾</div>
+          <h3>Backups & Recovery</h3>
+          <ul class="feature-list">
+            <li>Daily automated full-site backups</li>
+            <li>30-day backup retention history</li>
+            <li>Off-site backup storage (separate server)</li>
+            <li>One-click restore capability</li>
+            <li>Database & file-level backup granularity</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">⚡</div>
+          <h3>Performance Monitoring</h3>
+          <ul class="feature-list">
+            <li>Monthly Lighthouse & speed audit</li>
+            <li>Image optimisation health checks</li>
+            <li>Core Web Vitals monitoring & alerts</li>
+            <li>Broken link scanning & automatic repair</li>
+            <li>Database optimisation & cache management</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🔄</div>
+          <h3>Updates & Patches</h3>
+          <ul class="feature-list">
+            <li>CMS core updates (WordPress, plugins, themes)</li>
+            <li>Compatibility testing after every update</li>
+            <li>Staging environment used for safe testing</li>
+            <li>Rollback capability if any issue arises</li>
+            <li>Change log provided with every update batch</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">✏️</div>
+          <h3>Content Changes</h3>
+          <ul class="feature-list">
+            <li>Up to 2 hours of content edits per month</li>
+            <li>Text, image & video updates</li>
+            <li>New page additions at a discounted rate</li>
+            <li>Form field updates & configuration</li>
+            <li>Priority queue — care plan clients first</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h3>Monthly Reporting</h3>
+          <ul class="feature-list">
+            <li>Website health report emailed monthly</li>
+            <li>Uptime & availability percentage report</li>
+            <li>Security audit summary</li>
+            <li>Performance benchmark comparison (month-on-month)</li>
+            <li>Prioritised list of recommended improvements</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <div style="text-align:center; padding:0 5% 3rem;">
+      <div class="section-label">Response Times</div>
+      <h2 class="section-title">Support <span>SLA</span></h2>
+      <div class="divider" style="margin:1rem auto 2.5rem;"></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;max-width:800px;margin:0 auto;">
+        <div class="service-card" style="text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">🔴</div>
+          <h3 style="color:var(--blue);">Critical</h3>
+          <p style="font-size:1.1rem;font-weight:600;color:#fff;margin:0.5rem 0;">Within 2 Hours</p>
+          <p>Site is completely down or a major security breach is detected.</p>
+        </div>
+        <div class="service-card" style="text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">🟡</div>
+          <h3 style="color:var(--blue);">High Priority</h3>
+          <p style="font-size:1.1rem;font-weight:600;color:#fff;margin:0.5rem 0;">Within 8 Hours</p>
+          <p>Major feature broken, checkout failing, or forms not sending.</p>
+        </div>
+        <div class="service-card" style="text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">🟢</div>
+          <h3 style="color:var(--blue);">Standard</h3>
+          <p style="font-size:1.1rem;font-weight:600;color:#fff;margin:0.5rem 0;">Within 48 Hours</p>
+          <p>Content changes, minor bug fixes, and general update requests.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="process-section">
+      <div style="text-align:center;margin-bottom:1rem;">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">Our Care Plan <span>Process</span></h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+      </div>
+      <div class="process-grid">
+        <div class="process-step"><div class="step-num">01</div><h4>Site Audit</h4><p>We assess your site's current health — security, speed, backups, and plugin status — before anything else.</p></div>
+        <div class="process-step"><div class="step-num">02</div><h4>Onboarding</h4><p>Backup systems, uptime monitoring, and security alerts all configured and tested on day one.</p></div>
+        <div class="process-step"><div class="step-num">03</div><h4>Monthly Cycle</h4><p>Updates run, security scans reviewed, performance checked — all handled without you lifting a finger.</p></div>
+        <div class="process-step"><div class="step-num">04</div><h4>Content Changes</h4><p>Submit change requests anytime — completed within 48 hours, deducted from your monthly allowance.</p></div>
+        <div class="process-step"><div class="step-num">05</div><h4>Monthly Report</h4><p>Your website health report lands in your inbox — uptime, security, performance, and next recommendations.</p></div>
+      </div>
+    </div>
+
+    <div class="price-bar">
+      <div class="section-label">Investment</div>
+      <div class="big-price">£79 <span>/ month</span></div>
+      <p style="color:var(--muted);max-width:460px;margin:1rem auto 2rem;font-size:0.95rem;line-height:1.8;">Monthly care plan — cancel anytime. Includes security monitoring, daily backups, updates, 2 hours of content changes, and a monthly health report.</p>
+      <button class="btn-primary" onclick="showPage('booking')">Get Your Free Quote</button>
+    </div>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="nav-logo">ZYNTRIX</span><p>Modern websites built to grow your business.</p><a href="http://zyntrixai.co/" target="_blank" rel="noopener" style="font-size:0.83rem;color:var(--blue);display:inline-block;margin-top:0.6rem;letter-spacing:0.5px;">🌐 zyntrixai.co</a></div>
+        <div class="footer-col"><h5>Pages</h5><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('services')">Services</a></li><li><a onclick="showPage('portfolio')">Portfolio</a></li><li><a onclick="showPage('pricing')">Pricing</a></li><li><a onclick="showPage('blog')">Blog</a></li><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('contact')">Contact</a></li><li><a onclick="showPage('booking')">Get a Quote</a></li></ul></div>
+        <div class="footer-col"><h5>Services</h5><ul><li><a onclick="showPage('svc-design')">Web Design</a></li><li><a onclick="showPage('svc-dev')">Web Development</a></li><li><a onclick="showPage('svc-ecommerce')">E-Commerce</a></li><li><a onclick="showPage('svc-seo')">SEO & Growth</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Zyntrix. All rights reserved.</span><span>Designed & built by Zyntrix</span></div>
+    </footer>
+  </div>
+
+  <!-- ══════════════ PORTFOLIO ══════════════ -->
+  <div id="page-portfolio" class="page">
+
+    <div class="services-hero">
+      <div class="section-label">Our Work</div>
+      <h1 class="section-title">Our <span>Portfolio</span></h1>
+      <div class="divider"></div>
+      <p class="section-sub">A selection of websites we've designed and built for real businesses across industries.</p>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:0.75rem; padding:0 5% 2.5rem;">
+      <button class="filter-btn active" onclick="filterProjects(this,'all')">All</button>
+      <button class="filter-btn" onclick="filterProjects(this,'web-design')">Web Design</button>
+      <button class="filter-btn" onclick="filterProjects(this,'ecommerce')">E-Commerce</button>
+      <button class="filter-btn" onclick="filterProjects(this,'branding')">Branding</button>
+      <button class="filter-btn" onclick="filterProjects(this,'seo')">SEO</button>
+    </div>
+
+    <div class="portfolio-grid" id="portfolioGrid">
+
+      <div class="project-card" data-category="web-design">
+        <div class="project-mockup" style="background:linear-gradient(135deg,rgba(0,200,255,0.08),rgba(0,80,200,0.08));">
+          <div class="mockup-screen">
+            <div class="mockup-bar" style="background:rgba(0,200,255,0.5);"></div>
+            <div class="mockup-lines"><div class="m-line long"></div><div class="m-line medium"></div><div class="m-line short"></div></div>
+          </div>
+        </div>
+        <div class="project-info">
+          <span class="project-tag">Web Design</span>
+          <h3>Apex Fitness</h3>
+          <p>Bold gym & personal training website with class scheduling, member portal, and online booking integration.</p>
+          <span class="project-link">View Case Study →</span>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="ecommerce">
+        <div class="project-mockup" style="background:linear-gradient(135deg,rgba(255,120,60,0.08),rgba(255,200,60,0.08));">
+          <div class="mockup-screen">
+            <div class="mockup-bar" style="background:rgba(255,160,60,0.5);"></div>
+            <div class="mockup-lines"><div class="m-line medium"></div><div class="m-line long"></div><div class="m-line short"></div></div>
+          </div>
+        </div>
+        <div class="project-info">
+          <span class="project-tag">E-Commerce</span>
+          <h3>Luminary Café</h3>
+          <p>Artisan coffee shop with online ordering, loyalty rewards, gift cards, and same-day local delivery tracking.</p>
+          <span class="project-link">View Case Study →</span>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="web-design">
+        <div class="project-mockup" style="background:linear-gradient(135deg,rgba(100,60,255,0.08),rgba(0,200,255,0.08));">
+          <div class="mockup-screen">
+            <div class="mockup-bar" style="background:rgba(120,80,255,0.5);"></div>
+            <div class="mockup-lines"><div class="m-line long"></div><div class="m-line short"></div><div class="m-line medium"></div></div>
+          </div>
+        </div>
+        <div class="project-info">
+          <span class="project-tag">Web Design</span>
+          <h3>Nova Law Group</h3>
+          <p>Professional legal firm site with practice area pages, attorney profiles, case inquiry forms, and live chat.</p>
+          <span class="project-link">View Case Study →</span>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="branding">
+        <div class="project-mockup" style="background:linear-gradient(135deg,rgba(255,60,160,0.08),rgba(255,140,100,0.08));">
+          <div class="mockup-screen">
+            <div class="mockup-bar" style="background:rgba(255,80,160,0.5);"></div>
+            <div class="mockup-lines"><div class="m-line short"></div><div class="m-line long"></div><div class="m-line medium"></div></div>
+          </div>
+        </div>
+        <div class="project-info">
+          <span class="project-tag">Branding</span>
+          <h3>Bloom Boutique</h3>
+          <p>Full brand identity and e-commerce store for a sustainable fashion label — logo, palette, typography, and launch site.</p>
+          <span class="project-link">View Case Study →</span>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="web-design">
+        <div class="project-mockup" style="background:linear-gradient(135deg,rgba(0,255,140,0.06),rgba(0,200,255,0.08));">
+          <div class="mockup-screen">
+            <div class="mockup-bar" style="background:rgba(0,220,120,0.5);"></div>
+            <div class="mockup-lines"><div class="m-line medium"></div><div class="m-line medium"></div><div class="m-line long"></div></div>
+          </div>
+        </div>
+        <div class="project-info">
+          <span class="project-tag">Web Design</span>
+          <h3>Stealth Security</h3>
+          <p>Dark, high-trust website for a cybersecurity consultancy — animated threat visualisations and lead capture funnels.</p>
+          <span class="project-link">View Case Study →</span>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="seo">
+        <div class="project-mockup" style="background:linear-gradient(135deg,rgba(255,215,0,0.07),rgba(255,100,60,0.07));">
+          <div class="mockup-screen">
+            <div class="mockup-bar" style="background:rgba(255,200,40,0.5);"></div>
+            <div class="mockup-lines"><div class="m-line long"></div><div class="m-line long"></div><div class="m-line short"></div></div>
+          </div>
+        </div>
+        <div class="project-info">
+          <span class="project-tag">SEO</span>
+          <h3>Harvest Kitchen</h3>
+          <p>Local restaurant site rebuilt for search visibility — ranked page 1 for 12 local keywords within 60 days of launch.</p>
+          <span class="project-link">View Case Study →</span>
+        </div>
+      </div>
+
+    </div>
+
+    <section style="text-align:center; padding:2rem 5% 5rem; background:transparent;">
+      <h2 class="section-title">Want results like these?</h2>
+      <p style="color:var(--muted); max-width:460px; margin:1rem auto 2rem;">Let's talk about your project and build something you're proud of.</p>
+      <button class="btn-primary" onclick="showPage('booking')">Get a Free Quote</button>
+    </section>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="nav-logo">ZYNTRIX</span><p>Modern websites built to grow your business.</p><a href="http://zyntrixai.co/" target="_blank" rel="noopener" style="font-size:0.83rem;color:var(--blue);display:inline-block;margin-top:0.6rem;letter-spacing:0.5px;">🌐 zyntrixai.co</a></div>
+        <div class="footer-col"><h5>Pages</h5><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('services')">Services</a></li><li><a onclick="showPage('portfolio')">Portfolio</a></li><li><a onclick="showPage('pricing')">Pricing</a></li><li><a onclick="showPage('blog')">Blog</a></li><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('contact')">Contact</a></li><li><a onclick="showPage('booking')">Get a Quote</a></li></ul></div>
+        <div class="footer-col"><h5>Services</h5><ul><li><a onclick="showPage('services')">Web Design</a></li><li><a onclick="showPage('services')">Development</a></li><li><a onclick="showPage('services')">E-Commerce</a></li><li><a onclick="showPage('services')">SEO</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Zyntrix. All rights reserved.</span><span>Designed & built by Zyntrix</span></div>
+    </footer>
+  </div>
+
+  <!-- ══════════════ PRICING ══════════════ -->
+  <div id="page-pricing" class="page">
+
+    <div class="services-hero">
+      <div class="section-label">Investment</div>
+      <h1 class="section-title">Transparent <span>Pricing</span></h1>
+      <div class="divider"></div>
+      <p class="section-sub">No hidden fees. No surprise invoices. Just clear, fair pricing for outstanding work.</p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <div class="pricing-card">
+        <div class="pricing-tier">Starter</div>
+        <div class="pricing-amount">£499</div>
+        <p class="pricing-desc">Perfect for new businesses and solo traders getting online for the first time.</p>
+        <ul class="pricing-features">
+          <li>Up to 5 pages</li>
+          <li>Mobile-responsive design</li>
+          <li>Contact form</li>
+          <li>Basic on-page SEO</li>
+          <li>Google Analytics setup</li>
+          <li>14-day revision window</li>
+          <li>1 month free support</li>
+          <li class="off">E-Commerce store</li>
+          <li class="off">Custom animations</li>
+          <li class="off">Priority support</li>
+        </ul>
+        <button class="btn-outline" style="width:100%;" onclick="showPage('booking')">Get Started</button>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="pricing-badge">MOST POPULAR</div>
+        <div class="pricing-tier">Growth</div>
+        <div class="pricing-amount">£1,499</div>
+        <p class="pricing-desc">For established businesses ready to level up their online presence and start converting.</p>
+        <ul class="pricing-features">
+          <li>Up to 12 pages</li>
+          <li>Mobile-responsive design</li>
+          <li>Contact & booking forms</li>
+          <li>Full on-page SEO</li>
+          <li>Google Analytics + Search Console</li>
+          <li>30-day revision window</li>
+          <li>3 months free support</li>
+          <li>E-Commerce (up to 50 products)</li>
+          <li>Custom animations & interactions</li>
+          <li class="off">Priority support</li>
+        </ul>
+        <button class="btn-primary" style="width:100%;" onclick="showPage('booking')">Get Started</button>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-tier">Enterprise</div>
+        <div class="pricing-amount">Custom <span>/ project</span></div>
+        <p class="pricing-desc">For large brands and complex builds that need a bespoke, fully managed solution.</p>
+        <ul class="pricing-features">
+          <li>Unlimited pages</li>
+          <li>Mobile-responsive design</li>
+          <li>All form & integration types</li>
+          <li>Advanced SEO & schema</li>
+          <li>Full analytics dashboard</li>
+          <li>Ongoing revision support</li>
+          <li>6 months free support</li>
+          <li>Full E-Commerce (unlimited)</li>
+          <li>Custom animations & interactions</li>
+          <li>Dedicated account manager</li>
+        </ul>
+        <button class="btn-outline" style="width:100%;" onclick="showPage('booking')">Request a Quote</button>
+      </div>
+
+    </div>
+
+    <div style="text-align:center; padding:0 5% 2rem;">
+      <div class="section-label">Common Questions</div>
+      <h2 class="section-title">Pricing <span>FAQs</span></h2>
+      <div class="divider" style="margin:1rem auto 3rem;"></div>
+    </div>
+    <div class="faq-section">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How long does it take to build my website?</div>
+        <div class="faq-a">Starter sites typically take 2–3 weeks. Growth projects take 4–6 weeks. Enterprise builds vary but we'll agree a full timeline before starting.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do you require a deposit?</div>
+        <div class="faq-a">Yes — we ask for 50% upfront to begin work, with the remaining 50% due on launch day. For larger projects we can split into milestone payments.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I update the website myself after launch?</div>
+        <div class="faq-a">Absolutely. We can build with a CMS (content management system) so you can edit text, images, and products yourself with no coding needed.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What if I need more pages than my package includes?</div>
+        <div class="faq-a">Additional pages are available from £80 each. We'll always confirm costs before doing any extra work so there are no surprises.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do you offer ongoing maintenance after the free support period?</div>
+        <div class="faq-a">Yes — we offer monthly care plans from £79/mo covering updates, security monitoring, backups, and content changes. See our Services page for details.</div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="nav-logo">ZYNTRIX</span><p>Modern websites built to grow your business.</p><a href="http://zyntrixai.co/" target="_blank" rel="noopener" style="font-size:0.83rem;color:var(--blue);display:inline-block;margin-top:0.6rem;letter-spacing:0.5px;">🌐 zyntrixai.co</a></div>
+        <div class="footer-col"><h5>Pages</h5><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('services')">Services</a></li><li><a onclick="showPage('portfolio')">Portfolio</a></li><li><a onclick="showPage('pricing')">Pricing</a></li><li><a onclick="showPage('blog')">Blog</a></li><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('contact')">Contact</a></li><li><a onclick="showPage('booking')">Get a Quote</a></li></ul></div>
+        <div class="footer-col"><h5>Services</h5><ul><li><a onclick="showPage('services')">Web Design</a></li><li><a onclick="showPage('services')">Development</a></li><li><a onclick="showPage('services')">E-Commerce</a></li><li><a onclick="showPage('services')">SEO</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Zyntrix. All rights reserved.</span><span>Designed & built by Zyntrix</span></div>
+    </footer>
+  </div>
+
+  <!-- ══════════════ BLOG ══════════════ -->
+  <div id="page-blog" class="page">
+
+    <div class="services-hero">
+      <div class="section-label">Resources</div>
+      <h1 class="section-title">Web Design <span>Insights</span></h1>
+      <div class="divider"></div>
+      <p class="section-sub">Tips, trends, and strategy from the Zyntrix team to help your business grow online.</p>
+    </div>
+
+    <div class="blog-grid" style="padding-top:1rem;">
+
+      <article class="blog-card">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,rgba(0,200,255,0.08),rgba(0,80,200,0.08));">🎨</div>
+        <div class="blog-body">
+          <span class="blog-cat">Web Design</span>
+          <h3>10 Web Design Trends Dominating 2026</h3>
+          <p>From bento-grid layouts to AI-assisted personalisation, here's what's shaping modern websites this year and what your business should be doing.</p>
+          <div class="blog-meta"><span>Apr 2026</span><span class="project-link">Read More →</span></div>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,rgba(255,200,0,0.07),rgba(255,100,0,0.07));">⚡</div>
+        <div class="blog-body">
+          <span class="blog-cat">Performance</span>
+          <h3>Why Page Speed Is Your Most Valuable SEO Asset</h3>
+          <p>Google's Core Web Vitals directly affect your ranking. We break down what they are, why they matter, and exactly how to improve them.</p>
+          <div class="blog-meta"><span>Mar 2026</span><span class="project-link">Read More →</span></div>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,rgba(255,80,120,0.07),rgba(255,160,60,0.07));">🛒</div>
+        <div class="blog-body">
+          <span class="blog-cat">E-Commerce</span>
+          <h3>How to Build an Online Store That Actually Converts</h3>
+          <p>Most e-commerce sites lose customers at checkout. Here are the layout decisions, trust signals, and UX patterns that fix it.</p>
+          <div class="blog-meta"><span>Mar 2026</span><span class="project-link">Read More →</span></div>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,rgba(0,255,140,0.06),rgba(0,200,255,0.07));">📈</div>
+        <div class="blog-body">
+          <span class="blog-cat">SEO</span>
+          <h3>The Complete On-Page SEO Checklist for New Websites</h3>
+          <p>Before you launch, run through this checklist. Meta titles, heading structure, image alt tags, internal linking — every item explained simply.</p>
+          <div class="blog-meta"><span>Feb 2026</span><span class="project-link">Read More →</span></div>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,rgba(180,60,255,0.07),rgba(255,60,160,0.07));">✏️</div>
+        <div class="blog-body">
+          <span class="blog-cat">Branding</span>
+          <h3>Why Your Logo Alone Isn't a Brand Identity</h3>
+          <p>A logo is just the start. Discover the full system — colour, type, tone of voice, and imagery — that makes a brand instantly recognisable.</p>
+          <div class="blog-meta"><span>Feb 2026</span><span class="project-link">Read More →</span></div>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,rgba(0,200,255,0.06),rgba(100,60,255,0.07));">💼</div>
+        <div class="blog-body">
+          <span class="blog-cat">Business</span>
+          <h3>How to Brief a Web Designer (And Get Exactly What You Want)</h3>
+          <p>A great brief means fewer revisions and a better result. This template covers every question your designer actually needs answered upfront.</p>
+          <div class="blog-meta"><span>Jan 2026</span><span class="project-link">Read More →</span></div>
+        </div>
+      </article>
+
+    </div>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="nav-logo">ZYNTRIX</span><p>Modern websites built to grow your business.</p><a href="http://zyntrixai.co/" target="_blank" rel="noopener" style="font-size:0.83rem;color:var(--blue);display:inline-block;margin-top:0.6rem;letter-spacing:0.5px;">🌐 zyntrixai.co</a></div>
+        <div class="footer-col"><h5>Pages</h5><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('services')">Services</a></li><li><a onclick="showPage('portfolio')">Portfolio</a></li><li><a onclick="showPage('pricing')">Pricing</a></li><li><a onclick="showPage('blog')">Blog</a></li><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('contact')">Contact</a></li><li><a onclick="showPage('booking')">Get a Quote</a></li></ul></div>
+        <div class="footer-col"><h5>Services</h5><ul><li><a onclick="showPage('services')">Web Design</a></li><li><a onclick="showPage('services')">Development</a></li><li><a onclick="showPage('services')">E-Commerce</a></li><li><a onclick="showPage('services')">SEO</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Zyntrix. All rights reserved.</span><span>Designed & built by Zyntrix</span></div>
+    </footer>
+  </div>
+
+  <!-- Neural Vortex WebGL -->
+  <script>
+  (function () {
+    const canvasEl = document.getElementById('neuro-canvas');
+    const gl = canvasEl.getContext('webgl') || canvasEl.getContext('experimental-webgl');
+    if (!gl) return;
+
+    const pointer = { x: 0, y: 0, tX: 0, tY: 0 };
+
+    const vsSource = `
+      precision mediump float;
+      attribute vec2 a_position;
+      varying vec2 vUv;
+      void main() {
+        vUv = .5 * (a_position + 1.);
+        gl_Position = vec4(a_position, 0.0, 1.0);
+      }
+    `;
+    const fsSource = `
+      precision mediump float;
+      varying vec2 vUv;
+      uniform float u_time;
+      uniform float u_ratio;
+      uniform vec2 u_pointer_position;
+      uniform float u_scroll_progress;
+
+      vec2 rotate(vec2 uv, float th) {
+        return mat2(cos(th), sin(th), -sin(th), cos(th)) * uv;
+      }
+
+      float neuro_shape(vec2 uv, float t, float p) {
+        vec2 sine_acc = vec2(0.);
+        vec2 res = vec2(0.);
+        float scale = 8.;
+        for (int j = 0; j < 15; j++) {
+          uv = rotate(uv, 1.);
+          sine_acc = rotate(sine_acc, 1.);
+          vec2 layer = uv * scale + float(j) + sine_acc - t;
+          sine_acc += sin(layer) + 2.4 * p;
+          res += (.5 + .5 * cos(layer)) / scale;
+          scale *= (1.2);
+        }
+        return res.x + res.y;
+      }
+
+      void main() {
+        vec2 uv = .5 * vUv;
+        uv.x *= u_ratio;
+        vec2 ptr = vUv - u_pointer_position;
+        ptr.x *= u_ratio;
+        float p = clamp(length(ptr), 0., 1.);
+        p = .5 * pow(1. - p, 2.);
+        float t = .001 * u_time;
+        float noise = neuro_shape(uv, t, p);
+        noise = 1.2 * pow(noise, 3.);
+        noise += pow(noise, 10.);
+        noise = max(.0, noise - .5);
+        noise *= (1. - length(vUv - .5));
+        vec3 color = vec3(0.5, 0.15, 0.65);
+        color = mix(color, vec3(0.02, 0.7, 0.9), 0.32 + 0.16 * sin(2.0 * u_scroll_progress + 1.2));
+        color += vec3(0.15, 0.0, 0.6) * sin(2.0 * u_scroll_progress + 1.5);
+        color = color * noise;
+        gl_FragColor = vec4(color, noise);
+      }
+    `;
+
+    function compileShader(gl, src, type) {
+      const s = gl.createShader(type);
+      gl.shaderSource(s, src);
+      gl.compileShader(s);
+      return s;
+    }
+
+    const vs = compileShader(gl, vsSource, gl.VERTEX_SHADER);
+    const fs = compileShader(gl, fsSource, gl.FRAGMENT_SHADER);
+    const prog = gl.createProgram();
+    gl.attachShader(prog, vs);
+    gl.attachShader(prog, fs);
+    gl.linkProgram(prog);
+    gl.useProgram(prog);
+
+    const verts = new Float32Array([-1,-1, 1,-1, -1,1, 1,1]);
+    const buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, verts, gl.STATIC_DRAW);
+    const pos = gl.getAttribLocation(prog, 'a_position');
+    gl.enableVertexAttribArray(pos);
+    gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+
+    const uTime    = gl.getUniformLocation(prog, 'u_time');
+    const uRatio   = gl.getUniformLocation(prog, 'u_ratio');
+    const uPointer = gl.getUniformLocation(prog, 'u_pointer_position');
+    const uScroll  = gl.getUniformLocation(prog, 'u_scroll_progress');
+
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
+    function resize() {
+      const dpr = Math.min(window.devicePixelRatio, 2);
+      canvasEl.width  = window.innerWidth  * dpr;
+      canvasEl.height = window.innerHeight * dpr;
+      gl.viewport(0, 0, canvasEl.width, canvasEl.height);
+      gl.uniform1f(uRatio, canvasEl.width / canvasEl.height);
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function render() {
+      pointer.x += (pointer.tX - pointer.x) * 0.2;
+      pointer.y += (pointer.tY - pointer.y) * 0.2;
+      gl.uniform1f(uTime, performance.now());
+      gl.uniform2f(uPointer,
+        pointer.x / window.innerWidth,
+        1 - pointer.y / window.innerHeight
+      );
+      gl.uniform1f(uScroll, window.pageYOffset / (2 * window.innerHeight));
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      requestAnimationFrame(render);
+    }
+    render();
+
+    window.addEventListener('pointermove', function(e) {
+      pointer.tX = e.clientX;
+      pointer.tY = e.clientY;
+    });
+    window.addEventListener('touchmove', function(e) {
+      if (e.touches[0]) {
+        pointer.tX = e.touches[0].clientX;
+        pointer.tY = e.touches[0].clientY;
+      }
+    });
+  })();
+  </script>
+
+  <!-- JS -->
+  <script>
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+      document.getElementById('page-' + id).classList.add('active');
+      const link = document.querySelector(`.nav-links a[data-page="${id}"]`);
+      if (link) link.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.getElementById('navLinks').classList.remove('open');
+    }
+
+    function filterProjects(btn, cat) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.project-card').forEach(card => {
+        card.style.display = (cat === 'all' || card.dataset.category === cat) ? '' : 'none';
+      });
+    }
+
+    function toggleFaq(el) {
+      const isOpen = el.classList.contains('open');
+      document.querySelectorAll('.faq-q.open').forEach(q => {
+        q.classList.remove('open');
+        q.nextElementSibling.style.display = 'none';
+      });
+      if (!isOpen) {
+        el.classList.add('open');
+        el.nextElementSibling.style.display = 'block';
+      }
+    }
+
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    function handleSubmit(e, successId) {
+      e.preventDefault();
+      const msg = document.getElementById(successId);
+      msg.style.display = 'block';
+      e.target.reset();
+      setTimeout(() => { msg.style.display = 'none'; }, 5000);
+    }
+
+    async function submitQuote(e) {
+      e.preventDefault();
+
+      const btn = document.getElementById('quoteSubmitBtn');
+      btn.textContent = 'Generating & Sending…';
+      btn.disabled = true;
+
+      const checked = [...document.querySelectorAll('#bookingForm input[type="checkbox"]:checked')]
+        .map(cb => cb.value).join(', ');
+
+      const payload = {
+        firstName:    document.getElementById('q-firstName').value.trim(),
+        lastName:     document.getElementById('q-lastName').value.trim(),
+        businessName: document.getElementById('q-businessName').value.trim(),
+        email:        document.getElementById('q-email').value.trim(),
+        phone:        document.getElementById('q-phone').value.trim(),
+        services:     checked || 'General Website',
+        websiteUrl:   document.getElementById('q-websiteUrl').value.trim()
+      };
+
+      try {
+        const res = await fetch('/api/quote', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('bookingSuccess').style.display = 'block';
+          document.getElementById('bookingForm').reset();
+        } else {
+          document.getElementById('bookingError').style.display = 'block';
+        }
+      } catch {
+        document.getElementById('bookingError').style.display = 'block';
+      } finally {
+        btn.textContent = 'Generate My Website & Send Quote';
+        btn.disabled = false;
+      }
+    }
+  </script>
+</body>
+</html>
