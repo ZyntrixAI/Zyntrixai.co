@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fringe Benefits</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="nav-logo">
+          <div class="logo-text">
+            <span class="logo-main">FRINGE BENEFITS</span>
+          </div>
+        </a>
+        <div class="nav-dropdown-wrap">
+          <button class="nav-dropdown-btn" id="navDropdownBtn">MENU</button>
+          <ul class="nav-dropdown" id="navDropdown">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#barbers">Barbers</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#products">Shop</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#location">Location</a></li>
+          </ul>
+        </div>
+        <button class="btn btn-nav" data-open-booking>Book a Seat</button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="hero-overlay"></div>
+
+      <!-- Floating accent lines -->
+      <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1;">
+        <div style="position:absolute;top:18%;left:6%;width:1px;height:160px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,0.12),transparent);"></div>
+        <div style="position:absolute;top:30%;right:8%;width:1px;height:100px;background:linear-gradient(to bottom,transparent,rgba(200,50,50,0.25),transparent);"></div>
+        <div style="position:absolute;bottom:20%;left:50%;width:80px;height:1px;background:linear-gradient(to right,transparent,rgba(255,255,255,0.1),transparent);transform:translateX(-50%);"></div>
+      </div>
+
+      <div class="hero-content">
+        <!-- Eyebrow badge -->
+        <div style="display:inline-flex;align-items:center;gap:10px;padding:6px 18px;border:1px solid rgba(255,255,255,0.14);border-radius:999px;background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);margin-bottom:2.2rem;animation:hFadeIn 0.9s ease 0.25s both;">
+          <span style="width:5px;height:5px;border-radius:50%;background:var(--red);box-shadow:0 0 8px rgba(220,38,38,0.8);flex-shrink:0;"></span>
+          <span style="font-size:0.68rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.6);font-weight:600;">Est. 2018 &nbsp;·&nbsp; Walk-ins Welcome</span>
+        </div>
+
+        <!-- Main headline -->
+        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(3.2rem,10vw,7.5rem);font-weight:700;line-height:1.0;letter-spacing:-0.02em;margin-bottom:1.4rem;color:#fff;text-align:center;animation:hFadeUp 1.1s cubic-bezier(.16,1,.3,1) 0.45s both;">
+          Fringe<br><em style="font-style:italic;color:var(--red);">Benefits</em>
+        </h1>
+
+        <!-- Inviting subtitle -->
+        <p style="font-size:clamp(1rem,2.2vw,1.2rem);color:rgba(255,255,255,0.75);max-width:480px;text-align:center;line-height:1.75;margin-bottom:0.75rem;animation:hFadeIn 0.9s ease 0.9s both;">
+          Your local barbershop. Great cuts, good vibes, and a chair that's always ready for you.
+        </p>
+
+        <!-- Trust line -->
+        <p style="font-size:0.8rem;color:rgba(255,255,255,0.35);letter-spacing:2px;text-transform:uppercase;margin-bottom:2.2rem;animation:hFadeIn 0.8s ease 1.1s both;">
+          Tue – Fri &nbsp;9am–7pm &nbsp;·&nbsp; Sat – Sun &nbsp;9am–5pm
+        </p>
+
+        <!-- Buttons -->
+        <div class="hero-buttons">
+          <button class="btn btn-primary" data-open-booking>Book a Seat</button>
+          <button class="btn btn-voice" data-open-voice>
+            <span class="voice-pulse"></span>
+            Call Reception
+          </button>
+          <a href="#services" class="btn btn-ghost">View Services</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tagline Banner -->
+    <section class="tagline-banner">
+      <div class="ticker">
+        <span>Classic Cuts &nbsp;&bull;&nbsp; Skin Fades &nbsp;&bull;&nbsp; Beard Trims &nbsp;&bull;&nbsp; Hot Towel Shaves &nbsp;&bull;&nbsp; Lineups &nbsp;&bull;&nbsp; Kids Cuts &nbsp;&bull;&nbsp; Walk-Ins Welcome &nbsp;&bull;&nbsp;</span>
+        <span aria-hidden="true">Classic Cuts &nbsp;&bull;&nbsp; Skin Fades &nbsp;&bull;&nbsp; Beard Trims &nbsp;&bull;&nbsp; Hot Towel Shaves &nbsp;&bull;&nbsp; Lineups &nbsp;&bull;&nbsp; Kids Cuts &nbsp;&bull;&nbsp; Walk-Ins Welcome &nbsp;&bull;&nbsp;</span>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-header" data-animate="fadeUp">
+          <p class="section-eyebrow">What We Offer</p>
+          <h2 class="section-title">OUR SERVICES</h2>
+          <div class="title-rule"><span></span></div>
+        </div>
+        <div class="services-grid services-grid--4">
+          <div class="service-card" data-service="Haircut" data-price="45" data-duration="45" data-animate="fadeUp" data-delay="0.05">
+            <h3>Haircut</h3>
+            <p>Shaped to your style — scissor or clipper, taper or fade. We dial it in every time.</p>
+            <p class="price">$45</p>
+            <button class="service-book" data-open-booking data-prefill-service="Haircut">Book This</button>
+          </div>
+          <div class="service-card" data-service="Kids Haircut" data-price="20" data-duration="30" data-animate="fadeUp" data-delay="0.1">
+            <h3>Kids Haircut <span class="age-tag">12 &amp; under</span></h3>
+            <p>Patient barbers who keep it fun, fast, and fresh. Big results for little ones.</p>
+            <p class="price">$20</p>
+            <button class="service-book" data-open-booking data-prefill-service="Kids Haircut">Book This</button>
+          </div>
+          <div class="service-card" data-service="Beard Trim" data-price="25" data-duration="20" data-animate="fadeUp" data-delay="0.15">
+            <h3>Beard Trim</h3>
+            <p>Shape, define, and clean up your beard with precision edging and a hot-towel finish.</p>
+            <p class="price">$25</p>
+            <button class="service-book" data-open-booking data-prefill-service="Beard Trim">Book This</button>
+          </div>
+          <div class="service-card" data-service="The Package" data-price="70" data-duration="75" data-animate="fadeUp" data-delay="0.2">
+            <h3>The Package</h3>
+            <p>Haircut + beard trim + hot towel + lineup. Crown to jaw — the complete treatment.</p>
+            <p class="price">$70</p>
+            <button class="service-book" data-open-booking data-prefill-service="The Package">Book This</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products" id="products">
+      <div class="container">
+        <div class="section-header" data-animate="fadeUp">
+          <p class="section-eyebrow">Take It Home</p>
+          <h2 class="section-title">THE SHOP</h2>
+          <div class="title-rule"><span></span></div>
+        </div>
+        <div class="products-grid">
+
+          <!-- Hair Gel -->
+          <div class="product-card" data-animate="fadeUp" data-delay="0.05">
+            <div class="product-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/>
+              </svg>
+            </div>
+            <div class="product-info">
+              <div class="product-tag">Best Seller</div>
+              <h3>Signature Hair Gel</h3>
+              <p>The same gel our barbers use every day. Strong hold with a natural matte finish — keeps your cut looking fresh all day without the crunch.</p>
+              <ul class="product-specs">
+                <li>Strong hold · Matte finish</li>
+                <li>Water soluble · Easy wash out</li>
+                <li>200ml</li>
+              </ul>
+              <div class="product-footer">
+                <span class="product-price">$18</span>
+                <span class="product-avail">Available in-shop</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Clipper Package -->
+          <div class="product-card" data-animate="fadeUp" data-delay="0.12">
+            <div class="product-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                <path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+                <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+                <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+              </svg>
+            </div>
+            <div class="product-info">
+              <div class="product-tag product-tag--red">Pro Kit</div>
+              <h3>Home Clipper Package</h3>
+              <p>Professional-grade clippers so you can maintain your fade between visits. Comes with everything you need — guards, oil, cleaning brush, and a carry case.</p>
+              <ul class="product-specs">
+                <li>Cordless · 3hr battery life</li>
+                <li>8 guide combs included</li>
+                <li>Clipper oil + cleaning brush</li>
+                <li>Carry case included</li>
+              </ul>
+              <div class="product-footer">
+                <span class="product-price">$120</span>
+                <span class="product-avail">Available in-shop</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+      <div class="container about-container">
+        <div class="about-visual" data-animate="slideLeft">
+          <div class="about-quote-wrap">
+            <div class="quote-rule"></div>
+            <blockquote class="about-quote">
+              &ldquo;The chair<br />doesn&rsquo;t lie.<br />Neither does<br />the mirror.&rdquo;
+            </blockquote>
+            <div class="quote-rule"></div>
+          </div>
+        </div>
+        <div class="about-text" data-animate="slideRight">
+          <p class="section-eyebrow">Our Story</p>
+          <h2 class="section-title">THE STORY</h2>
+          <div class="title-rule title-rule--light"><span></span></div>
+          <p>
+            Fringe Benefits opened its doors in 2018 with one chair, one barber,
+            and an unwavering belief that a great haircut changes how a man carries himself.
+            We built this place for the regulars — men who want more than a trim. They want a ritual.
+          </p>
+          <p>
+            Today we run three chairs with barbers who have trained under some of the best in the industry.
+            Same philosophy, more seats. Walk-ins always welcome. Regulars always remembered.
+          </p>
+          <div class="about-stats">
+            <div class="stat" data-animate="fadeUp" data-delay="0.1">
+              <span class="stat-number" data-counter="5000" data-suffix="+">5K+</span>
+              <span class="stat-label">Cuts This Year</span>
+            </div>
+            <div class="stat" data-animate="fadeUp" data-delay="0.2">
+              <span class="stat-number" data-counter="3" data-suffix="">3</span>
+              <span class="stat-label">Master Barbers</span>
+            </div>
+            <div class="stat" data-animate="fadeUp" data-delay="0.3">
+              <span class="stat-number" data-counter="8" data-suffix="">8</span>
+              <span class="stat-label">Years Running</span>
+            </div>
+          </div>
+          <a href="#barbers" class="btn btn-outline-light">Meet the Barbers</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Barbers -->
+    <section class="barbers" id="barbers">
+      <div class="container">
+        <div class="section-header" data-animate="fadeUp">
+          <p class="section-eyebrow">Who's Holding the Clippers</p>
+          <h2 class="section-title">THE BARBERS</h2>
+          <div class="title-rule"><span></span></div>
+        </div>
+        <div class="barbers-grid">
+          <div class="barber-card" data-barber="Marcus Reid" data-animate="slideRight" data-delay="0.05">
+            <div class="barber-photo">
+              <span class="barber-chair">CHAIR 01</span>
+            </div>
+            <div class="barber-info">
+              <h3>Marcus Reid</h3>
+              <p class="barber-title">Head Barber &mdash; Fade Specialist</p>
+              <p>8 years behind the chair. Marcus built his name on impossibly clean fades and tapers that make people do a double-take. His chair books up fast — don't sleep on it.</p>
+            </div>
+          </div>
+          <div class="barber-card" data-barber="Diego Santos" data-animate="slideRight" data-delay="0.15">
+            <div class="barber-photo barber-photo--2">
+              <span class="barber-chair">CHAIR 02</span>
+            </div>
+            <div class="barber-info">
+              <h3>Diego Santos</h3>
+              <p class="barber-title">Master Barber &mdash; Beardsmith</p>
+              <p>Diego's scissors have been running since he was 16. He's the go-to for beard shaping, hot towel shaves, and classic cuts that hold their shape all week long.</p>
+            </div>
+          </div>
+          <div class="barber-card" data-barber="Jordan Cole" data-animate="slideRight" data-delay="0.25">
+            <div class="barber-photo barber-photo--3">
+              <span class="barber-chair">CHAIR 03</span>
+            </div>
+            <div class="barber-info">
+              <h3>Jordan Cole</h3>
+              <p class="barber-title">Barber &mdash; Classic Cuts &amp; Lineups</p>
+              <p>Sharp eye for detail and a passion for the craft. Known for textured cuts and precision lineups — newest to the crew, already fully booked on Saturdays.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="section-header" data-animate="fadeUp">
+          <p class="section-eyebrow">Fresh Out the Chair</p>
+          <h2 class="section-title">THE WORK</h2>
+          <div class="title-rule title-rule--light"><span></span></div>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item gi-wide" data-animate="scaleIn" data-delay="0.0">
+            <img src="images/gallery-1.jpg" alt="Fringe Benefits storefront" loading="lazy" />
+            <div class="gallery-label">The Shop</div>
+          </div>
+          <div class="gallery-item gi-tall" data-animate="scaleIn" data-delay="0.08">
+            <img src="images/gallery-2.jpg" alt="Master at work" loading="lazy" />
+            <div class="gallery-label">Master at Work</div>
+          </div>
+          <div class="gallery-item" data-animate="scaleIn" data-delay="0.16">
+            <img src="images/gallery-3.jpg" alt="The crew outside" loading="lazy" />
+            <div class="gallery-label">The Crew</div>
+          </div>
+          <div class="gallery-item" data-animate="scaleIn" data-delay="0.24">
+            <img src="images/gallery-4.jpg" alt="The chairs" loading="lazy" />
+            <div class="gallery-label">The Chairs</div>
+          </div>
+          <div class="gallery-item gi-full" data-animate="scaleIn" data-delay="0.12">
+            <img src="images/gallery-5.jpg" alt="The craft — inside the shop" loading="lazy" />
+            <div class="gallery-label">The Craft</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="section-header" data-animate="fadeUp">
+          <p class="section-eyebrow">Got Questions</p>
+          <h2 class="section-title">THE FAQ</h2>
+          <div class="title-rule title-rule--light"><span></span></div>
+        </div>
+        <div class="faq-grid" data-animate="fadeUp" data-delay="0.1">
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              <span>Do you take walk-ins?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <p>Yes — walk-ins are always welcome. We operate three chairs so there's usually a short wait or none at all. Booking ahead guarantees your spot and your barber.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              <span>How do I book an appointment?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <p>Hit the <strong>Book a Seat</strong> button anywhere on the site and choose your service, date, and time. You can also call our AI receptionist 24/7 by clicking <strong>Call Reception</strong>.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              <span>What are your opening hours?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <p>Tuesday – Friday: 9am – 7pm<br>Saturday – Sunday: 9am – 5pm<br>Monday: Closed</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              <span>Can I request a specific barber?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <p>Absolutely. When you book online you can choose Marcus, Diego, or Jordan. Walk-ins can also request a specific barber — just note there may be a short wait if they're with someone.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              <span>Do you cut kids' hair?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <p>Yes — Kids Haircuts are available for ages 12 and under at $20. Our barbers are patient and make it a good experience for little ones.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              <span>How do I pay?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <p>We accept cash, card, and contactless payments. Payment is made in-shop after your service.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Location -->
+    <section class="location-section" id="location">
+      <div class="container">
+        <div class="section-header" data-animate="fadeUp">
+          <p class="section-eyebrow">Find Us</p>
+          <h2 class="section-title">THE LOCATION</h2>
+          <div class="title-rule"><span></span></div>
+        </div>
+        <div class="location-grid" data-animate="fadeUp" data-delay="0.1">
+          <div class="location-map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2887.0!2d172.636!3d-43.532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDMxJzU1LjIiUyAxNzLCsDM4JzEwLjAiRQ!5e0!3m2!1sen!2snz!4v1600000000000!5m2!1sen!2snz"
+              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade" title="Fringe Benefits location">
+            </iframe>
+          </div>
+          <div class="location-info">
+            <div class="location-detail">
+              <span class="location-label">Address</span>
+              <p>83 Main Street<br>Christchurch, New Zealand</p>
+            </div>
+            <div class="location-detail">
+              <span class="location-label">Hours</span>
+              <p>Tue – Fri &nbsp; 9am – 7pm<br>Sat – Sun &nbsp; 9am – 5pm<br>Mon &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Closed</p>
+            </div>
+            <div class="location-detail">
+              <span class="location-label">Phone</span>
+              <p>(555) 123-4567</p>
+            </div>
+            <div class="location-detail">
+              <span class="location-label">Parking</span>
+              <p>Free street parking available on Main Street and surrounding roads.</p>
+            </div>
+            <button class="btn btn-primary" style="margin-top:.5rem;" onclick="window.open('https://maps.google.com/?q=83+Main+Street+Christchurch+New+Zealand','_blank')">Get Directions</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking" id="booking">
+      <div class="container booking-container">
+        <div class="booking-info" data-animate="slideLeft">
+          <p class="section-eyebrow">Get In the Chair</p>
+          <h2 class="section-title">BOOK THE CHAIR</h2>
+          <div class="title-rule"><span></span></div>
+          <p>Two ways to lock it in. Talk to our AI receptionist 24/7 by voice, or book the old-fashioned way with a few taps.</p>
+
+          <div class="booking-options">
+            <button class="booking-option booking-option--voice" data-open-voice>
+              <div class="bo-icon">
+                <span class="voice-pulse voice-pulse--lg"></span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                  <line x1="12" y1="19" x2="12" y2="23"/>
+                  <line x1="8" y1="23" x2="16" y2="23"/>
+                </svg>
+              </div>
+              <div class="bo-content">
+                <h3>Call Reception</h3>
+                <p>Hands-free voice booking. Available 24/7.</p>
+              </div>
+              <span class="bo-arrow">→</span>
+            </button>
+
+            <button class="booking-option booking-option--card" data-open-booking>
+              <div class="bo-icon bo-icon--alt">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+              </div>
+              <div class="bo-content">
+                <h3>Book the Card</h3>
+                <p>Pick a service, barber, date and time.</p>
+              </div>
+              <span class="bo-arrow">→</span>
+            </button>
+          </div>
+
+          <div class="booking-details">
+            <div class="booking-item">
+              <span class="booking-icon">◎</span>
+              <div>
+                <strong>Location</strong>
+                <p>83 Main Street<br />Christchurch, New Zealand</p>
+              </div>
+            </div>
+            <div class="booking-item">
+              <span class="booking-icon">◎</span>
+              <div>
+                <strong>Hours</strong>
+                <p>Tue–Fri: 9am – 7pm<br />Sat–Sun: 9am – 5pm &nbsp;|&nbsp; Mon: Closed</p>
+              </div>
+            </div>
+            <div class="booking-item">
+              <span class="booking-icon">◎</span>
+              <div>
+                <strong>Phone</strong>
+                <p>(555) 123-4567</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Booking Card Preview -->
+        <div class="booking-card-preview" data-animate="slideRight" data-delay="0.1">
+          <div class="bcp-header">
+            <span class="bcp-pill">Quick Book</span>
+            <h3>Reserve in 30 seconds</h3>
+            <p>Step through service, barber, and time. Done.</p>
+          </div>
+          <div class="bcp-mock">
+            <div class="bcp-row"><span>Service</span><strong>Haircut — $45</strong></div>
+            <div class="bcp-row"><span>Barber</span><strong>Marcus Reid</strong></div>
+            <div class="bcp-row"><span>When</span><strong>Sat, May 10 · 2:30 PM</strong></div>
+          </div>
+          <button class="btn btn-primary btn-full" data-open-booking>Open Booking Card</button>
+          <div class="bcp-or"><span>or</span></div>
+          <button class="btn btn-voice btn-full" data-open-voice>
+            <span class="voice-pulse"></span>
+            Talk to AI Receptionist
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-container">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div>
+              <span class="logo-main">FRINGE BENEFITS</span>
+            </div>
+          </div>
+          <p>Est. 2018. Where men come for the cut and stay for the craft.</p>
+        </div>
+        <div class="footer-links">
+          <h4>NAVIGATE</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#barbers">Barbers</a></li>
+            <li><a href="#gallery">The Work</a></li>
+            <li><a href="#booking">Book Now</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="admin.html">Admin</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>FOLLOW US</h4>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="TikTok">TK</a>
+          </div>
+          <p class="footer-tagline">&ldquo;Walk in a man. Walk out a legend.&rdquo;</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Fringe Benefits Barbershop. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- ============ BOOKING MODAL ============ -->
+    <div class="modal" id="bookingModal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="modal-backdrop" data-close-modal></div>
+      <div class="modal-card booking-modal-card">
+        <button class="modal-close" data-close-modal aria-label="Close">×</button>
+
+        <div class="bm-header">
+          <p class="section-eyebrow">Book the Chair</p>
+          <h2>Lock It In</h2>
+          <div class="bm-steps">
+            <div class="bm-step active" data-step="1"><span>1</span>Service</div>
+            <div class="bm-step" data-step="2"><span>2</span>Barber</div>
+            <div class="bm-step" data-step="3"><span>3</span>Date</div>
+            <div class="bm-step" data-step="4"><span>4</span>Time</div>
+            <div class="bm-step" data-step="5"><span>5</span>Details</div>
+          </div>
+          <div class="bm-progress">
+            <div class="bm-progress-fill" id="bmProgress"></div>
+          </div>
+        </div>
+
+        <div class="bm-body">
+          <!-- Step 1: Service -->
+          <div class="bm-pane active" data-pane="1">
+            <h3>What are you in for?</h3>
+            <div class="bm-options" id="bmServices"></div>
+          </div>
+
+          <!-- Step 2: Barber -->
+          <div class="bm-pane" data-pane="2">
+            <h3>Who do you want?</h3>
+            <div class="bm-options bm-options--barbers" id="bmBarbers"></div>
+          </div>
+
+          <!-- Step 3: Date -->
+          <div class="bm-pane" data-pane="3">
+            <h3>Pick a day</h3>
+            <div class="bm-calendar">
+              <div class="bm-cal-header">
+                <button class="bm-cal-nav" id="bmCalPrev" aria-label="Previous month">‹</button>
+                <span id="bmCalMonth"></span>
+                <button class="bm-cal-nav" id="bmCalNext" aria-label="Next month">›</button>
+              </div>
+              <div class="bm-cal-weekdays">
+                <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+              </div>
+              <div class="bm-cal-grid" id="bmCalGrid"></div>
+            </div>
+            <p class="bm-note">Closed Mondays. Pick a day with the chair open.</p>
+          </div>
+
+          <!-- Step 4: Time -->
+          <div class="bm-pane" data-pane="4">
+            <h3>Pick a time</h3>
+            <div class="bm-times" id="bmTimes"></div>
+          </div>
+
+          <!-- Step 5: Details -->
+          <div class="bm-pane" data-pane="5">
+            <h3>Last bit. Who are you?</h3>
+            <form class="bm-form" id="bmForm" novalidate>
+              <div class="form-group">
+                <input type="text" id="bmName" placeholder="Full Name" required />
+                <label for="bmName">Full Name</label>
+              </div>
+              <div class="form-group">
+                <input type="email" id="bmEmail" placeholder="Email Address" required />
+                <label for="bmEmail">Email Address</label>
+              </div>
+              <div class="form-group">
+                <input type="tel" id="bmPhone" placeholder="Phone Number" required />
+                <label for="bmPhone">Phone Number</label>
+              </div>
+              <div class="form-group">
+                <textarea id="bmNotes" rows="2" placeholder="Notes (optional)"></textarea>
+                <label for="bmNotes">Notes</label>
+              </div>
+            </form>
+
+            <div class="bm-summary" id="bmSummary">
+              <h4>Your booking</h4>
+              <div class="bm-sum-row"><span>Service</span><strong id="sumService">—</strong></div>
+              <div class="bm-sum-row"><span>Barber</span><strong id="sumBarber">—</strong></div>
+              <div class="bm-sum-row"><span>Date</span><strong id="sumDate">—</strong></div>
+              <div class="bm-sum-row"><span>Time</span><strong id="sumTime">—</strong></div>
+              <div class="bm-sum-row total"><span>Total</span><strong id="sumPrice">$0</strong></div>
+            </div>
+          </div>
+
+          <!-- Confirmation -->
+          <div class="bm-pane bm-pane--confirm" data-pane="6">
+            <div class="bm-confirm">
+              <div class="bm-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <h3>You're locked in.</h3>
+              <p id="bmConfirmText">We'll text you a confirmation shortly.</p>
+              <div class="bm-confirm-summary" id="bmConfirmSummary"></div>
+              <button class="btn btn-primary" data-close-modal>Done</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bm-footer" id="bmFooter">
+          <button class="btn btn-ghost-dark" id="bmBack">Back</button>
+          <button class="btn btn-primary" id="bmNext">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ AI VOICE MODAL ============ -->
+    <div class="modal modal--voice" id="voiceModal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="modal-backdrop" data-close-modal></div>
+      <div class="modal-card voice-modal-card">
+        <button class="modal-close" data-close-modal aria-label="Close">×</button>
+
+        <!-- Top bar -->
+        <div class="vm-topbar">
+          <span class="vm-badge">
+            <span class="voice-pulse voice-pulse--sm"></span>
+            AI Receptionist
+          </span>
+        </div>
+
+        <!-- Orb + status -->
+        <div class="vm-stage">
+          <div class="voice-orb" id="voiceOrb">
+            <div class="voice-orb-ring"></div>
+            <div class="voice-orb-ring voice-orb-ring--2"></div>
+            <div class="voice-orb-ring voice-orb-ring--3"></div>
+            <div class="voice-orb-core">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                <line x1="12" y1="19" x2="12" y2="23"/>
+                <line x1="8" y1="23" x2="16" y2="23"/>
+              </svg>
+            </div>
+          </div>
+          <h2 class="vm-title">Talk to the Chair</h2>
+          <p class="vm-subtitle">Speak naturally — book an appointment,<br>check hours, or ask anything.</p>
+          <div class="voice-status" id="voiceStatus">Tap Start Call to begin</div>
+        </div>
+
+        <!-- Transcript -->
+        <div class="voice-transcript" id="voiceTranscript">
+          <div class="vt-empty">Your conversation will appear here.</div>
+        </div>
+
+        <!-- Actions -->
+        <div class="vm-actions">
+          <button class="vm-btn-start" id="voiceStart">
+            <span class="voice-pulse"></span>
+            Start Call
+          </button>
+          <button class="vm-btn-end" id="voiceEnd" disabled>End Call</button>
+        </div>
+
+        <!-- Or book manually -->
+        <div class="vm-alt">
+          <span>or</span>
+          <button class="vm-alt-btn" data-close-modal data-open-booking>Open Booking Card →</button>
+        </div>
+
+        <div class="voice-fallback" id="voiceFallback" hidden>
+          <p>Voice not supported in this browser.</p>
+          <button class="btn btn-primary" data-close-modal data-open-booking>Open Booking Card</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

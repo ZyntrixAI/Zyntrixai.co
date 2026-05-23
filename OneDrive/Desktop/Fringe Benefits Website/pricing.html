@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pricing — Fringe Benefits</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body { min-height: 100vh; display: flex; flex-direction: column; }
+      .pricing-wrap { flex: 1; padding: 8rem 1.5rem 4rem; max-width: 1000px; margin: 0 auto; width: 100%; }
+
+      /* Pricing cards */
+      .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 5rem; }
+      .pricing-card {
+        border: 1px solid rgba(130,130,130,.5); padding: 2.5rem 2rem;
+        background: rgba(255,255,255,.02); position: relative; overflow: hidden;
+        display: flex; flex-direction: column;
+      }
+      .pricing-card.featured {
+        border-color: var(--red);
+        box-shadow: 0 0 0 1px var(--red), 0 8px 32px rgba(190,34,50,.15);
+      }
+      .pricing-card.featured::before {
+        content: 'Most Popular'; position: absolute; top: 1.25rem; right: -2rem;
+        background: var(--red); color: #fff; font-size: .6rem; font-weight: 700;
+        letter-spacing: .12em; text-transform: uppercase; padding: .3rem 2.5rem;
+        transform: rotate(45deg); transform-origin: center;
+      }
+      .pricing-tier {
+        font-size: .68rem; font-weight: 700; letter-spacing: .2em;
+        text-transform: uppercase; color: var(--red); margin-bottom: .75rem;
+      }
+      .pricing-card h2 {
+        font-family: 'Playfair Display', serif; font-size: 1.6rem;
+        font-weight: 700; color: var(--white); margin-bottom: .5rem;
+      }
+      .pricing-amount {
+        display: flex; align-items: baseline; gap: .25rem; margin-bottom: .25rem;
+      }
+      .pricing-amount .dollar {
+        font-family: 'Playfair Display', serif; font-size: 3rem;
+        font-weight: 700; color: var(--white); line-height: 1;
+      }
+      .pricing-amount .period {
+        font-size: .85rem; color: rgba(255,255,255,.4);
+      }
+      .pricing-desc {
+        color: rgba(255,255,255,.5); font-size: .88rem; margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+      .pricing-features { list-style: none; display: flex; flex-direction: column; gap: .75rem; margin-bottom: 2rem; flex: 1; }
+      .pricing-features li {
+        font-size: .88rem; color: rgba(255,255,255,.7); padding-left: 1.5rem;
+        position: relative; line-height: 1.5;
+      }
+      .pricing-features li::before {
+        content: '✓'; position: absolute; left: 0; color: var(--red); font-weight: 700;
+      }
+      .pricing-features li.disabled { color: rgba(255,255,255,.25); }
+      .pricing-features li.disabled::before { content: '—'; color: rgba(255,255,255,.15); }
+
+      /* Feature comparison */
+      .compare-section { margin-bottom: 5rem; }
+      .compare-table { width: 100%; border-collapse: collapse; border: 1px solid rgba(130,130,130,.5); }
+      .compare-table th {
+        text-align: left; padding: .85rem 1.25rem; font-size: .68rem; font-weight: 700;
+        letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.4);
+        background: rgba(255,255,255,.03); border-bottom: 1px solid rgba(130,130,130,.5);
+      }
+      .compare-table th:not(:first-child) { text-align: center; }
+      .compare-table td {
+        padding: .85rem 1.25rem; font-size: .88rem; color: rgba(255,255,255,.7);
+        border-bottom: 1px solid rgba(130,130,130,.2);
+      }
+      .compare-table td:not(:first-child) { text-align: center; }
+      .compare-table .check { color: var(--red); font-weight: 700; }
+      .compare-table .dash { color: rgba(255,255,255,.15); }
+
+      /* FAQ */
+      .pricing-faq { margin-bottom: 4rem; }
+
+      /* CTA */
+      .pricing-cta {
+        text-align: center; padding: 4rem 2rem;
+        border: 1px solid rgba(130,130,130,.5); background: rgba(255,255,255,.02);
+        margin-bottom: 3rem;
+      }
+      .pricing-cta h2 {
+        font-family: 'Playfair Display', serif; font-size: 2rem;
+        margin-bottom: .75rem;
+      }
+      .pricing-cta p { color: rgba(255,255,255,.5); margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+      @media (max-width: 768px) {
+        .pricing-grid { grid-template-columns: 1fr; }
+        .pricing-card.featured::before { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+          <div class="logo-text">
+            <span class="logo-main">FRINGE BENEFITS</span>
+          </div>
+        </a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Back to Site</a></li>
+          <li><a href="admin.html">Admin</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="pricing-wrap">
+      <!-- Header -->
+      <div class="section-header" style="margin-bottom:4rem;">
+        <p class="section-eyebrow">For Barbershop Owners</p>
+        <h2 class="section-title">SIMPLE PRICING</h2>
+        <div class="title-rule"><span></span></div>
+        <p class="section-desc" style="margin-top:1.5rem;">
+          Everything you need to run your booking system. No setup fees, no contracts. Cancel anytime.
+        </p>
+      </div>
+
+      <!-- Pricing Cards -->
+      <div class="pricing-grid">
+        <!-- Professional -->
+        <div class="pricing-card">
+          <span class="pricing-tier">Professional</span>
+          <h2>Pro</h2>
+          <div class="pricing-amount">
+            <span class="dollar">$199</span>
+            <span class="period">/month</span>
+          </div>
+          <p class="pricing-desc">For solo barbers and small shops getting started with online booking.</p>
+          <ul class="pricing-features">
+            <li>Online booking system</li>
+            <li>Up to 3 barber profiles</li>
+            <li>100 SMS reminders / month</li>
+            <li>Admin dashboard</li>
+            <li>Customer database</li>
+            <li>Email confirmations</li>
+            <li class="disabled">Custom branding</li>
+            <li class="disabled">Priority support</li>
+            <li class="disabled">Analytics & reports</li>
+          </ul>
+          <a href="#" class="btn btn-ghost" style="text-align:center;">Get Started</a>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="pricing-card featured">
+          <span class="pricing-tier">Enterprise</span>
+          <h2>Enterprise</h2>
+          <div class="pricing-amount">
+            <span class="dollar">$399</span>
+            <span class="period">/month</span>
+          </div>
+          <p class="pricing-desc">For established shops that want the full suite — branding, analytics, and unlimited SMS.</p>
+          <ul class="pricing-features">
+            <li>Everything in Pro</li>
+            <li>Unlimited barber profiles</li>
+            <li>Unlimited SMS reminders</li>
+            <li>Custom branding & domain</li>
+            <li>Priority support</li>
+            <li>Revenue analytics & reports</li>
+            <li>Multi-location support</li>
+            <li>API access</li>
+            <li>Dedicated onboarding</li>
+          </ul>
+          <a href="#" class="btn btn-primary" style="text-align:center;">Get Started</a>
+        </div>
+      </div>
+
+      <!-- Feature Comparison -->
+      <div class="compare-section">
+        <div class="section-header" style="margin-bottom:2.5rem;">
+          <p class="section-eyebrow">Compare Plans</p>
+          <h2 class="section-title">FEATURE BREAKDOWN</h2>
+          <div class="title-rule"><span></span></div>
+        </div>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Professional</th>
+              <th>Enterprise</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Online Booking Widget</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+            <tr><td>Barber Profiles</td><td>Up to 3</td><td>Unlimited</td></tr>
+            <tr><td>SMS Reminders</td><td>100 / month</td><td>Unlimited</td></tr>
+            <tr><td>Email Confirmations</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+            <tr><td>Admin Dashboard</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+            <tr><td>Customer Database</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+            <tr><td>CSV Export</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+            <tr><td>Custom Branding</td><td class="dash">—</td><td class="check">&#10003;</td></tr>
+            <tr><td>Custom Domain</td><td class="dash">—</td><td class="check">&#10003;</td></tr>
+            <tr><td>Revenue Analytics</td><td class="dash">—</td><td class="check">&#10003;</td></tr>
+            <tr><td>Multi-location</td><td class="dash">—</td><td class="check">&#10003;</td></tr>
+            <tr><td>API Access</td><td class="dash">—</td><td class="check">&#10003;</td></tr>
+            <tr><td>Priority Support</td><td class="dash">—</td><td class="check">&#10003;</td></tr>
+            <tr><td>Onboarding Call</td><td class="dash">—</td><td class="check">&#10003;</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FAQ -->
+      <div class="pricing-faq">
+        <div class="section-header" style="margin-bottom:2.5rem;">
+          <p class="section-eyebrow">Questions</p>
+          <h2 class="section-title">PRICING FAQ</h2>
+          <div class="title-rule"><span></span></div>
+        </div>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              <span>Is there a free trial?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <p>Yes — every plan comes with a 14-day free trial. No credit card required to start.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              <span>Can I switch plans later?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <p>Absolutely. Upgrade or downgrade anytime from your admin dashboard. Changes take effect on your next billing cycle.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              <span>What happens if I go over my SMS limit?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <p>On the Pro plan, additional SMS reminders are billed at $0.05 each. Enterprise plans have unlimited SMS included.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              <span>Is there a setup fee?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <p>No setup fees, no hidden costs. Enterprise plans include a free onboarding call to help you get configured.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              <span>Can I cancel anytime?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <p>Yes — no contracts, no lock-in. Cancel from your dashboard and your data will be available for export for 30 days.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              <span>Do you offer annual billing?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <p>Yes — pay annually and save 20%. That's $159/month for Pro and $319/month for Enterprise.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="pricing-cta">
+        <p class="section-eyebrow">Ready to Go?</p>
+        <h2>Start Booking Today</h2>
+        <p>Get your barbershop online in under 5 minutes. No technical skills required.</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+          <a href="#" class="btn btn-primary">Start Free Trial</a>
+          <a href="index.html" class="btn btn-ghost">View Demo</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" style="margin-top:auto;">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Fringe Benefits Barbershop. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      /* ===== HAMBURGER ===== */
+      const hamburger = document.getElementById('hamburger');
+      const navLinks  = document.getElementById('navLinks');
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+        const spans = hamburger.querySelectorAll('span');
+        const isOpen = navLinks.classList.contains('open');
+        spans[0].style.transform = isOpen ? 'translateY(7px) rotate(45deg)' : '';
+        spans[1].style.opacity   = isOpen ? '0' : '';
+        spans[2].style.transform = isOpen ? 'translateY(-7px) rotate(-45deg)' : '';
+      });
+
+      /* ===== FAQ ACCORDION ===== */
+      document.querySelectorAll('.faq-q').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const isOpen = btn.getAttribute('aria-expanded') === 'true';
+          document.querySelectorAll('.faq-q').forEach(b => {
+            b.setAttribute('aria-expanded', 'false');
+            b.nextElementSibling.classList.remove('open');
+          });
+          if (!isOpen) {
+            btn.setAttribute('aria-expanded', 'true');
+            btn.nextElementSibling.classList.add('open');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
