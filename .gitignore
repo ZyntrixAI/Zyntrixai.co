@@ -1,0 +1,38 @@
+# Windows system & registry files
+NTUSER.DAT
+NTUSER.DAT*
+ntuser.dat.LOG*
+ntuser.ini
+
+# Personal directories
+AppData/
+Contacts/
+Downloads/
+Favorites/
+Links/
+Music/
+Saved Games/
+Searches/
+Videos/
+
+# OneDrive (personal cloud files)
+OneDrive/
+
+# App config & tooling
+.claude.json
+.claude.json.backup
+.claude/
+.config/
+.copilot/
+.git-for-windows-updater
+.gitconfig
+.node_repl_history
+.vscode-shared/
+.vscode/
+
+# Shortcuts & lock files
+*.lnk
+package-lock.json
+
+# macOS
+.DS_Store

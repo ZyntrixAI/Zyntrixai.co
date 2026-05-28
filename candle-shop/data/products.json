@@ -1,0 +1,38 @@
+[
+  {
+    "id": "organic-bulgarian-rose",
+    "name": "Organic Bulgarian Rose Beeswax Candle",
+    "description": "A beeswax and Bulgarian rose essential oil candle in a stunning gold cannister adorned with a brass bee. Hand poured in Castlemaine, Victoria, Australia.",
+    "price": 29.95,
+    "image": "https://images.squarespace-cdn.com/content/v1/670cdf79bfd41b4fd8f60b76/c0b67a9e-1fc1-4a38-abeb-5f441b4c13e9/Logo+%283%29.png",
+    "origin": "Made in Castlemaine, Victoria",
+    "sizes": ["4 oz", "8 oz"]
+  },
+  {
+    "id": "organic-french-lavender",
+    "name": "Organic French Lavender Beeswax Candle",
+    "description": "A beeswax and French Lavender essential oil candle in a stunning gold cannister adorned with a brass bee. Hand poured in Castlemaine, Victoria, Australia.",
+    "price": 29.95,
+    "image": "https://images.squarespace-cdn.com/content/v1/670cdf79bfd41b4fd8f60b76/216062f7-25f3-4896-9199-60af163e94ac/Logo+%284%29.png",
+    "origin": "Made in Castlemaine, Victoria",
+    "sizes": ["4 oz", "8 oz"]
+  },
+  {
+    "id": "organic-lemon-and-lime",
+    "name": "Organic Lemon and Lime Beeswax Candle",
+    "description": "A beeswax and cold pressed Lemon and Lime essential oil candle in a stunning gold cannister adorned with a brass bee. Hand poured in Castlemaine, Victoria, Australia.",
+    "price": 29.95,
+    "image": "https://images.squarespace-cdn.com/content/v1/670cdf79bfd41b4fd8f60b76/ecb2c725-59fc-4594-bd5a-61c158e66c93/Logo+%285%29.png",
+    "origin": "Made in Castlemaine, Victoria",
+    "sizes": ["4 oz", "8 oz"]
+  },
+  {
+    "id": "organic-vanilla",
+    "name": "Organic Vanilla Beeswax Candle",
+    "description": "A beeswax and very vanilla essential oil candle in a stunning gold cannister adorned with a brass bee. Hand poured in Castlemaine, Victoria, Australia.",
+    "price": 29.95,
+    "image": "https://images.squarespace-cdn.com/content/v1/670cdf79bfd41b4fd8f60b76/1bab5db1-43dd-4d07-a864-f70f6f105784/Logo+%289%29.png",
+    "origin": "Made in Castlemaine, Victoria",
+    "sizes": ["4 oz", "8 oz"]
+  }
+]
