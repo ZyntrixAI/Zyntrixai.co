@@ -34,5 +34,8 @@ OneDrive/
 *.lnk
 package-lock.json
 
+# Projects (tracked separately)
+candle-shop/
+
 # macOS
 .DS_Store
