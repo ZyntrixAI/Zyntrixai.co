@@ -1,16 +1,17 @@
 require('dotenv').config();
-const express = require('express');
-const cors    = require('cors');
-const axios   = require('axios');
-const cheerio = require('cheerio');
+const express  = require('express');
+const cors     = require('cors');
+const axios    = require('axios');
+const cheerio  = require('cheerio');
 const nodemailer = require('nodemailer');
-const path    = require('path');
+const path     = require('path');
+const crypto   = require('crypto');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'ZyntrixAI.html')));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 
 // ── Scrape the client's existing website ──────────────────────────────────────
 async function scrapeWebsite(url) {
@@ -848,6 +849,47 @@ function generateWebsite({ firstName, lastName, businessName, email, phone, nich
 </html>`;
 }
 
+// ── Deploy generated HTML to Netlify as a live demo site ─────────────────────
+async function deployToNetlify(html, businessName) {
+  const token = process.env.NETLIFY_API_TOKEN;
+  if (!token) throw new Error('NETLIFY_API_TOKEN not set');
+
+  const slug = (businessName || 'demo')
+    .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 28);
+  const siteName = `zx-${slug}-${Date.now()}`;
+
+  // 1. Create the site
+  const createRes = await fetch('https://api.netlify.com/api/v1/sites', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name: siteName })
+  });
+  if (!createRes.ok) throw new Error(`Netlify create failed: ${await createRes.text()}`);
+  const site = await createRes.json();
+
+  // 2. SHA1 digest of HTML (Netlify requires this for file-based deploys)
+  const sha1 = crypto.createHash('sha1').update(html).digest('hex');
+
+  // 3. Start the deploy — tell Netlify what files we have
+  const deployRes = await fetch(`https://api.netlify.com/api/v1/sites/${site.id}/deploys`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ files: { '/index.html': sha1 } })
+  });
+  if (!deployRes.ok) throw new Error(`Netlify deploy start failed: ${await deployRes.text()}`);
+  const deploy = await deployRes.json();
+
+  // 4. Upload the file
+  const uploadRes = await fetch(`https://api.netlify.com/api/v1/deploys/${deploy.id}/files/index.html`, {
+    method: 'PUT',
+    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/octet-stream' },
+    body: html
+  });
+  if (!uploadRes.ok) throw new Error(`Netlify upload failed: ${await uploadRes.text()}`);
+
+  return `https://${siteName}.netlify.app`;
+}
+
 // ── Contact form endpoint ──────────────────────────────────────────────────────
 app.post('/api/contact', async (req, res) => {
   const { firstName, lastName, email, subject, message } = req.body;
@@ -971,6 +1013,14 @@ app.post('/api/quote', async (req, res) => {
   const generatedHtml = generateWebsite({ firstName, lastName, businessName, email, phone, niche, services: services || 'Web Design', websiteUrl, scraped });
   const fileName = `${(businessName || `${firstName}-${lastName}`).replace(/\s+/g, '-')}-website.html`;
 
+  // 4. Deploy demo to Netlify and get live URL (best-effort — don't fail quote if deploy fails)
+  let demoUrl = null;
+  try {
+    demoUrl = await deployToNetlify(generatedHtml, businessName || `${firstName} ${lastName}`);
+  } catch (deployErr) {
+    console.warn('Demo deploy failed:', deployErr.message);
+  }
+
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS }
@@ -1010,7 +1060,11 @@ app.post('/api/quote', async (req, res) => {
           </table>
           <hr style="border-color:rgba(0,200,255,0.15);margin:1.5rem 0"/>
           ${scrapedSummary}
-          <p style="color:#8aa0b8;font-size:.82rem">Website draft attached as <strong>${fileName}</strong>. Client has been sent their automated quote email.</p>
+          ${demoUrl
+            ? `<p style="margin-bottom:.5rem"><a href="${demoUrl}" style="color:#00c8ff;font-weight:700">${demoUrl}</a></p>
+               <p style="color:#8aa0b8;font-size:.82rem">Live demo sent to client. Website draft also attached.</p>`
+            : `<p style="color:#8aa0b8;font-size:.82rem">Website draft attached as <strong>${fileName}</strong>. Client has been sent their automated quote email.</p>`
+          }
         </div>
       `,
       attachments: [{ filename: fileName, content: generatedHtml, contentType: 'text/html' }]
@@ -1050,6 +1104,15 @@ app.post('/api/quote', async (req, res) => {
             <div style="text-align:center">${payButton}</div>
             ${rec.stripeLink ? `<p style="text-align:center;margin-top:.8rem;font-size:.78rem;color:#8aa0b8">Secure payment · 50% now, 50% on launch · No lock-in</p>` : ''}
           </div>
+
+          <!-- Live demo -->
+          ${demoUrl ? `
+          <div style="padding:2rem;border-bottom:1px solid rgba(0,200,255,0.1);text-align:center;background:rgba(0,200,255,0.03)">
+            <div style="font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:#00c8ff;margin-bottom:.8rem">Your Free Demo</div>
+            <p style="color:#8aa0b8;font-size:.9rem;margin-bottom:1.2rem">We've already built a personalised website demo for you — check it out:</p>
+            <a href="${demoUrl}" style="display:inline-block;padding:.9rem 2.2rem;background:#00c8ff;color:#000;border-radius:8px;font-weight:700;font-size:.95rem;text-decoration:none;">View Your Demo →</a>
+            <p style="margin-top:.8rem;font-size:.75rem;color:#555">${demoUrl}</p>
+          </div>` : ''}
 
           <!-- What happens next -->
           <div style="padding:2rem;border-bottom:1px solid rgba(0,200,255,0.1)">
@@ -1095,6 +1158,144 @@ app.post('/api/quote', async (req, res) => {
   } catch (err) {
     console.error('Email error:', err.message, err.code);
     res.status(500).json({ error: err.message || 'Failed to send email.' });
+  }
+});
+
+// ── Make.com webhook — process inbound email enquiries automatically ───────────
+app.post('/api/process-email', async (req, res) => {
+  // Acknowledge Make.com immediately so it doesn't time out
+  res.json({ received: true });
+
+  const { from, subject, bodyPlainText } = req.body;
+  if (!from) return;
+
+  // Parse sender name and email address
+  const emailMatch = from.match(/<([^>]+)>/) || from.match(/([^\s@]+@[^\s]+)/);
+  const clientEmail = emailMatch ? emailMatch[1].trim() : from.trim();
+  const nameMatch   = from.match(/^([^<]+?)\s*</);
+  const fullName    = nameMatch ? nameMatch[1].trim().replace(/"/g, '') : '';
+  const nameParts   = fullName.split(/\s+/);
+  const firstName   = nameParts[0] || 'there';
+  const lastName    = nameParts.slice(1).join(' ') || '';
+
+  const body     = bodyPlainText || '';
+  const combined = `${subject} ${body}`.toLowerCase();
+
+  // Extract any URL mentioned in the email body
+  const urlMatch  = body.match(/https?:\/\/[^\s,)]+|www\.[^\s,)]+/i);
+  const websiteUrl = urlMatch ? urlMatch[0].replace(/[.,;]+$/, '') : '';
+
+  // Derive business name from email domain as a fallback
+  const domainMatch  = clientEmail.match(/@([^.]+)\./);
+  const businessName = domainMatch
+    ? domainMatch[1].charAt(0).toUpperCase() + domainMatch[1].slice(1)
+    : `${firstName}${lastName ? ' ' + lastName : ''}'s Business`;
+
+  // Detect niche from keywords in subject + body
+  const nicheMap = [
+    ['food',         /restaurant|cafe|coffee|bakery|catering|food|bar|bistro|pizza|sushi/],
+    ['law',          /law|legal|solicitor|attorney|barrister/],
+    ['fitness',      /gym|fitness|yoga|pilates|crossfit|training|personal trainer/],
+    ['beauty',       /salon|spa|beauty|hair|nails|barber|lash|brow/],
+    ['realestate',   /real estate|property|agent|mortgage|real-estate/],
+    ['health',       /dental|dentist|medical|clinic|doctor|physio|chiro|osteo/],
+    ['construction', /build|construct|plumb|electrician|trade|roofing|renovation/],
+    ['tech',         /tech|software|developer|it support|digital|app|saas|cyber/],
+    ['cleaning',     /clean|domestic|carpet|window clean|janitorial/],
+  ];
+  let niche = '';
+  for (const [key, pattern] of nicheMap) {
+    if (pattern.test(combined)) { niche = key; break; }
+  }
+  const services = niche
+    ? `Web Design, ${niche.charAt(0).toUpperCase() + niche.slice(1)} SEO`
+    : 'Web Design';
+
+  try {
+    const scraped = websiteUrl ? await scrapeWebsite(websiteUrl) : null;
+    const html    = generateWebsite({
+      firstName, lastName, businessName,
+      email: clientEmail, phone: '',
+      niche, services, websiteUrl, scraped
+    });
+
+    // Deploy demo to Netlify
+    let demoUrl = null;
+    try {
+      demoUrl = await deployToNetlify(html, businessName);
+    } catch (deployErr) {
+      console.warn('Demo deploy error:', deployErr.message);
+    }
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS }
+    });
+
+    // Auto-reply to client with their live demo
+    await transporter.sendMail({
+      from: `"ZyntrixAI" <${process.env.EMAIL_USER}>`,
+      to: clientEmail,
+      subject: `${firstName}, your free website demo is ready — ZyntrixAI`,
+      html: `
+        <div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#050810;color:#e0eaf5;border-radius:16px;overflow:hidden;border:1px solid rgba(0,200,255,0.15)">
+          <div style="padding:2.5rem 2rem;text-align:center;background:linear-gradient(135deg,rgba(0,200,255,0.08),rgba(0,200,255,0.02))">
+            <div style="font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:#00c8ff;margin-bottom:0.8rem">ZyntrixAI · Website Design</div>
+            <h1 style="font-size:1.8rem;font-weight:900;margin-bottom:0.4rem;color:#fff">Your Demo is Live</h1>
+            <p style="color:#8aa0b8;font-size:.95rem">Hi ${firstName}, we've built a personalised demo site for ${businessName}.</p>
+          </div>
+          <div style="padding:2rem;text-align:center;border-bottom:1px solid rgba(0,200,255,0.1)">
+            ${demoUrl
+              ? `<p style="color:#8aa0b8;margin-bottom:1.5rem;font-size:.95rem">Your free demo is ready to view right now:</p>
+                 <a href="${demoUrl}" style="display:inline-block;padding:1rem 2.5rem;background:#00c8ff;color:#000;border-radius:8px;font-weight:700;font-size:1rem;text-decoration:none;">View Your Demo →</a>
+                 <p style="margin-top:1rem;font-size:.78rem;color:#555">${demoUrl}</p>`
+              : `<p style="color:#8aa0b8;font-size:.95rem">Thanks for reaching out! We're preparing your personalised demo and will follow up within a few hours.</p>`
+            }
+          </div>
+          <div style="padding:2rem;border-bottom:1px solid rgba(0,200,255,0.1)">
+            <div style="font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:#00c8ff;margin-bottom:1rem">What Happens Next</div>
+            <table style="border-collapse:collapse;width:100%">
+              <tr><td style="padding:.5rem 0;font-size:.88rem;vertical-align:top;width:28px;color:#00c8ff;font-weight:700">01</td><td style="padding:.5rem 0;font-size:.88rem;color:#e0eaf5">Take a look at your demo — it's built around your industry</td></tr>
+              <tr><td style="padding:.5rem 0;font-size:.88rem;color:#00c8ff;font-weight:700">02</td><td style="padding:.5rem 0;font-size:.88rem;color:#e0eaf5">Reply to this email with any feedback or questions</td></tr>
+              <tr><td style="padding:.5rem 0;font-size:.88rem;color:#00c8ff;font-weight:700">03</td><td style="padding:.5rem 0;font-size:.88rem;color:#e0eaf5">We'll send a formal quote and book a free discovery call</td></tr>
+              <tr><td style="padding:.5rem 0;font-size:.88rem;color:#00c8ff;font-weight:700">04</td><td style="padding:.5rem 0;font-size:.88rem;color:#e0eaf5">We build, you approve, we launch — simple</td></tr>
+            </table>
+          </div>
+          <div style="padding:1.5rem 2rem;text-align:center">
+            <p style="font-size:.82rem;color:#8aa0b8;margin-bottom:.5rem">Questions? Just reply — or reach us directly at</p>
+            <a href="mailto:${process.env.BUSINESS_EMAIL}" style="color:#00c8ff;font-size:.85rem">${process.env.BUSINESS_EMAIL}</a>
+            <p style="margin-top:1.2rem;font-size:.72rem;color:#555">© ${new Date().getFullYear()} ZyntrixAI · Melbourne, Victoria, Australia</p>
+          </div>
+        </div>
+      `
+    });
+
+    // Notify owner
+    await transporter.sendMail({
+      from: `"ZyntrixAI" <${process.env.EMAIL_USER}>`,
+      to: process.env.BUSINESS_EMAIL,
+      replyTo: clientEmail,
+      subject: `📧 Email Lead — ${businessName} — Demo ${demoUrl ? 'Deployed' : 'Failed'}`,
+      html: `
+        <div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:2rem;background:#050810;color:#e0eaf5;border:1px solid rgba(0,200,255,0.2);border-radius:12px">
+          <h1 style="color:#00c8ff;font-size:1.3rem;margin-bottom:1.5rem">Email Lead Processed</h1>
+          <table style="width:100%;border-collapse:collapse;font-size:.95rem">
+            <tr><td style="padding:.5rem 0;color:#8aa0b8;width:120px">From</td><td>${from}</td></tr>
+            <tr><td style="padding:.5rem 0;color:#8aa0b8">Subject</td><td>${subject}</td></tr>
+            <tr><td style="padding:.5rem 0;color:#8aa0b8">Business</td><td><strong>${businessName}</strong></td></tr>
+            <tr><td style="padding:.5rem 0;color:#8aa0b8">Niche</td><td>${niche || 'unknown'}</td></tr>
+            <tr><td style="padding:.5rem 0;color:#8aa0b8">Website</td><td>${websiteUrl || '—'}</td></tr>
+            <tr><td style="padding:.5rem 0;color:#8aa0b8">Demo</td><td>${demoUrl ? `<a href="${demoUrl}" style="color:#00c8ff">${demoUrl}</a>` : '<span style="color:#f55">Deploy failed</span>'}</td></tr>
+          </table>
+          <hr style="border-color:rgba(0,200,255,0.15);margin:1.5rem 0"/>
+          <p style="color:#8aa0b8;font-size:.82rem;margin-bottom:.5rem">Email body:</p>
+          <p style="background:rgba(0,200,255,0.05);border:1px solid rgba(0,200,255,0.12);border-radius:8px;padding:1rem;line-height:1.7;font-size:.85rem;white-space:pre-wrap">${body.slice(0, 600)}</p>
+        </div>
+      `
+    });
+
+  } catch (err) {
+    console.error('process-email error:', err.message);
   }
 });
 

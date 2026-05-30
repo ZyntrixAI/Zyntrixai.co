@@ -876,15 +876,20 @@
         .blog-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; padding: 0 16px 3rem; }
 
         /* Pricing */
-        .pricing-grid { grid-template-columns: 1fr; padding: 0.5rem 16px 2.5rem; }
+        .pricing-grid { grid-template-columns: 1fr !important; padding: 0.5rem 16px 2.5rem; }
         .pricing-card { padding: 1rem 1.1rem; }
         .pricing-amount { font-size: 1.6rem; }
         .pricing-features li { font-size: 0.8rem; }
         .faq-q { font-size: 0.85rem; }
         .faq-a { font-size: 0.82rem; }
 
-        /* Pricing inline cards */
-        #page-pricing > div[style*="grid"] { padding: 0 16px !important; }
+        /* Inline pricing tier cards — single column, lowest to highest */
+        #pricingTiersGrid {
+          grid-template-columns: 1fr !important;
+          padding: 0 16px !important;
+          gap: 0.9rem !important;
+        }
+        #pricingTiersGrid > div { width: 100% !important; max-width: 100% !important; }
 
         /* Footer */
         .footer-grid { grid-template-columns: 1fr 1fr; gap: 1.2rem; padding: 1.8rem 0 1.2rem; }
@@ -2475,7 +2480,7 @@
       </div>
 
       <!-- PRICING TIERS -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1.2rem;max-width:980px;margin:0 auto 2rem;padding:0 5%;">
+      <div id="pricingTiersGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1.2rem;max-width:980px;margin:0 auto 2rem;padding:0 5%;">
 
         <!-- TIER 1: STARTER -->
         <div class="glow-card" style="background:var(--card-bg);padding:2.2rem 2rem;display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;" onclick="openPricingModal('starter')" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='rgba(0,200,255,0.3)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">

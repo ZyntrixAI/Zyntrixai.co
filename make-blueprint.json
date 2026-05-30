@@ -1,0 +1,106 @@
+{
+  "name": "ZyntrixAI — Auto Demo from Gmail Enquiry",
+  "flow": [
+    {
+      "id": 1,
+      "module": "gmail:TriggerNewEmail",
+      "version": 1,
+      "parameters": {},
+      "mapper": {},
+      "metadata": {
+        "designer": { "x": 0, "y": 0 },
+        "restore": {
+          "parameters": {
+            "account": { "label": "ZyntrixAutomation@gmail.com" },
+            "label": { "label": "INBOX" },
+            "criteria": "ALL"
+          }
+        }
+      },
+      "parameters": {
+        "account": "__YOUR_GMAIL_CONNECTION_ID__",
+        "label": "INBOX",
+        "criteria": "ALL",
+        "maxResults": 1
+      }
+    },
+    {
+      "id": 2,
+      "module": "builtin:BasicRouter",
+      "version": 1,
+      "mapper": null,
+      "metadata": { "designer": { "x": 300, "y": 0 } },
+      "routes": [
+        {
+          "flow": [
+            {
+              "id": 3,
+              "module": "http:ActionSendData",
+              "version": 3,
+              "parameters": { "handleErrors": true },
+              "mapper": {
+                "url": "https://zyntrixai.co/api/process-email",
+                "method": "POST",
+                "headers": [
+                  { "name": "Content-Type", "value": "application/json" },
+                  { "name": "x-make-secret", "value": "__YOUR_WEBHOOK_SECRET__" }
+                ],
+                "bodyType": "raw",
+                "contentType": "application/json",
+                "body": "{\n  \"from\": \"{{1.from}}\",\n  \"subject\": \"{{1.subject}}\",\n  \"bodyPlainText\": \"{{1.snippet}}\"\n}",
+                "parseResponse": true,
+                "timeout": 30
+              },
+              "metadata": {
+                "designer": { "x": 600, "y": -100 },
+                "restore": { "expect": { "method": { "label": "POST" } } }
+              }
+            }
+          ],
+          "label": "Forward to ZyntrixAI"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "instant": true,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false
+    },
+    "designer": { "orphans": [] }
+  },
+  "_readme": {
+    "setup": [
+      "1. Import this file into Make.com via Scenarios → Create a new scenario → Import Blueprint",
+      "2. Connect your Gmail account (ZyntrixAutomation@gmail.com) to the Gmail trigger",
+      "3. The HTTP module POSTs to https://zyntrixai.co/api/process-email — no changes needed once deployed",
+      "4. Optionally set x-make-secret header to a random string and add the same as MAKE_SECRET env var on Vercel for basic auth",
+      "5. Turn on the scenario and set the schedule to 'Immediately' (webhook/watch mode)"
+    ],
+    "how_it_works": [
+      "Gmail trigger fires when a new email arrives in ZyntrixAutomation@gmail.com",
+      "Make.com POSTs the sender, subject, and email snippet to your Vercel server",
+      "Your server parses the email, detects the business niche, generates a tailored HTML demo",
+      "Demo is deployed to Netlify as a live URL (e.g. https://zx-smithsbakery-1234567890.netlify.app)",
+      "Client receives an auto-reply with a View Your Demo button within ~2 minutes",
+      "You receive an owner notification with the lead details and demo URL"
+    ],
+    "env_vars_needed": [
+      "EMAIL_USER — your Gmail address (ZyntrixAutomation@gmail.com)",
+      "EMAIL_PASS — Gmail App Password (not your regular password)",
+      "BUSINESS_EMAIL — where owner notifications go",
+      "NETLIFY_API_TOKEN — Netlify personal access token (netlify.com → User settings → Applications)",
+      "STRIPE_STARTER_LINK — Stripe payment link for Starter package",
+      "STRIPE_GROWTH_LINK — Stripe payment link for Growth package"
+    ]
+  }
+}
