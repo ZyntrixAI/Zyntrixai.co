@@ -336,46 +336,10 @@
         50%     { top: calc(100% - 20px); right: calc(100% - 20px); }
         75%     { top: calc(100% - 20px); right: 8px; }
       }
-      @keyframes lineTop {
-        0%,15%,60%,100% { opacity:0.12; }
-        20%,25%          { opacity:0.9; }
-      }
-      @keyframes lineLeft {
-        0%,20%,75%,100% { opacity:0.12; }
-        30%,50%          { opacity:0.9; }
-      }
-      @keyframes lineBottom {
-        0%,45%,90%,100% { opacity:0.12; }
-        55%,70%          { opacity:0.9; }
-      }
-      @keyframes lineRight {
-        0%,65%,100%      { opacity:0.12; }
-        70%,95%          { opacity:0.9; }
-      }
-
       .glow-card {
         position: relative;
         isolation: isolate;
         overflow: visible !important;
-      }
-
-      /* Moving dot disabled — glow lines only */
-      .glow-card::before { display: none; }
-
-      /* Border edges — white glow */
-      .glow-card::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        pointer-events: none;
-        z-index: 9;
-        box-shadow:
-          inset 0 1px 0 rgba(255,255,255,0.12),
-          inset -1px 0 0 rgba(255,255,255,0.12),
-          inset 0 -1px 0 rgba(255,255,255,0.12),
-          inset 1px 0 0 rgba(255,255,255,0.12);
-        border: 1px solid rgba(255,255,255,0.08);
       }
 
       .glow-card > * { position: relative; z-index: 1; }
@@ -734,8 +698,6 @@
         transition: background 0.2s, border-color 0.2s;
       }
       .modal-meta-item:hover { background: var(--card-hover); border-color: var(--border-hover); }
-      .modal-meta-item::before { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: rgba(255,255,255,0.85); opacity: 0.12; border-radius: 2px; animation: lineTop 4s linear infinite; }
-      .modal-meta-item::after  { content: ''; position: absolute; bottom: 0; left: 10%; right: 10%; height: 1px; background: rgba(255,255,255,0.85); opacity: 0.12; border-radius: 2px; animation: lineBottom 4s linear infinite; }
       .modal-meta-item span { display: block; font-size: 0.6rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); margin-bottom: 0.4rem; font-family: monospace; }
       .modal-meta-item strong { font-size: 0.88rem; font-weight: 600; color: var(--text); }
       .modal-actions { display: flex; gap: 0.8rem; margin-top: 1.6rem; }
@@ -787,8 +749,6 @@
         border-radius: var(--radius); padding: 1.8rem; margin-top: 2rem;
         position: relative; overflow: hidden; isolation: isolate;
       }
-      .article-cta::before { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: rgba(255,255,255,0.85); opacity: 0.12; border-radius: 2px; animation: lineTop 4s linear infinite; }
-      .article-cta::after  { content: ''; position: absolute; bottom: 0; left: 10%; right: 10%; height: 1px; background: rgba(255,255,255,0.85); opacity: 0.12; border-radius: 2px; animation: lineBottom 4s linear infinite; }
 
       /* ── TABLET (max 1024px) ── */
       @media (max-width: 1024px) {
@@ -2489,7 +2449,7 @@
             <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
           </div>
           <div style="font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Starter</div>
-          <div style="font-size:2.4rem;font-weight:900;color:var(--text);line-height:1;margin-bottom:0.3rem;">$499</div>
+          <div style="font-size:2.4rem;font-weight:900;color:var(--text);line-height:1;margin-bottom:0.3rem;">$750</div>
           <div style="font-size:0.72rem;color:var(--muted);margin-bottom:1.8rem;font-family:monospace;">One-off · AUD</div>
           <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:2rem;flex:1;">Perfect for new businesses and sole traders getting their first professional website.</p>
           <button class="btn-outline" style="width:100%;pointer-events:none;">View Details →</button>
@@ -2506,7 +2466,7 @@
             <span style="font-size:0.58rem;font-weight:700;letter-spacing:2px;background:var(--blue);color:#000;padding:2px 10px;border-radius:999px;">POPULAR</span>
           </div>
           <div style="font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:0.5rem;">Growth</div>
-          <div style="font-size:2.4rem;font-weight:900;color:var(--text);line-height:1;margin-bottom:0.3rem;">$1,499</div>
+          <div style="font-size:2.4rem;font-weight:900;color:var(--text);line-height:1;margin-bottom:0.3rem;">$1,850</div>
           <div style="font-size:0.72rem;color:var(--muted);margin-bottom:1.8rem;font-family:monospace;">One-off · AUD</div>
           <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:2rem;flex:1;">For growing businesses that need more pages, bookings, and online visibility.</p>
           <button class="btn-primary" style="width:100%;pointer-events:none;">View Details →</button>
@@ -2519,7 +2479,7 @@
             <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
           </div>
           <div style="font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Enterprise</div>
-          <div style="font-size:2.4rem;font-weight:900;color:var(--text);line-height:1;margin-bottom:0.3rem;">Custom</div>
+          <div style="font-size:2.4rem;font-weight:900;color:var(--text);line-height:1;margin-bottom:0.3rem;">$4,500</div>
           <div style="font-size:0.72rem;color:var(--muted);margin-bottom:1.8rem;font-family:monospace;">Quoted per project · AUD</div>
           <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:2rem;flex:1;">The complete package for businesses serious about their online presence.</p>
           <button class="btn-outline" style="width:100%;pointer-events:none;">View Details →</button>
@@ -2593,8 +2553,8 @@
               <label>Which package are you considering?</label>
               <select id="pq-package">
                 <option value="">Not sure yet — help me decide</option>
-                <option value="Starter">Starter — $499</option>
-                <option value="Growth">Growth — $1,499</option>
+                <option value="Starter">Starter — $750</option>
+                <option value="Growth">Growth — $1,850</option>
                 <option value="Enterprise">Enterprise — Custom quote</option>
               </select>
             </div>
@@ -2786,37 +2746,6 @@
         updateNav();
       })();
 
-      // Inject glowing border line elements into every glow-card
-      (function() {
-        const lineStyle = (anim, extra) =>
-          `position:absolute;pointer-events:none;z-index:9;background:rgba(255,255,255,0.85);opacity:0.12;border-radius:2px;animation:${anim} 4s linear infinite;${extra}`;
-
-        function injectLines(card) {
-          if (card.querySelector('.gcard-line')) return;
-          ['top','left','bottom','right'].forEach(side => {
-            const el = document.createElement('span');
-            el.className = 'gcard-line';
-            const horiz = side === 'top' || side === 'bottom';
-            const pos = side === 'top'    ? 'top:0;left:10%;right:10%;height:1px;' :
-                        side === 'bottom' ? 'bottom:0;left:10%;right:10%;height:1px;' :
-                        side === 'left'   ? 'left:0;top:10%;bottom:10%;width:1px;' :
-                                            'right:0;top:10%;bottom:10%;width:1px;';
-            const anim = side === 'top'    ? 'lineTop'    :
-                         side === 'left'   ? 'lineLeft'   :
-                         side === 'bottom' ? 'lineBottom' : 'lineRight';
-            el.style.cssText = lineStyle(anim, pos);
-            card.appendChild(el);
-          });
-        }
-
-        // Inject on load and after dynamic cards are built
-        function injectAll() {
-          document.querySelectorAll('.glow-card').forEach(injectLines);
-        }
-        document.addEventListener('DOMContentLoaded', injectAll);
-        setTimeout(injectAll, 100);
-        setTimeout(injectAll, 600);
-      })();
 
       function showPage(id) {
         document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
@@ -2915,19 +2844,6 @@
               <div class="hw-name">${c.title}</div>
             </div>
           </div>`).join('');
-        // inject glow lines into new cards
-        document.querySelectorAll('.glow-card').forEach(card => {
-          if (!card.querySelector('.gcard-line')) {
-            ['top','left','bottom','right'].forEach(side => {
-              const el2 = document.createElement('span');
-              el2.className = 'gcard-line';
-              const pos = side==='top'?'top:0;left:10%;right:10%;height:1px;':side==='bottom'?'bottom:0;left:10%;right:10%;height:1px;':side==='left'?'left:0;top:10%;bottom:10%;width:1px;':'right:0;top:10%;bottom:10%;width:1px;';
-              const anim = side==='top'?'lineTop':side==='left'?'lineLeft':side==='bottom'?'lineBottom':'lineRight';
-              el2.style.cssText = `position:absolute;pointer-events:none;z-index:9;background:rgba(255,255,255,0.85);opacity:0.12;border-radius:2px;animation:${anim} 4s linear infinite;${pos}`;
-              card.appendChild(el2);
-            });
-          }
-        });
       }
       buildHomeWork();
 
@@ -2942,7 +2858,7 @@
       // ── Pricing Modal ────────────────────────────────────────────────────────
       const pricingData = {
         starter: {
-          tier: '01 · Starter', price: '$499', billing: 'One-off · AUD',
+          tier: '01 · Starter', price: '$750', billing: 'One-off · AUD',
           desc: 'The perfect launchpad for new businesses and sole traders. Everything you need to establish a professional online presence fast.',
           meta: [
             { label: 'Turnaround',  value: '2–3 Weeks' },
@@ -2965,13 +2881,13 @@
           ]
         },
         growth: {
-          tier: '02 · Growth', price: '$1,499', billing: 'One-off · AUD',
+          tier: '02 · Growth', price: '$1,850', billing: 'One-off · AUD',
           desc: 'Built for growing businesses that need more pages, online bookings, e-commerce, and serious Google visibility. Our most popular package.',
           meta: [
             { label: 'Turnaround',  value: '3–5 Weeks' },
             { label: 'Payment',     value: '50% upfront, 50% on launch' },
             { label: 'Revisions',   value: '30-day revision window' },
-            { label: 'Support',     value: '1 month free' },
+            { label: 'Support',     value: '3 months free' },
           ],
           included: [
             { text: 'Web Design — up to 12 pages', on: true },
@@ -2981,20 +2897,20 @@
             { text: 'Google Analytics + Search Console', on: true },
             { text: 'E-Commerce store — up to 50 products', on: true },
             { text: '30-day revision window', on: true },
-            { text: '1 month free ongoing support', on: true },
+            { text: '3 months free ongoing support', on: true },
             { text: 'Logo & Branding package', on: false },
             { text: 'Custom animations & interactions', on: false },
             { text: 'Dedicated account manager', on: false },
           ]
         },
         enterprise: {
-          tier: '03 · Enterprise', price: 'Custom', billing: 'Quoted per project · AUD',
+          tier: '03 · Enterprise', price: '$4,500', billing: 'Quoted per project · AUD',
           desc: 'The complete, no-limits package for businesses serious about their digital presence. Full branding, unlimited pages, advanced SEO, e-commerce, and a dedicated account manager.',
           meta: [
             { label: 'Turnaround',  value: 'Quoted per scope' },
             { label: 'Payment',     value: 'Staged milestones' },
             { label: 'Revisions',   value: 'Unlimited rounds' },
-            { label: 'Support',     value: '1 month free' },
+            { label: 'Support',     value: '6 months free' },
           ],
           included: [
             { text: 'Unlimited pages', on: true },
@@ -3004,7 +2920,7 @@
             { text: 'Full analytics dashboard setup', on: true },
             { text: 'E-Commerce — unlimited products', on: true },
             { text: 'Logo & Branding — full package', on: true },
-            { text: '1 month free ongoing support', on: true },
+            { text: '6 months free ongoing support', on: true },
             { text: 'Custom animations & interactions', on: true },
             { text: 'Dedicated account manager', on: true },
           ]

@@ -11,7 +11,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'ZyntrixAI.html')));
 
 // ── Scrape the client's existing website ──────────────────────────────────────
 async function scrapeWebsite(url) {
@@ -971,7 +971,7 @@ function recommendPackage(services = '', niche = '', hasWebsite = true) {
   // Growth: ecommerce OR SEO OR 3+ services
   if (hasEcommerce || hasSEO || serviceCount >= 3) {
     return {
-      tier: 'Growth', price: '$1,499', deposit: 749, depositFormatted: '$749',
+      tier: 'Growth', price: '$1,850', deposit: 925, depositFormatted: '$925',
       stripeLink: process.env.STRIPE_GROWTH_LINK || null, colour: '#00c8ff',
       reason: 'Based on what you need, the Growth package is the perfect fit — more pages, e-commerce, SEO, and booking forms all included.',
       includes: [
@@ -984,7 +984,7 @@ function recommendPackage(services = '', niche = '', hasWebsite = true) {
 
   // Starter: basic website
   return {
-    tier: 'Starter', price: '$499', deposit: 249, depositFormatted: '$249',
+    tier: 'Starter', price: '$750', deposit: 375, depositFormatted: '$375',
     stripeLink: process.env.STRIPE_STARTER_LINK || null, colour: '#00c8ff',
     reason: 'For your requirements, the Starter package gives you everything you need to get a professional presence online fast.',
     includes: [
