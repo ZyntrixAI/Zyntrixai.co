@@ -250,15 +250,17 @@
 
       /* ── FOOTER ── */
       footer {
-        padding: 3rem 5%;
+        padding: 4rem 5% 3rem;
         position: relative; z-index: 1;
         display: flex; flex-direction: column; align-items: center;
-        gap: 1.2rem; text-align: center;
+        gap: 1.8rem; text-align: center;
+        border-top: 1px solid var(--border);
       }
       .foot-logo {
-        display: inline-flex; align-items: center; gap: 8px;
+        display: inline-flex; align-items: center; justify-content: center;
         font-family: 'Orbitron', sans-serif; font-size: 0.85rem;
         font-weight: 900; letter-spacing: 4px; cursor: pointer; color: var(--text);
+        margin-bottom: 0.5rem;
       }
       .foot-logo-dot {
         width: 6px; height: 6px; border-radius: 50%;
@@ -1057,8 +1059,8 @@
       </section>
 
       <footer>
-        <div class="foot-logo" onclick="showPage('home')">
-          <img src="logo.png" alt="ZyntrixAI" style="width:36px;height:36px;object-fit:contain;" />
+        <div class="foot-logo" onclick="showPage('home')" style="cursor:pointer;transition:transform 0.2s,opacity 0.2s;" onmouseover="this.style.transform='scale(1.1)';this.style.opacity='0.9'" onmouseout="this.style.transform='scale(1)';this.style.opacity='1'">
+          <img src="logo.png" alt="ZyntrixAI" style="width:60px;height:60px;object-fit:contain;" />
         </div>
         <div class="foot-links">
           <a onclick="showPage('services')">Services</a>
