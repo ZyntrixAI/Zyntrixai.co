@@ -1,0 +1,25 @@
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="locationGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00c8ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0080ff;stop-opacity:1" />
+    </linearGradient>
+    <filter id="locationGlow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Pin body -->
+  <path d="M 256 80 C 180 80 120 140 120 216 C 120 300 256 420 256 420 C 256 420 392 300 392 216 C 392 140 332 80 256 80 Z"
+        fill="none" stroke="url(#locationGradient)" stroke-width="16" stroke-linejoin="round" filter="url(#locationGlow)"/>
+
+  <!-- Pin dot -->
+  <circle cx="256" cy="216" r="48" fill="url(#locationGradient)" filter="url(#locationGlow)"/>
+
+  <!-- Inner dot -->
+  <circle cx="256" cy="216" r="24" fill="none" stroke="white" stroke-width="8" filter="url(#locationGlow)"/>
+</svg>
