@@ -340,8 +340,28 @@
       }
       .glow-card {
         position: relative !important;
-        border: 2px solid rgba(255,255,255,0.25) !important;
-        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15) !important;
+        border: 2px solid #ffffff !important;
+        box-shadow: 0 0 20px rgba(255,255,255,0.1) !important;
+        overflow: visible !important;
+      }
+
+      .glow-card::before {
+        content: '' !important;
+        position: absolute !important;
+        top: -8px !important;
+        left: -8px !important;
+        right: -8px !important;
+        bottom: -8px !important;
+        pointer-events: none !important;
+        z-index: 2 !important;
+      }
+
+      .glow-card::before {
+        background:
+          linear-gradient(135deg, transparent calc(50% - 1px), #ffffff 50%, transparent calc(50% + 1px)) top left / 16px 16px no-repeat,
+          linear-gradient(45deg, transparent calc(50% - 1px), #ffffff 50%, transparent calc(50% + 1px)) top right / 16px 16px no-repeat,
+          linear-gradient(315deg, transparent calc(50% - 1px), #ffffff 50%, transparent calc(50% + 1px)) bottom right / 16px 16px no-repeat,
+          linear-gradient(225deg, transparent calc(50% - 1px), #ffffff 50%, transparent calc(50% + 1px)) bottom left / 16px 16px no-repeat !important;
       }
 
       .glow-card > * { position: relative; z-index: 1; }
