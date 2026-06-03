@@ -6,6 +6,7 @@ const cheerio  = require('cheerio');
 const nodemailer = require('nodemailer');
 const path     = require('path');
 const crypto   = require('crypto');
+const { saveBooking } = require('./supabase-client');
 
 const app = express();
 app.use(cors());
@@ -996,7 +997,7 @@ function recommendPackage(services = '', niche = '', hasWebsite = true) {
 
 // ── Quote endpoint ─────────────────────────────────────────────────────────────
 app.post('/api/quote', async (req, res) => {
-  const { firstName, lastName, businessName, email, phone, niche, services, websiteUrl } = req.body;
+  const { firstName, lastName, businessName, email, phone, niche, services, websiteUrl, currentProblems } = req.body;
 
   if (!firstName || !email) {
     return res.status(400).json({ error: 'Name and email are required.' });
@@ -1152,6 +1153,25 @@ app.post('/api/quote', async (req, res) => {
         leads: [{ business_name: businessName || `${firstName} ${lastName}`, category: services.split(',')[0].trim(), phone, email, website: websiteUrl || '', has_website: hasWebsite ? 1 : 0, city: '', state: 'AUS', status: 'interested', source: 'quote-form' }]
       });
     } catch (fwdErr) { console.warn('LeadFinder lead:', fwdErr.message); }
+
+    // ── 6. Save to Supabase (non-blocking) ────────────────────────────────────
+    if (process.env.SUPABASE_ENABLED === 'true') {
+      saveBooking({
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        phone: phone || null,
+        business_name: businessName,
+        industry_niche: niche || null,
+        services: JSON.stringify(services ? services.split(',').map(s => s.trim()) : []),
+        website_url: websiteUrl || null,
+        has_website: hasWebsite,
+        current_problems: currentProblems || null,
+        status: 'new',
+        notes: `Recommended: ${rec.tier} - ${rec.price}`,
+        source: 'website'
+      }).catch(err => console.warn('Supabase save failed:', err.message));
+    }
 
     res.json({ success: true, recommendation: rec });
 

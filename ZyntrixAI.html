@@ -1901,6 +1901,15 @@
                 >
               </div>
             </div>
+            <div class="form-group">
+              <label>Current Problems / Business Goals</label>
+              <textarea
+                id="q-currentProblems"
+                placeholder="What business challenges should your website solve? E.g., 'Better way to collect customer leads', 'Current site doesn't convert visitors', 'Need online booking system', etc."
+                style="min-height: 100px; resize: vertical;"
+              ></textarea>
+              <div style="font-size: 0.75rem; color: var(--muted); margin-top: 0.4rem;">Help us understand your goals so we can tailor the design specifically for you.</div>
+            </div>
             <!-- No website section -->
             <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem 1.4rem;">
               <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
@@ -3339,6 +3348,7 @@
           websiteUrl: document.getElementById("q-noWebsite").checked
             ? "No website — starting fresh"
             : document.getElementById("q-websiteUrl").value.trim(),
+          currentProblems: document.getElementById("q-currentProblems").value.trim(),
         };
 
         try {
