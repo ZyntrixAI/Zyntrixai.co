@@ -1143,7 +1143,7 @@ app.post('/api/quote', async (req, res) => {
         first_name: firstName, last_name: lastName, email, phone,
         business_name: businessName, services, website_url: websiteUrl,
         subject: `Quote — ${rec.tier} — ${businessName || `${firstName} ${lastName}`}`,
-        message: `Recommended: ${rec.tier} (${rec.price})\nServices: ${services}\nSite: ${websiteUrl || 'None'}`,
+        message: `Recommended: ${rec.tier} (${rec.price})\nServices: ${services}\nSite: ${websiteUrl || 'None'}${currentProblems ? `\n\nBusiness Goals:\n${currentProblems}` : ''}`,
         source: 'quote-form'
       });
     } catch (fwdErr) { console.warn('LeadFinder enquiry:', fwdErr.message); }
