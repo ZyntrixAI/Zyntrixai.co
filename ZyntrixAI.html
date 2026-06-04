@@ -1260,23 +1260,42 @@
           to { transform: rotateY(360deg); }
         }
 
+        #carouselContainer {
+          perspective: 1200px !important;
+        }
+
         #carouselRotator {
-          animation: rotate-carousel 20s linear infinite;
+          animation: rotate-carousel 20s linear infinite !important;
+          transform-style: preserve-3d !important;
         }
 
         .carousel-card {
-          box-shadow: 0 20px 60px rgba(0,200,255,0.1);
+          box-shadow: 0 20px 60px rgba(0,200,255,0.1) !important;
+          transform-style: preserve-3d !important;
+          backface-visibility: hidden;
         }
 
-        .carousel-card:nth-child(1) { transform: rotateY(0deg) translateZ(400px); }
-        .carousel-card:nth-child(2) { transform: rotateY(60deg) translateZ(400px); }
-        .carousel-card:nth-child(3) { transform: rotateY(120deg) translateZ(400px); }
-        .carousel-card:nth-child(4) { transform: rotateY(180deg) translateZ(400px); }
-        .carousel-card:nth-child(5) { transform: rotateY(240deg) translateZ(400px); }
-        .carousel-card:nth-child(6) { transform: rotateY(300deg) translateZ(400px); }
+        #carouselRotator .carousel-card:nth-child(1) {
+          transform: rotateY(0deg) translateZ(420px) !important;
+        }
+        #carouselRotator .carousel-card:nth-child(2) {
+          transform: rotateY(60deg) translateZ(420px) !important;
+        }
+        #carouselRotator .carousel-card:nth-child(3) {
+          transform: rotateY(120deg) translateZ(420px) !important;
+        }
+        #carouselRotator .carousel-card:nth-child(4) {
+          transform: rotateY(180deg) translateZ(420px) !important;
+        }
+        #carouselRotator .carousel-card:nth-child(5) {
+          transform: rotateY(240deg) translateZ(420px) !important;
+        }
+        #carouselRotator .carousel-card:nth-child(6) {
+          transform: rotateY(300deg) translateZ(420px) !important;
+        }
 
         .carousel-card:hover {
-          filter: drop-shadow(0 0 20px rgba(0,200,255,0.5));
+          filter: drop-shadow(0 0 20px rgba(0,200,255,0.5)) !important;
         }
       </style>
 
