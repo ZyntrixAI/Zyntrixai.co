@@ -1,19 +1,19 @@
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { firstName, lastName, businessName, email, phone, niche, services, websiteUrl, currentProblems } = req.body;
-
-  if (!firstName || !lastName || !email || !niche) {
-    return res.status(400).json({ error: 'Missing required fields' });
-  }
-
   try {
-    // TODO: Integrate with email service to send quote details
+    const { firstName, lastName, businessName, email, phone, niche, services, websiteUrl, currentProblems } = req.body;
+
+    if (!firstName || !lastName || !email || !niche) {
+      return res.status(400).json({ error: 'Missing required fields' });
+    }
+
     console.log('Quote request:', { firstName, lastName, businessName, email, niche, services });
 
-    // Generate recommendation based on niche and services
     const tierMap = {
       'restaurant': { tier: 'Professional', price: '$2,500 - $4,500' },
       'law': { tier: 'Enterprise', price: '$5,000 - $10,000' },
@@ -38,6 +38,6 @@ export default async function handler(req, res) {
     });
   } catch (error) {
     console.error('Quote error:', error);
-    return res.status(500).json({ error: 'Failed to generate quote' });
+    return res.status(500).json({ error: 'Failed to generate quote', details: error.message });
   }
-}
+};
