@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izzy's Café | Premium Coffee & Contemporary Cuisine - Hamilton</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0f0f0f;
+            --secondary: #1a1a1a;
+            --accent: #d4a574;
+            --accent-dark: #a67c52;
+            --light: #f8f6f3;
+            --text: #2c2c2c;
+            --border: #e8e4df;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: #fff;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--primary);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.35);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 9rem 2rem;
+            text-align: center;
+            min-height: 750px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(212, 165, 116, 0.12) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(212, 165, 116, 0.08) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4.2rem;
+            margin-bottom: 1rem;
+            animation: scaleIn 0.8s ease-out 0.2s backwards;
+            text-shadow: 3px 3px 12px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+            font-weight: 900;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent);
+            animation: fadeIn 0.8s ease-out 0.3s backwards;
+            opacity: 0;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            animation: fadeIn 0.8s ease-out 0.5s backwards;
+            opacity: 0;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 1.3rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: inline-block;
+            text-decoration: none;
+            animation: slideInUp 0.8s ease-out 0.7s backwards;
+            box-shadow: 0 10px 35px rgba(212, 165, 116, 0.5);
+            font-weight: 700;
+            letter-spacing: 0.8px;
+        }
+
+        .cta-button:hover {
+            background: #e5b895;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(212, 165, 116, 0.6);
+        }
+
+        /* Info Bar */
+        .info-bar {
+            background: var(--light);
+            padding: 2.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: -4rem auto 5rem;
+            position: relative;
+            z-index: 10;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            border: 1px solid var(--border);
+        }
+
+        .info-item {
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .info-item:nth-child(1) { animation-delay: 0.1s; }
+        .info-item:nth-child(2) { animation-delay: 0.2s; }
+        .info-item:nth-child(3) { animation-delay: 0.3s; }
+
+        .info-label {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.8rem;
+        }
+
+        .info-content {
+            color: var(--text);
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .info-content a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .info-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Sections */
+        section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        section h2 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 3.5rem;
+            text-align: center;
+            animation: slideInDown 0.6s ease-out;
+            position: relative;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+        }
+
+        section h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            margin: 1.5rem auto 0;
+            border-radius: 3px;
+        }
+
+        /* Featured Section */
+        .featured-section {
+            background: linear-gradient(135deg, var(--light) 0%, #fff 100%);
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 3rem;
+            margin-top: 3.5rem;
+        }
+
+        .featured-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            animation: fadeInUp 0.6s ease-out backwards;
+            border: 1px solid var(--border);
+        }
+
+        .featured-card:nth-child(1) { animation-delay: 0.1s; }
+        .featured-card:nth-child(2) { animation-delay: 0.2s; }
+        .featured-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .featured-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+            border-color: var(--accent);
+        }
+
+        .featured-img {
+            width: 100%;
+            height: 260px;
+            background: linear-gradient(135deg, #e8c9b1 0%, #c5a384 50%, #8b7355 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-card:hover .featured-img {
+            transform: scale(1.08);
+        }
+
+        .featured-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .featured-content {
+            padding: 2.5rem;
+        }
+
+        .featured-content h3 {
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .featured-content p {
+            color: #555;
+            margin-bottom: 1.8rem;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .featured-btn {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-block;
+            letter-spacing: 0.5px;
+        }
+
+        .featured-btn:hover {
+            color: var(--primary);
+            transform: translateX(6px);
+        }
+
+        /* Menu Section */
+        .menu-section {
+            background: white;
+        }
+
+        .menu-search {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .search-input {
+            padding: 1.2rem 2.5rem;
+            width: 100%;
+            max-width: 550px;
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 25px rgba(212, 165, 116, 0.35);
+            transform: scale(1.02);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 3rem;
+        }
+
+        .menu-category {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+            animation: fadeInUp 0.6s ease-out backwards;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 1px solid var(--border);
+        }
+
+        .menu-category:nth-child(1) { animation-delay: 0.1s; }
+        .menu-category:nth-child(2) { animation-delay: 0.2s; }
+        .menu-category:nth-child(3) { animation-delay: 0.3s; }
+        .menu-category:nth-child(4) { animation-delay: 0.4s; }
+
+        .menu-category:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+            border-color: var(--accent);
+        }
+
+        .menu-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .menu-header h3 {
+            font-size: 1.6rem;
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .menu-items {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .menu-category:hover .menu-items {
+            max-height: 700px;
+        }
+
+        .menu-item {
+            padding: 1.8rem 2rem;
+            border-bottom: 1px solid var(--border);
+            animation: slideInLeft 0.4s ease-out;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.7rem;
+            gap: 1rem;
+        }
+
+        .item-name {
+            font-weight: 700;
+            color: var(--primary);
+            flex: 1;
+            font-size: 1.05rem;
+        }
+
+        .item-price {
+            color: var(--accent);
+            font-weight: 700;
+            white-space: nowrap;
+            font-size: 1.1rem;
+        }
+
+        .item-desc {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background: linear-gradient(135deg, var(--light) 0%, #fff 100%);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            cursor: pointer;
+            animation: fadeInUp 0.6s ease-out backwards;
+            height: 310px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
+        .gallery-item:nth-child(5) { animation-delay: 0.5s; }
+        .gallery-item:nth-child(6) { animation-delay: 0.6s; }
+
+        .gallery-item:hover {
+            border-color: var(--accent);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #c5a384 0%, #8b7355 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.15) rotate(2deg);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.75);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            backdrop-filter: blur(2px);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .overlay-text {
+            color: white;
+            text-align: center;
+            animation: scaleIn 0.3s ease-out;
+        }
+
+        .overlay-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        .testimonials-section h2 {
+            color: white;
+        }
+
+        .testimonials-section h2:after {
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        .testimonials-container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            padding: 3rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--accent);
+            text-align: center;
+            display: none;
+            animation: fadeInUp 0.5s ease-out;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .testimonial-card.active {
+            display: block;
+        }
+
+        .testimonial-stars {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1.8rem;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.9;
+            opacity: 0.98;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+        }
+
+        .testimonial-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.35);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .testimonial-dot.active {
+            background: var(--accent);
+            transform: scale(1.4);
+            border-color: white;
+        }
+
+        /* Contact Form */
+        .contact-section {
+            background: white;
+        }
+
+        .form-container {
+            max-width: 650px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.3px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.1rem 1.5rem;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 25px rgba(212, 165, 116, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .submit-btn {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 1.3rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            box-shadow: 0 10px 35px rgba(212, 165, 116, 0.4);
+            letter-spacing: 0.8px;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            background: #e5b895;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(212, 165, 116, 0.5);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .form-message {
+            margin-top: 1.5rem;
+            padding: 1.4rem;
+            border-radius: 10px;
+            text-align: center;
+            animation: slideInUp 0.4s ease-out;
+            display: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            letter-spacing: 0.3px;
+        }
+
+        .form-message.success {
+            background: rgba(39, 174, 96, 0.15);
+            color: #27ae60;
+            border: 2px solid #27ae60;
+            display: block;
+        }
+
+        .form-message.error {
+            background: rgba(212, 165, 116, 0.15);
+            color: var(--primary);
+            border: 2px solid var(--accent);
+            display: block;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            animation: fadeIn 0.3s ease-out;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            max-width: 650px;
+            width: 90%;
+            animation: slideInUp 0.3s ease-out;
+            position: relative;
+            box-shadow: 0 30px 100px rgba(0,0,0,0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s ease;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            color: var(--accent);
+        }
+
+        .modal-img {
+            width: 100%;
+            height: 380px;
+            background: linear-gradient(135deg, #c5a384 0%, #8b7355 100%);
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--accent);
+            margin-bottom: 1.3rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: block;
+            margin-bottom: 0.7rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .social-icon:hover {
+            background: #e5b895;
+            transform: translateY(-4px) rotate(15deg);
+            box-shadow: 0 10px 25px rgba(212, 165, 116, 0.4);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.15);
+            padding-top: 2.5rem;
+            text-align: center;
+            color: #999;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-subtitle,
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .info-bar {
+                margin: -3rem auto 4rem;
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            section h2 {
+                font-size: 2.2rem;
+            }
+
+            .featured-grid,
+            .menu-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo-box" onclick="document.documentElement.scrollTop = 0">
+                <img src="https://img1.wsimg.com/isteam/ip/d28cda66-e8a0-4330-b30b-bc30a17d35a1/Izzys%20Logos_RESTAURANT.png/:/rs=w:50,cg:true" alt="Izzy's Logo" style="height: 50px; width: auto;">
+                <div class="logo-text">IZZY'S</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#featured">Featured</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Reservations</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>IZZY'S CAFÉ</h1>
+            <div class="hero-subtitle">Premium Coffee & Contemporary Cuisine</div>
+            <p>Award-winning specialty coffee, locally-sourced meals, and a welcoming atmosphere in the heart of Hamilton</p>
+            <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Reserve a Table</button>
+        </div>
+    </section>
+
+    <!-- Info Bar -->
+    <section class="info-bar">
+        <div class="info-item">
+            <div class="info-label">📍 Location</div>
+            <div class="info-content">123 Main Street, Hamilton VIC 3300</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">🕐 Hours</div>
+            <div class="info-content">Tue-Sun 7am-5pm | Mon Closed</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">📞 Contact</div>
+            <div class="info-content"><a href="tel:0355722100">(03) 5572 2100</a></div>
+        </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section id="featured" class="featured-section">
+        <h2>What's On</h2>
+        <div class="featured-grid">
+            <div class="featured-card">
+                <div class="featured-img" style="background-image: url('https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=500&h=300&fit=crop'); background-size: cover; background-position: center;">☕</div>
+                <div class="featured-content">
+                    <h3>Specialty Coffee</h3>
+                    <p>Single-origin espresso, perfectly crafted lattes, and our signature cold brew. Made with beans from local Victorian roasters.</p>
+                    <a href="#menu" class="featured-btn">View Menu →</a>
+                </div>
+            </div>
+
+            <div class="featured-card">
+                <div class="featured-img" style="background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=300&fit=crop'); background-size: cover; background-position: center;">🥐</div>
+                <div class="featured-content">
+                    <h3>All-Day Brunch</h3>
+                    <p>Freshly baked pastries, sourdough toast with premium spreads, and creative brunch platters. Open 7am every day except Monday.</p>
+                    <a href="#menu" class="featured-btn">View Menu →</a>
+                </div>
+            </div>
+
+            <div class="featured-card">
+                <div class="featured-img" style="background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=300&fit=crop'); background-size: cover; background-position: center;">🍽️</div>
+                <div class="featured-content">
+                    <h3>Lunch & Dinner</h3>
+                    <p>Contemporary cuisine featuring locally-sourced ingredients, seasonal specials, and vegetarian options. Served daily from 11am.</p>
+                    <a href="#menu" class="featured-btn">View Menu →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <h2>Our Menu</h2>
+        <div class="menu-search">
+            <input type="text" class="search-input" id="menuSearch" placeholder="Search menu items (coffee, toast, salad, etc.)...">
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-category">
+                <div class="menu-header">
+                    <h3>🥞 Breakfast</h3>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Smashed Avocado Toast</span>
+                            <span class="item-price">$16.50</span>
+                        </div>
+                        <div class="item-desc">Sourdough, cherry tomatoes, feta, poached egg, dukkah</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Shakshuka</span>
+                            <span class="item-price">$17.00</span>
+                        </div>
+                        <div class="item-desc">Spiced tomato sauce, poached eggs, feta, charred bread</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Berry Acai Bowl</span>
+                            <span class="item-price">$14.50</span>
+                        </div>
+                        <div class="item-desc">Acai, fresh berries, granola, coconut, honey drizzle</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Eggs Benedict</span>
+                            <span class="item-price">$18.00</span>
+                        </div>
+                        <div class="item-desc">English muffin, hollandaise, crispy bacon, capers</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Pancake Stack</span>
+                            <span class="item-price">$15.50</span>
+                        </div>
+                        <div class="item-desc">Buttermilk pancakes, maple syrup, fresh berries, whipped cream</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <div class="menu-header">
+                    <h3>☕ Coffee</h3>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Single Shot Espresso</span>
+                            <span class="item-price">$3.50</span>
+                        </div>
+                        <div class="item-desc">Single origin Ethiopian, fresh roasted daily</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Flat White</span>
+                            <span class="item-price">$4.50</span>
+                        </div>
+                        <div class="item-desc">Espresso with velvety microfoam - our signature drink</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Cappuccino</span>
+                            <span class="item-price">$4.50</span>
+                        </div>
+                        <div class="item-desc">Espresso, steamed milk, topped with rich foam</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Cold Brew</span>
+                            <span class="item-price">$5.00</span>
+                        </div>
+                        <div class="item-desc">12-hour cold steeped, smooth, naturally sweet</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Hot Chocolate</span>
+                            <span class="item-price">$4.50</span>
+                        </div>
+                        <div class="item-desc">Premium Belgian chocolate, topped with whipped cream</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <div class="menu-header">
+                    <h3>🥗 Lunch</h3>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Garden Fresh Salad</span>
+                            <span class="item-price">$14.00</span>
+                        </div>
+                        <div class="item-desc">Seasonal vegetables, mixed greens, house dressing</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Grilled Chicken Wrap</span>
+                            <span class="item-price">$13.50</span>
+                        </div>
+                        <div class="item-desc">Free-range chicken, hummus, roasted vegetables, charred tortilla</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Falafel Salad</span>
+                            <span class="item-price">$12.00</span>
+                        </div>
+                        <div class="item-desc">Homemade falafel, mixed greens, tahini dressing, pita bread</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Smoked Salmon Bagel</span>
+                            <span class="item-price">$15.00</span>
+                        </div>
+                        <div class="item-desc">Nova lox, cream cheese, capers, dill, toasted bagel</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Beef & Beetroot</span>
+                            <span class="item-price">$16.50</span>
+                        </div>
+                        <div class="item-desc">Slow-cooked beef, roasted beetroot, goat cheese, horseradish cream</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <div class="menu-header">
+                    <h3>🧁 Pastries & Sweets</h3>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Croissant</span>
+                            <span class="item-price">$4.50</span>
+                        </div>
+                        <div class="item-desc">French butter croissant, baked fresh daily</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Pain au Chocolat</span>
+                            <span class="item-price">$5.00</span>
+                        </div>
+                        <div class="item-desc">Flaky pastry, melted dark chocolate center</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Lemon Drizzle Cake</span>
+                            <span class="item-price">$4.50</span>
+                        </div>
+                        <div class="item-desc">Moist lemon sponge, tangy glaze</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Chocolate Brownie</span>
+                            <span class="item-price">$4.00</span>
+                        </div>
+                        <div class="item-desc">Fudgy, decadent, served warm with vanilla ice cream</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Seasonal Cheesecake</span>
+                            <span class="item-price">$5.50</span>
+                        </div>
+                        <div class="item-desc">Rich, creamy, topped with seasonal fruits</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <h2>Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openModal(this)" data-img="https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=800&h=600&fit=crop">
+                <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=500&h=400&fit=crop'); background-size: cover; background-position: center;">☕</div>
+                <div class="gallery-overlay">
+                    <div class="overlay-text">
+                        <h3>Specialty Coffee</h3>
+                        <p>Click to view</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openModal(this)" data-img="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=600&fit=crop">
+                <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=400&fit=crop'); background-size: cover; background-position: center;">🥐</div>
+                <div class="gallery-overlay">
+                    <div class="overlay-text">
+                        <h3>Fresh Pastries</h3>
+                        <p>Click to view</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openModal(this)" data-img="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&h=600&fit=crop">
+                <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=400&fit=crop'); background-size: cover; background-position: center;">🍽️</div>
+                <div class="gallery-overlay">
+                    <div class="overlay-text">
+                        <h3>Main Dishes</h3>
+                        <p>Click to view</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openModal(this)" data-img="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=800&h=600&fit=crop">
+                <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=500&h=400&fit=crop'); background-size: cover; background-position: center;">🥗</div>
+                <div class="gallery-overlay">
+                    <div class="overlay-text">
+                        <h3>Fresh Salads</h3>
+                        <p>Click to view</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openModal(this)" data-img="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&h=600&fit=crop">
+                <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=400&fit=crop'); background-size: cover; background-position: center;">🧁</div>
+                <div class="gallery-overlay">
+                    <div class="overlay-text">
+                        <h3>Desserts</h3>
+                        <p>Click to view</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openModal(this)" data-img="https://images.unsplash.com/photo-1517457373614-b7152f800fd1?w=800&h=600&fit=crop">
+                <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1517457373614-b7152f800fd1?w=500&h=400&fit=crop'); background-size: cover; background-position: center;">🌿</div>
+                <div class="gallery-overlay">
+                    <div class="overlay-text">
+                        <h3>Dining Space</h3>
+                        <p>Click to view</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials-section">
+        <h2>Guest Reviews</h2>
+        <div class="testimonials-container">
+            <div class="testimonial-card active">
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-text">"The coffee here is absolutely exceptional! Every visit feels special. The staff is friendly, the pastries are fresh, and the atmosphere is perfect for working or catching up with friends. Highly recommend!"</div>
+                <div class="testimonial-author">— Sarah Mitchell, Local Regular</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-text">"Izzy's has become my go-to spot for brunch. The avocado toast is perfection, and the hot chocolate is like a warm hug. The attention to detail in every dish is remarkable."</div>
+                <div class="testimonial-author">— James Chen, Food Blogger</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-text">"Best café in Hamilton by far. Not only is the food incredible, but the owners genuinely care about their customers. This is what a true community café should be!"</div>
+                <div class="testimonial-author">— Emma Richards, Café Enthusiast</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-text">"I've traveled across Australia, and Izzy's espresso rivals anything in Melbourne. The lunch menu is equally impressive. A gem in our little town!"</div>
+                <div class="testimonial-author">— David Thompson, Traveling Professional</div>
+            </div>
+
+            <div class="testimonial-controls">
+                <span class="testimonial-dot active" onclick="showTestimonial(0)"></span>
+                <span class="testimonial-dot" onclick="showTestimonial(1)"></span>
+                <span class="testimonial-dot" onclick="showTestimonial(2)"></span>
+                <span class="testimonial-dot" onclick="showTestimonial(3)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="contact-section">
+        <h2>Reservations & Inquiries</h2>
+        <div class="form-container">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Preferred Date *</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="time">Preferred Time *</label>
+                    <input type="time" id="time" name="time" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="guests">Number of Guests *</label>
+                    <input type="number" id="guests" name="guests" min="1" max="20" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Special Requests (allergies, occasion, etc.)</label>
+                    <textarea id="message" name="message" placeholder="Let us know if you have any special requirements..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Book Your Table</button>
+                <div class="form-message" id="formMessage"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal" id="galleryModal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-img">☕</div>
+            <h2 id="modalTitle">Gallery Item</h2>
+            <p id="modalDesc">Experience our culinary excellence and welcoming atmosphere.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>IZZY'S CAFÉ</h3>
+                <p>Premium café and eatery serving specialty coffee, fresh pastries, and locally-sourced cuisine in Hamilton, Victoria.</p>
+                <div class="social-icons">
+                    <div class="social-icon">f</div>
+                    <div class="social-icon">📸</div>
+                    <div class="social-icon">🐦</div>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <p>Tuesday - Sunday</p>
+                <p>7:00 AM - 5:00 PM</p>
+                <p style="margin-top: 1rem; opacity: 0.7;">Closed Mondays</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Location & Contact</h3>
+                <p>123 Main Street</p>
+                <p>Hamilton, VIC 3300</p>
+                <p style="margin-top: 1rem;">
+                    <a href="tel:0355722100">(03) 5572 2100</a>
+                </p>
+                <p>
+                    <a href="mailto:hello@izzyscafe.com">hello@izzyscafe.com</a>
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#menu">Menu</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Reservations</a>
+                <a href="#testimonials">Reviews</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Izzy's Café, Hamilton. All rights reserved. | Crafted with ☕</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Menu Search
+        document.getElementById('menuSearch').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            document.querySelectorAll('.menu-category').forEach(category => {
+                const text = category.textContent.toLowerCase();
+                category.style.display = text.includes(searchTerm) ? 'block' : 'none';
+                if (category.style.display !== 'none' && searchTerm) {
+                    category.style.animation = 'fadeInUp 0.3s ease-out';
+                }
+            });
+        });
+
+        // Gallery Modal
+        function openModal(element) {
+            const modal = document.getElementById('galleryModal');
+            const titles = ['Specialty Coffee', 'Fresh Pastries', 'Main Dishes', 'Fresh Salads', 'Desserts', 'Dining Space'];
+            const descs = [
+                'Single-origin espresso and specialty coffee drinks',
+                'Freshly baked pastries and croissants',
+                'Contemporary lunch and dinner dishes',
+                'Garden-fresh salads with seasonal ingredients',
+                'Homemade desserts and sweet treats',
+                'Our welcoming café dining space'
+            ];
+            const index = Array.from(element.parentNode.children).indexOf(element);
+            const imgUrl = element.getAttribute('data-img');
+
+            document.getElementById('modalTitle').textContent = titles[index];
+            document.getElementById('modalDesc').textContent = descs[index];
+            const modalImg = document.querySelector('.modal-img');
+            if (imgUrl) {
+                modalImg.style.backgroundImage = `url('${imgUrl}')`;
+                modalImg.style.backgroundSize = 'cover';
+                modalImg.style.backgroundPosition = 'center';
+                modalImg.textContent = '';
+            }
+            modal.classList.add('active');
+        }
+
+        function closeModal(event) {
+            if (event && event.target.id !== 'galleryModal') return;
+            document.getElementById('galleryModal').classList.remove('active');
+        }
+
+        // Testimonials
+        let currentTestimonial = 0;
+        function showTestimonial(index) {
+            currentTestimonial = index;
+            document.querySelectorAll('.testimonial-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            document.querySelectorAll('.testimonial-dot').forEach(dot => {
+                dot.classList.remove('active');
+            });
+            document.querySelectorAll('.testimonial-card')[index].classList.add('active');
+            document.querySelectorAll('.testimonial-dot')[index].classList.add('active');
+        }
+
+        // Auto-rotate testimonials
+        setInterval(() => {
+            const testimonials = document.querySelectorAll('.testimonial-card');
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }, 6000);
+
+        // Form Validation
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const guests = document.getElementById('guests').value;
+
+            if (!name || !email || !phone || !date || !time || !guests) {
+                showFormMessage('Please fill in all required fields.', 'error');
+                return;
+            }
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                showFormMessage('Please enter a valid email address.', 'error');
+                return;
+            }
+
+            if (!/^\d{10}/.test(phone.replace(/\D/g, ''))) {
+                showFormMessage('Please enter a valid phone number.', 'error');
+                return;
+            }
+
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Booking...';
+
+            setTimeout(() => {
+                showFormMessage('✓ Reservation confirmed! We\'ll contact you within 2 hours to confirm your details.', 'success');
+                document.getElementById('contactForm').reset();
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Book Your Table';
+            }, 1500);
+        });
+
+        function showFormMessage(message, type) {
+            const messageEl = document.getElementById('formMessage');
+            messageEl.textContent = message;
+            messageEl.className = `form-message ${type}`;
+            setTimeout(() => {
+                messageEl.className = 'form-message';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
