@@ -2,13 +2,15 @@
   "name": "zyntrixai-website",
   "version": "1.0.0",
   "description": "ZyntrixAI - Professional Web Design & Development Agency",
-  "type": "module",
   "engines": {
     "node": "20.x"
   },
   "scripts": {
     "dev": "vercel dev",
     "deploy": "vercel"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.0"
   },
   "keywords": [
     "web-design",
