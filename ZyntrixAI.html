@@ -1188,14 +1188,10 @@
       </div>
 
       <!-- SERVICE CAROUSEL 3D -->
-      <div id="carouselContainer" style="perspective:1200px;height:500px;margin:3rem auto 5rem;max-width:900px;display:flex;align-items:center;justify-content:center;position:relative;">
+      <div id="carouselContainer" style="perspective:1200px;height:380px;margin:3rem auto 5rem;max-width:900px;display:flex;align-items:center;justify-content:center;position:relative;">
         <div id="carouselRotator" style="width:100%;height:100%;position:relative;transform-style:preserve-3d;">
 
-          <div class="carousel-card" onclick="showPage('svc-design')" style="position:absolute;width:280px;height:360px;left:50%;top:50%;margin-left:-140px;margin-top:-180px;transform-style:preserve-3d;background:var(--card-bg);padding:1.6rem 1.5rem;cursor:pointer;display:flex;flex-direction:column;gap:0.8rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);opacity:0.5;letter-spacing:2px;">01</span>
-            <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
-          </div>
+          <div class="carousel-card" onclick="showPage('svc-design')" style="position:absolute;width:240px;height:300px;left:50%;top:50%;margin-left:-120px;margin-top:-150px;transform-style:preserve-3d;background:var(--card-bg);padding:1.4rem 1.2rem;cursor:pointer;display:flex;flex-direction:column;gap:0.6rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
           <h3 style="font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Web Design</h3>
           <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;flex:1;">A professionally designed website built around your brand â crafted to make a great first impression and turn visitors into customers.</p>
           <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-design')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More â</button>
@@ -1265,7 +1261,7 @@
         }
 
         #carouselRotator {
-          animation: rotate-carousel 20s linear infinite !important;
+          animation: rotate-carousel 40s linear infinite !important;
           transform-style: preserve-3d !important;
         }
 
