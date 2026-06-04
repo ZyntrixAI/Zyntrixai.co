@@ -1,0 +1,10 @@
+candle-shop/
+server.js
+supabase-client.js
+.vscode/
+.git/
+.claude/
+AppData/
+node_modules/
+*.log
+.env*

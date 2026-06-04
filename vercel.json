@@ -19,7 +19,7 @@
       "status": 404
     },
     {
-      "src": "^/(?!api/).*$",
+      "src": "/(.*)",
       "dest": "/ZyntrixAI.html"
     }
   ],
@@ -27,6 +27,5 @@
     "api/**/*.js": {
       "runtime": "nodejs20.x"
     }
-  },
-  "ignore": ["server.js", "supabase-client.js"]
+  }
 }
