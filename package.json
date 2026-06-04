@@ -9,9 +9,6 @@
     "dev": "vercel dev",
     "deploy": "vercel"
   },
-  "dependencies": {
-    "@supabase/supabase-js": "^2.38.0"
-  },
   "keywords": [
     "web-design",
     "web-development",

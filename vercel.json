@@ -1,31 +1,5 @@
 {
   "version": 2,
-  "public": true,
-  "buildCommand": "echo 'No build needed'",
-  "outputDirectory": ".",
-  "routes": [
-    {
-      "src": "/api/contact$",
-      "dest": "/api/contact.js",
-      "methods": ["POST"]
-    },
-    {
-      "src": "/api/quote$",
-      "dest": "/api/quote.js",
-      "methods": ["POST"]
-    },
-    {
-      "src": "^/api/.*$",
-      "status": 404
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/ZyntrixAI.html"
-    }
-  ],
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "nodejs20.x"
-    }
-  }
+  "buildCommand": "echo 'No build'",
+  "outputDirectory": "."
 }
