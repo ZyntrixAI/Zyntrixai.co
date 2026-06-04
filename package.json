@@ -1,0 +1,20 @@
+{
+  "name": "zyntrixai-website",
+  "version": "1.0.0",
+  "description": "ZyntrixAI - Professional Web Design & Development Agency",
+  "type": "module",
+  "engines": {
+    "node": "20.x"
+  },
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel"
+  },
+  "keywords": [
+    "web-design",
+    "web-development",
+    "agency"
+  ],
+  "author": "Blake Donhardt",
+  "license": "MIT"
+}

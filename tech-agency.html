@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus - Modern Tech Agency</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --primary: #0066FF;
+            --secondary: #00D4FF;
+            --accent: #6B00FF;
+            --dark: #0A0E27;
+            --dark-light: #111A2E;
+            --surface: #1a1f35;
+            --text: #F5F5F5;
+            --text-secondary: #B0B8D4;
+            --border: #2D3548;
+            --success: #00D97E;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 5%;
+            background: rgba(10, 14, 39, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(107, 0, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 14, 39, 0.9);
+            border-bottom-color: rgba(107, 0, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-logo {
+            font-size: 1.3rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--secondary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cta {
+            padding: 0.7rem 1.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--dark);
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 102, 255, 0.4);
+        }
+
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+        .hamburger span { width: 24px; height: 2px; background: var(--text); transition: 0.3s; }
+
+        /* Pages */
+        .page { display: none; min-height: 100vh; position: relative; z-index: 1; padding-top: 70px; }
+        .page.active { display: flex; flex-direction: column; }
+        .page.active > footer { margin-top: auto; }
+
+        /* Hero */
+        .hero {
+            min-height: calc(100vh - 70px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(107, 0, 255, 0.15), transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 102, 255, 0.1), transparent 70%);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(20px); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 1rem 2.2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--dark);
+            text-decoration: none;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.5);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 1rem 2.2rem;
+            background: transparent;
+            color: var(--secondary);
+            border: 1.5px solid var(--secondary);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat-item { text-align: center; }
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Section Header */
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-eyebrow {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: rgba(107, 0, 255, 0.15);
+            border: 1px solid rgba(107, 0, 255, 0.3);
+            border-radius: 8px;
+            color: var(--secondary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .section { padding: clamp(80px, 10vw, 120px) 5%; }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(26, 31, 53, 0.6);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            border-radius: 12px;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(107, 0, 255, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary);
+            background: rgba(26, 31, 53, 0.9);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.2);
+        }
+
+        .service-card:hover::before { opacity: 1; }
+
+        .service-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .service-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.8rem; }
+        .service-card p { color: var(--text-secondary); line-height: 1.7; font-size: 0.95rem; }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background: rgba(26, 31, 53, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portfolio-item:hover {
+            border-color: var(--secondary);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(107, 0, 255, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .portfolio-content { padding: 2rem; flex: 1; }
+        .portfolio-item h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.7rem; }
+        .portfolio-item p { color: var(--text-secondary); font-size: 0.95rem; }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(26, 31, 53, 0.6);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 12px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .stars { color: var(--success); font-size: 1rem; margin-bottom: 1.2rem; }
+        .testimonial-text { font-size: 1rem; color: var(--text-secondary); margin-bottom: 1.8rem; line-height: 1.8; }
+        .testimonial-author { font-weight: 600; color: var(--text); }
+        .testimonial-role { color: var(--primary); font-size: 0.85rem; margin-top: 0.4rem; }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: rgba(26, 31, 53, 0.6);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            border-radius: 12px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 30px 60px rgba(0, 102, 255, 0.3);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--dark);
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .pricing-tier { font-size: 0.8rem; color: var(--secondary); font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 1px; }
+        .pricing-price { font-size: 2.5rem; font-weight: 900; margin-bottom: 0.5rem; }
+        .pricing-price span { font-size: 1rem; color: var(--text-secondary); }
+        .pricing-desc { color: var(--text-secondary); margin: 1.5rem 0; line-height: 1.7; }
+        .pricing-features { list-style: none; margin: 2rem 0; }
+        .pricing-features li { padding: 0.7rem 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; display: flex; align-items: center; gap: 0.8rem; color: var(--text-secondary); }
+        .pricing-features li::before { content: '✓'; color: var(--success); font-weight: 800; }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 14, 39, 0.8);
+            border-top: 1px solid var(--border);
+            padding: 4rem 5% 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover { color: var(--secondary); }
+
+        .footer-copy { color: rgba(176, 184, 212, 0.5); font-size: 0.85rem; }
+
+        /* Forms */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 0.95rem 1.2rem;
+            border: 1px solid var(--border);
+            background: rgba(26, 31, 53, 0.5);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: var(--text);
+            transition: all 0.3s;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(26, 31, 53, 0.8);
+            box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.15);
+        }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.15), rgba(107, 0, 255, 0.15));
+            border: 1px solid rgba(0, 102, 255, 0.2);
+            border-radius: 16px;
+            padding: 4rem;
+            text-align: center;
+        }
+
+        .cta-section h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .cta-section p { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav { padding: 1rem 4%; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: rgba(10, 14, 39, 0.95); gap: 1rem; padding: 2rem; border-bottom: 1px solid var(--border); }
+            .nav-links.open { display: flex; }
+            .hamburger { display: flex; }
+
+            .hero h1 { font-size: 2rem; }
+            .btn-group { flex-direction: column; }
+            .btn-primary, .btn-secondary { width: 100%; }
+
+            .services-grid, .portfolio-grid, .testimonials-grid, .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured { transform: scale(1); }
+            .form-row { grid-template-columns: 1fr; }
+            .stats { gap: 2rem; }
+            .cta-section { padding: 2.5rem; }
+            .cta-section h2 { font-size: 1.8rem; }
+        }
+
+        @media (max-width: 480px) {
+            .section-title { font-size: 1.8rem; }
+            .hero h1 { font-size: 1.6rem; }
+            .nav-logo { font-size: 1.1rem; }
+            .section { padding: 50px 4%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-logo" onclick="showPage('home')">Nexus</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a onclick="showPage('services')" data-page="services">Services</a></li>
+            <li><a onclick="showPage('portfolio')" data-page="portfolio">Portfolio</a></li>
+            <li><a onclick="showPage('pricing')" data-page="pricing">Pricing</a></li>
+            <li><a onclick="showPage('about')" data-page="about">About</a></li>
+            <li><a onclick="showPage('contact')" data-page="contact">Contact</a></li>
+        </ul>
+        <button class="nav-cta" onclick="showPage('contact')">Get Started</button>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div id="page-home" class="page active">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Next-Gen Technology <em>Delivered</em></h1>
+                <p>Build faster, scale smarter. We craft cutting-edge digital solutions that push boundaries and drive innovation for forward-thinking companies.</p>
+                <div class="btn-group">
+                    <button class="btn-primary" onclick="showPage('contact')">Start Your Project</button>
+                    <button class="btn-secondary" onclick="showPage('portfolio')">View Our Work</button>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">200+</div>
+                        <div class="stat-label">Projects Delivered</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">$500M+</div>
+                        <div class="stat-label">Client Revenue</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Client Retention</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Tech Stack</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-eyebrow">Our Expertise</span>
+                <h2 class="section-title">Modern Tech Solutions</h2>
+                <p class="section-subtitle">From architecture to deployment, we deliver enterprise-grade solutions</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Full Stack Development</h3>
+                    <p>React, Node.js, Python—we build scalable applications with modern architecture and DevOps practices.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔐</div>
+                    <h3>Cloud Infrastructure</h3>
+                    <p>AWS, Azure, GCP—optimized cloud deployments with zero-downtime scaling and enterprise security.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>AI & Machine Learning</h3>
+                    <p>Custom ML models, NLP solutions, and intelligent automation that drive business value.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Product Design</h3>
+                    <p>User-centric design systems and interfaces that convert. Design that scales with your product.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Data & Analytics</h3>
+                    <p>Data pipelines, business intelligence, and analytics platforms that unlock real-time insights.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔗</div>
+                    <h3>API Integration</h3>
+                    <p>RESTful APIs, GraphQL, webhooks—seamless integrations with third-party services and legacy systems.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio -->
+        <section class="section" style="background: rgba(10, 14, 39, 0.5);">
+            <div class="section-header">
+                <span class="section-eyebrow">Case Studies</span>
+                <h2 class="section-title">Recent Projects</h2>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" onclick="showPage('portfolio')">
+                    <div class="portfolio-image">💼</div>
+                    <div class="portfolio-content">
+                        <h3>FinTech Platform</h3>
+                        <p>Real-time payment processing for 500K+ users. Built with React, Node.js, and Stripe integration.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" onclick="showPage('portfolio')">
+                    <div class="portfolio-image">🛒</div>
+                    <div class="portfolio-content">
+                        <h3>E-Commerce at Scale</h3>
+                        <p>Multi-tenant SaaS platform handling 10M+ daily transactions with advanced caching.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" onclick="showPage('portfolio')">
+                    <div class="portfolio-image">🧠</div>
+                    <div class="portfolio-content">
+                        <h3>AI Analytics Engine</h3>
+                        <p>Machine learning pipeline processing 1TB+ daily data with real-time predictions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-eyebrow">Trusted By</span>
+                <h2 class="section-title">What Clients Say</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Nexus transformed our architecture. Performance improved by 300% and our team could finally focus on product innovation."</p>
+                    <div class="testimonial-author">Alex Kumar</div>
+                    <div class="testimonial-role">CTO, TechVentures</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"The technical expertise and professional approach was exceptional. They delivered 2 months ahead of schedule."</p>
+                    <div class="testimonial-author">Sarah Chen</div>
+                    <div class="testimonial-role">VP Engineering, CloudScale</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Not just developers—strategic partners who understood our business challenges and architected solutions accordingly."</p>
+                    <div class="testimonial-author">Michael Rodriguez</div>
+                    <div class="testimonial-role">Founder, DataDrive</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section" style="text-align: center;">
+            <div class="cta-section">
+                <h2>Ready to build something extraordinary?</h2>
+                <p>Let's discuss your technical challenges and craft the perfect solution.</p>
+                <button class="btn-primary" onclick="showPage('contact')">Schedule a Consultation</button>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-links">
+                <a onclick="showPage('home')">Home</a>
+                <a onclick="showPage('services')">Services</a>
+                <a onclick="showPage('portfolio')">Portfolio</a>
+                <a onclick="showPage('pricing')">Pricing</a>
+                <a onclick="showPage('contact')">Contact</a>
+            </div>
+            <p class="footer-copy">© 2026 Nexus. Engineered for the future.</p>
+        </footer>
+    </div>
+
+    <!-- SERVICES PAGE -->
+    <div id="page-services" class="page">
+        <section class="section">
+            <div class="section-header">
+                <span class="section-eyebrow">What We Do</span>
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">Enterprise-grade technology solutions built for scale</p>
+            </div>
+            <div class="services-grid" style="margin-top: 3rem;">
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Full Stack Development</h3>
+                    <p>React, Vue, Angular • Node.js, Python, Go • PostgreSQL, MongoDB • Docker, Kubernetes • Real-time applications.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔐</div>
+                    <h3>Cloud Architecture</h3>
+                    <p>AWS, Azure, GCP setup • Microservices architecture • Serverless solutions • Auto-scaling infrastructure • CI/CD pipelines.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>AI & ML Solutions</h3>
+                    <p>TensorFlow, PyTorch • Computer vision • NLP models • Recommendation engines • Predictive analytics.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Product Design</h3>
+                    <p>UI/UX design • Design systems • Prototyping • User research • Accessibility compliance.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Data & Analytics</h3>
+                    <p>Data warehousing • ETL pipelines • BI dashboards • Real-time analytics • Data visualization.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔗</div>
+                    <h3>Integration & APIs</h3>
+                    <p>REST & GraphQL APIs • Third-party integrations • Webhook systems • Legacy system migration.</p>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="footer-links">
+                <a onclick="showPage('home')">Home</a>
+                <a onclick="showPage('services')">Services</a>
+                <a onclick="showPage('portfolio')">Portfolio</a>
+                <a onclick="showPage('pricing')">Pricing</a>
+                <a onclick="showPage('contact')">Contact</a>
+            </div>
+            <p class="footer-copy">© 2026 Nexus. Engineered for the future.</p>
+        </footer>
+    </div>
+
+    <!-- PORTFOLIO PAGE -->
+    <div id="page-portfolio" class="page">
+        <section class="section">
+            <div class="section-header">
+                <span class="section-eyebrow">Case Studies</span>
+                <h2 class="section-title">Portfolio</h2>
+            </div>
+            <div class="portfolio-grid" style="margin-top: 3rem;">
+                <div class="portfolio-item">
+                    <div class="portfolio-image">💼</div>
+                    <div class="portfolio-content">
+                        <h3>FinTech Platform</h3>
+                        <p>Real-time payment processing serving 500K+ users. Reduced latency by 85% with microservices architecture.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">🛒</div>
+                    <div class="portfolio-content">
+                        <h3>E-Commerce Platform</h3>
+                        <p>Multi-tenant SaaS handling 10M+ daily transactions. 99.99% uptime with Kubernetes orchestration.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">🧠</div>
+                    <div class="portfolio-content">
+                        <h3>AI Analytics Engine</h3>
+                        <p>ML pipeline processing 1TB+ daily data. Real-time predictions with 98% accuracy.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">📱</div>
+                    <div class="portfolio-content">
+                        <h3>Mobile App Platform</h3>
+                        <p>React Native app with 2M+ downloads. Cross-platform solution reducing development time by 50%.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">☁️</div>
+                    <div class="portfolio-content">
+                        <h3>Cloud Migration</h3>
+                        <p>Legacy monolith to cloud-native architecture. Zero-downtime migration saving $2M annually in infrastructure costs.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">🔍</div>
+                    <div class="portfolio-content">
+                        <h3>Search & Recommendations</h3>
+                        <p>Elasticsearch + ML recommendation engine. Improved search relevance by 40%, increasing conversions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="footer-links">
+                <a onclick="showPage('home')">Home</a>
+                <a onclick="showPage('services')">Services</a>
+                <a onclick="showPage('portfolio')">Portfolio</a>
+                <a onclick="showPage('pricing')">Pricing</a>
+                <a onclick="showPage('contact')">Contact</a>
+            </div>
+            <p class="footer-copy">© 2026 Nexus. Engineered for the future.</p>
+        </footer>
+    </div>
+
+    <!-- PRICING PAGE -->
+    <div id="page-pricing" class="page">
+        <section class="section">
+            <div class="section-header">
+                <span class="section-eyebrow">Investment</span>
+                <h2 class="section-title">Transparent Pricing</h2>
+                <p class="section-subtitle">Flexible packages scaled to your project requirements</p>
+            </div>
+            <div class="pricing-grid" style="margin-top: 3rem;">
+                <div class="pricing-card">
+                    <div class="pricing-tier">Startup</div>
+                    <div class="pricing-price">$25K</div>
+                    <p class="pricing-desc">MVP development and launch</p>
+                    <ul class="pricing-features">
+                        <li>Full stack web application</li>
+                        <li>Database design & setup</li>
+                        <li>Deployment & monitoring</li>
+                        <li>3 months support</li>
+                        <li>Documentation</li>
+                    </ul>
+                    <button class="btn-primary" onclick="showPage('contact')" style="width: 100%;">Get Started</button>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-tier">Growth</div>
+                    <div class="pricing-price">$75K</div>
+                    <p class="pricing-desc">Scalable product platform</p>
+                    <ul class="pricing-features">
+                        <li>Advanced architecture</li>
+                        <li>API design & integration</li>
+                        <li>CI/CD pipeline setup</li>
+                        <li>Performance optimization</li>
+                        <li>12 months support</li>
+                    </ul>
+                    <button class="btn-primary" onclick="showPage('contact')" style="width: 100%;">Get Started</button>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-tier">Enterprise</div>
+                    <div class="pricing-price">Custom</div>
+                    <p class="pricing-desc">Mission-critical solutions</p>
+                    <ul class="pricing-features">
+                        <li>Dedicated team</li>
+                        <li>24/7 support</li>
+                        <li>Custom integrations</li>
+                        <li>Security audit</li>
+                        <li>Ongoing optimization</li>
+                    </ul>
+                    <button class="btn-primary" onclick="showPage('contact')" style="width: 100%;">Contact Sales</button>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="footer-links">
+                <a onclick="showPage('home')">Home</a>
+                <a onclick="showPage('services')">Services</a>
+                <a onclick="showPage('portfolio')">Portfolio</a>
+                <a onclick="showPage('pricing')">Pricing</a>
+                <a onclick="showPage('contact')">Contact</a>
+            </div>
+            <p class="footer-copy">© 2026 Nexus. Engineered for the future.</p>
+        </footer>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="page-contact" class="page">
+        <section class="section">
+            <div class="section-header">
+                <span class="section-eyebrow">Get In Touch</span>
+                <h2 class="section-title">Let's Work Together</h2>
+                <p class="section-subtitle">Describe your project and we'll prepare a detailed technical proposal</p>
+            </div>
+            <div style="max-width: 700px; margin: 3rem auto; background: rgba(26, 31, 53, 0.6); padding: 3rem; border-radius: 12px; border: 1px solid var(--border);">
+                <form onsubmit="submitForm(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" required placeholder="John">
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" required placeholder="Smith">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" required placeholder="john@company.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Project Type</label>
+                        <select required>
+                            <option value="">Select a service</option>
+                            <option value="Full Stack Development">Full Stack Development</option>
+                            <option value="Cloud Architecture">Cloud Architecture</option>
+                            <option value="AI & ML">AI & Machine Learning</option>
+                            <option value="Product Design">Product Design</option>
+                            <option value="Data & Analytics">Data & Analytics</option>
+                            <option value="Custom">Custom Solution</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Project Details</label>
+                        <textarea required placeholder="Tell us about your project, technical challenges, and timeline..." rows="5"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%;">Send Inquiry</button>
+                </form>
+            </div>
+        </section>
+        <footer>
+            <div class="footer-links">
+                <a onclick="showPage('home')">Home</a>
+                <a onclick="showPage('services')">Services</a>
+                <a onclick="showPage('portfolio')">Portfolio</a>
+                <a onclick="showPage('pricing')">Pricing</a>
+                <a onclick="showPage('contact')">Contact</a>
+            </div>
+            <p class="footer-copy">© 2026 Nexus. Engineered for the future.</p>
+        </footer>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="page-about" class="page">
+        <section class="section">
+            <div class="section-header">
+                <span class="section-eyebrow">About Us</span>
+                <h2 class="section-title">Engineering Excellence</h2>
+            </div>
+            <div style="max-width: 800px; margin: 3rem auto;">
+                <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8;">
+                    Nexus is a technology agency founded by engineers for engineers. We partner with ambitious companies to build the digital infrastructure that powers their growth.
+                </p>
+                <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8;">
+                    From startups disrupting industries to enterprises modernizing legacy systems, we've delivered 200+ projects handling billions of transactions daily. Our expertise spans full-stack development, cloud infrastructure, AI/ML, and product design—all guided by a commitment to technical excellence and business impact.
+                </p>
+            </div>
+        </section>
+        <footer>
+            <div class="footer-links">
+                <a onclick="showPage('home')">Home</a>
+                <a onclick="showPage('services')">Services</a>
+                <a onclick="showPage('portfolio')">Portfolio</a>
+                <a onclick="showPage('pricing')">Pricing</a>
+                <a onclick="showPage('contact')">Contact</a>
+            </div>
+            <p class="footer-copy">© 2026 Nexus. Engineered for the future.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Nav scroll
+        (function() {
+            const nav = document.querySelector('nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) nav.classList.add('scrolled');
+                else nav.classList.remove('scrolled');
+            }, { passive: true });
+        })();
+
+        function showPage(id) {
+            document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+            document.getElementById("page-" + id).classList.add("active");
+            window.scrollTo(0, 0);
+            document.getElementById("navLinks").classList.remove("open");
+        }
+
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("open");
+        }
+
+        function submitForm(e) {
+            e.preventDefault();
+            alert('Thanks for your inquiry. We\'ll be in touch within 24 hours.');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
