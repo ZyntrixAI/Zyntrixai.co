@@ -3401,36 +3401,6 @@
           });
           const data = await res.json();
           if (data.success) {
-            // Save to Supabase directly
-            const supabaseUrl = "https://rvmozwfwfnrgviacsreo.supabase.co";
-            const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2bW96d2Z3Zm5yZ3ZpYWNzcmVvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0NTEyMzEsImV4cCI6MjA5NjAyNzIzMX0.kOnfRJtBWCH9BGScGrIkIWLoCUnEioP1z7nZxP8nVpk";
-            try {
-              await fetch(`${supabaseUrl}/rest/v1/bookings`, {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                  "Authorization": `Bearer ${supabaseKey}`,
-                  "apikey": supabaseKey,
-                },
-                body: JSON.stringify({
-                  first_name: payload.firstName,
-                  last_name: payload.lastName,
-                  email: payload.email,
-                  phone: payload.phone || null,
-                  business_name: payload.businessName,
-                  industry_niche: payload.niche || null,
-                  services: payload.services,
-                  website_url: payload.websiteUrl,
-                  has_website: payload.websiteUrl && !payload.websiteUrl.includes("starting fresh"),
-                  current_problems: payload.currentProblems || null,
-                  status: "new",
-                  source: "website"
-                }),
-              });
-            } catch (sbErr) {
-              console.warn("Supabase save failed (non-blocking):", sbErr);
-            }
-
             document.getElementById("bookingSuccess").style.display = "block";
             // Show recommendation details if returned
             if (data.recommendation) {

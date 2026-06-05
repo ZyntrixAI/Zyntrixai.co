@@ -1,5 +1,9 @@
 {
   "buildCommand": "",
   "outputDirectory": ".",
-  "framework": null
+  "framework": null,
+  "env": [
+    "SUPABASE_URL",
+    "SUPABASE_ANON_KEY"
+  ]
 }

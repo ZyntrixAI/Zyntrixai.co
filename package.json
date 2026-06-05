@@ -9,8 +9,12 @@
   ],
   "author": "Blake Donhardt",
   "license": "MIT",
+  "type": "module",
   "dependencies": {
     "@supabase/ssr": "^0.10.3",
     "@supabase/supabase-js": "^2.107.0"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
