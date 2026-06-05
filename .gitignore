@@ -30,9 +30,11 @@ OneDrive/
 .vscode-shared/
 .vscode/
 
+# Dependencies
+node_modules/
+
 # Shortcuts & lock files
 *.lnk
-package-lock.json
 
 # Projects (tracked separately)
 candle-shop/
