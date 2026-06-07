@@ -107,9 +107,7 @@
         text-transform: uppercase; color: var(--blue); margin-bottom: 1.2rem;
       }
       .s-eyebrow::before {
-        content: ''; width: 5px; height: 5px; border-radius: 50%;
-        background: var(--blue); box-shadow: 0 0 6px rgba(0,200,255,0.6);
-        flex-shrink: 0;
+        display: none;
       }
       .s-title {
         font-size: clamp(1.9rem, 4vw, 3.2rem); font-weight: 700;
@@ -193,7 +191,7 @@
         color: var(--blue); opacity: 0.5; font-family: monospace;
         margin-bottom: 1.2rem; transition: opacity 0.2s;
       }
-      .svc-card:hover .svc-num { opacity: 1; }
+      .svc-card:hover .svc-num { display: none; }
       .svc-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; color: #f7f8f8; }
       .svc-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; flex: 1; }
       .svc-price {
@@ -586,15 +584,15 @@
       .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 2.5rem; }
       .value-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem 1.8rem; text-align: center; transition: background 0.2s, border-color 0.2s; }
       .value-card:hover { background: var(--card-hover); border-color: var(--border-hover); }
-      .value-num { font-size: 0.62rem; font-family: monospace; color: var(--blue); letter-spacing: 2px; opacity: 0.5; margin-bottom: 1.2rem; transition: opacity 0.2s; }
-      .value-card:hover .value-num { opacity: 1; }
+      .value-num { display: none; }
+      .value-card:hover .value-num { display: none; }
       .value-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; color: #f7f8f8; letter-spacing: -0.01em; }
       .value-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
       .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.2rem; margin-top: 2.5rem; }
       .team-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; transition: background 0.2s, border-color 0.2s; }
       .team-card:hover { background: var(--card-hover); border-color: var(--border-hover); }
-      .team-num { font-size: 0.62rem; font-family: monospace; color: var(--blue); letter-spacing: 2px; opacity: 0.5; margin-bottom: 1.2rem; transition: opacity 0.2s; }
-      .team-card:hover .team-num { opacity: 1; }
+      .team-num { display: none; }
+      .team-card:hover .team-num { display: none; }
       .team-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: #f7f8f8; letter-spacing: -0.01em; }
       .team-card span { font-size: 0.78rem; color: var(--blue); }
 
@@ -603,7 +601,7 @@
       .contact-info h2 { font-size: clamp(1.9rem, 4vw, 3.2rem); font-weight: 600; margin-bottom: 1rem; }
       .contact-info p { color: var(--muted); line-height: 1.8; margin-bottom: 2rem; font-size: 0.92rem; }
       .contact-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.4rem; }
-      .contact-icon { width: 40px; height: 40px; background: rgba(0,200,255,0.06); border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+      .contact-icon { display: none; }
       .contact-item h4 { font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
       .contact-item p { font-size: 0.9rem; color: var(--text); margin: 0; }
 
@@ -634,7 +632,7 @@
       .booking-info p { color: var(--muted); line-height: 1.8; margin-bottom: 2rem; font-size: 0.92rem; }
       .booking-steps { list-style: none; }
       .booking-steps li { display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--border); }
-      .step-dot { width: 30px; height: 30px; border-radius: 50%; background: rgba(0,200,255,0.08); border: 1px solid var(--blue); display: flex; align-items: center; justify-content: center; font-size: 0.68rem; color: var(--blue); flex-shrink: 0; font-weight: 700; font-family: 'Orbitron', sans-serif; }
+      .step-dot { display: none; }
       .booking-steps h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.2rem; }
       .booking-steps p { font-size: 0.82rem; color: var(--muted); }
 
@@ -644,8 +642,8 @@
       .project-card:hover { border-color: var(--border-hover); background: var(--card-hover); }
       .project-mockup { height: 190px; overflow: hidden; border-bottom: 1px solid var(--border); }
       .project-info { padding: 1.4rem; }
-      .project-tag { display: inline-block; font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); border: 1px solid rgba(0,200,255,0.2); border-radius: 999px; padding: 0.2rem 0.7rem; margin-bottom: 0.7rem; }
-      .project-info h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+      .project-tag { display: inline-block; font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); border: 1px solid rgba(0,200,255,0.2); border-radius: 999px; padding: 0.2rem 0.7rem; margin-bottom: 0.7rem; display: none; }
+      .project-info h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; display: none; }
       .project-info p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.9rem; }
       .project-link { font-size: 0.82rem; color: var(--blue); transition: opacity 0.2s; }
       .project-link:hover { opacity: 0.75; }
@@ -657,8 +655,8 @@
       .pricing-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.6rem; position: relative; background: var(--card-bg); transition: background 0.2s, border-color 0.2s; }
       .pricing-card:hover { background: var(--card-hover); border-color: var(--border-hover); }
       .pricing-card.featured { border-color: var(--blue); }
-      .pricing-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--blue); color: #000; font-size: 0.6rem; font-weight: 700; letter-spacing: 2px; padding: 3px 12px; border-radius: 999px; white-space: nowrap; }
-      .pricing-tier { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; font-family: 'Orbitron', sans-serif; }
+      .pricing-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--blue); color: #000; font-size: 0.6rem; font-weight: 700; letter-spacing: 2px; padding: 3px 12px; border-radius: 999px; white-space: nowrap; display: none; }
+      .pricing-tier { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; font-family: 'Orbitron', sans-serif; display: none; }
       .pricing-amount { font-size: 2.2rem; font-weight: 800; line-height: 1; margin-bottom: 0.2rem; }
       .pricing-amount span { font-size: 1rem; font-weight: 400; color: var(--muted); }
       .pricing-desc { font-size: 0.82rem; color: var(--muted); margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); line-height: 1.5; }
@@ -740,8 +738,8 @@
       .blog-card:hover { border-color: var(--border-hover); background: var(--card-hover); }
       .blog-thumb { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; border-bottom: 1px solid var(--border); flex-direction: column; gap: 0.4rem; }
       .blog-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
-      .blog-cat { display: inline-block; font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); border: 1px solid rgba(0,200,255,0.2); border-radius: 999px; padding: 0.2rem 0.7rem; margin-bottom: 0.8rem; align-self: flex-start; }
-      .blog-card h3 { font-size: 0.95rem; font-weight: 600; line-height: 1.4; margin-bottom: 0.6rem; }
+      .blog-cat { display: inline-block; font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); border: 1px solid rgba(0,200,255,0.2); border-radius: 999px; padding: 0.2rem 0.7rem; margin-bottom: 0.8rem; align-self: flex-start; display: none; }
+      .blog-card h3 { font-size: 0.95rem; font-weight: 600; line-height: 1.4; margin-bottom: 0.6rem; display: none; }
       .blog-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; flex: 1; }
       .blog-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--muted); padding-top: 1rem; border-top: 1px solid var(--border); margin-top: 1rem; }
       .project-link { color: var(--blue); cursor: pointer; transition: opacity 0.2s; }
@@ -1187,111 +1185,270 @@
         <p class="s-sub" style="margin:0 auto;">We design, build, and grow websites for Australian businesses. Clear services, real results, no jargon.</p>
       </div>
 
-      <!-- SERVICE CAROUSEL 3D -->
-      <div id="carouselContainer" style="perspective:1200px;height:380px;margin:3rem auto 5rem;max-width:900px;display:flex;align-items:center;justify-content:center;position:relative;">
-        <div id="carouselRotator" style="width:100%;height:100%;position:relative;transform-style:preserve-3d;">
-
-          <div class="carousel-card" onclick="showPage('svc-design')" style="position:absolute;width:240px;height:300px;left:50%;top:50%;margin-left:-120px;margin-top:-150px;transform-style:preserve-3d;background:var(--card-bg);padding:1.4rem 1.2rem;cursor:pointer;display:flex;flex-direction:column;gap:0.6rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
-          <h3 style="font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Web Design</h3>
-          <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;flex:1;">A professionally designed website built around your brand â crafted to make a great first impression and turn visitors into customers.</p>
-          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-design')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More â</button>
-        </div>
-
-          <div class="carousel-card" onclick="showPage('svc-dev')" style="position:absolute;width:280px;height:360px;left:50%;top:50%;margin-left:-140px;margin-top:-180px;transform-style:preserve-3d;background:var(--card-bg);padding:1.6rem 1.5rem;cursor:pointer;display:flex;flex-direction:column;gap:0.8rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);opacity:0.5;letter-spacing:2px;">02</span>
-            <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
+            <!-- SERVICES GRID -->
+      <div style="padding:3rem 5% 4rem;max-width:1100px;margin:0 auto;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:3rem;">
+          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;cursor:pointer;display:flex;flex-direction:column;gap:1rem;transition:all 0.2s;" onmouseover="this.style.background='var(--card-hover)'" onmouseout="this.style.background='var(--card-bg)'" onclick="showPage('svc-design')">
+            <h3 style="font-size:1.1rem;font-weight:700;color:#fff;">Web Design</h3>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;flex:1;">A professionally designed website built around your brand - crafted to make a great first impression and turn visitors into customers.</p>
+            <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-design')" style="width:100%;">Learn More</button>
           </div>
-          <h3 style="font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Web Development</h3>
-          <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;flex:1;">Clean, fast, hand-coded websites that load quickly, work on every device, and are built to last. No bloated templates â just solid, reliable code.</p>
-          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-dev')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More â</button>
-        </div>
 
-          <div class="carousel-card" onclick="showPage('svc-ecommerce')" style="position:absolute;width:280px;height:360px;left:50%;top:50%;margin-left:-140px;margin-top:-180px;transform-style:preserve-3d;background:var(--card-bg);padding:1.6rem 1.5rem;cursor:pointer;display:flex;flex-direction:column;gap:0.8rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);opacity:0.5;letter-spacing:2px;">03</span>
-            <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
+          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;cursor:pointer;display:flex;flex-direction:column;gap:1rem;transition:all 0.2s;" onmouseover="this.style.background='var(--card-hover)'" onmouseout="this.style.background='var(--card-bg)'" onclick="showPage('svc-dev')">
+            <h3 style="font-size:1.1rem;font-weight:700;color:#fff;">Web Development</h3>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;flex:1;">Clean, fast, hand-coded websites that load quickly, work on every device, and are built to last. No bloated templates - just solid, reliable code.</p>
+            <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-dev')" style="width:100%;">Learn More</button>
           </div>
-          <h3 style="font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Online Shop</h3>
-          <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;flex:1;">A fully set-up online store with secure payments and smooth checkout â ready to take orders from day one, around the clock.</p>
-          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-ecommerce')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More â</button>
-        </div>
 
-          <div class="carousel-card" onclick="showPage('svc-seo')" style="position:absolute;width:280px;height:360px;left:50%;top:50%;margin-left:-140px;margin-top:-180px;transform-style:preserve-3d;background:var(--card-bg);padding:1.6rem 1.5rem;cursor:pointer;display:flex;flex-direction:column;gap:0.8rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);opacity:0.5;letter-spacing:2px;">04</span>
-            <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
+          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;cursor:pointer;display:flex;flex-direction:column;gap:1rem;transition:all 0.2s;" onmouseover="this.style.background='var(--card-hover)'" onmouseout="this.style.background='var(--card-bg)'" onclick="showPage('svc-ecommerce')">
+            <h3 style="font-size:1.1rem;font-weight:700;color:#fff;">Online Shop</h3>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;flex:1;">A fully set-up online store with secure payments and smooth checkout - ready to take orders from day one, around the clock.</p>
+            <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-ecommerce')" style="width:100%;">Learn More</button>
           </div>
-          <h3 style="font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Get Found on Google</h3>
-          <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;flex:1;">We optimise your site so local customers find you first. Monthly reporting, real rankings, more enquiries â every month.</p>
-          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-seo')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More â</button>
-        </div>
 
-          <div class="carousel-card" onclick="showPage('svc-branding')" style="position:absolute;width:280px;height:360px;left:50%;top:50%;margin-left:-140px;margin-top:-180px;transform-style:preserve-3d;background:var(--card-bg);padding:1.6rem 1.5rem;cursor:pointer;display:flex;flex-direction:column;gap:0.8rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);opacity:0.5;letter-spacing:2px;">05</span>
-            <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
+          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;cursor:pointer;display:flex;flex-direction:column;gap:1rem;transition:all 0.2s;" onmouseover="this.style.background='var(--card-hover)'" onmouseout="this.style.background='var(--card-bg)'" onclick="showPage('svc-seo')">
+            <h3 style="font-size:1.1rem;font-weight:700;color:#fff;">Get Found on Google</h3>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;flex:1;">We optimise your site so local customers find you first. Monthly reporting, real rankings, more enquiries - every month.</p>
+            <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-seo')" style="width:100%;">Learn More</button>
           </div>
-          <h3 style="font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Logo &amp; Branding</h3>
-          <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;flex:1;">A professional logo and full brand identity â colours, fonts, and guidelines â that makes your business look established and impossible to forget.</p>
-          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-branding')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More â</button>
-        </div>
 
-          <div class="carousel-card" onclick="showPage('svc-maintenance')" style="position:absolute;width:280px;height:360px;left:50%;top:50%;margin-left:-140px;margin-top:-180px;transform-style:preserve-3d;background:var(--card-bg);padding:1.6rem 1.5rem;cursor:pointer;display:flex;flex-direction:column;gap:0.8rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);opacity:0.5;letter-spacing:2px;">06</span>
-            <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
+          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;cursor:pointer;display:flex;flex-direction:column;gap:1rem;transition:all 0.2s;" onmouseover="this.style.background='var(--card-hover)'" onmouseout="this.style.background='var(--card-bg)'" onclick="showPage('svc-branding')">
+            <h3 style="font-size:1.1rem;font-weight:700;color:#fff;">Logo &amp; Branding</h3>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;flex:1;">A professional logo and full brand identity - colours, fonts, and guidelines - that makes your business look established and impossible to forget.</p>
+            <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-branding')" style="width:100%;">Learn More</button>
           </div>
-          <h3 style="font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Ongoing Support</h3>
-          <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;flex:1;">Monthly care â updates, security, backups, and content changes handled for you. Your site stays fast, safe, and up to date.</p>
-          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-maintenance')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More â</button>
-        </div>
 
+          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;cursor:pointer;display:flex;flex-direction:column;gap:1rem;transition:all 0.2s;" onmouseover="this.style.background='var(--card-hover)'" onmouseout="this.style.background='var(--card-bg)'" onclick="showPage('svc-maintenance')">
+            <h3 style="font-size:1.1rem;font-weight:700;color:#fff;">Ongoing Support</h3>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;flex:1;">Monthly care - updates, security, backups, and content changes handled for you. Your site stays fast, safe, and up to date.</p>
+            <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-maintenance')" style="width:100%;">Learn More</button>
+          </div>
         </div>
       </div>
 
+
+      <!-- Chatbot Styles -->
       <style>
-        @keyframes rotate-carousel {
-          from { transform: rotateY(0deg); }
-          to { transform: rotateY(360deg); }
+        #chatbot-widget {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          z-index: 9999;
+          font-family: 'Orbitron', system-ui, sans-serif;
         }
 
-        #carouselContainer {
-          perspective: 1200px !important;
+        #chatbot-toggle {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, var(--blue), #0080ff);
+          border: none;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 4px 20px rgba(0,200,255,0.4);
+          transition: all 0.3s ease;
+          position: relative;
         }
 
-        #carouselRotator {
-          animation: rotate-carousel 40s linear infinite !important;
-          transform-style: preserve-3d !important;
+        #chatbot-toggle:hover {
+          transform: scale(1.1);
+          box-shadow: 0 6px 30px rgba(0,200,255,0.6);
         }
 
-        .carousel-card {
-          box-shadow: 0 20px 60px rgba(0,200,255,0.1) !important;
-          transform-style: preserve-3d !important;
-          backface-visibility: hidden;
+        #chatbot-toggle svg {
+          width: 32px;
+          height: 32px;
+          filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
         }
 
-        #carouselRotator .carousel-card:nth-child(1) {
-          transform: rotateY(0deg) translateZ(420px) !important;
-        }
-        #carouselRotator .carousel-card:nth-child(2) {
-          transform: rotateY(60deg) translateZ(420px) !important;
-        }
-        #carouselRotator .carousel-card:nth-child(3) {
-          transform: rotateY(120deg) translateZ(420px) !important;
-        }
-        #carouselRotator .carousel-card:nth-child(4) {
-          transform: rotateY(180deg) translateZ(420px) !important;
-        }
-        #carouselRotator .carousel-card:nth-child(5) {
-          transform: rotateY(240deg) translateZ(420px) !important;
-        }
-        #carouselRotator .carousel-card:nth-child(6) {
-          transform: rotateY(300deg) translateZ(420px) !important;
+        #chatbot-container {
+          position: absolute;
+          bottom: 80px;
+          right: 0;
+          width: 380px;
+          height: 500px;
+          background: var(--bg);
+          border: 1px solid var(--border);
+          border-radius: 12px;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+          display: none;
+          flex-direction: column;
+          opacity: 0;
+          transform: translateY(20px);
+          transition: all 0.3s ease;
         }
 
-        .carousel-card:hover {
-          filter: drop-shadow(0 0 20px rgba(0,200,255,0.5)) !important;
+        #chatbot-container.open {
+          display: flex;
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .chatbot-header {
+          padding: 16px;
+          border-bottom: 1px solid var(--border);
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .chatbot-header h3 {
+          font-size: 0.95rem;
+          font-weight: 700;
+          color: var(--text);
+          margin: 0;
+          flex: 1;
+        }
+
+        .chatbot-header-close {
+          background: none;
+          border: none;
+          color: var(--muted);
+          cursor: pointer;
+          font-size: 1.3rem;
+          padding: 0;
+          width: 24px;
+          height: 24px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .chatbot-header-close:hover {
+          color: var(--text);
+        }
+
+        .chatbot-messages {
+          flex: 1;
+          overflow-y: auto;
+          padding: 16px;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .message {
+          display: flex;
+          gap: 8px;
+          animation: messageSlideIn 0.3s ease;
+        }
+
+        @keyframes messageSlideIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.user {
+          justify-content: flex-end;
+        }
+
+        .message-content {
+          max-width: 70%;
+          padding: 10px 14px;
+          border-radius: 12px;
+          font-size: 0.82rem;
+          line-height: 1.5;
+          word-wrap: break-word;
+        }
+
+        .message.bot .message-content {
+          background: var(--card-bg);
+          border: 1px solid var(--border);
+          color: var(--text);
+        }
+
+        .message.user .message-content {
+          background: var(--blue);
+          color: #000;
+          font-weight: 500;
+        }
+
+        .message.system .message-content {
+          background: rgba(0,200,255,0.1);
+          border: 1px solid rgba(0,200,255,0.2);
+          color: var(--blue);
+          font-size: 0.75rem;
+          justify-self: center;
+          max-width: 90%;
+          text-align: center;
+        }
+
+        .chatbot-input-area {
+          padding: 12px;
+          border-top: 1px solid var(--border);
+          display: flex;
+          gap: 8px;
+        }
+
+        #chatbot-input {
+          flex: 1;
+          background: var(--card-bg);
+          border: 1px solid var(--border);
+          border-radius: 8px;
+          padding: 10px 12px;
+          color: var(--text);
+          font-family: 'Orbitron', system-ui, sans-serif;
+          font-size: 0.82rem;
+          outline: none;
+          transition: all 0.2s;
+        }
+
+        #chatbot-input:focus {
+          border-color: var(--blue);
+          background: rgba(0,200,255,0.05);
+        }
+
+        #chatbot-send {
+          background: var(--blue);
+          border: none;
+          color: #000;
+          border-radius: 8px;
+          width: 36px;
+          height: 36px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 700;
+          transition: all 0.2s;
+        }
+
+        #chatbot-send:hover {
+          background: #fff;
+          transform: scale(1.05);
+        }
+
+        #chatbot-send:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
+        .chatbot-messages::-webkit-scrollbar {
+          width: 4px;
+        }
+
+        .chatbot-messages::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        .chatbot-messages::-webkit-scrollbar-thumb {
+          background: var(--border);
+          border-radius: 2px;
+        }
+
+        @media (max-width: 480px) {
+          #chatbot-container {
+            width: calc(100vw - 20px);
+            height: 60vh;
+            bottom: 80px;
+            right: 10px;
+          }
+
+          .message-content {
+            max-width: 85%;
+          }
         }
       </style>
 
@@ -2610,10 +2767,6 @@
           <div class="glow-card" style="background:var(--card-bg);padding:2.2rem 2rem;display:flex;flex-direction:column;gap:0;border:1px solid var(--blue);border-top:2px solid var(--blue);border-radius:var(--radius);position:relative;cursor:pointer;" onclick="openPricingModal('scale')" onmouseover="this.style.background='var(--card-hover)'" onmouseout="this.style.background='var(--card-bg)'">
             <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--blue),transparent);"></div>
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.8rem;">
-              <div style="display:flex;align-items:center;gap:8px;">
-                <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);letter-spacing:2px;">02</span>
-                <span style="width:5px;height:5px;border-radius:50%;background:var(--blue);box-shadow:0 0 6px rgba(0,200,255,0.6);display:inline-block;"></span>
-              </div>
               <span style="font-size:0.58rem;font-weight:700;letter-spacing:2px;background:var(--blue);color:#000;padding:2px 10px;border-radius:999px;">BEST VALUE</span>
             </div>
             <div style="font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:0.5rem;">Scale + Growth</div>
@@ -2665,10 +2818,6 @@
           <div class="glow-card" style="background:var(--card-bg);padding:2.2rem 2rem;display:flex;flex-direction:column;gap:0;border:1px solid var(--blue);border-top:2px solid var(--blue);border-radius:var(--radius);position:relative;cursor:pointer;" onclick="openPricingModal('growthRetainer')" onmouseover="this.style.background='var(--card-hover)'" onmouseout="this.style.background='var(--card-bg)'">
             <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--blue),transparent);"></div>
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.8rem;">
-              <div style="display:flex;align-items:center;gap:8px;">
-                <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);letter-spacing:2px;">02</span>
-                <span style="width:5px;height:5px;border-radius:50%;background:var(--blue);box-shadow:0 0 6px rgba(0,200,255,0.6);display:inline-block;"></span>
-              </div>
               <span style="font-size:0.58rem;font-weight:700;letter-spacing:2px;background:var(--blue);color:#000;padding:2px 10px;border-radius:999px;">POPULAR</span>
             </div>
             <div style="font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:0.5rem;">Growth</div>
@@ -3429,6 +3578,161 @@
           btn.textContent = "Send Quote";
           btn.disabled = false;
         }
+      }
+    </script>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-widget">
+      <button id="chatbot-toggle" title="Chat with ZyntrixAI Assistant">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+      </button>
+
+      <div id="chatbot-container">
+        <div class="chatbot-header">
+          <h3>ZyntrixAI Assistant</h3>
+          <button class="chatbot-header-close" onclick="closeChatbot()">×</button>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages"></div>
+        <div class="chatbot-input-area">
+          <input
+            type="text"
+            id="chatbot-input"
+            placeholder="Ask me anything..."
+            onkeypress="if(event.key==='Enter') sendChatMessage()"
+          />
+          <button id="chatbot-send" onclick="sendChatMessage()">→</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const systemPrompt = `You are ZyntrixAI Assistant, a helpful chatbot for ZyntrixAI, a professional web design and development agency based in Australia.
+
+About ZyntrixAI:
+- We design and build custom websites, online stores, and branding for Australian businesses
+- Services: Web Design, Web Development, E-Commerce Stores, SEO & Growth, Logo & Branding, Ongoing Support
+- Pricing Packages: Starter ($750), Growth ($1,850), Enterprise (custom quote)
+- Monthly retainers available for ongoing support and maintenance
+- All websites are mobile-responsive, fast-loading (90+ Lighthouse score), and include free hosting setup
+- We take care of design, development, deployment, and ongoing support
+- Average turnaround: 2-5 weeks depending on project scope
+- Contact: ZyntrixAIAutomation@gmail.com or book a free discovery call
+
+Your role:
+1. Answer questions about our services, pricing, and process
+2. Help users understand which package suits their needs
+3. Provide information about the website design and development process
+4. Collect contact information (name, email, phone) when users express interest in booking
+5. Explain our transparent pricing and no-lock-in contract policy
+6. Be friendly, professional, and brief in responses
+7. If users want to book a project, collect their details and offer to send a proposal
+
+When collecting contact info for a booking, ask for:
+- Full name
+- Email address
+- Phone number (optional but helpful)
+- Business name and industry
+- Brief description of what they need
+
+Always be helpful and guide users toward taking action (booking a call, getting a quote, or sending an email).`;
+
+      let chatHistory = [];
+      let chatbotOpen = false;
+
+      function toggleChatbot() {
+        chatbotOpen = !chatbotOpen;
+        const container = document.getElementById('chatbot-container');
+        const toggle = document.getElementById('chatbot-toggle');
+
+        if (chatbotOpen) {
+          container.classList.add('open');
+          document.getElementById('chatbot-input').focus();
+          if (chatHistory.length === 0) {
+            addBotMessage("Hi! I'm the ZyntrixAI Assistant. How can I help you today? Feel free to ask about our services, pricing, or anything else!");
+          }
+        } else {
+          container.classList.remove('open');
+        }
+      }
+
+      function closeChatbot() {
+        chatbotOpen = false;
+        document.getElementById('chatbot-container').classList.remove('open');
+      }
+
+      document.getElementById('chatbot-toggle').addEventListener('click', toggleChatbot);
+
+      async function sendChatMessage() {
+        const input = document.getElementById('chatbot-input');
+        const message = input.value.trim();
+
+        if (!message) return;
+
+        input.value = '';
+        input.disabled = true;
+
+        addUserMessage(message);
+        chatHistory.push({ role: 'user', content: message });
+
+        try {
+          const response = await fetch('/api/chat', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              message: message,
+              history: chatHistory.slice(0, -1)
+            })
+          });
+
+          if (!response.ok) {
+            throw new Error('Failed to get response');
+          }
+
+          const data = await response.json();
+          const botResponse = data.reply;
+
+          chatHistory.push({ role: 'assistant', content: botResponse });
+          addBotMessage(botResponse);
+        } catch (error) {
+          console.error('Chat error:', error);
+          addBotMessage("Sorry, I'm having trouble connecting right now. Please try again in a moment, or email us at ZyntrixAIAutomation@gmail.com");
+        } finally {
+          input.disabled = false;
+          input.focus();
+        }
+      }
+
+      function addUserMessage(text) {
+        const messagesDiv = document.getElementById('chatbot-messages');
+        const messageEl = document.createElement('div');
+        messageEl.className = 'message user';
+        messageEl.innerHTML = `<div class="message-content">${escapeHtml(text)}</div>`;
+        messagesDiv.appendChild(messageEl);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }
+
+      function addBotMessage(text) {
+        const messagesDiv = document.getElementById('chatbot-messages');
+        const messageEl = document.createElement('div');
+        messageEl.className = 'message bot';
+        messageEl.innerHTML = `<div class="message-content">${escapeHtml(text)}</div>`;
+        messagesDiv.appendChild(messageEl);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }
+
+      function escapeHtml(text) {
+        const map = {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#039;'
+        };
+        return text.replace(/[&<>"']/g, m => map[m]);
       }
     </script>
 

@@ -10,9 +10,18 @@
   "author": "Blake Donhardt",
   "license": "MIT",
   "type": "module",
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "start": "next start"
+  },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.101.0",
     "@supabase/ssr": "^0.10.3",
-    "@supabase/supabase-js": "^2.107.0"
+    "@supabase/supabase-js": "^2.107.0",
+    "next": "^15.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "engines": {
     "node": "18.x"
