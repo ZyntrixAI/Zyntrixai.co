@@ -534,28 +534,6 @@
       .stat-num { font-size: 2rem; font-weight: 700; color: var(--blue); line-height: 1; }
       .stat-lbl, .stat-label { font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
 
-      /* ââ TECH CAROUSEL ââ */
-      .tech-carousel { overflow: hidden; padding: 0 0 4rem; position: relative; }
-      .tech-carousel::before, .tech-carousel::after {
-        content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none;
-      }
-      .tech-carousel::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
-      .tech-carousel::after  { right: 0; background: linear-gradient(to left, var(--bg), transparent); }
-      .tech-track {
-        display: flex; gap: 1rem; width: max-content;
-        animation: techScroll 22s linear infinite;
-      }
-      .tech-track:hover { animation-play-state: paused; }
-      @keyframes techScroll {
-        from { transform: translateX(0); }
-        to   { transform: translateX(-50%); }
-      }
-      .tech-badge {
-        padding: 0.55rem 1.4rem; border: 1px solid var(--border); border-radius: 999px;
-        font-size: 0.78rem; color: var(--muted); background: var(--card-bg);
-        white-space: nowrap; transition: all 0.2s; cursor: default; flex-shrink: 0;
-      }
-      .tech-badge:hover { border-color: var(--blue); color: var(--blue); background: rgba(0,200,255,0.05); }
 
       /* ââ PRICE BAR ââ */
       .price-bar { text-align: center; border: 1px solid var(--border); border-radius: 14px; padding: 3rem 2rem; margin: 0 5% 5rem; }
