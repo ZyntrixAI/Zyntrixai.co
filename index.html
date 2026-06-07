@@ -1,4 +1,4 @@
-﻿ï»¿<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -51,7 +51,7 @@
       ::-webkit-scrollbar-thumb { background: #23252a; border-radius: 999px; }
       ::-webkit-scrollbar-thumb:hover { background: #323334; }
 
-      /* ââ NAV ââ */
+      /* ── NAV ── */
       nav {
         position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
         display: flex; align-items: center; justify-content: space-between;
@@ -87,17 +87,17 @@
       .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
       .hamburger span { display: block; width: 22px; height: 1.5px; background: #fff; border-radius: 1px; transition: 0.25s; }
 
-      /* ââ PAGE SYSTEM ââ */
+      /* ── PAGE SYSTEM ── */
       .page { display: none; min-height: 100vh; position: relative; z-index: 1; padding-top: 56px; }
       .page.active { display: flex; flex-direction: column; }
       .page.active > footer { margin-top: auto; }
 
-      /* ââ SHARED LAYOUT ââ */
+      /* ── SHARED LAYOUT ── */
       .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
       .section { padding: clamp(60px, 7vw, 96px) 24px; }
       .section-inner { max-width: 1152px; margin: 0 auto; }
 
-      /* ââ SECTION BADGE (kaev.ai pill) ââ */
+      /* ── SECTION BADGE (kaev.ai pill) ── */
       .s-eyebrow {
         display: inline-flex; align-items: center; gap: 8px;
         padding: 5px 12px; border-radius: 999px;
@@ -107,7 +107,9 @@
         text-transform: uppercase; color: var(--blue); margin-bottom: 1.2rem;
       }
       .s-eyebrow::before {
-        display: none;
+        content: ''; width: 5px; height: 5px; border-radius: 50%;
+        background: var(--blue); box-shadow: 0 0 6px rgba(0,200,255,0.6);
+        flex-shrink: 0;
       }
       .s-title {
         font-size: clamp(1.9rem, 4vw, 3.2rem); font-weight: 700;
@@ -116,7 +118,7 @@
       .s-sub { font-size: 1rem; color: var(--muted); line-height: 1.8; max-width: 520px; }
       .s-line { width: 36px; height: 1px; background: var(--blue); margin: 1rem 0 2.5rem; }
 
-      /* ââ HERO ââ */
+      /* ── HERO ── */
       .hero {
         min-height: calc(100vh - 56px); display: flex; flex-direction: column;
         justify-content: center; align-items: center; text-align: center;
@@ -154,7 +156,7 @@
       .stat-n { font-size: 1.4rem; font-weight: 700; color: var(--blue); line-height: 1; font-family: 'Orbitron', monospace; }
       .stat-l { font-size: 0.58rem; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-top: 5px; font-family: 'Orbitron', monospace; }
 
-      /* ââ BUTTONS ââ */
+      /* ── BUTTONS ── */
       .btn-primary {
         padding: 10px 22px; background: var(--blue); color: #000;
         border: none; border-radius: 999px; font-size: 0.85rem; font-weight: 700;
@@ -172,7 +174,7 @@
       }
       .btn-outline:hover { color: #fff; border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.06); }
 
-      /* ââ HOME: SERVICE CARDS (kaev.ai 1px grid) ââ */
+      /* ── HOME: SERVICE CARDS (kaev.ai 1px grid) ── */
       .home-svc-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
@@ -191,7 +193,7 @@
         color: var(--blue); opacity: 0.5; font-family: monospace;
         margin-bottom: 1.2rem; transition: opacity 0.2s;
       }
-      .svc-card:hover .svc-num { display: none; }
+      .svc-card:hover .svc-num { opacity: 1; }
       .svc-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; color: #f7f8f8; }
       .svc-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; flex: 1; }
       .svc-price {
@@ -199,7 +201,7 @@
         margin-top: 1.4rem; font-family: monospace; letter-spacing: 0.5px; display: block;
       }
 
-      /* ââ HOME: WORK GRID ââ */
+      /* ── HOME: WORK GRID ── */
       .home-work-grid {
         display: flex; justify-content: center;
         margin-top: 3rem;
@@ -216,7 +218,7 @@
       .hw-cat  { display: none; }
       .hw-name { display: none; }
 
-      /* ââ HOME: PROCESS STEPS (kaev.ai 1px grid) ââ */
+      /* ── HOME: PROCESS STEPS (kaev.ai 1px grid) ── */
       .home-process {
         display: grid; grid-template-columns: repeat(4, 1fr);
         gap: 1px; background: var(--border);
@@ -234,7 +236,7 @@
       .hp-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.6rem; color: #f7f8f8; margin-top: 0.8rem; }
       .hp-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
 
-      /* ââ TESTIMONIALS ââ */
+      /* ── TESTIMONIALS ── */
       .testi-grid {
         display: grid; grid-template-columns: repeat(3, 1fr);
         gap: 1.2rem; margin-top: 3rem;
@@ -246,12 +248,13 @@
       .testi-name { font-size: 0.82rem; font-weight: 600; color: #f7f8f8; }
       .testi-co { font-size: 0.68rem; color: var(--blue); margin-top: 2px; font-family: monospace; }
 
-      /* ââ FOOTER ââ */
+      /* ── FOOTER ── */
       footer {
         padding: 4rem 5% 3rem;
         position: relative; z-index: 1;
         display: flex; flex-direction: column; align-items: center;
         gap: 1.8rem; text-align: center;
+        border-top: 1px solid var(--border);
       }
       .foot-logo {
         display: inline-flex; align-items: center; justify-content: center;
@@ -268,12 +271,12 @@
       .foot-links a:hover { color: var(--text); }
       .foot-copy { font-size: 0.72rem; color: #707070; }
 
-      /* ââ INNER PAGE HERO ââ */
+      /* ── INNER PAGE HERO ── */
       .page-hero { padding: 4rem 5% 3rem; }
       .page-hero-center { text-align: center; }
       .page-hero-center .s-line { margin: 1rem auto 0; }
 
-      /* ââ INNER PAGE FOOTER ââ */
+      /* ── INNER PAGE FOOTER ── */
       footer { position: relative; z-index: 1; padding: 0 5%; }
       .footer-grid {
         display: grid;
@@ -294,12 +297,12 @@
       .footer-col ul li a:hover { color: var(--text); }
       .footer-bottom {
         display: flex; justify-content: space-between; align-items: center;
-        padding: 1.2rem 0;
+        padding: 1.2rem 0; border-top: 1px solid var(--border);
         font-size: 0.72rem; color: #707070;
         max-width: 1160px; margin: 0 auto; flex-wrap: wrap; gap: 0.5rem;
       }
 
-      /* ââ SERVICE DETAIL ââ */
+      /* ── SERVICE DETAIL ── */
       .svc-detail-hero { padding: 3.5rem 5% 3rem; max-width: 1160px; margin: 0 auto; }
       .svc-detail-stats {
         display: flex; flex-wrap: wrap; gap: 3rem;
@@ -316,7 +319,7 @@
         border-bottom: 1px solid var(--border);
         display: flex; align-items: center; gap: 0.8rem;
       }
-      .svc-feature-list li::before { content: 'â'; color: var(--blue); font-size: 0.72rem; flex-shrink: 0; }
+      .svc-feature-list li::before { content: '↗'; color: var(--blue); font-size: 0.72rem; flex-shrink: 0; }
       .svc-price-card {
         border: 1px solid var(--border); border-radius: var(--radius);
         padding: 2rem; background: var(--card-bg); position: sticky; top: 80px;
@@ -328,7 +331,7 @@
       .svc-big-price sup { font-size: 1.4rem; vertical-align: top; margin-top: 0.4rem; }
       .svc-price-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.7; margin-bottom: 2rem; }
 
-      /* ââ GLOWING DOT CARD ANIMATION ââ */
+      /* ── GLOWING DOT CARD ANIMATION ── */
       @keyframes moveDot {
         0%,100% { top: 8px;  right: 8px;  }
         25%     { top: 8px;  right: calc(100% - 20px); }
@@ -363,7 +366,7 @@
 
       .glow-card > * { position: relative; z-index: 1; }
 
-      /* ââ BUILD STEPS (kaev.ai stacked card style) ââ */
+      /* ── BUILD STEPS (kaev.ai stacked card style) ── */
       .build-steps {
         display: flex; flex-direction: column;
         max-width: 700px; margin: 2.5rem auto 0;
@@ -388,7 +391,7 @@
       .build-step h4 { font-size: 1rem; font-weight: 700; color: #f7f8f8; margin-bottom: 0.55rem; letter-spacing: -0.01em; }
       .build-step p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; max-width: 520px; margin: 0 auto; }
 
-      /* ââ SERVICES GRID (full page) ââ */
+      /* ── SERVICES GRID (full page) ── */
       .svcs-full, .services-grid {
         display: grid; grid-template-columns: repeat(3, 1fr);
         gap: 2.5rem; padding: 2rem 5% 5rem;
@@ -400,7 +403,7 @@
         margin-top: 0.9rem; line-height: 1.6; padding: 0 0.3rem;
       }
 
-      /* ââ SERVICES LIST (simple rows) ââ */
+      /* ── SERVICES LIST (simple rows) ── */
       .svc-list {
         max-width: 860px; margin: 0 auto;
         padding: 0 5% 5rem;
@@ -462,7 +465,7 @@
         display: block;
       }
 
-      /* ââ SERVICES HERO (full page) ââ */
+      /* ── SERVICES HERO (full page) ── */
       .services-hero {
         text-align: center; padding: 4rem 5% 1rem;
       }
@@ -481,12 +484,12 @@
         max-width: 500px; margin: 0 auto;
       }
 
-      /* ââ HOME SERVICE CARDS ââ */
+      /* ── HOME SERVICE CARDS ── */
       .home-svc-grid {
         display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 3rem;
       }
 
-      /* ââ PROCESS SECTION (services page) ââ */
+      /* ── PROCESS SECTION (services page) ── */
       .process-section { padding: 4rem 5%; }
       .process-grid {
         display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -505,7 +508,7 @@
       .process-step h4 { font-size: 0.92rem; font-weight: 700; margin-bottom: 0.4rem; }
       .process-step p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
 
-      /* ââ PROCESS TIMELINE ââ */
+      /* ── PROCESS TIMELINE ── */
       .process-detailed { max-width: 860px; margin: 3rem auto 0; padding: 0 5% 5rem; }
       .process-item { display: grid; grid-template-columns: 80px 1fr; gap: 2rem; position: relative; padding-bottom: 3rem; }
       .process-item:not(:last-child)::after {
@@ -528,61 +531,83 @@
       .process-deliverable strong { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); display: block; margin-bottom: 0.3rem; }
       .process-deliverable p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; margin: 0; }
 
-      /* ââ STAT STRIP ââ */
+      /* ── STAT STRIP ── */
       .svc-stat-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem; padding: 3rem 5%; }
       .stat { text-align: center; }
       .stat-num { font-size: 2rem; font-weight: 700; color: var(--blue); line-height: 1; }
       .stat-lbl, .stat-label { font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
 
+      /* ── TECH CAROUSEL ── */
+      .tech-carousel { overflow: hidden; padding: 0 0 4rem; position: relative; }
+      .tech-carousel::before, .tech-carousel::after {
+        content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none;
+      }
+      .tech-carousel::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
+      .tech-carousel::after  { right: 0; background: linear-gradient(to left, var(--bg), transparent); }
+      .tech-track {
+        display: flex; gap: 1rem; width: max-content;
+        animation: techScroll 22s linear infinite;
+      }
+      .tech-track:hover { animation-play-state: paused; }
+      @keyframes techScroll {
+        from { transform: translateX(0); }
+        to   { transform: translateX(-50%); }
+      }
+      .tech-badge {
+        padding: 0.55rem 1.4rem; border: 1px solid var(--border); border-radius: 999px;
+        font-size: 0.78rem; color: var(--muted); background: var(--card-bg);
+        white-space: nowrap; transition: all 0.2s; cursor: default; flex-shrink: 0;
+      }
+      .tech-badge:hover { border-color: var(--blue); color: var(--blue); background: rgba(0,200,255,0.05); }
 
-      /* ââ PRICE BAR ââ */
+      /* ── PRICE BAR ── */
       .price-bar { text-align: center; border: 1px solid var(--border); border-radius: 14px; padding: 3rem 2rem; margin: 0 5% 5rem; }
       .price-bar .s-eyebrow { justify-content: center; display: flex; }
       .big-price { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin: 0.5rem 0 0.3rem; }
       .big-price span { font-size: 1rem; font-weight: 400; color: var(--muted); }
       .price-bar p { color: var(--muted); max-width: 420px; margin: 0 auto 2rem; font-size: 0.9rem; line-height: 1.8; }
 
-      /* ââ SVC BACK BTN ââ */
+      /* ── SVC BACK BTN ── */
       .svc-back { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; color: var(--muted); cursor: pointer; margin-bottom: 1.5rem; transition: color 0.2s; letter-spacing: 1px; text-transform: uppercase; background: none; border: none; }
       .svc-back:hover { color: var(--blue); }
 
-      /* ââ FEATURE LIST ââ */
+      /* ── FEATURE LIST ── */
       .feature-list { list-style: none; margin-top: 0.8rem; flex: 1; }
       .feature-list li { font-size: 0.83rem; color: var(--muted); line-height: 1.6; padding: 0.15rem 0 0.15rem 1.3rem; position: relative; }
-      .feature-list li::before { content: 'â'; color: var(--blue); position: absolute; left: 0; font-size: 0.7rem; }
+      .feature-list li::before { content: '↗'; color: var(--blue); position: absolute; left: 0; font-size: 0.7rem; }
 
-      /* ââ ABOUT ââ */
+      /* ── ABOUT ── */
       .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; padding: 3rem 5%; }
       .about-visual { border: 1px solid var(--border); border-radius: 20px; width: 220px; height: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; font-family: 'Orbitron', sans-serif; font-size: 1.4rem; font-weight: 900; color: #fff; letter-spacing: 8px; margin: 0 auto; }
       .about-visual img { width: 140px; height: 140px; object-fit: contain; }
       .about-list { list-style: none; margin-top: 1.5rem; }
       .about-list li { display: flex; gap: 0.8rem; align-items: flex-start; font-size: 0.9rem; color: var(--muted); padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
-      .about-list li::before { content: 'â¹'; color: var(--blue); flex-shrink: 0; }
+      .about-list li::before { content: '▹'; color: var(--blue); flex-shrink: 0; }
       .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 2.5rem; }
       .value-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem 1.8rem; text-align: center; transition: background 0.2s, border-color 0.2s; }
       .value-card:hover { background: var(--card-hover); border-color: var(--border-hover); }
-      .value-num { display: none; }
-      .value-card:hover .value-num { display: none; }
+      .value-num { font-size: 0.62rem; font-family: monospace; color: var(--blue); letter-spacing: 2px; opacity: 0.5; margin-bottom: 1.2rem; transition: opacity 0.2s; }
+      .value-card:hover .value-num { opacity: 1; }
       .value-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; color: #f7f8f8; letter-spacing: -0.01em; }
       .value-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
       .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.2rem; margin-top: 2.5rem; }
       .team-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; transition: background 0.2s, border-color 0.2s; }
       .team-card:hover { background: var(--card-hover); border-color: var(--border-hover); }
-      .team-num { display: none; }
-      .team-card:hover .team-num { display: none; }
+      .team-num { font-size: 0.62rem; font-family: monospace; color: var(--blue); letter-spacing: 2px; opacity: 0.5; margin-bottom: 1.2rem; transition: opacity 0.2s; }
+      .team-card:hover .team-num { opacity: 1; }
       .team-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: #f7f8f8; letter-spacing: -0.01em; }
       .team-card span { font-size: 0.78rem; color: var(--blue); }
 
-      /* ââ CONTACT ââ */
+      /* ── CONTACT ── */
       .contact-layout { display: grid; grid-template-columns: 1fr 1.3fr; gap: 4rem; padding: 2rem 5% 3.5rem; align-items: start; }
       .contact-info h2 { font-size: clamp(1.9rem, 4vw, 3.2rem); font-weight: 600; margin-bottom: 1rem; }
       .contact-info p { color: var(--muted); line-height: 1.8; margin-bottom: 2rem; font-size: 0.92rem; }
       .contact-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.4rem; }
-      .contact-icon { display: none; }
+      .contact-icon { width: 40px; height: 40px; background: rgba(0,200,255,0.06); border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
       .contact-item h4 { font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
       .contact-item p { font-size: 0.9rem; color: var(--text); margin: 0; }
 
-      /* ââ FORMS ââ */
+      /* ── FORMS ── */
       .form-card { display: flex; flex-direction: column; gap: 1.1rem; }
       .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
       .form-group label { font-size: 0.72rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
@@ -603,47 +628,47 @@
       .form-error { color: #f87171; font-size: 0.8rem; min-height: 16px; }
       .success-msg { display: none; padding: 0.9rem 1.2rem; background: rgba(0,200,255,0.06); border: 1px solid rgba(0,200,255,0.2); border-radius: 8px; color: var(--blue); font-size: 0.85rem; margin-top: 0.5rem; text-align: center; }
 
-      /* ââ BOOKING ââ */
+      /* ── BOOKING ── */
       .booking-layout { display: grid; grid-template-columns: 1fr 1.3fr; gap: 4rem; padding: 2rem 5% 3.5rem; align-items: start; }
       .booking-info h2 { font-size: clamp(1.9rem, 4vw, 3.2rem); font-weight: 600; margin-bottom: 1rem; }
       .booking-info p { color: var(--muted); line-height: 1.8; margin-bottom: 2rem; font-size: 0.92rem; }
       .booking-steps { list-style: none; }
       .booking-steps li { display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--border); }
-      .step-dot { display: none; }
+      .step-dot { width: 30px; height: 30px; border-radius: 50%; background: rgba(0,200,255,0.08); border: 1px solid var(--blue); display: flex; align-items: center; justify-content: center; font-size: 0.68rem; color: var(--blue); flex-shrink: 0; font-weight: 700; font-family: 'Orbitron', sans-serif; }
       .booking-steps h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.2rem; }
       .booking-steps p { font-size: 0.82rem; color: var(--muted); }
 
-      /* ââ PORTFOLIO ââ */
+      /* ── PORTFOLIO ── */
       .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding: 0 5% 5rem; }
       .project-card { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color 0.2s, background 0.2s; cursor: pointer; background: var(--card-bg); }
       .project-card:hover { border-color: var(--border-hover); background: var(--card-hover); }
       .project-mockup { height: 190px; overflow: hidden; border-bottom: 1px solid var(--border); }
       .project-info { padding: 1.4rem; }
-      .project-tag { display: inline-block; font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); border: 1px solid rgba(0,200,255,0.2); border-radius: 999px; padding: 0.2rem 0.7rem; margin-bottom: 0.7rem; display: none; }
-      .project-info h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; display: none; }
+      .project-tag { display: inline-block; font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); border: 1px solid rgba(0,200,255,0.2); border-radius: 999px; padding: 0.2rem 0.7rem; margin-bottom: 0.7rem; }
+      .project-info h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
       .project-info p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.9rem; }
       .project-link { font-size: 0.82rem; color: var(--blue); transition: opacity 0.2s; }
       .project-link:hover { opacity: 0.75; }
       .filter-btn { padding: 0.4rem 1.1rem; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.78rem; border-radius: 999px; cursor: pointer; transition: all 0.2s; font-family: 'Orbitron', system-ui, sans-serif; }
       .filter-btn:hover, .filter-btn.active { border-color: var(--blue); color: var(--blue); }
 
-      /* ââ PRICING ââ */
+      /* ── PRICING ── */
       .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 1.5rem; padding: 2rem 5% 5rem; align-items: start; }
       .pricing-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.6rem; position: relative; background: var(--card-bg); transition: background 0.2s, border-color 0.2s; }
       .pricing-card:hover { background: var(--card-hover); border-color: var(--border-hover); }
       .pricing-card.featured { border-color: var(--blue); }
-      .pricing-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--blue); color: #000; font-size: 0.6rem; font-weight: 700; letter-spacing: 2px; padding: 3px 12px; border-radius: 999px; white-space: nowrap; display: none; }
-      .pricing-tier { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; font-family: 'Orbitron', sans-serif; display: none; }
+      .pricing-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--blue); color: #000; font-size: 0.6rem; font-weight: 700; letter-spacing: 2px; padding: 3px 12px; border-radius: 999px; white-space: nowrap; }
+      .pricing-tier { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; font-family: 'Orbitron', sans-serif; }
       .pricing-amount { font-size: 2.2rem; font-weight: 800; line-height: 1; margin-bottom: 0.2rem; }
       .pricing-amount span { font-size: 1rem; font-weight: 400; color: var(--muted); }
       .pricing-desc { font-size: 0.82rem; color: var(--muted); margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); line-height: 1.5; }
       .pricing-features { list-style: none; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.4rem; }
       .pricing-features li { display: flex; gap: 0.6rem; font-size: 0.85rem; padding: 0.4rem 0; border-bottom: 1px solid rgba(0,200,255,0.04); }
-      .pricing-features li::before { content: 'â'; color: var(--blue); flex-shrink: 0; font-weight: 700; }
+      .pricing-features li::before { content: '✓'; color: var(--blue); flex-shrink: 0; font-weight: 700; }
       .pricing-features li.off { color: var(--muted); opacity: 0.4; }
-      .pricing-features li.off::before { content: 'â'; color: var(--muted); }
+      .pricing-features li.off::before { content: '✕'; color: var(--muted); }
 
-      /* ââ PRICING MODAL ââ */
+      /* ── PRICING MODAL ── */
       .modal-overlay {
         display: none; position: fixed; inset: 0; z-index: 2000;
         background: rgba(0,0,0,0.72); backdrop-filter: blur(8px);
@@ -700,28 +725,28 @@
       .modal-actions { display: flex; gap: 0.8rem; margin-top: 1.6rem; }
       .modal-actions button { flex: 1; }
 
-      /* ââ FAQ ââ */
+      /* ── FAQ ── */
       .faq-section { padding: 0 5% 5rem; max-width: 740px; margin: 0 auto; }
       .faq-item { border-bottom: 1px solid var(--border); }
       .faq-q { padding: 1.1rem 0; font-size: 0.92rem; font-weight: 500; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: color 0.2s; user-select: none; }
       .faq-q:hover { color: var(--blue); }
       .faq-q::after { content: '+'; font-size: 1.3rem; color: var(--blue); flex-shrink: 0; margin-left: 1rem; }
-      .faq-q.open::after { content: 'â'; }
+      .faq-q.open::after { content: '−'; }
       .faq-a { display: none; font-size: 0.88rem; color: var(--muted); line-height: 1.7; padding-bottom: 1.2rem; }
 
-      /* ââ BLOG ââ */
+      /* ── BLOG ── */
       .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; padding: 0 5% 4rem; }
       .blog-card { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; cursor: pointer; display: flex; flex-direction: column; transition: border-color 0.2s, background 0.2s; background: var(--card-bg); }
       .blog-card:hover { border-color: var(--border-hover); background: var(--card-hover); }
       .blog-thumb { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; border-bottom: 1px solid var(--border); flex-direction: column; gap: 0.4rem; }
       .blog-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
-      .blog-cat { display: inline-block; font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); border: 1px solid rgba(0,200,255,0.2); border-radius: 999px; padding: 0.2rem 0.7rem; margin-bottom: 0.8rem; align-self: flex-start; display: none; }
-      .blog-card h3 { font-size: 0.95rem; font-weight: 600; line-height: 1.4; margin-bottom: 0.6rem; display: none; }
+      .blog-cat { display: inline-block; font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); border: 1px solid rgba(0,200,255,0.2); border-radius: 999px; padding: 0.2rem 0.7rem; margin-bottom: 0.8rem; align-self: flex-start; }
+      .blog-card h3 { font-size: 0.95rem; font-weight: 600; line-height: 1.4; margin-bottom: 0.6rem; }
       .blog-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; flex: 1; }
       .blog-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--muted); padding-top: 1rem; border-top: 1px solid var(--border); margin-top: 1rem; }
       .project-link { color: var(--blue); cursor: pointer; transition: opacity 0.2s; }
 
-      /* ââ DEMO PAGES ââ */
+      /* ── DEMO PAGES ── */
       .demo-back-bar {
         position: sticky; top: 64px; z-index: 900;
         background: rgba(0,0,0,0.92); backdrop-filter: blur(16px);
@@ -734,7 +759,7 @@
       .page[id^="page-demo"] { padding-top: 0; }
       .page[id^="page-article"] { padding-top: 56px; }
 
-      /* ââ ARTICLE READER ââ */
+      /* ── ARTICLE READER ── */
       .article-body { max-width: 720px; margin: 0 auto; padding: 3rem 5% 5rem; font-size: 0.97rem; line-height: 1.85; color: rgba(200,216,232,1); }
       .article-body h2 { font-size: 1.15rem; font-weight: 700; color: #fff; margin: 2rem 0 0.8rem; padding-left: 1rem; border-left: 2px solid var(--blue); }
       .article-body p { margin-bottom: 1.5rem; }
@@ -747,7 +772,7 @@
         position: relative; overflow: hidden; isolation: isolate;
       }
 
-      /* ââ TABLET (max 1024px) ââ */
+      /* ── TABLET (max 1024px) ── */
       @media (max-width: 1024px) {
         .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
         .svc-detail-body { grid-template-columns: 1fr; gap: 2rem; }
@@ -760,7 +785,7 @@
         .pricing-grid { grid-template-columns: 1fr 1fr; }
       }
 
-      /* ââ MOBILE (max 768px) ââ */
+      /* ── MOBILE (max 768px) ── */
       @media (max-width: 768px) {
         /* Global */
         body { font-size: 13px; }
@@ -840,7 +865,7 @@
         .faq-q { font-size: 0.85rem; }
         .faq-a { font-size: 0.82rem; }
 
-        /* Inline pricing tier cards â single column, lowest to highest */
+        /* Inline pricing tier cards — single column, lowest to highest */
         #pricingTiersGrid {
           grid-template-columns: 1fr !important;
           padding: 0 16px !important;
@@ -854,7 +879,7 @@
         .foot-links { gap: 1rem; }
         footer { padding: 0 16px; }
 
-        /* Modal â slides up from bottom on mobile */
+        /* Modal — slides up from bottom on mobile */
         .modal-overlay { align-items: flex-end; padding: 0; }
         .modal-panel { max-height: 92vh; border-radius: 14px 14px 0 0; }
         .modal-header { padding: 1.2rem 1.4rem 1rem; }
@@ -871,7 +896,7 @@
         .hero-btns a, .hero-btns button { font-size: 0.8rem; }
       }
 
-      /* ââ SMALL MOBILE (max 480px) ââ */
+      /* ── SMALL MOBILE (max 480px) ── */
       @media (max-width: 480px) {
         .blog-grid { grid-template-columns: 1fr; }
         .values-grid { grid-template-columns: 1fr; }
@@ -911,30 +936,30 @@
       </button>
     </nav>
 
-    <!-- ââââââââââââââ HOME ââââââââââââââ -->
+    <!-- ══════════════ HOME ══════════════ -->
     <div id="page-home" class="page active">
 
       <!-- HERO -->
       <section class="hero">
         <div class="hero-badge">
           <span class="hero-badge-dot"></span>
-          Website Design Agency Â· Australia
+          Website Design Agency · Australia
         </div>
         <h1 class="hero-h1">
           We craft bold,<br>high-performance<br>websites.
         </h1>
         <p class="hero-p">
-          Turning visitors into clients â from the first call to a live site that converts. One team handles everything.
+          Turning visitors into clients — from the first call to a live site that converts. One team handles everything.
         </p>
         <div class="hero-btns">
           <button class="btn-primary" onclick="showPage('booking')">Start a Project</button>
-          <button class="btn-outline" onclick="showPage('portfolio')">See Our Work â</button>
+          <button class="btn-outline" onclick="showPage('portfolio')">See Our Work →</button>
         </div>
         <div class="hero-stats">
           <div><div class="stat-n">50+</div><div class="stat-l">Projects Delivered</div></div>
           <div><div class="stat-n">100%</div><div class="stat-l">Client Satisfaction</div></div>
           <div><div class="stat-n">48h</div><div class="stat-l">Avg. Response</div></div>
-          <div><div class="stat-n">5â</div><div class="stat-l">Average Rating</div></div>
+          <div><div class="stat-n">5★</div><div class="stat-l">Average Rating</div></div>
         </div>
       </section>
 
@@ -944,7 +969,7 @@
           <div style="margin-bottom:2.5rem;">
             <span class="s-eyebrow">01 / Services</span>
             <h2 class="s-title">Everything you<br>need online</h2>
-            <p class="s-sub">We design, build, and grow your online presence â so you can focus on running your business.</p>
+            <p class="s-sub">We design, build, and grow your online presence — so you can focus on running your business.</p>
           </div>
           <div class="svc-list" style="padding:0;">
             <div class="svc-row svc-row-simple" onclick="showPage('svc-design')">
@@ -983,7 +1008,7 @@
               <span class="s-eyebrow">02 / Work</span>
               <h2 class="s-title" style="margin-bottom:0;">Selected Projects</h2>
             </div>
-            <button class="btn-outline" onclick="showPage('portfolio')">View All â</button>
+            <button class="btn-outline" onclick="showPage('portfolio')">View All →</button>
           </div>
           <div class="home-work-grid" id="homeWorkGrid"><!-- populated by JS --></div>
         </div>
@@ -1000,20 +1025,20 @@
           </div>
           <div class="testi-grid">
             <div class="testi-card glow-card">
-              <div class="testi-stars">â â â â â</div>
+              <div class="testi-stars">★ ★ ★ ★ ★</div>
               <p class="testi-q">"ZyntrixAI completely transformed our online presence. Enquiries have more than doubled since launch."</p>
               <div class="testi-name">Sarah M.</div>
               <div class="testi-co">Apex Fitness</div>
             </div>
             <div class="testi-card glow-card">
-              <div class="testi-stars">â â â â â</div>
+              <div class="testi-stars">★ ★ ★ ★ ★</div>
               <p class="testi-q">"First call to live site in under three weeks. The process was seamless and the result speaks for itself."</p>
               <div class="testi-name">James K.</div>
               <div class="testi-co">Nova Law Group</div>
             </div>
             <div class="testi-card glow-card">
-              <div class="testi-stars">â â â â â</div>
-              <p class="testi-q">"We didn't just get a website â we got a brand. ZyntrixAI handled everything from logo to launch day."</p>
+              <div class="testi-stars">★ ★ ★ ★ ★</div>
+              <p class="testi-q">"We didn't just get a website — we got a brand. ZyntrixAI handled everything from logo to launch day."</p>
               <div class="testi-name">Emma R.</div>
               <div class="testi-co">Bloom Boutique</div>
             </div>
@@ -1029,7 +1054,7 @@
             Let's build<br>something great.
           </h2>
           <p style="color:var(--muted);font-size:1rem;line-height:1.8;max-width:400px;margin-bottom:2.5rem;">
-            Tell us about your project and we'll send a detailed proposal within 48 hours â no obligation.
+            Tell us about your project and we'll send a detailed proposal within 48 hours — no obligation.
           </p>
           <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;justify-content:center;">
             <button class="btn-primary" onclick="showPage('booking')">Start a Project</button>
@@ -1070,10 +1095,10 @@
           <a onclick="showPage('about')">About</a>
           <a onclick="showPage('contact')">Contact</a>
         </div>
-        <span class="foot-copy">Â© 2026 ZyntrixAI. All rights reserved.</span>
+        <span class="foot-copy">© 2026 ZyntrixAI. All rights reserved.</span>
       </footer>
     </div>
-    <!-- ââââââââââââââ PORTFOLIO / WORK ââââââââââââââ -->
+    <!-- ══════════════ PORTFOLIO / WORK ══════════════ -->
     <div id="page-portfolio" class="page">
 
       <!-- HERO -->
@@ -1099,9 +1124,9 @@
           <div>
             <span class="s-eyebrow" style="margin-bottom:0.6rem;">Featured Project</span>
             <h2 class="s-title" style="margin-bottom:0.4rem;">PaintWorkz Pro</h2>
-            <p style="font-size:0.78rem;color:var(--muted);font-family:monospace;letter-spacing:1px;">paintworkzpro.com.au Â· Victoria, Australia</p>
+            <p style="font-size:0.78rem;color:var(--muted);font-family:monospace;letter-spacing:1px;">paintworkzpro.com.au · Victoria, Australia</p>
           </div>
-          <a href="https://paintworkzpro.com.au/" target="_blank" class="btn-primary" style="padding:0.7rem 1.5rem;font-size:0.78rem;font-weight:700;letter-spacing:1px;border-radius:var(--radius);background:var(--blue);color:#000;display:inline-flex;align-items:center;gap:0.4rem;white-space:nowrap;text-decoration:none;">Visit Live Site â</a>
+          <a href="https://paintworkzpro.com.au/" target="_blank" class="btn-primary" style="padding:0.7rem 1.5rem;font-size:0.78rem;font-weight:700;letter-spacing:1px;border-radius:var(--radius);background:var(--blue);color:#000;display:inline-flex;align-items:center;gap:0.4rem;white-space:nowrap;text-decoration:none;">Visit Live Site →</a>
         </div>
 
         <!-- What the business is -->
@@ -1109,16 +1134,16 @@
           <div style="border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;background:var(--card-bg);">
             <div style="font-size:0.62rem;font-family:monospace;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:0.8rem;">What It Is</div>
             <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;">PaintWorkz Pro is a cloud-based business management platform built specifically for cabinet makers and joinery finishers who use spray-applied 2Pac coatings.</p>
-            <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;margin-top:0.8rem;">Designed and built by a finisher for finishers â it replaces scattered spreadsheets and paper quotes with a single, purpose-built system that runs from any device.</p>
+            <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;margin-top:0.8rem;">Designed and built by a finisher for finishers — it replaces scattered spreadsheets and paper quotes with a single, purpose-built system that runs from any device.</p>
           </div>
           <div style="border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;background:var(--card-bg);">
             <div style="font-size:0.62rem;font-family:monospace;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:0.8rem;">What It Does</div>
             <ul style="list-style:none;display:flex;flex-direction:column;gap:0.55rem;">
-              <li style="display:flex;gap:0.7rem;font-size:0.85rem;color:var(--muted);"><span style="color:var(--blue);flex-shrink:0;">â</span> Measure jobs and generate instant quotes with pricing matrices</li>
-              <li style="display:flex;gap:0.7rem;font-size:0.85rem;color:var(--muted);"><span style="color:var(--blue);flex-shrink:0;">â</span> Store and calculate 2Pac paint formulas and mix ratios</li>
-              <li style="display:flex;gap:0.7rem;font-size:0.85rem;color:var(--muted);"><span style="color:var(--blue);flex-shrink:0;">â</span> Schedule work with an A3-style Gantt view</li>
-              <li style="display:flex;gap:0.7rem;font-size:0.85rem;color:var(--muted);"><span style="color:var(--blue);flex-shrink:0;">â</span> Generate professional PDF quotes, invoices & supply dockets</li>
-              <li style="display:flex;gap:0.7rem;font-size:0.85rem;color:var(--muted);"><span style="color:var(--blue);flex-shrink:0;">â</span> Manage clients and track stock â all in one place</li>
+              <li style="display:flex;gap:0.7rem;font-size:0.85rem;color:var(--muted);"><span style="color:var(--blue);flex-shrink:0;">→</span> Measure jobs and generate instant quotes with pricing matrices</li>
+              <li style="display:flex;gap:0.7rem;font-size:0.85rem;color:var(--muted);"><span style="color:var(--blue);flex-shrink:0;">→</span> Store and calculate 2Pac paint formulas and mix ratios</li>
+              <li style="display:flex;gap:0.7rem;font-size:0.85rem;color:var(--muted);"><span style="color:var(--blue);flex-shrink:0;">→</span> Schedule work with an A3-style Gantt view</li>
+              <li style="display:flex;gap:0.7rem;font-size:0.85rem;color:var(--muted);"><span style="color:var(--blue);flex-shrink:0;">→</span> Generate professional PDF quotes, invoices & supply dockets</li>
+              <li style="display:flex;gap:0.7rem;font-size:0.85rem;color:var(--muted);"><span style="color:var(--blue);flex-shrink:0;">→</span> Manage clients and track stock — all in one place</li>
             </ul>
           </div>
         </div>
@@ -1146,13 +1171,13 @@
         <!-- What ZyntrixAI built -->
         <div style="border:1px solid rgba(0,200,255,0.2);border-radius:var(--radius);padding:1.8rem;background:rgba(0,200,255,0.03);">
           <div style="font-size:0.62rem;font-family:monospace;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:0.8rem;">What ZyntrixAI Delivered</div>
-          <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;">We designed and built the full marketing website for PaintWorkz Pro â a dark luxury aesthetic with gold accents that matches the premium, trade-focused brand. The site clearly communicates the platform's value to spray shop owners, with clean service breakdowns, pricing tiers, and direct sign-up CTAs that convert visitors into trial users.</p>
+          <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;">We designed and built the full marketing website for PaintWorkz Pro — a dark luxury aesthetic with gold accents that matches the premium, trade-focused brand. The site clearly communicates the platform's value to spray shop owners, with clean service breakdowns, pricing tiers, and direct sign-up CTAs that convert visitors into trial users.</p>
         </div>
 
       </div>
     </div>
 
-    <!-- ââââââââââââââ SERVICES ââââââââââââââ -->
+    <!-- ══════════════ SERVICES ══════════════ -->
     <div id="page-services" class="page">
 
       <!-- HERO -->
@@ -1162,279 +1187,78 @@
         <p class="s-sub" style="margin:0 auto;">We design, build, and grow websites for Australian businesses. Clear services, real results, no jargon.</p>
       </div>
 
-            <!-- SERVICES GRID -->
-      <div style="padding:3rem 5% 4rem;max-width:1100px;margin:0 auto;">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:3rem;">
-          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;cursor:pointer;display:flex;flex-direction:column;gap:1rem;transition:all 0.2s;" onmouseover="this.style.background='var(--card-hover)'" onmouseout="this.style.background='var(--card-bg)'" onclick="showPage('svc-design')">
-            <h3 style="font-size:1.1rem;font-weight:700;color:#fff;">Web Design</h3>
-            <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;flex:1;">A professionally designed website built around your brand - crafted to make a great first impression and turn visitors into customers.</p>
-            <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-design')" style="width:100%;">Learn More</button>
-          </div>
+      <!-- SERVICE CARDS -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:1.2rem;max-width:1100px;margin:0 auto 5rem;padding:0 5%;">
 
-          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;cursor:pointer;display:flex;flex-direction:column;gap:1rem;transition:all 0.2s;" onmouseover="this.style.background='var(--card-hover)'" onmouseout="this.style.background='var(--card-bg)'" onclick="showPage('svc-dev')">
-            <h3 style="font-size:1.1rem;font-weight:700;color:#fff;">Web Development</h3>
-            <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;flex:1;">Clean, fast, hand-coded websites that load quickly, work on every device, and are built to last. No bloated templates - just solid, reliable code.</p>
-            <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-dev')" style="width:100%;">Learn More</button>
+        <div class="glow-card" onclick="showPage('svc-design')" style="background:var(--card-bg);padding:1.6rem 1.5rem;cursor:pointer;transition:background 0.2s,border-color 0.2s;display:flex;flex-direction:column;gap:0.8rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);opacity:0.5;letter-spacing:2px;">01</span>
+            <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
           </div>
-
-          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;cursor:pointer;display:flex;flex-direction:column;gap:1rem;transition:all 0.2s;" onmouseover="this.style.background='var(--card-hover)'" onmouseout="this.style.background='var(--card-bg)'" onclick="showPage('svc-ecommerce')">
-            <h3 style="font-size:1.1rem;font-weight:700;color:#fff;">Online Shop</h3>
-            <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;flex:1;">A fully set-up online store with secure payments and smooth checkout - ready to take orders from day one, around the clock.</p>
-            <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-ecommerce')" style="width:100%;">Learn More</button>
-          </div>
-
-          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;cursor:pointer;display:flex;flex-direction:column;gap:1rem;transition:all 0.2s;" onmouseover="this.style.background='var(--card-hover)'" onmouseout="this.style.background='var(--card-bg)'" onclick="showPage('svc-seo')">
-            <h3 style="font-size:1.1rem;font-weight:700;color:#fff;">Get Found on Google</h3>
-            <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;flex:1;">We optimise your site so local customers find you first. Monthly reporting, real rankings, more enquiries - every month.</p>
-            <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-seo')" style="width:100%;">Learn More</button>
-          </div>
-
-          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;cursor:pointer;display:flex;flex-direction:column;gap:1rem;transition:all 0.2s;" onmouseover="this.style.background='var(--card-hover)'" onmouseout="this.style.background='var(--card-bg)'" onclick="showPage('svc-branding')">
-            <h3 style="font-size:1.1rem;font-weight:700;color:#fff;">Logo &amp; Branding</h3>
-            <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;flex:1;">A professional logo and full brand identity - colours, fonts, and guidelines - that makes your business look established and impossible to forget.</p>
-            <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-branding')" style="width:100%;">Learn More</button>
-          </div>
-
-          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;cursor:pointer;display:flex;flex-direction:column;gap:1rem;transition:all 0.2s;" onmouseover="this.style.background='var(--card-hover)'" onmouseout="this.style.background='var(--card-bg)'" onclick="showPage('svc-maintenance')">
-            <h3 style="font-size:1.1rem;font-weight:700;color:#fff;">Ongoing Support</h3>
-            <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;flex:1;">Monthly care - updates, security, backups, and content changes handled for you. Your site stays fast, safe, and up to date.</p>
-            <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-maintenance')" style="width:100%;">Learn More</button>
-          </div>
+          <h3 style="font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Web Design</h3>
+          <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;flex:1;">A professionally designed website built around your brand — crafted to make a great first impression and turn visitors into customers.</p>
+          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-design')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More →</button>
         </div>
+
+        <div class="glow-card" onclick="showPage('svc-dev')" style="background:var(--card-bg);padding:1.6rem 1.5rem;cursor:pointer;transition:background 0.2s,border-color 0.2s;display:flex;flex-direction:column;gap:0.8rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);opacity:0.5;letter-spacing:2px;">02</span>
+            <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
+          </div>
+          <h3 style="font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Web Development</h3>
+          <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;flex:1;">Clean, fast, hand-coded websites that load quickly, work on every device, and are built to last. No bloated templates — just solid, reliable code.</p>
+          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-dev')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More →</button>
+        </div>
+
+        <div class="glow-card" onclick="showPage('svc-ecommerce')" style="background:var(--card-bg);padding:1.6rem 1.5rem;cursor:pointer;transition:background 0.2s,border-color 0.2s;display:flex;flex-direction:column;gap:0.8rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);opacity:0.5;letter-spacing:2px;">03</span>
+            <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
+          </div>
+          <h3 style="font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Online Shop</h3>
+          <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;flex:1;">A fully set-up online store with secure payments and smooth checkout — ready to take orders from day one, around the clock.</p>
+          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-ecommerce')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More →</button>
+        </div>
+
+        <div class="glow-card" onclick="showPage('svc-seo')" style="background:var(--card-bg);padding:1.6rem 1.5rem;cursor:pointer;transition:background 0.2s,border-color 0.2s;display:flex;flex-direction:column;gap:0.8rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);opacity:0.5;letter-spacing:2px;">04</span>
+            <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
+          </div>
+          <h3 style="font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Get Found on Google</h3>
+          <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;flex:1;">We optimise your site so local customers find you first. Monthly reporting, real rankings, more enquiries — every month.</p>
+          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-seo')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More →</button>
+        </div>
+
+        <div class="glow-card" onclick="showPage('svc-branding')" style="background:var(--card-bg);padding:1.6rem 1.5rem;cursor:pointer;transition:background 0.2s,border-color 0.2s;display:flex;flex-direction:column;gap:0.8rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);opacity:0.5;letter-spacing:2px;">05</span>
+            <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
+          </div>
+          <h3 style="font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Logo &amp; Branding</h3>
+          <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;flex:1;">A professional logo and full brand identity — colours, fonts, and guidelines — that makes your business look established and impossible to forget.</p>
+          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-branding')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More →</button>
+        </div>
+
+        <div class="glow-card" onclick="showPage('svc-maintenance')" style="background:var(--card-bg);padding:1.6rem 1.5rem;cursor:pointer;transition:background 0.2s,border-color 0.2s;display:flex;flex-direction:column;gap:0.8rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);opacity:0.5;letter-spacing:2px;">06</span>
+            <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
+          </div>
+          <h3 style="font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Ongoing Support</h3>
+          <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;flex:1;">Monthly care — updates, security, backups, and content changes handled for you. Your site stays fast, safe, and up to date.</p>
+          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-maintenance')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More →</button>
+        </div>
+
       </div>
 
-
-      <!-- Chatbot Styles -->
-      <style>
-        #chatbot-widget {
-          position: fixed;
-          bottom: 20px;
-          right: 20px;
-          z-index: 9999;
-          font-family: 'Orbitron', system-ui, sans-serif;
-        }
-
-        #chatbot-toggle {
-          width: 60px;
-          height: 60px;
-          border-radius: 50%;
-          background: linear-gradient(135deg, var(--blue), #0080ff);
-          border: none;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 4px 20px rgba(0,200,255,0.4);
-          transition: all 0.3s ease;
-          position: relative;
-        }
-
-        #chatbot-toggle:hover {
-          transform: scale(1.1);
-          box-shadow: 0 6px 30px rgba(0,200,255,0.6);
-        }
-
-        #chatbot-toggle svg {
-          width: 32px;
-          height: 32px;
-          filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
-        }
-
-        #chatbot-container {
-          position: absolute;
-          bottom: 80px;
-          right: 0;
-          width: 380px;
-          height: 500px;
-          background: var(--bg);
-          border: 1px solid var(--border);
-          border-radius: 12px;
-          box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-          display: none;
-          flex-direction: column;
-          opacity: 0;
-          transform: translateY(20px);
-          transition: all 0.3s ease;
-        }
-
-        #chatbot-container.open {
-          display: flex;
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        .chatbot-header {
-          padding: 16px;
-          border-bottom: 1px solid var(--border);
-          display: flex;
-          align-items: center;
-          gap: 12px;
-        }
-
-        .chatbot-header h3 {
-          font-size: 0.95rem;
-          font-weight: 700;
-          color: var(--text);
-          margin: 0;
-          flex: 1;
-        }
-
-        .chatbot-header-close {
-          background: none;
-          border: none;
-          color: var(--muted);
-          cursor: pointer;
-          font-size: 1.3rem;
-          padding: 0;
-          width: 24px;
-          height: 24px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .chatbot-header-close:hover {
-          color: var(--text);
-        }
-
-        .chatbot-messages {
-          flex: 1;
-          overflow-y: auto;
-          padding: 16px;
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-        }
-
-        .message {
-          display: flex;
-          gap: 8px;
-          animation: messageSlideIn 0.3s ease;
-        }
-
-        @keyframes messageSlideIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        .message.user {
-          justify-content: flex-end;
-        }
-
-        .message-content {
-          max-width: 70%;
-          padding: 10px 14px;
-          border-radius: 12px;
-          font-size: 0.82rem;
-          line-height: 1.5;
-          word-wrap: break-word;
-        }
-
-        .message.bot .message-content {
-          background: var(--card-bg);
-          border: 1px solid var(--border);
-          color: var(--text);
-        }
-
-        .message.user .message-content {
-          background: var(--blue);
-          color: #000;
-          font-weight: 500;
-        }
-
-        .message.system .message-content {
-          background: rgba(0,200,255,0.1);
-          border: 1px solid rgba(0,200,255,0.2);
-          color: var(--blue);
-          font-size: 0.75rem;
-          justify-self: center;
-          max-width: 90%;
-          text-align: center;
-        }
-
-        .chatbot-input-area {
-          padding: 12px;
-          border-top: 1px solid var(--border);
-          display: flex;
-          gap: 8px;
-        }
-
-        #chatbot-input {
-          flex: 1;
-          background: var(--card-bg);
-          border: 1px solid var(--border);
-          border-radius: 8px;
-          padding: 10px 12px;
-          color: var(--text);
-          font-family: 'Orbitron', system-ui, sans-serif;
-          font-size: 0.82rem;
-          outline: none;
-          transition: all 0.2s;
-        }
-
-        #chatbot-input:focus {
-          border-color: var(--blue);
-          background: rgba(0,200,255,0.05);
-        }
-
-        #chatbot-send {
-          background: var(--blue);
-          border: none;
-          color: #000;
-          border-radius: 8px;
-          width: 36px;
-          height: 36px;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: 700;
-          transition: all 0.2s;
-        }
-
-        #chatbot-send:hover {
-          background: #fff;
-          transform: scale(1.05);
-        }
-
-        #chatbot-send:disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-        }
-
-        .chatbot-messages::-webkit-scrollbar {
-          width: 4px;
-        }
-
-        .chatbot-messages::-webkit-scrollbar-track {
-          background: transparent;
-        }
-
-        .chatbot-messages::-webkit-scrollbar-thumb {
-          background: var(--border);
-          border-radius: 2px;
-        }
-
-        @media (max-width: 480px) {
-          #chatbot-container {
-            width: calc(100vw - 20px);
-            height: 60vh;
-            bottom: 80px;
-            right: 10px;
-          }
-
-          .message-content {
-            max-width: 85%;
-          }
-        }
-      </style>
 
       <!-- PROCESS -->
       <div style="padding:3rem 5% 4rem;max-width:900px;margin:0 auto;">
         <div style="text-align:center;margin-bottom:3.5rem;">
           <span class="s-eyebrow">How It Works</span>
           <h2 class="s-title">Exactly what happens,<br>start to finish</h2>
-          <p class="s-sub" style="margin:0 auto;">Every step is clear, every decision is yours. Here's the full process â no surprises.</p>
+          <p class="s-sub" style="margin:0 auto;">Every step is clear, every decision is yours. Here's the full process — no surprises.</p>
         </div>
 
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:1.2rem;margin-top:2rem;">
@@ -1442,7 +1266,7 @@
           <div class="build-step glow-card">
             <div class="build-step-num">01</div>
             <h4>Get in Touch</h4>
-            <p>Fill in our quick form or book a free call. Tell us what you need â we'll handle the rest.</p>
+            <p>Fill in our quick form or book a free call. Tell us what you need — we'll handle the rest.</p>
             <div style="margin-top:1rem;display:flex;gap:0.5rem;justify-content:center;flex-wrap:wrap;">
               <span style="font-size:0.68rem;border:1px solid rgba(0,200,255,0.2);color:var(--blue);padding:0.2rem 0.7rem;border-radius:999px;">2 minutes</span>
               <span style="font-size:0.68rem;border:1px solid rgba(0,200,255,0.2);color:var(--blue);padding:0.2rem 0.7rem;border-radius:999px;">No commitment</span>
@@ -1472,7 +1296,7 @@
           <div class="build-step glow-card">
             <div class="build-step-num">04</div>
             <h4>Build &amp; Review</h4>
-            <p>We code your site from scratch â fast, mobile-ready, and built to last. You get a private preview link to review before anything goes live.</p>
+            <p>We code your site from scratch — fast, mobile-ready, and built to last. You get a private preview link to review before anything goes live.</p>
             <div style="margin-top:1rem;display:flex;gap:0.5rem;justify-content:center;flex-wrap:wrap;">
               <span style="font-size:0.68rem;border:1px solid rgba(0,200,255,0.2);color:var(--blue);padding:0.2rem 0.7rem;border-radius:999px;">Private preview</span>
               <span style="font-size:0.68rem;border:1px solid rgba(0,200,255,0.2);color:var(--blue);padding:0.2rem 0.7rem;border-radius:999px;">Every device</span>
@@ -1482,7 +1306,7 @@
           <div class="build-step glow-card">
             <div class="build-step-num">05</div>
             <h4>Go Live &amp; Handover</h4>
-            <p>We handle domain, hosting, SSL, and analytics setup. Once live, everything is handed over â you own it all.</p>
+            <p>We handle domain, hosting, SSL, and analytics setup. Once live, everything is handed over — you own it all.</p>
             <div style="margin-top:1rem;display:flex;gap:0.5rem;justify-content:center;flex-wrap:wrap;">
               <span style="font-size:0.68rem;border:1px solid rgba(0,200,255,0.2);color:var(--blue);padding:0.2rem 0.7rem;border-radius:999px;">Priority email support</span>
               <span style="font-size:0.68rem;border:1px solid rgba(0,200,255,0.2);color:var(--blue);padding:0.2rem 0.7rem;border-radius:999px;">You own everything</span>
@@ -1492,7 +1316,7 @@
         </div>
       </div>
 
-      <!-- hidden old process kept for reference â replaced above -->
+      <!-- hidden old process kept for reference — replaced above -->
       <div style="display:none;">
         <div class="process-detailed">
           <div class="process-item">
@@ -1500,7 +1324,7 @@
             <div class="process-item-body">
               <h4>Development & Testing</h4>
               <p>
-                With your designs signed off, we build â clean, semantic,
+                With your designs signed off, we build — clean, semantic,
                 well-structured code optimised for speed, security, and easy
                 future maintenance. Everything is developed in a private staging
                 environment first, so you can review the real, working site
@@ -1534,7 +1358,7 @@
               <h4>Launch & Handover</h4>
               <p>
                 Once every detail is approved, we handle the entire launch
-                process â domain configuration, DNS management, hosting setup,
+                process — domain configuration, DNS management, hosting setup,
                 SSL certificate activation, and Google Analytics 4 and Search
                 Console installation. We monitor the live site closely in the
                 first 24 hours to catch anything unexpected. After launch,
@@ -1547,7 +1371,7 @@
                 <span class="process-tag">Full Go-Live Support</span>
                 <span class="process-tag">Analytics & Search Console</span>
                 <span class="process-tag">SSL & Hosting Setup</span>
-                <span class="process-tag">1â6 Months Free Support</span>
+                <span class="process-tag">1–6 Months Free Support</span>
                 <span class="process-tag">Handover Session Included</span>
               </div>
               <div class="process-deliverable">
@@ -1568,7 +1392,7 @@
 
     </div>
 
-    <!-- ââââââââââââââ ABOUT ââââââââââââââ -->
+    <!-- ══════════════ ABOUT ══════════════ -->
     <div id="page-about" class="page">
       <div class="about-hero" style="text-align: center; padding: 4rem 5% 2rem">
         <span class="s-eyebrow">Who We Are</span>
@@ -1610,8 +1434,8 @@
           </h2>
           <div class="s-line"></div>
           <p class="s-sub">
-            ZyntrixAI was founded with one goal: to give every business â from
-            start-ups to established brands â access to world-class web design
+            ZyntrixAI was founded with one goal: to give every business — from
+            start-ups to established brands — access to world-class web design
             that actually drives growth.
           </p>
           <p class="s-sub" style="margin-top: 1rem">
@@ -1620,11 +1444,11 @@
             paying customers.
           </p>
           <ul class="about-list" style="margin-top: 1.5rem">
-            <li>100% custom designs â no templates, ever</li>
+            <li>100% custom designs — no templates, ever</li>
             <li>Mobile-first development as standard</li>
             <li>Transparent pricing and clear timelines</li>
             <li>Ongoing support after every launch</li>
-            <li>Results-focused â we measure what matters</li>
+            <li>Results-focused — we measure what matters</li>
           </ul>
         </div>
       </div>
@@ -1650,21 +1474,60 @@
           <div class="value-card glow-card">
             <div class="value-num">03</div>
             <h4>Results First</h4>
-            <p>We measure success by your growth â more enquiries, more sales, more customers.</p>
+            <p>We measure success by your growth — more enquiries, more sales, more customers.</p>
           </div>
           <div class="value-card glow-card">
             <div class="value-num">04</div>
             <h4>Integrity</h4>
-            <p>Honest advice, fair pricing, and clear communication â every time.</p>
+            <p>Honest advice, fair pricing, and clear communication — every time.</p>
           </div>
         </div>
       </div>
 
+      <div style="text-align:center;padding:2rem 5% 1rem;">
+        <span class="s-eyebrow">Tech Stack</span>
+        <h2 class="s-title" style="margin-top:0.5rem;font-size:1.8rem;">Technologies We Use</h2>
+        <div class="s-line" style="margin: 1rem auto 2rem;"></div>
+      </div>
+      <div class="tech-carousel">
+        <div class="tech-track">
+          <!-- First set -->
+          <span class="tech-badge">HTML5</span>
+          <span class="tech-badge">CSS3</span>
+          <span class="tech-badge">JavaScript</span>
+          <span class="tech-badge">React</span>
+          <span class="tech-badge">Next.js</span>
+          <span class="tech-badge">TypeScript</span>
+          <span class="tech-badge">WordPress</span>
+          <span class="tech-badge">Webflow</span>
+          <span class="tech-badge">Shopify</span>
+          <span class="tech-badge">Figma</span>
+          <span class="tech-badge">Vercel</span>
+          <span class="tech-badge">Netlify</span>
+          <span class="tech-badge">Node.js</span>
+          <span class="tech-badge">Tailwind CSS</span>
+          <!-- Duplicate for seamless loop -->
+          <span class="tech-badge">HTML5</span>
+          <span class="tech-badge">CSS3</span>
+          <span class="tech-badge">JavaScript</span>
+          <span class="tech-badge">React</span>
+          <span class="tech-badge">Next.js</span>
+          <span class="tech-badge">TypeScript</span>
+          <span class="tech-badge">WordPress</span>
+          <span class="tech-badge">Webflow</span>
+          <span class="tech-badge">Shopify</span>
+          <span class="tech-badge">Figma</span>
+          <span class="tech-badge">Vercel</span>
+          <span class="tech-badge">Netlify</span>
+          <span class="tech-badge">Node.js</span>
+          <span class="tech-badge">Tailwind CSS</span>
+        </div>
+      </div>
 
 
     </div>
 
-    <!-- ââââââââââââââ CONTACT ââââââââââââââ -->
+    <!-- ══════════════ CONTACT ══════════════ -->
     <div id="page-contact" class="page">
       <div style="text-align: center; padding: 4rem 5% 1rem">
         <div class="section-label">Get in Touch</div>
@@ -1770,10 +1633,10 @@
               Send Message
             </button>
             <div class="success-msg" id="contactSuccess">
-              â Message sent! We'll be in touch within 48 hours.
+              ✓ Message sent! We'll be in touch within 48 hours.
             </div>
             <div class="success-msg" id="contactError" style="border-color:#ff4466;color:#ff4466;display:none">
-              â Something went wrong. Please email us directly at zyntrixautomation@gmail.com
+              ✗ Something went wrong. Please email us directly at zyntrixautomation@gmail.com
             </div>
           </form>
         </div>
@@ -1782,7 +1645,7 @@
 
     </div>
 
-    <!-- ââââââââââââââ BOOKING ââââââââââââââ -->
+    <!-- ══════════════ BOOKING ══════════════ -->
     <div id="page-booking" class="page">
       <div style="text-align: center; padding: 4rem 5% 1rem">
         <div class="section-label">Free Quote</div>
@@ -1798,7 +1661,7 @@
       <div class="booking-layout">
         <div class="booking-info">
           <h2>How It Works</h2>
-          <p>Submit your details and we handle everything â automatically.</p>
+          <p>Submit your details and we handle everything — automatically.</p>
           <ul class="booking-steps">
             <li>
               <div class="step-dot">01</div>
@@ -1835,7 +1698,7 @@
               <div>
                 <h4>Sent to Our Inbox</h4>
                 <p>
-                  Your details and the generated site land in our inbox â we'll
+                  Your details and the generated site land in our inbox — we'll
                   be in touch within 24 hours.
                 </p>
               </div>
@@ -1860,13 +1723,13 @@
             </div>
             <div class="form-group">
               <label>Business Name</label>
-              <input id="q-businessName" type="text" placeholder="e.g. Smith's CafÃ©, Blake Legal, Peak Fitness" required />
+              <input id="q-businessName" type="text" placeholder="e.g. Smith's Café, Blake Legal, Peak Fitness" required />
             </div>
             <div class="form-group">
               <label>Your Industry / Niche</label>
               <select id="q-niche" required>
-                <option value="">â Select your industry â</option>
-                <option value="restaurant">Restaurant / CafÃ© / Food &amp; Beverage</option>
+                <option value="">— Select your industry —</option>
+                <option value="restaurant">Restaurant / Café / Food &amp; Beverage</option>
                 <option value="law">Law / Legal Services</option>
                 <option value="fitness">Fitness / Gym / Personal Training</option>
                 <option value="beauty">Beauty / Hair / Nails / Spa</option>
@@ -2052,7 +1915,7 @@
               <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
                 <div style="flex:1;">
                   <div style="font-size:0.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--blue);font-family:monospace;margin-bottom:0.4rem;">Don't have a website?</div>
-                  <p style="font-size:0.8rem;color:var(--muted);line-height:1.6;margin:0;">Tick the box and skip the URL field â we'll still prepare a full tailored quote and build your online presence from scratch based on your industry and selected services.</p>
+                  <p style="font-size:0.8rem;color:var(--muted);line-height:1.6;margin:0;">Tick the box and skip the URL field — we'll still prepare a full tailored quote and build your online presence from scratch based on your industry and selected services.</p>
                 </div>
                 <label style="display:flex;align-items:center;gap:0.6rem;font-size:0.82rem;color:var(--text);text-transform:none;letter-spacing:0;cursor:pointer;white-space:nowrap;flex-shrink:0;">
                   <input type="checkbox" id="q-noWebsite" onchange="toggleNoWebsite(this)"
@@ -2063,7 +1926,7 @@
             </div>
 
             <div class="form-group" id="website-url-group">
-              <label>Existing Website <span style="color:var(--muted);font-size:0.75rem;text-transform:none;letter-spacing:0;">(optional â we'll analyse it)</span></label>
+              <label>Existing Website <span style="color:var(--muted);font-size:0.75rem;text-transform:none;letter-spacing:0;">(optional — we'll analyse it)</span></label>
               <input id="q-websiteUrl" type="text" placeholder="https://yourbusiness.com.au" />
             </div>
             <button
@@ -2077,16 +1940,16 @@
             <!-- Success screen with recommendation -->
             <div id="bookingSuccess" style="display:none;">
               <div style="background:rgba(0,200,255,0.05);border:1px solid rgba(0,200,255,0.2);border-radius:var(--radius);padding:1.6rem;text-align:center;margin-top:0.5rem;">
-                <div style="font-size:1.5rem;margin-bottom:0.5rem;">â</div>
+                <div style="font-size:1.5rem;margin-bottom:0.5rem;">✓</div>
                 <div style="font-weight:700;color:#fff;margin-bottom:0.3rem;">Quote sent!</div>
-                <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.2rem;">Check your inbox â we've emailed your personalised package recommendation with next steps.</p>
+                <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.2rem;">Check your inbox — we've emailed your personalised package recommendation with next steps.</p>
                 <div id="recSummary" style="display:none;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;text-align:left;margin-bottom:1rem;">
                   <div style="font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--blue);font-family:monospace;margin-bottom:0.4rem;">Your Recommendation</div>
                   <div id="recTier" style="font-size:1.3rem;font-weight:900;color:#fff;"></div>
                   <div id="recPrice" style="font-size:1rem;color:var(--blue);font-weight:700;margin-bottom:0.5rem;"></div>
                   <div id="recReason" style="font-size:0.8rem;color:var(--muted);line-height:1.6;"></div>
                 </div>
-                <a id="recPayBtn" href="#" target="_blank" style="display:none;background:var(--blue);color:#000;padding:0.7rem 1.8rem;border-radius:999px;font-size:0.82rem;font-weight:700;text-decoration:none;">Pay Deposit & Lock In My Project â</a>
+                <a id="recPayBtn" href="#" target="_blank" style="display:none;background:var(--blue);color:#000;padding:0.7rem 1.8rem;border-radius:999px;font-size:0.82rem;font-weight:700;text-decoration:none;">Pay Deposit & Lock In My Project →</a>
               </div>
             </div>
             <div
@@ -2094,7 +1957,7 @@
               id="bookingError"
               style="border-color: #ff4466; color: #ff4466"
             >
-              â Something went wrong. Please email us directly at
+              ✗ Something went wrong. Please email us directly at
               zyntrixautomation@gmail.com
             </div>
           </form>
@@ -2104,11 +1967,11 @@
 
     </div>
 
-    <!-- ââââââââââââââ SERVICE: WEB DESIGN ââââââââââââââ -->
+    <!-- ══════════════ SERVICE: WEB DESIGN ══════════════ -->
     <div id="page-svc-design" class="page">
       <!-- back bar -->
       <div style="border-bottom:1px solid #23252a;padding:1rem 5%;">
-        <button class="svc-back" onclick="showPage('services')">â All Services</button>
+        <button class="svc-back" onclick="showPage('services')">← All Services</button>
       </div>
 
       <!-- hero -->
@@ -2124,7 +1987,7 @@
 
       <!-- stats -->
       <div class="svc-detail-stats">
-        <div><div class="stat-n">2â3 Weeks</div><div class="stat-l">Turnaround</div></div>
+        <div><div class="stat-n">2–3 Weeks</div><div class="stat-l">Turnaround</div></div>
         <div><div class="stat-n">2</div><div class="stat-l">Revision Rounds</div></div>
         <div><div class="stat-n">5</div><div class="stat-l">Pages Included</div></div>
         <div><div class="stat-n">3</div><div class="stat-l">Breakpoints</div></div>
@@ -2139,12 +2002,12 @@
             <li>Full brand-aligned visual design</li>
             <li>Competitor &amp; market research</li>
             <li>Low-fidelity wireframes for every page</li>
-            <li>Full-colour mockups â desktop &amp; mobile</li>
+            <li>Full-colour mockups — desktop &amp; mobile</li>
             <li>2 full rounds of revisions</li>
             <li>Custom icons &amp; graphic elements</li>
             <li>Hero sections, CTAs &amp; landing pages</li>
             <li>You own all Figma/Adobe XD source files</li>
-            <li>Style guide â colours, fonts, spacing</li>
+            <li>Style guide — colours, fonts, spacing</li>
             <li>Design handoff documentation</li>
           </ul>
         </div>
@@ -2153,25 +2016,25 @@
           <div class="svc-big-price">$750+</div>
           <p class="svc-price-desc">Included in our Starter package. Complete design for up to 5 pages. Larger projects quoted individually.</p>
           <button class="btn-primary" style="width:100%;" onclick="showPage('booking')">Get a Free Quote</button>
-          <p style="text-align:center;margin-top:0.8rem;font-size:0.75rem;color:#8a8f98;">No obligation â we reply within 24 hours</p>
+          <p style="text-align:center;margin-top:0.8rem;font-size:0.75rem;color:#8a8f98;">No obligation — we reply within 24 hours</p>
         </div>
       </div>
 
 
     </div>
 
-    <!-- ââââââââââââââ SERVICE: WEB DEVELOPMENT ââââââââââââââ -->
+    <!-- ══════════════ SERVICE: WEB DEVELOPMENT ══════════════ -->
     <div id="page-svc-dev" class="page">
       <!-- back bar -->
       <div style="border-bottom:1px solid #23252a;padding:1rem 5%;">
-        <button class="svc-back" onclick="showPage('services')">â All Services</button>
+        <button class="svc-back" onclick="showPage('services')">← All Services</button>
       </div>
 
       <!-- hero -->
       <div class="svc-detail-hero">
         <span class="s-eyebrow">Web Development</span>
         <h1 class="s-title">Fast, reliable<br>websites</h1>
-        <p class="s-sub">Clean code, lightning-fast load times, and a site that works perfectly on every device â built to last.</p>
+        <p class="s-sub">Clean code, lightning-fast load times, and a site that works perfectly on every device — built to last.</p>
         <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
           <button class="btn-primary" onclick="showPage('booking')">Get a Quote</button>
           <button class="btn-outline" onclick="showPage('services')">All Services</button>
@@ -2209,25 +2072,25 @@
           <div class="svc-big-price">$750+</div>
           <p class="svc-price-desc">Included in our Starter package. Full website build with hosting and domain setup included.</p>
           <button class="btn-primary" style="width:100%;" onclick="showPage('booking')">Get a Free Quote</button>
-          <p style="text-align:center;margin-top:0.8rem;font-size:0.75rem;color:#8a8f98;">No obligation â we reply within 24 hours</p>
+          <p style="text-align:center;margin-top:0.8rem;font-size:0.75rem;color:#8a8f98;">No obligation — we reply within 24 hours</p>
         </div>
       </div>
 
 
     </div>
 
-    <!-- ââââââââââââââ SERVICE: E-COMMERCE ââââââââââââââ -->
+    <!-- ══════════════ SERVICE: E-COMMERCE ══════════════ -->
     <div id="page-svc-ecommerce" class="page">
       <!-- back bar -->
       <div style="border-bottom:1px solid #23252a;padding:1rem 5%;">
-        <button class="svc-back" onclick="showPage('services')">â All Services</button>
+        <button class="svc-back" onclick="showPage('services')">← All Services</button>
       </div>
 
       <!-- hero -->
       <div class="svc-detail-hero">
         <span class="s-eyebrow">Online Shop</span>
         <h1 class="s-title">Sell online,<br>24/7</h1>
-        <p class="s-sub">A fully set-up online store with payments, checkout, and product management â ready to take orders from day one.</p>
+        <p class="s-sub">A fully set-up online store with payments, checkout, and product management — ready to take orders from day one.</p>
         <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
           <button class="btn-primary" onclick="showPage('booking')">Get a Quote</button>
           <button class="btn-outline" onclick="showPage('services')">All Services</button>
@@ -2265,25 +2128,25 @@
           <div class="svc-big-price">$1,850+</div>
           <p class="svc-price-desc">Included in our Growth package. Complete online store setup. Larger catalogues and custom integrations quoted separately.</p>
           <button class="btn-primary" style="width:100%;" onclick="showPage('booking')">Get a Free Quote</button>
-          <p style="text-align:center;margin-top:0.8rem;font-size:0.75rem;color:#8a8f98;">No obligation â we reply within 24 hours</p>
+          <p style="text-align:center;margin-top:0.8rem;font-size:0.75rem;color:#8a8f98;">No obligation — we reply within 24 hours</p>
         </div>
       </div>
 
 
     </div>
 
-    <!-- ââââââââââââââ SERVICE: SEO & GROWTH ââââââââââââââ -->
+    <!-- ══════════════ SERVICE: SEO & GROWTH ══════════════ -->
     <div id="page-svc-seo" class="page">
       <!-- back bar -->
       <div style="border-bottom:1px solid #23252a;padding:1rem 5%;">
-        <button class="svc-back" onclick="showPage('services')">â All Services</button>
+        <button class="svc-back" onclick="showPage('services')">← All Services</button>
       </div>
 
       <!-- hero -->
       <div class="svc-detail-hero">
         <span class="s-eyebrow">Get Found on Google</span>
         <h1 class="s-title">More customers<br>finding you</h1>
-        <p class="s-sub">We make sure your business shows up when local customers search for the services you offer â every month.</p>
+        <p class="s-sub">We make sure your business shows up when local customers search for the services you offer — every month.</p>
         <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
           <button class="btn-primary" onclick="showPage('booking')">Get a Quote</button>
           <button class="btn-outline" onclick="showPage('services')">All Services</button>
@@ -2313,26 +2176,26 @@
             <li>Schema markup for rich results</li>
             <li>Google Analytics 4 &amp; Search Console setup</li>
             <li>Monthly ranking &amp; traffic report</li>
-            <li>No lock-in contract â cancel anytime</li>
+            <li>No lock-in contract — cancel anytime</li>
           </ul>
         </div>
         <div class="svc-price-card glow-card">
           <span class="svc-price-label">Investment</span>
           <div class="svc-big-price">$299/mo</div>
-          <p class="svc-price-desc">Standalone monthly retainer â also included in our Growth package from $1,850. No minimum contract, cancel anytime.</p>
+          <p class="svc-price-desc">Standalone monthly retainer — also included in our Growth package from $1,850. No minimum contract, cancel anytime.</p>
           <button class="btn-primary" style="width:100%;" onclick="showPage('booking')">Get a Free Quote</button>
-          <p style="text-align:center;margin-top:0.8rem;font-size:0.75rem;color:#8a8f98;">No obligation â we reply within 24 hours</p>
+          <p style="text-align:center;margin-top:0.8rem;font-size:0.75rem;color:#8a8f98;">No obligation — we reply within 24 hours</p>
         </div>
       </div>
 
 
     </div>
 
-    <!-- ââââââââââââââ SERVICE: BRANDING ââââââââââââââ -->
+    <!-- ══════════════ SERVICE: BRANDING ══════════════ -->
     <div id="page-svc-branding" class="page">
       <!-- back bar -->
       <div style="border-bottom:1px solid #23252a;padding:1rem 5%;">
-        <button class="svc-back" onclick="showPage('services')">â All Services</button>
+        <button class="svc-back" onclick="showPage('services')">← All Services</button>
       </div>
 
       <!-- hero -->
@@ -2350,7 +2213,7 @@
       <div class="svc-detail-stats">
         <div><div class="stat-n">3</div><div class="stat-l">Logo Concepts</div></div>
         <div><div class="stat-n">20+</div><div class="stat-l">File Formats</div></div>
-        <div><div class="stat-n">20â40 Page</div><div class="stat-l">Guidelines</div></div>
+        <div><div class="stat-n">20–40 Page</div><div class="stat-l">Guidelines</div></div>
         <div><div class="stat-n">Forever</div><div class="stat-l">Owned</div></div>
       </div>
 
@@ -2369,33 +2232,33 @@
             <li>Business card &amp; letterhead mockup</li>
             <li>Email signature design</li>
             <li>Social media profile versions</li>
-            <li>20â40 page brand guidelines document</li>
+            <li>20–40 page brand guidelines document</li>
           </ul>
         </div>
         <div class="svc-price-card glow-card">
           <span class="svc-price-label">Investment</span>
           <div class="svc-big-price">$750+</div>
-          <p class="svc-price-desc">Standalone brand identity package â also included in our Enterprise package from $4,500. All files delivered, you own everything outright.</p>
+          <p class="svc-price-desc">Standalone brand identity package — also included in our Enterprise package from $4,500. All files delivered, you own everything outright.</p>
           <button class="btn-primary" style="width:100%;" onclick="showPage('booking')">Get a Free Quote</button>
-          <p style="text-align:center;margin-top:0.8rem;font-size:0.75rem;color:#8a8f98;">No obligation â we reply within 24 hours</p>
+          <p style="text-align:center;margin-top:0.8rem;font-size:0.75rem;color:#8a8f98;">No obligation — we reply within 24 hours</p>
         </div>
       </div>
 
 
     </div>
 
-    <!-- ââââââââââââââ SERVICE: MAINTENANCE ââââââââââââââ -->
+    <!-- ══════════════ SERVICE: MAINTENANCE ══════════════ -->
     <div id="page-svc-maintenance" class="page">
       <!-- back bar -->
       <div style="border-bottom:1px solid #23252a;padding:1rem 5%;">
-        <button class="svc-back" onclick="showPage('services')">â All Services</button>
+        <button class="svc-back" onclick="showPage('services')">← All Services</button>
       </div>
 
       <!-- hero -->
       <div class="svc-detail-hero">
         <span class="s-eyebrow">Ongoing Support</span>
         <h1 class="s-title">Your website,<br>always running</h1>
-        <p class="s-sub">Monthly care plans that keep your site updated, secure, and running perfectly â without you lifting a finger.</p>
+        <p class="s-sub">Monthly care plans that keep your site updated, secure, and running perfectly — without you lifting a finger.</p>
         <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
           <button class="btn-primary" onclick="showPage('booking')">Get a Quote</button>
           <button class="btn-outline" onclick="showPage('services')">All Services</button>
@@ -2424,15 +2287,15 @@
             <li>Up to 2 hours of content changes/month</li>
             <li>Monthly performance report</li>
             <li>Priority email support</li>
-            <li>No lock-in contract â cancel anytime</li>
+            <li>No lock-in contract — cancel anytime</li>
           </ul>
         </div>
         <div class="svc-price-card glow-card">
           <span class="svc-price-label">Investment</span>
           <div class="svc-big-price">$130/mo</div>
-          <p class="svc-price-desc">Rolling monthly plan â no contract. Includes all updates, backups, security, and content changes.</p>
+          <p class="svc-price-desc">Rolling monthly plan — no contract. Includes all updates, backups, security, and content changes.</p>
           <button class="btn-primary" style="width:100%;" onclick="showPage('booking')">Get a Free Quote</button>
-          <p style="text-align:center;margin-top:0.8rem;font-size:0.75rem;color:#8a8f98;">No obligation â we reply within 24 hours</p>
+          <p style="text-align:center;margin-top:0.8rem;font-size:0.75rem;color:#8a8f98;">No obligation — we reply within 24 hours</p>
         </div>
       </div>
 
@@ -2459,8 +2322,8 @@
           <div style="padding:1.1rem 1.2rem;display:flex;flex-direction:column;flex:1;">
             <span class="blog-cat" style="margin-bottom:0.5rem;">Web Design</span>
             <h3 style="font-size:0.88rem;font-weight:700;line-height:1.4;margin-bottom:0.5rem;flex:1;">10 Web Design Trends You Need in 2026</h3>
-            <p style="font-size:0.78rem;color:var(--muted);line-height:1.55;margin-bottom:0.9rem;">What's hot right now â and what actually moves the needle for your business.</p>
-            <span style="font-size:0.75rem;color:var(--blue);">Read Article â</span>
+            <p style="font-size:0.78rem;color:var(--muted);line-height:1.55;margin-bottom:0.9rem;">What's hot right now — and what actually moves the needle for your business.</p>
+            <span style="font-size:0.75rem;color:var(--blue);">Read Article →</span>
           </div>
         </article>
 
@@ -2472,7 +2335,7 @@
             <span class="blog-cat" style="margin-bottom:0.5rem;">Performance</span>
             <h3 style="font-size:0.88rem;font-weight:700;line-height:1.4;margin-bottom:0.5rem;flex:1;">Is Your Website Too Slow?</h3>
             <p style="font-size:0.78rem;color:var(--muted);line-height:1.55;margin-bottom:0.9rem;">A slow site loses customers daily. Here's why speed matters and how to fix it.</p>
-            <span style="font-size:0.75rem;color:var(--blue);">Read Article â</span>
+            <span style="font-size:0.75rem;color:var(--blue);">Read Article →</span>
           </div>
         </article>
 
@@ -2483,8 +2346,8 @@
           <div style="padding:1.1rem 1.2rem;display:flex;flex-direction:column;flex:1;">
             <span class="blog-cat" style="margin-bottom:0.5rem;">SEO</span>
             <h3 style="font-size:0.88rem;font-weight:700;line-height:1.4;margin-bottom:0.5rem;flex:1;">How to Get on the First Page of Google</h3>
-            <p style="font-size:0.78rem;color:var(--muted);line-height:1.55;margin-bottom:0.9rem;">No jargon â just what actually works to get your site seen by more customers.</p>
-            <span style="font-size:0.75rem;color:var(--blue);">Read Article â</span>
+            <p style="font-size:0.78rem;color:var(--muted);line-height:1.55;margin-bottom:0.9rem;">No jargon — just what actually works to get your site seen by more customers.</p>
+            <span style="font-size:0.75rem;color:var(--blue);">Read Article →</span>
           </div>
         </article>
 
@@ -2494,9 +2357,9 @@
           </div>
           <div style="padding:1.1rem 1.2rem;display:flex;flex-direction:column;flex:1;">
             <span class="blog-cat" style="margin-bottom:0.5rem;">Branding</span>
-            <h3 style="font-size:0.88rem;font-weight:700;line-height:1.4;margin-bottom:0.5rem;flex:1;">Your Logo Isn't Your Brand â Here's What Is</h3>
+            <h3 style="font-size:0.88rem;font-weight:700;line-height:1.4;margin-bottom:0.5rem;flex:1;">Your Logo Isn't Your Brand — Here's What Is</h3>
             <p style="font-size:0.78rem;color:var(--muted);line-height:1.55;margin-bottom:0.9rem;">A logo is just the start. Here's what actually makes people remember your business.</p>
-            <span style="font-size:0.75rem;color:var(--blue);">Read Article â</span>
+            <span style="font-size:0.75rem;color:var(--blue);">Read Article →</span>
           </div>
         </article>
 
@@ -2505,47 +2368,47 @@
 
     </div>
 
-    <!-- ââââââââââââââ ARTICLE: TRENDS ââââââââââââââ -->
+    <!-- ══════════════ ARTICLE: TRENDS ══════════════ -->
     <div id="page-article-trends" class="page">
-      <div class="demo-back-bar"><button class="demo-back-btn" onclick="showPage('blog')">â Back to Blog</button></div>
+      <div class="demo-back-bar"><button class="demo-back-btn" onclick="showPage('blog')">← Back to Blog</button></div>
       <div class="article-body">
         <span class="blog-cat" style="margin-bottom:1rem;display:inline-block;">Web Design</span>
         <h1 style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;line-height:1.2;">10 Web Design Trends You Need to Know in 2026</h1>
-        <p style="color:var(--muted);font-size:0.82rem;margin-bottom:2rem;">By ZyntrixAI Â· April 2026 Â· 5 min read</p>
+        <p style="color:var(--muted);font-size:0.82rem;margin-bottom:2rem;">By ZyntrixAI · April 2026 · 5 min read</p>
         <img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=860&h=400&fit=crop" style="width:100%;border-radius:12px;margin-bottom:2rem;opacity:0.9;" alt="Designer at computer" />
-        <p>The web moves fast. What looked great two years ago can make your business look out of touch today. The good news? You don't need to chase every trend â you just need to know which ones actually help your business.</p>
+        <p>The web moves fast. What looked great two years ago can make your business look out of touch today. The good news? You don't need to chase every trend — you just need to know which ones actually help your business.</p>
         <p>Here are the 10 biggest web design trends right now, explained simply.</p>
         <h2>1. Clean, Minimal Layouts</h2>
         <p>Less is more. Cluttered websites confuse people and push them away. The best websites in 2026 have loads of white space, clear headlines, and one obvious thing to do next. Think clean, not complicated.</p>
         <h2>2. Big Bold Text</h2>
-        <p>Giant headlines are everywhere right now â and for good reason. They're eye-catching, they communicate fast, and they look seriously impressive on any screen. If your headline is small, people might not even read it.</p>
+        <p>Giant headlines are everywhere right now — and for good reason. They're eye-catching, they communicate fast, and they look seriously impressive on any screen. If your headline is small, people might not even read it.</p>
         <h2>3. Dark Backgrounds</h2>
         <p>Dark mode websites look modern, premium, and stand out from the sea of white-background sites. They're especially popular for agencies, tech companies, and anyone who wants to look high-end.</p>
         <h2>4. Smooth Animations</h2>
-        <p>Subtle movement as you scroll makes a website feel alive and polished. Nothing crazy â just things gently fading in or sliding into place. It makes visitors stop and pay attention.</p>
+        <p>Subtle movement as you scroll makes a website feel alive and polished. Nothing crazy — just things gently fading in or sliding into place. It makes visitors stop and pay attention.</p>
         <h2>5. Mobile First</h2>
         <p>Over 60% of web traffic comes from phones. If your site doesn't look great on mobile, you're losing more than half your potential customers before they even see what you offer.</p>
         <h2>6. Real Photos Over Stock</h2>
         <p>People can spot fake stock photos instantly. Websites that use real photos of the actual business, team, or product perform dramatically better. Authenticity builds trust.</p>
         <h2>7. Fast Load Times</h2>
-        <p>If your site takes more than 3 seconds to load, most people leave. Speed is a design choice â and it directly affects how many people you convert into customers.</p>
+        <p>If your site takes more than 3 seconds to load, most people leave. Speed is a design choice — and it directly affects how many people you convert into customers.</p>
         <h2>8. Simple Navigation</h2>
         <p>The best websites have 5 items or fewer in their menu. Make it stupidly easy for people to find what they're looking for. Confused visitors don't become customers.</p>
         <h2>9. Strong CTAs</h2>
-        <p>Every page needs one clear next step â "Book a Call", "Get a Quote", "Shop Now." One button. One goal. Don't make people guess what to do.</p>
+        <p>Every page needs one clear next step — "Book a Call", "Get a Quote", "Shop Now." One button. One goal. Don't make people guess what to do.</p>
         <h2>10. Consistent Branding</h2>
-        <p>Your colours, fonts, and style should be the same everywhere â website, social media, business cards, emails. Consistency builds recognition, and recognition builds trust.</p>
+        <p>Your colours, fonts, and style should be the same everywhere — website, social media, business cards, emails. Consistency builds recognition, and recognition builds trust.</p>
         <div class="article-cta"><p style="font-weight:700;color:#fff;margin-bottom:0.5rem;">Want a website that uses all of these?</p><p style="font-size:0.88rem;color:var(--muted);margin-bottom:1.2rem;">That's exactly what we build at ZyntrixAI. Get in touch and let's make it happen.</p><button class="btn-primary" onclick="showPage('booking')">Start a Project</button></div>
       </div>
     </div>
 
-    <!-- ââââââââââââââ ARTICLE: PAGE SPEED ââââââââââââââ -->
+    <!-- ══════════════ ARTICLE: PAGE SPEED ══════════════ -->
     <div id="page-article-pagespeed" class="page">
-      <div class="demo-back-bar"><button class="demo-back-btn" onclick="showPage('blog')">â Back to Blog</button></div>
+      <div class="demo-back-bar"><button class="demo-back-btn" onclick="showPage('blog')">← Back to Blog</button></div>
       <div class="article-body">
         <span class="blog-cat" style="margin-bottom:1rem;display:inline-block;">Performance</span>
         <h1 style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;line-height:1.2;">Is Your Website Too Slow? Here's How to Fix It</h1>
-        <p style="color:var(--muted);font-size:0.82rem;margin-bottom:2rem;">By ZyntrixAI Â· March 2026 Â· 4 min read</p>
+        <p style="color:var(--muted);font-size:0.82rem;margin-bottom:2rem;">By ZyntrixAI · March 2026 · 4 min read</p>
         <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=860&h=400&fit=crop" style="width:100%;border-radius:12px;margin-bottom:2rem;opacity:0.9;" alt="Analytics dashboard" />
         <p>Here's a scary stat: if your website takes longer than 3 seconds to load, more than half your visitors will leave before they even see it. They're gone. Just like that.</p>
         <p>The even scarier part? Most business owners have no idea their website is slow.</p>
@@ -2554,87 +2417,87 @@
         <h2>How to Check Your Speed Right Now</h2>
         <p>Go to <strong style="color:#fff;">PageSpeed Insights</strong> (just Google it) and type in your website address. Google will give you a score out of 100. Anything above 80 is good. Below 50 means you're losing customers right now.</p>
         <h2>The Most Common Reasons Websites Are Slow</h2>
-        <p><strong style="color:#fff;">Huge image files</strong> â The biggest culprit. Photos that haven't been resized or compressed can add seconds to your load time. Every image on your site should be compressed before it goes live.</p>
-        <p><strong style="color:#fff;">Cheap hosting</strong> â If you're on a $3/month hosting plan, your site lives on a slow, overcrowded server. Better hosting = faster website, full stop.</p>
-        <p><strong style="color:#fff;">Too many plugins</strong> â Every plugin on your WordPress site adds code that your visitors' browsers have to load. Cut the ones you don't need.</p>
-        <p><strong style="color:#fff;">No caching</strong> â Caching stores a copy of your website so it loads faster for returning visitors. It takes 10 minutes to set up and makes a huge difference.</p>
+        <p><strong style="color:#fff;">Huge image files</strong> — The biggest culprit. Photos that haven't been resized or compressed can add seconds to your load time. Every image on your site should be compressed before it goes live.</p>
+        <p><strong style="color:#fff;">Cheap hosting</strong> — If you're on a $3/month hosting plan, your site lives on a slow, overcrowded server. Better hosting = faster website, full stop.</p>
+        <p><strong style="color:#fff;">Too many plugins</strong> — Every plugin on your WordPress site adds code that your visitors' browsers have to load. Cut the ones you don't need.</p>
+        <p><strong style="color:#fff;">No caching</strong> — Caching stores a copy of your website so it loads faster for returning visitors. It takes 10 minutes to set up and makes a huge difference.</p>
         <h2>The Simple Fix</h2>
-        <p>The fastest way to fix a slow website is to rebuild it properly from the start â with clean code, optimised images, and proper hosting. That's exactly what we do at ZyntrixAI, and our sites consistently score 90+ on Google's speed test.</p>
+        <p>The fastest way to fix a slow website is to rebuild it properly from the start — with clean code, optimised images, and proper hosting. That's exactly what we do at ZyntrixAI, and our sites consistently score 90+ on Google's speed test.</p>
         <div class="article-cta"><p style="font-weight:700;color:#fff;margin-bottom:0.5rem;">Want a fast website that ranks on Google?</p><p style="font-size:0.88rem;color:var(--muted);margin-bottom:1.2rem;">We build websites that load in under 2 seconds. Let's talk.</p><button class="btn-primary" onclick="showPage('booking')">Get a Free Quote</button></div>
       </div>
     </div>
 
-    <!-- ââââââââââââââ ARTICLE: ECOMMERCE ââââââââââââââ -->
+    <!-- ══════════════ ARTICLE: ECOMMERCE ══════════════ -->
     <div id="page-article-ecommerce" class="page">
-      <div class="demo-back-bar"><button class="demo-back-btn" onclick="showPage('blog')">â Back to Blog</button></div>
+      <div class="demo-back-bar"><button class="demo-back-btn" onclick="showPage('blog')">← Back to Blog</button></div>
       <div class="article-body">
         <span class="blog-cat" style="margin-bottom:1rem;display:inline-block;">E-Commerce</span>
         <h1 style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;line-height:1.2;">Why People Leave Your Store Without Buying</h1>
-        <p style="color:var(--muted);font-size:0.82rem;margin-bottom:2rem;">By ZyntrixAI Â· March 2026 Â· 4 min read</p>
+        <p style="color:var(--muted);font-size:0.82rem;margin-bottom:2rem;">By ZyntrixAI · March 2026 · 4 min read</p>
         <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=860&h=400&fit=crop" style="width:100%;border-radius:12px;margin-bottom:2rem;opacity:0.9;" alt="Online shopping" />
         <p>You've got products people want. You've got traffic coming to your store. But sales just... aren't happening. Sound familiar?</p>
         <p>This is one of the most common problems we see. And the fix is almost always one of these five things.</p>
         <h2>1. Your Photos Aren't Good Enough</h2>
-        <p>People can't touch or try your product online â so photos do ALL the work. Blurry, dark, or boring photos kill sales instantly. Invest in good product photography. It's the single best return on investment for any online store.</p>
+        <p>People can't touch or try your product online — so photos do ALL the work. Blurry, dark, or boring photos kill sales instantly. Invest in good product photography. It's the single best return on investment for any online store.</p>
         <h2>2. There's No Trust</h2>
         <p>Would you hand over your card details to a website you didn't trust? Neither would your customers. Add reviews, a clear return policy, your business address, and a secure checkout badge. These small things make a massive difference.</p>
         <h2>3. Checkout Is Too Complicated</h2>
-        <p>Every extra step in your checkout process loses customers. The best stores let people buy in 3 clicks. Ask for the minimum â name, email, address, payment. That's it. No account required.</p>
+        <p>Every extra step in your checkout process loses customers. The best stores let people buy in 3 clicks. Ask for the minimum — name, email, address, payment. That's it. No account required.</p>
         <h2>4. Your Site Doesn't Work on Mobile</h2>
-        <p>More than half of online shopping happens on phones. If your store is clunky on mobile â small buttons, hard-to-read text, images that don't load right â you're losing those customers. Every single one.</p>
+        <p>More than half of online shopping happens on phones. If your store is clunky on mobile — small buttons, hard-to-read text, images that don't load right — you're losing those customers. Every single one.</p>
         <h2>5. No Clear Call to Action</h2>
         <p>The "Add to Cart" or "Buy Now" button needs to stand out. If people have to hunt for it, they won't bother. Make it big, make it obvious, make it easy.</p>
         <div class="article-cta"><p style="font-weight:700;color:#fff;margin-bottom:0.5rem;">Ready to build a store that actually sells?</p><p style="font-size:0.88rem;color:var(--muted);margin-bottom:1.2rem;">We build online stores that are fast, mobile-friendly, and designed to convert. Let's talk.</p><button class="btn-primary" onclick="showPage('booking')">Get a Free Quote</button></div>
       </div>
     </div>
 
-    <!-- ââââââââââââââ ARTICLE: SEO ââââââââââââââ -->
+    <!-- ══════════════ ARTICLE: SEO ══════════════ -->
     <div id="page-article-seo" class="page">
-      <div class="demo-back-bar"><button class="demo-back-btn" onclick="showPage('blog')">â Back to Blog</button></div>
+      <div class="demo-back-bar"><button class="demo-back-btn" onclick="showPage('blog')">← Back to Blog</button></div>
       <div class="article-body">
         <span class="blog-cat" style="margin-bottom:1rem;display:inline-block;">SEO</span>
         <h1 style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;line-height:1.2;">How to Get Your Business on the First Page of Google</h1>
-        <p style="color:var(--muted);font-size:0.82rem;margin-bottom:2rem;">By ZyntrixAI Â· February 2026 Â· 5 min read</p>
+        <p style="color:var(--muted);font-size:0.82rem;margin-bottom:2rem;">By ZyntrixAI · February 2026 · 5 min read</p>
         <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=860&h=400&fit=crop" style="width:100%;border-radius:12px;margin-bottom:2rem;opacity:0.9;" alt="Search and SEO" />
-        <p>When someone in your area searches for what you do, do you show up? If not, you're invisible â and your competitors are getting all those customers instead.</p>
+        <p>When someone in your area searches for what you do, do you show up? If not, you're invisible — and your competitors are getting all those customers instead.</p>
         <p>SEO sounds complicated, but the basics are actually pretty simple. Here's what you need to know.</p>
         <h2>What Is SEO, Really?</h2>
-        <p>SEO stands for Search Engine Optimisation. It basically means making your website easier for Google to understand â so when someone searches for what you offer, Google sends them to you instead of someone else.</p>
+        <p>SEO stands for Search Engine Optimisation. It basically means making your website easier for Google to understand — so when someone searches for what you offer, Google sends them to you instead of someone else.</p>
         <h2>The Stuff That Actually Matters</h2>
-        <p><strong style="color:#fff;">Your page titles</strong> â Every page on your website should have a clear title that includes what you do and where you are. "Plumber in Sydney" is better than "Home."</p>
-        <p><strong style="color:#fff;">Your Google Business Profile</strong> â If you haven't claimed your free Google Business Profile, do it today. It's how you show up on Google Maps and in local searches. Takes 15 minutes and it's free.</p>
-        <p><strong style="color:#fff;">Your website speed</strong> â Google rewards fast websites. Slow sites get pushed down. (See our article on page speed for how to fix this.)</p>
-        <p><strong style="color:#fff;">Reviews</strong> â The more genuine 5-star reviews you have on Google, the higher you rank. Ask every happy customer to leave a review. Most will, if you just ask.</p>
-        <p><strong style="color:#fff;">Content that answers questions</strong> â Write blog posts or pages that answer the questions your customers actually Google. This is how you show up for more searches over time.</p>
+        <p><strong style="color:#fff;">Your page titles</strong> — Every page on your website should have a clear title that includes what you do and where you are. "Plumber in Sydney" is better than "Home."</p>
+        <p><strong style="color:#fff;">Your Google Business Profile</strong> — If you haven't claimed your free Google Business Profile, do it today. It's how you show up on Google Maps and in local searches. Takes 15 minutes and it's free.</p>
+        <p><strong style="color:#fff;">Your website speed</strong> — Google rewards fast websites. Slow sites get pushed down. (See our article on page speed for how to fix this.)</p>
+        <p><strong style="color:#fff;">Reviews</strong> — The more genuine 5-star reviews you have on Google, the higher you rank. Ask every happy customer to leave a review. Most will, if you just ask.</p>
+        <p><strong style="color:#fff;">Content that answers questions</strong> — Write blog posts or pages that answer the questions your customers actually Google. This is how you show up for more searches over time.</p>
         <h2>How Long Does It Take?</h2>
-        <p>SEO isn't instant â it typically takes 3 to 6 months to see strong results. But once you're ranking, you stay there. It's the gift that keeps giving.</p>
+        <p>SEO isn't instant — it typically takes 3 to 6 months to see strong results. But once you're ranking, you stay there. It's the gift that keeps giving.</p>
         <div class="article-cta"><p style="font-weight:700;color:#fff;margin-bottom:0.5rem;">Want to show up on Google's first page?</p><p style="font-size:0.88rem;color:var(--muted);margin-bottom:1.2rem;">Our SEO service gets your business found by local customers every month. Let's talk.</p><button class="btn-primary" onclick="showPage('booking')">Get Started</button></div>
       </div>
     </div>
 
-    <!-- ââââââââââââââ ARTICLE: BRANDING ââââââââââââââ -->
+    <!-- ══════════════ ARTICLE: BRANDING ══════════════ -->
     <div id="page-article-branding" class="page">
-      <div class="demo-back-bar"><button class="demo-back-btn" onclick="showPage('blog')">â Back to Blog</button></div>
+      <div class="demo-back-bar"><button class="demo-back-btn" onclick="showPage('blog')">← Back to Blog</button></div>
       <div class="article-body">
         <span class="blog-cat" style="margin-bottom:1rem;display:inline-block;">Branding</span>
-        <h1 style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;line-height:1.2;">Your Logo Isn't Your Brand â Here's What Is</h1>
-        <p style="color:var(--muted);font-size:0.82rem;margin-bottom:2rem;">By ZyntrixAI Â· February 2026 Â· 4 min read</p>
+        <h1 style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;line-height:1.2;">Your Logo Isn't Your Brand — Here's What Is</h1>
+        <p style="color:var(--muted);font-size:0.82rem;margin-bottom:2rem;">By ZyntrixAI · February 2026 · 4 min read</p>
         <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=860&h=400&fit=crop" style="width:100%;border-radius:12px;margin-bottom:2rem;opacity:0.9;" alt="Branding and design" />
         <p>A lot of businesses spend good money on a logo, then wonder why nobody seems to remember them. Here's the truth: your logo is just one small part of your brand. The rest is what actually makes people trust you and choose you.</p>
         <h2>So What IS a Brand?</h2>
         <p>Your brand is the feeling people get when they interact with your business. It's what they say about you when you're not in the room. It's the vibe your social media gives off. It's whether your website feels cheap or premium. It's everything.</p>
         <h2>The Parts That Matter</h2>
-        <p><strong style="color:#fff;">Colours</strong> â Your colours communicate a feeling before anyone reads a single word. Blue = trust. Green = nature/health. Black = premium. Choose colours that match the feeling you want people to have.</p>
-        <p><strong style="color:#fff;">Fonts</strong> â The fonts you use say a lot about your personality. A law firm and a kids' party company should use very different fonts. The right font makes your brand feel like "you."</p>
-        <p><strong style="color:#fff;">Tone of voice</strong> â How you write matters as much as what you write. Are you formal and professional? Friendly and casual? Funny? Pick a tone and stick to it across your website, emails, and social media.</p>
-        <p><strong style="color:#fff;">Consistency</strong> â This is the big one. Your brand should look and feel the same everywhere â website, Instagram, business cards, invoices. Inconsistency makes you look amateur. Consistency builds trust.</p>
+        <p><strong style="color:#fff;">Colours</strong> — Your colours communicate a feeling before anyone reads a single word. Blue = trust. Green = nature/health. Black = premium. Choose colours that match the feeling you want people to have.</p>
+        <p><strong style="color:#fff;">Fonts</strong> — The fonts you use say a lot about your personality. A law firm and a kids' party company should use very different fonts. The right font makes your brand feel like "you."</p>
+        <p><strong style="color:#fff;">Tone of voice</strong> — How you write matters as much as what you write. Are you formal and professional? Friendly and casual? Funny? Pick a tone and stick to it across your website, emails, and social media.</p>
+        <p><strong style="color:#fff;">Consistency</strong> — This is the big one. Your brand should look and feel the same everywhere — website, Instagram, business cards, invoices. Inconsistency makes you look amateur. Consistency builds trust.</p>
         <h2>The Good News</h2>
         <p>You don't need a huge budget to have a great brand. You just need to be intentional about it. Pick your colours. Pick your fonts. Decide how you talk. Then stick to it.</p>
-        <div class="article-cta"><p style="font-weight:700;color:#fff;margin-bottom:0.5rem;">Ready to build a brand people remember?</p><p style="font-size:0.88rem;color:var(--muted);margin-bottom:1.2rem;">We handle everything â logo, colours, fonts, and guidelines. One package, done properly.</p><button class="btn-primary" onclick="showPage('booking')">Get a Quote</button></div>
+        <div class="article-cta"><p style="font-weight:700;color:#fff;margin-bottom:0.5rem;">Ready to build a brand people remember?</p><p style="font-size:0.88rem;color:var(--muted);margin-bottom:1.2rem;">We handle everything — logo, colours, fonts, and guidelines. One package, done properly.</p><button class="btn-primary" onclick="showPage('booking')">Get a Quote</button></div>
       </div>
     </div>
 
-    <!-- ââââââââââââââ PRICING ââââââââââââââ -->
+    <!-- ══════════════ PRICING ══════════════ -->
     <div id="page-pricing" class="page">
 
       <!-- HERO -->
@@ -2652,22 +2515,22 @@
         </div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;">
           <div class="testi-card glow-card" style="padding:1rem 1.1rem;">
-            <div class="testi-stars" style="font-size:0.6rem;margin-bottom:0.5rem;">â â â â â</div>
+            <div class="testi-stars" style="font-size:0.6rem;margin-bottom:0.5rem;">★ ★ ★ ★ ★</div>
             <p class="testi-q" style="font-size:0.76rem;margin-bottom:0.8rem;">"ZyntrixAI completely transformed our online presence. Enquiries have more than doubled since we launched with their Growth package."</p>
             <div class="testi-name" style="font-size:0.76rem;">Sarah M.</div>
-            <div class="testi-co" style="font-size:0.64rem;">Apex Fitness Â· Growth Package</div>
+            <div class="testi-co" style="font-size:0.64rem;">Apex Fitness · Growth Package</div>
           </div>
           <div class="testi-card glow-card" style="padding:1rem 1.1rem;">
-            <div class="testi-stars" style="font-size:0.6rem;margin-bottom:0.5rem;">â â â â â</div>
-            <p class="testi-q" style="font-size:0.76rem;margin-bottom:0.8rem;">"First call to live site in under three weeks. Excellent value for money â the Starter package gave us everything we needed."</p>
+            <div class="testi-stars" style="font-size:0.6rem;margin-bottom:0.5rem;">★ ★ ★ ★ ★</div>
+            <p class="testi-q" style="font-size:0.76rem;margin-bottom:0.8rem;">"First call to live site in under three weeks. Excellent value for money — the Starter package gave us everything we needed."</p>
             <div class="testi-name" style="font-size:0.76rem;">James K.</div>
-            <div class="testi-co" style="font-size:0.64rem;">Nova Law Group Â· Starter Package</div>
+            <div class="testi-co" style="font-size:0.64rem;">Nova Law Group · Starter Package</div>
           </div>
           <div class="testi-card glow-card" style="padding:1rem 1.1rem;">
-            <div class="testi-stars" style="font-size:0.6rem;margin-bottom:0.5rem;">â â â â â</div>
-            <p class="testi-q" style="font-size:0.76rem;margin-bottom:0.8rem;">"We went with the Enterprise package and got a full brand, website, and online shop. Worth every cent â we look like a premium brand now."</p>
+            <div class="testi-stars" style="font-size:0.6rem;margin-bottom:0.5rem;">★ ★ ★ ★ ★</div>
+            <p class="testi-q" style="font-size:0.76rem;margin-bottom:0.8rem;">"We went with the Enterprise package and got a full brand, website, and online shop. Worth every cent — we look like a premium brand now."</p>
             <div class="testi-name" style="font-size:0.76rem;">Emma R.</div>
-            <div class="testi-co" style="font-size:0.64rem;">Bloom Boutique Â· Enterprise Package</div>
+            <div class="testi-co" style="font-size:0.64rem;">Bloom Boutique · Enterprise Package</div>
           </div>
         </div>
       </div>
@@ -2683,7 +2546,7 @@
       <!-- BUNDLE DEALS SECTION -->
       <div id="bundleSection" style="display:block;">
         <div style="text-align:center;margin-bottom:2rem;">
-          <p style="font-size:0.85rem;color:var(--muted);">Build your site Â· Get it live Â· Continue growing with ongoing support</p>
+          <p style="font-size:0.85rem;color:var(--muted);">Build your site · Get it live · Continue growing with ongoing support</p>
         </div>
         <div id="pricingTiersGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1.2rem;max-width:980px;margin:0 auto 2rem;padding:0 5%;">
 
@@ -2698,13 +2561,17 @@
             <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.5rem;font-family:monospace;">Build (one-off)</div>
             <div style="font-size:0.72rem;color:var(--muted);margin-bottom:1.8rem;font-family:monospace;">Then $165/mo retainer</div>
             <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:2rem;flex:1;">Perfect for new businesses and sole traders getting their first professional website.</p>
-            <button class="btn-outline" style="width:100%;pointer-events:none;">View Details â</button>
+            <button class="btn-outline" style="width:100%;pointer-events:none;">View Details →</button>
           </div>
 
           <!-- BUNDLE 2: SCALE + GROWTH (featured) -->
           <div class="glow-card" style="background:var(--card-bg);padding:2.2rem 2rem;display:flex;flex-direction:column;gap:0;border:1px solid var(--blue);border-top:2px solid var(--blue);border-radius:var(--radius);position:relative;cursor:pointer;" onclick="openPricingModal('scale')" onmouseover="this.style.background='var(--card-hover)'" onmouseout="this.style.background='var(--card-bg)'">
             <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--blue),transparent);"></div>
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.8rem;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);letter-spacing:2px;">02</span>
+                <span style="width:5px;height:5px;border-radius:50%;background:var(--blue);box-shadow:0 0 6px rgba(0,200,255,0.6);display:inline-block;"></span>
+              </div>
               <span style="font-size:0.58rem;font-weight:700;letter-spacing:2px;background:var(--blue);color:#000;padding:2px 10px;border-radius:999px;">BEST VALUE</span>
             </div>
             <div style="font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:0.5rem;">Scale + Growth</div>
@@ -2712,7 +2579,7 @@
             <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.5rem;font-family:monospace;">Build (one-off)</div>
             <div style="font-size:0.72rem;color:var(--muted);margin-bottom:1.8rem;font-family:monospace;">Then $335/mo retainer</div>
             <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:2rem;flex:1;">For growing businesses that need more pages, bookings, and online visibility.</p>
-            <button class="btn-primary" style="width:100%;pointer-events:none;">View Details â</button>
+            <button class="btn-primary" style="width:100%;pointer-events:none;">View Details →</button>
           </div>
 
           <!-- BUNDLE 3: FULL AGENCY -->
@@ -2726,7 +2593,7 @@
             <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.5rem;font-family:monospace;">Build (one-off)</div>
             <div style="font-size:0.72rem;color:var(--muted);margin-bottom:1.8rem;font-family:monospace;">Then $935/mo retainer</div>
             <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:2rem;flex:1;">The complete package for businesses serious about their online presence.</p>
-            <button class="btn-outline" style="width:100%;pointer-events:none;">View Details â</button>
+            <button class="btn-outline" style="width:100%;pointer-events:none;">View Details →</button>
           </div>
 
         </div>
@@ -2747,22 +2614,26 @@
             </div>
             <div style="font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Essentials</div>
             <div style="font-size:2.4rem;font-weight:900;color:var(--text);line-height:1;margin-bottom:0.3rem;">$180</div>
-            <div style="font-size:0.72rem;color:var(--muted);margin-bottom:1.8rem;font-family:monospace;">AUD/month Â· cancel anytime</div>
+            <div style="font-size:0.72rem;color:var(--muted);margin-bottom:1.8rem;font-family:monospace;">AUD/month · cancel anytime</div>
             <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:2rem;flex:1;">Priority email support, daily backups, security monitoring, and monthly updates.</p>
-            <button class="btn-outline" style="width:100%;pointer-events:none;">View Details â</button>
+            <button class="btn-outline" style="width:100%;pointer-events:none;">View Details →</button>
           </div>
 
           <!-- RETAINER 2: GROWTH (featured) -->
           <div class="glow-card" style="background:var(--card-bg);padding:2.2rem 2rem;display:flex;flex-direction:column;gap:0;border:1px solid var(--blue);border-top:2px solid var(--blue);border-radius:var(--radius);position:relative;cursor:pointer;" onclick="openPricingModal('growthRetainer')" onmouseover="this.style.background='var(--card-hover)'" onmouseout="this.style.background='var(--card-bg)'">
             <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--blue),transparent);"></div>
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.8rem;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);letter-spacing:2px;">02</span>
+                <span style="width:5px;height:5px;border-radius:50%;background:var(--blue);box-shadow:0 0 6px rgba(0,200,255,0.6);display:inline-block;"></span>
+              </div>
               <span style="font-size:0.58rem;font-weight:700;letter-spacing:2px;background:var(--blue);color:#000;padding:2px 10px;border-radius:999px;">POPULAR</span>
             </div>
             <div style="font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:0.5rem;">Growth</div>
             <div style="font-size:2.4rem;font-weight:900;color:var(--text);line-height:1;margin-bottom:0.3rem;">$380</div>
-            <div style="font-size:0.72rem;color:var(--muted);margin-bottom:1.8rem;font-family:monospace;">AUD/month Â· cancel anytime</div>
+            <div style="font-size:0.72rem;color:var(--muted);margin-bottom:1.8rem;font-family:monospace;">AUD/month · cancel anytime</div>
             <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:2rem;flex:1;">Everything in Essentials, plus 3 content changes/month, priority support, SEO checks, and analytics reviews.</p>
-            <button class="btn-primary" style="width:100%;pointer-events:none;">View Details â</button>
+            <button class="btn-primary" style="width:100%;pointer-events:none;">View Details →</button>
           </div>
 
           <!-- RETAINER 3: AGENCY PARTNER -->
@@ -2773,9 +2644,9 @@
             </div>
             <div style="font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Agency Partner</div>
             <div style="font-size:2.4rem;font-weight:900;color:var(--text);line-height:1;margin-bottom:0.3rem;">$1,100</div>
-            <div style="font-size:0.72rem;color:var(--muted);margin-bottom:1.8rem;font-family:monospace;">AUD/month Â· cancel anytime</div>
+            <div style="font-size:0.72rem;color:var(--muted);margin-bottom:1.8rem;font-family:monospace;">AUD/month · cancel anytime</div>
             <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:2rem;flex:1;">Everything in Growth, plus 8h dev & content/month, conversion optimization, competitor monitoring, and dedicated account manager.</p>
-            <button class="btn-outline" style="width:100%;pointer-events:none;">View Details â</button>
+            <button class="btn-outline" style="width:100%;pointer-events:none;">View Details →</button>
           </div>
 
         </div>
@@ -2783,7 +2654,7 @@
 
       <!-- FOOTNOTE -->
       <div style="text-align:center;padding:1rem 24px 2rem;color:var(--muted);font-size:0.75rem;line-height:1.8;font-family:monospace;">
-        All prices in AUD Â· Not sure which plan? <button onclick="showPage('booking')" style="background:none;border:none;color:var(--blue);cursor:pointer;font-size:0.75rem;font-family:inherit;">Book a free call â</button>
+        All prices in AUD · Not sure which plan? <button onclick="showPage('booking')" style="background:none;border:none;color:var(--blue);cursor:pointer;font-size:0.75rem;font-family:inherit;">Book a free call →</button>
       </div>
 
 
@@ -2797,31 +2668,31 @@
         <div class="faq-section" style="padding:0;">
           <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">Do I have to pay everything upfront?</div>
-            <div class="faq-a">No. We split it 50/50 â you pay half to get started and the other half when the site is ready to go live. No surprises.</div>
+            <div class="faq-a">No. We split it 50/50 — you pay half to get started and the other half when the site is ready to go live. No surprises.</div>
           </div>
           <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">How long does it take to build my website?</div>
-            <div class="faq-a">The Starter package typically takes 2â3 weeks. Growth takes 3â5 weeks. Enterprise is quoted based on scope. We'll give you an exact timeline before we start.</div>
+            <div class="faq-a">The Starter package typically takes 2–3 weeks. Growth takes 3–5 weeks. Enterprise is quoted based on scope. We'll give you an exact timeline before we start.</div>
           </div>
           <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">Can I upgrade my package later?</div>
-            <div class="faq-a">Absolutely. You can start with Starter and add extra services â like SEO, an online shop, or branding â at any time. We'll quote the difference.</div>
+            <div class="faq-a">Absolutely. You can start with Starter and add extra services — like SEO, an online shop, or branding — at any time. We'll quote the difference.</div>
           </div>
           <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">What happens after launch?</div>
-            <div class="faq-a">After launch, you have priority email support for technical issues. For ongoing maintenance, updates, security, and backups, our Ongoing Support plan is available for $130/mo. No lock-in â cancel anytime.</div>
+            <div class="faq-a">After launch, you have priority email support for technical issues. For ongoing maintenance, updates, security, and backups, our Ongoing Support plan is available for $130/mo. No lock-in — cancel anytime.</div>
           </div>
           <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">Do I own the website when it's done?</div>
-            <div class="faq-a">Yes â 100%. You own everything: the code, the design files, the domain, the hosting account. We hand over every file and every login. It's yours outright.</div>
+            <div class="faq-a">Yes — 100%. You own everything: the code, the design files, the domain, the hosting account. We hand over every file and every login. It's yours outright.</div>
           </div>
           <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">Is there a contract or lock-in?</div>
-            <div class="faq-a">No lock-in contracts. Project work is a one-off payment. The only ongoing cost is if you choose our monthly support plan â which you can cancel anytime.</div>
+            <div class="faq-a">No lock-in contracts. Project work is a one-off payment. The only ongoing cost is if you choose our monthly support plan — which you can cancel anytime.</div>
           </div>
           <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">What if I'm not happy with the design?</div>
-            <div class="faq-a">We include 2 full rounds of revisions on every package. If you're not happy at any stage, tell us what to change and we'll fix it â we don't launch until you're satisfied.</div>
+            <div class="faq-a">We include 2 full rounds of revisions on every package. If you're not happy at any stage, tell us what to change and we'll fix it — we don't launch until you're satisfied.</div>
           </div>
         </div>
 
@@ -2830,7 +2701,7 @@
           <div style="padding:2rem 2rem 1.5rem;border-bottom:1px solid var(--border);">
             <span class="s-eyebrow" style="margin-bottom:0.8rem;">Book a Free Call</span>
             <h3 style="font-size:1.1rem;font-weight:700;color:#f7f8f8;text-transform:none;letter-spacing:-0.01em;margin-bottom:0.4rem;">Let's figure out the right package for you</h3>
-            <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;">30 minutes. Free. No pressure â we'll listen, ask the right questions, and tell you exactly what you need.</p>
+            <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;">30 minutes. Free. No pressure — we'll listen, ask the right questions, and tell you exactly what you need.</p>
           </div>
           <form style="padding:1.8rem 2rem;display:flex;flex-direction:column;gap:1rem;" onsubmit="submitPricingEnquiry(event)">
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
@@ -2846,10 +2717,10 @@
             <div class="form-group">
               <label>Which package are you considering?</label>
               <select id="pq-package">
-                <option value="">Not sure yet â help me decide</option>
-                <option value="Starter">Starter â $750</option>
-                <option value="Growth">Growth â $1,850</option>
-                <option value="Enterprise">Enterprise â Custom quote</option>
+                <option value="">Not sure yet — help me decide</option>
+                <option value="Starter">Starter — $750</option>
+                <option value="Growth">Growth — $1,850</option>
+                <option value="Enterprise">Enterprise — Custom quote</option>
               </select>
             </div>
             <div class="form-group">
@@ -2858,15 +2729,15 @@
             </div>
             <div id="pq-error" class="form-error"></div>
             <div id="pq-success" class="success-msg">Thanks! We'll be in touch within 24 hours to book your call.</div>
-            <button type="submit" class="btn-primary" id="pq-btn">Book My Free Call â</button>
-            <p style="text-align:center;font-size:0.72rem;color:var(--muted);margin-top:-0.3rem;">We reply within 24 hours Â· No spam Â· No obligation</p>
+            <button type="submit" class="btn-primary" id="pq-btn">Book My Free Call →</button>
+            <p style="text-align:center;font-size:0.72rem;color:var(--muted);margin-top:-0.3rem;">We reply within 24 hours · No spam · No obligation</p>
           </form>
         </div>
       </div>
 
     </div>
 
-    <!-- ââ PRICING MODAL ââ -->
+    <!-- ── PRICING MODAL ── -->
     <div class="modal-overlay" id="pricingModal" onclick="closePricingModal(event)">
       <div class="modal-panel" id="pricingModalPanel">
         <div class="modal-header">
@@ -2875,7 +2746,7 @@
             <div class="modal-price" id="modalPrice"></div>
             <div class="modal-billing" id="modalBilling"></div>
           </div>
-          <button class="modal-close" onclick="closePricingModal(null)">â</button>
+          <button class="modal-close" onclick="closePricingModal(null)">✕</button>
         </div>
         <div class="modal-body">
           <p class="modal-desc" id="modalDesc"></p>
@@ -2883,7 +2754,7 @@
           <span class="modal-section-label">What's Included</span>
           <ul class="modal-features" id="modalFeatures"></ul>
           <div class="modal-actions">
-            <button class="btn-primary" onclick="closePricingModal(null);showPage('booking')">Get Started â</button>
+            <button class="btn-primary" onclick="closePricingModal(null);showPage('booking')">Get Started →</button>
             <button class="btn-outline" onclick="closePricingModal(null)">Close</button>
           </div>
         </div>
@@ -3029,7 +2900,7 @@
 
     <!-- JS -->
     <script>
-      // Nav scroll behaviour â transparent at top, frosted on scroll (kaev.ai)
+      // Nav scroll behaviour — transparent at top, frosted on scroll (kaev.ai)
       (function() {
         const nav = document.querySelector('nav');
         function updateNav() {
@@ -3052,13 +2923,13 @@
         document.getElementById("navLinks").classList.remove("open");
       }
 
-      // ââ Portfolio card data âââââââââââââââââââââââââââââââââââââââââââââââ
+      // ── Portfolio card data ───────────────────────────────────────────────
       const portfolioCards = [
         {
           cat: 'web-design',
-          tag: 'Trade Software Â· Victoria, AU',
+          tag: 'Trade Software · Victoria, AU',
           title: 'PaintWorkz Pro',
-          desc: 'Full-featured spray shop management platform for cabinet and joinery finishers â quoting, job scheduling, 2Pac formula library, invoicing, and cloud sync across devices.',
+          desc: 'Full-featured spray shop management platform for cabinet and joinery finishers — quoting, job scheduling, 2Pac formula library, invoicing, and cloud sync across devices.',
           url: 'https://paintworkzpro.com.au/',
           thumb: `<div style="width:100%;height:100%;background:#0a0a0a;display:flex;flex-direction:column;overflow:hidden;position:relative;font-family:Inter,sans-serif;">
             <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 20%,rgba(212,175,55,0.12),transparent 65%);pointer-events:none;"></div>
@@ -3073,7 +2944,7 @@
               <div>
                 <div style="font-size:8px;letter-spacing:2px;color:rgba(212,175,55,0.6);text-transform:uppercase;margin-bottom:8px;">Run Your Spray Shop Properly</div>
                 <div style="font-size:20px;font-weight:900;color:#e8e8e8;line-height:1.15;margin-bottom:6px;">The all-in-one<br><span style="color:#d4af37;">finishing platform.</span></div>
-                <div style="font-size:10px;color:rgba(232,232,232,0.45);line-height:1.6;">Measure Â· Quote Â· Schedule Â· Invoice Â· 2Pac Library</div>
+                <div style="font-size:10px;color:rgba(232,232,232,0.45);line-height:1.6;">Measure · Quote · Schedule · Invoice · 2Pac Library</div>
               </div>
               <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:14px;">
                 <div style="background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.15);border-radius:5px;padding:8px 6px;text-align:center;">
@@ -3117,13 +2988,13 @@
               <span class="project-tag">${c.tag}</span>
               <h3 style="${single ? 'font-size:1.15rem;margin-bottom:0.6rem;' : ''}">${c.title}</h3>
               <p style="${single ? 'font-size:0.88rem;margin-bottom:1.2rem;' : ''}">${c.desc}</p>
-              ${c.url ? `<a onclick="event.stopPropagation();window.open('${c.url}','_blank')" class="project-link" style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.82rem;">${c.url.replace('https://','').replace(/\/$/,'')} â</a>` : ''}
+              ${c.url ? `<a onclick="event.stopPropagation();window.open('${c.url}','_blank')" class="project-link" style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.82rem;">${c.url.replace('https://','').replace(/\/$/,'')} →</a>` : ''}
             </div>
           </div>`).join('');
       }
       buildPortfolio();
 
-      // ââ Home work grid ââââââââââââââââââââââââââââââââââââââââââââââââââââ
+      // ── Home work grid ────────────────────────────────────────────────────
       function buildHomeWork() {
         const el = document.getElementById('homeWorkGrid');
         if (!el) return;
@@ -3149,20 +3020,20 @@
         });
       }
 
-      // ââ Pricing Modal ââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+      // ── Pricing Modal ────────────────────────────────────────────────────────
       const pricingData = {
         launch: {
-          tier: '01 Â· Launch + Essentials', price: '$750', billing: 'Build (one-off) + $165/mo retainer',
+          tier: '01 · Launch + Essentials', price: '$750', billing: 'Build (one-off) + $165/mo retainer',
           desc: 'Perfect for new businesses getting their first professional website. Includes the build, plus 3 months of ongoing support.',
           meta: [
-            { label: 'Build',        value: '2â3 Weeks' },
+            { label: 'Build',        value: '2–3 Weeks' },
             { label: 'Pages',        value: 'Up to 5 pages' },
             { label: 'Retainer',     value: '$165/month after' },
             { label: 'Support',      value: 'Priority email' },
           ],
           included: [
-            { text: 'Web Design â up to 5 pages', on: true },
-            { text: 'Web Development â fully mobile-responsive', on: true },
+            { text: 'Web Design — up to 5 pages', on: true },
+            { text: 'Web Development — fully mobile-responsive', on: true },
             { text: 'Contact form setup', on: true },
             { text: 'Basic on-page SEO setup', on: true },
             { text: 'Google Analytics integration', on: true },
@@ -3175,21 +3046,21 @@
           ]
         },
         scale: {
-          tier: '02 Â· Scale + Growth', price: '$1,850', billing: 'Build (one-off) + $335/mo retainer',
+          tier: '02 · Scale + Growth', price: '$1,850', billing: 'Build (one-off) + $335/mo retainer',
           desc: 'For growing businesses needing more pages, bookings, e-commerce, and visibility. Our most popular package with ongoing growth support.',
           meta: [
-            { label: 'Build',        value: '3â5 Weeks' },
+            { label: 'Build',        value: '3–5 Weeks' },
             { label: 'Pages',        value: 'Up to 12 pages' },
             { label: 'Retainer',     value: '$335/month after' },
             { label: 'Support',      value: 'Priority + strategy' },
           ],
           included: [
-            { text: 'Web Design â up to 12 pages', on: true },
-            { text: 'Web Development â fully mobile-responsive', on: true },
+            { text: 'Web Design — up to 12 pages', on: true },
+            { text: 'Web Development — fully mobile-responsive', on: true },
             { text: 'Contact & booking / appointment forms', on: true },
             { text: 'Full on-page SEO setup', on: true },
             { text: 'Google Analytics + Search Console', on: true },
-            { text: 'E-Commerce store â up to 50 products', on: true },
+            { text: 'E-Commerce store — up to 50 products', on: true },
             { text: 'Monthly backups & security updates', on: true },
             { text: '3 content changes per month (ongoing)', on: true },
             { text: 'Monthly SEO checks', on: true },
@@ -3199,7 +3070,7 @@
           ]
         },
         fullAgency: {
-          tier: '03 Â· Full Agency', price: '$4,500', billing: 'Build (one-off) + $935/mo retainer',
+          tier: '03 · Full Agency', price: '$4,500', billing: 'Build (one-off) + $935/mo retainer',
           desc: 'The complete package for serious businesses. Full branding, unlimited pages, advanced SEO, e-commerce, and a dedicated manager.',
           meta: [
             { label: 'Build',        value: 'Quoted per scope' },
@@ -3213,8 +3084,8 @@
             { text: 'All forms & third-party integrations', on: true },
             { text: 'Advanced SEO & schema markup', on: true },
             { text: 'Full analytics dashboard setup', on: true },
-            { text: 'E-Commerce â unlimited products', on: true },
-            { text: 'Logo & Branding â full package', on: true },
+            { text: 'E-Commerce — unlimited products', on: true },
+            { text: 'Logo & Branding — full package', on: true },
             { text: '8 hours dev & content work per month', on: true },
             { text: 'Conversion optimization & A/B testing', on: true },
             { text: 'Competitor monitoring & analysis', on: true },
@@ -3223,7 +3094,7 @@
           ]
         },
         essentials: {
-          tier: '01 Â· Essentials', price: '$180', billing: 'Per month Â· Cancel anytime',
+          tier: '01 · Essentials', price: '$180', billing: 'Per month · Cancel anytime',
           desc: 'Ongoing support for sites that need regular maintenance, backups, security, and priority email support.',
           meta: [
             { label: 'Billing',      value: '$180/month' },
@@ -3246,7 +3117,7 @@
           ]
         },
         growthRetainer: {
-          tier: '02 Â· Growth', price: '$380', billing: 'Per month Â· Cancel anytime',
+          tier: '02 · Growth', price: '$380', billing: 'Per month · Cancel anytime',
           desc: 'Everything in Essentials plus content updates, SEO checks, analytics reviews, and priority 24h support.',
           meta: [
             { label: 'Billing',      value: '$380/month' },
@@ -3269,7 +3140,7 @@
           ]
         },
         agencyPartner: {
-          tier: '03 Â· Agency Partner', price: '$1,100', billing: 'Per month Â· Cancel anytime',
+          tier: '03 · Agency Partner', price: '$1,100', billing: 'Per month · Cancel anytime',
           desc: 'Full agency partnership with everything in Growth plus dedicated development hours, optimization, and a dedicated account manager.',
           meta: [
             { label: 'Billing',      value: '$1,100/month' },
@@ -3331,7 +3202,7 @@
 
         document.getElementById('modalFeatures').innerHTML = d.included.map(f => `
           <li class="${f.on ? '' : 'off'}">
-            <span class="${f.on ? 'check' : 'cross'}">${f.on ? 'â' : 'â'}</span>
+            <span class="${f.on ? 'check' : 'cross'}">${f.on ? '✓' : '✕'}</span>
             ${f.text}
           </li>
         `).join('');
@@ -3369,27 +3240,27 @@
         const success = document.getElementById('pq-success');
         err.textContent = '';
         btn.disabled = true;
-        btn.textContent = 'Sendingâ¦';
+        btn.textContent = 'Sending…';
         const fullName = document.getElementById('pq-name').value.trim().split(' ');
         const body = {
           firstName: fullName[0] || '',
           lastName: fullName.slice(1).join(' ') || '',
           email: document.getElementById('pq-email').value.trim(),
-          subject: 'Pricing Enquiry â ' + (document.getElementById('pq-package').value || 'Not decided'),
+          subject: 'Pricing Enquiry — ' + (document.getElementById('pq-package').value || 'Not decided'),
           message: document.getElementById('pq-message').value.trim()
         };
         try {
-          const res = await fetch('/api/contact', {
+          const res = await fetch('http://localhost:3000/api/contact', {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(body)
           });
           if (!res.ok) throw new Error('Send failed');
           success.style.display = 'block';
-          btn.textContent = 'Sent â';
+          btn.textContent = 'Sent ✓';
         } catch {
-          err.textContent = 'Something went wrong â email us at ZyntrixAIAutomation@gmail.com';
+          err.textContent = 'Something went wrong — email us at ZyntrixAIAutomation@gmail.com';
           btn.disabled = false;
-          btn.textContent = 'Book My Free Call â';
+          btn.textContent = 'Book My Free Call →';
         }
       }
 
@@ -3420,7 +3291,7 @@
         const inputs = form.querySelectorAll('input, textarea, select');
         inputs.forEach(i => i.disabled = true);
         btn.disabled = true;
-        btn.textContent = 'Sendingâ¦';
+        btn.textContent = 'Sending…';
 
         const payload = {
           firstName: document.getElementById('ctFirstName').value.trim(),
@@ -3431,7 +3302,7 @@
         };
 
         try {
-          const res  = await fetch('/api/contact', {
+          const res  = await fetch('http://localhost:3000/api/contact', {
             method:  'POST',
             headers: { 'Content-Type': 'application/json' },
             body:    JSON.stringify(payload)
@@ -3455,7 +3326,7 @@
         e.preventDefault();
 
         const btn = document.getElementById("quoteSubmitBtn");
-        btn.textContent = "Generating & Sendingâ¦";
+        btn.textContent = "Generating & Sending…";
         btn.disabled = true;
 
         const checked = [
@@ -3475,19 +3346,49 @@
           niche: document.getElementById("q-niche").value.trim(),
           services: checked || "General Website",
           websiteUrl: document.getElementById("q-noWebsite").checked
-            ? "No website â starting fresh"
+            ? "No website — starting fresh"
             : document.getElementById("q-websiteUrl").value.trim(),
           currentProblems: document.getElementById("q-currentProblems").value.trim(),
         };
 
         try {
-          const res = await fetch("/api/quote", {
+          const res = await fetch("http://localhost:3000/api/quote", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload),
           });
           const data = await res.json();
           if (data.success) {
+            // Save to Supabase directly
+            const supabaseUrl = "https://rvmozwfwfnrgviacsreo.supabase.co";
+            const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2bW96d2Z3Zm5yZ3ZpYWNzcmVvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0NTEyMzEsImV4cCI6MjA5NjAyNzIzMX0.kOnfRJtBWCH9BGScGrIkIWLoCUnEioP1z7nZxP8nVpk";
+            try {
+              await fetch(`${supabaseUrl}/rest/v1/bookings`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  "Authorization": `Bearer ${supabaseKey}`,
+                  "apikey": supabaseKey,
+                },
+                body: JSON.stringify({
+                  first_name: payload.firstName,
+                  last_name: payload.lastName,
+                  email: payload.email,
+                  phone: payload.phone || null,
+                  business_name: payload.businessName,
+                  industry_niche: payload.niche || null,
+                  services: payload.services,
+                  website_url: payload.websiteUrl,
+                  has_website: payload.websiteUrl && !payload.websiteUrl.includes("starting fresh"),
+                  current_problems: payload.currentProblems || null,
+                  status: "new",
+                  source: "website"
+                }),
+              });
+            } catch (sbErr) {
+              console.warn("Supabase save failed (non-blocking):", sbErr);
+            }
+
             document.getElementById("bookingSuccess").style.display = "block";
             // Show recommendation details if returned
             if (data.recommendation) {
@@ -3505,172 +3406,17 @@
             document.getElementById("bookingForm").reset();
           } else {
             const errEl = document.getElementById("bookingError");
-            errEl.textContent = "â " + (data.error || "Something went wrong. Please email us directly at zyntrixautomation@gmail.com");
+            errEl.textContent = "✕ " + (data.error || "Something went wrong. Please email us directly at zyntrixautomation@gmail.com");
             errEl.style.display = "block";
           }
         } catch (err) {
           const errEl = document.getElementById("bookingError");
-          errEl.textContent = "â Could not reach the server. Make sure it is running at localhost:3000.";
+          errEl.textContent = "✕ Could not reach the server. Make sure it is running at localhost:3000.";
           errEl.style.display = "block";
         } finally {
           btn.textContent = "Send Quote";
           btn.disabled = false;
         }
-      }
-    </script>
-
-    <!-- Chatbot Widget -->
-    <div id="chatbot-widget">
-      <button id="chatbot-toggle" title="Chat with ZyntrixAI Assistant">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-        </svg>
-      </button>
-
-      <div id="chatbot-container">
-        <div class="chatbot-header">
-          <h3>ZyntrixAI Assistant</h3>
-          <button class="chatbot-header-close" onclick="closeChatbot()">×</button>
-        </div>
-        <div class="chatbot-messages" id="chatbot-messages"></div>
-        <div class="chatbot-input-area">
-          <input
-            type="text"
-            id="chatbot-input"
-            placeholder="Ask me anything..."
-            onkeypress="if(event.key==='Enter') sendChatMessage()"
-          />
-          <button id="chatbot-send" onclick="sendChatMessage()">→</button>
-        </div>
-      </div>
-    </div>
-
-    <script>
-      const systemPrompt = `You are ZyntrixAI Assistant, a helpful chatbot for ZyntrixAI, a professional web design and development agency based in Australia.
-
-About ZyntrixAI:
-- We design and build custom websites, online stores, and branding for Australian businesses
-- Services: Web Design, Web Development, E-Commerce Stores, SEO & Growth, Logo & Branding, Ongoing Support
-- Pricing Packages: Starter ($750), Growth ($1,850), Enterprise (custom quote)
-- Monthly retainers available for ongoing support and maintenance
-- All websites are mobile-responsive, fast-loading (90+ Lighthouse score), and include free hosting setup
-- We take care of design, development, deployment, and ongoing support
-- Average turnaround: 2-5 weeks depending on project scope
-- Contact: ZyntrixAIAutomation@gmail.com or book a free discovery call
-
-Your role:
-1. Answer questions about our services, pricing, and process
-2. Help users understand which package suits their needs
-3. Provide information about the website design and development process
-4. Collect contact information (name, email, phone) when users express interest in booking
-5. Explain our transparent pricing and no-lock-in contract policy
-6. Be friendly, professional, and brief in responses
-7. If users want to book a project, collect their details and offer to send a proposal
-
-When collecting contact info for a booking, ask for:
-- Full name
-- Email address
-- Phone number (optional but helpful)
-- Business name and industry
-- Brief description of what they need
-
-Always be helpful and guide users toward taking action (booking a call, getting a quote, or sending an email).`;
-
-      let chatHistory = [];
-      let chatbotOpen = false;
-
-      function toggleChatbot() {
-        chatbotOpen = !chatbotOpen;
-        const container = document.getElementById('chatbot-container');
-        const toggle = document.getElementById('chatbot-toggle');
-
-        if (chatbotOpen) {
-          container.classList.add('open');
-          document.getElementById('chatbot-input').focus();
-          if (chatHistory.length === 0) {
-            addBotMessage("Hi! I'm the ZyntrixAI Assistant. How can I help you today? Feel free to ask about our services, pricing, or anything else!");
-          }
-        } else {
-          container.classList.remove('open');
-        }
-      }
-
-      function closeChatbot() {
-        chatbotOpen = false;
-        document.getElementById('chatbot-container').classList.remove('open');
-      }
-
-      document.getElementById('chatbot-toggle').addEventListener('click', toggleChatbot);
-
-      async function sendChatMessage() {
-        const input = document.getElementById('chatbot-input');
-        const message = input.value.trim();
-
-        if (!message) return;
-
-        input.value = '';
-        input.disabled = true;
-
-        addUserMessage(message);
-        chatHistory.push({ role: 'user', content: message });
-
-        try {
-          const response = await fetch('/api/chat', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              message: message,
-              history: chatHistory.slice(0, -1)
-            })
-          });
-
-          if (!response.ok) {
-            throw new Error('Failed to get response');
-          }
-
-          const data = await response.json();
-          const botResponse = data.reply;
-
-          chatHistory.push({ role: 'assistant', content: botResponse });
-          addBotMessage(botResponse);
-        } catch (error) {
-          console.error('Chat error:', error);
-          addBotMessage("Sorry, I'm having trouble connecting right now. Please try again in a moment, or email us at ZyntrixAIAutomation@gmail.com");
-        } finally {
-          input.disabled = false;
-          input.focus();
-        }
-      }
-
-      function addUserMessage(text) {
-        const messagesDiv = document.getElementById('chatbot-messages');
-        const messageEl = document.createElement('div');
-        messageEl.className = 'message user';
-        messageEl.innerHTML = `<div class="message-content">${escapeHtml(text)}</div>`;
-        messagesDiv.appendChild(messageEl);
-        messagesDiv.scrollTop = messagesDiv.scrollHeight;
-      }
-
-      function addBotMessage(text) {
-        const messagesDiv = document.getElementById('chatbot-messages');
-        const messageEl = document.createElement('div');
-        messageEl.className = 'message bot';
-        messageEl.innerHTML = `<div class="message-content">${escapeHtml(text)}</div>`;
-        messagesDiv.appendChild(messageEl);
-        messagesDiv.scrollTop = messagesDiv.scrollHeight;
-      }
-
-      function escapeHtml(text) {
-        const map = {
-          '&': '&amp;',
-          '<': '&lt;',
-          '>': '&gt;',
-          '"': '&quot;',
-          "'": '&#039;'
-        };
-        return text.replace(/[&<>"']/g, m => map[m]);
       }
     </script>
 
