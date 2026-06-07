@@ -1,5 +1,20 @@
 {
   "buildCommand": "next build",
   "outputDirectory": ".next",
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "env": {
+    "NEXT_PUBLIC_SUPABASE_URL": "@supabase_url",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "@supabase_anon_key"
+  },
+  "domains": [
+    "zyntrixai.co",
+    "www.zyntrixai.co",
+    "leads.zyntrixai.co"
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    }
+  ]
 }
