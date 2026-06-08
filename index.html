@@ -1187,69 +1187,112 @@
         <p class="s-sub" style="margin:0 auto;">We design, build, and grow websites for Australian businesses. Clear services, real results, no jargon.</p>
       </div>
 
-      <!-- SERVICE CARDS -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:1.2rem;max-width:1100px;margin:0 auto 5rem;padding:0 5%;">
+      <!-- WHAT WE PROVIDE -->
+      <div style="max-width:1000px;margin:0 auto 5rem;padding:0 5%;text-align:center;">
+        <h2 class="s-title" style="margin-bottom:1.5rem;">What We Provide</h2>
+        <p class="s-sub" style="margin-bottom:2.5rem;">We deliver complete web solutions from design through launch and beyond. Every project is built with precision, performance, and your business goals in mind.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;margin-top:2rem;">
+          <div style="padding:1.5rem;text-align:left;">
+            <div style="font-size:1.5rem;margin-bottom:0.8rem;">🎨</div>
+            <h4 style="font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.6rem;">Professional Design</h4>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;">Beautiful, modern websites that match your brand and convert visitors into customers.</p>
+          </div>
+          <div style="padding:1.5rem;text-align:left;">
+            <div style="font-size:1.5rem;margin-bottom:0.8rem;">⚡</div>
+            <h4 style="font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.6rem;">Fast &amp; Reliable</h4>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;">Hand-coded, optimised for speed. Every site loads fast on any device.</p>
+          </div>
+          <div style="padding:1.5rem;text-align:left;">
+            <div style="font-size:1.5rem;margin-bottom:0.8rem;">📈</div>
+            <h4 style="font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.6rem;">Growth Focused</h4>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;">SEO, analytics, and strategy built in. We help you attract real customers.</p>
+          </div>
+        </div>
+      </div>
 
-        <div class="glow-card" onclick="showPage('svc-design')" style="background:var(--card-bg);padding:1.6rem 1.5rem;cursor:pointer;transition:background 0.2s,border-color 0.2s;display:flex;flex-direction:column;gap:0.8rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
+      <!-- SERVICE CARDS (2 COLUMN) -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:2rem;max-width:1000px;margin:0 auto 5rem;padding:0 5%;">
+
+        <div class="glow-card" onclick="showPage('svc-design')" style="background:var(--card-bg);padding:2rem;cursor:pointer;transition:background 0.2s,border-color 0.2s;display:flex;flex-direction:column;gap:1rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
           <div style="display:flex;align-items:center;gap:8px;">
             <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);opacity:0.5;letter-spacing:2px;">01</span>
             <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
           </div>
-          <h3 style="font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Web Design</h3>
-          <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;flex:1;">A professionally designed website built around your brand — crafted to make a great first impression and turn visitors into customers.</p>
-          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-design')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More →</button>
+          <h3 style="font-size:1.1rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Web Design</h3>
+          <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;flex:1;">Professional website design built around your brand. We create stunning first impressions that turn visitors into customers.</p>
+          <ul style="list-style:none;font-size:0.8rem;color:var(--muted);line-height:1.8;margin:0.5rem 0;">
+            <li>✓ Custom design</li>
+            <li>✓ Brand alignment</li>
+            <li>✓ Mobile optimized</li>
+          </ul>
+          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-design')" style="margin-top:0.8rem;padding:0.6rem 1.2rem;font-size:0.78rem;width:100%;">Learn More →</button>
         </div>
 
-        <div class="glow-card" onclick="showPage('svc-dev')" style="background:var(--card-bg);padding:1.6rem 1.5rem;cursor:pointer;transition:background 0.2s,border-color 0.2s;display:flex;flex-direction:column;gap:0.8rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
+        <div class="glow-card" onclick="showPage('svc-dev')" style="background:var(--card-bg);padding:2rem;cursor:pointer;transition:background 0.2s,border-color 0.2s;display:flex;flex-direction:column;gap:1rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
           <div style="display:flex;align-items:center;gap:8px;">
             <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);opacity:0.5;letter-spacing:2px;">02</span>
             <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
           </div>
-          <h3 style="font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Web Development</h3>
-          <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;flex:1;">Clean, fast, hand-coded websites that load quickly, work on every device, and are built to last. No bloated templates — just solid, reliable code.</p>
-          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-dev')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More →</button>
+          <h3 style="font-size:1.1rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Web Development</h3>
+          <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;flex:1;">Clean, fast, hand-coded websites built to last. No bloated templates — just solid, reliable code optimised for performance.</p>
+          <ul style="list-style:none;font-size:0.8rem;color:var(--muted);line-height:1.8;margin:0.5rem 0;">
+            <li>✓ Lightning fast</li>
+            <li>✓ Cross-device</li>
+            <li>✓ Future-proof</li>
+          </ul>
+          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-dev')" style="margin-top:0.8rem;padding:0.6rem 1.2rem;font-size:0.78rem;width:100%;">Learn More →</button>
         </div>
 
-        <div class="glow-card" onclick="showPage('svc-ecommerce')" style="background:var(--card-bg);padding:1.6rem 1.5rem;cursor:pointer;transition:background 0.2s,border-color 0.2s;display:flex;flex-direction:column;gap:0.8rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
+        <div class="glow-card" onclick="showPage('svc-ecommerce')" style="background:var(--card-bg);padding:2rem;cursor:pointer;transition:background 0.2s,border-color 0.2s;display:flex;flex-direction:column;gap:1rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
           <div style="display:flex;align-items:center;gap:8px;">
             <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);opacity:0.5;letter-spacing:2px;">03</span>
             <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
           </div>
-          <h3 style="font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Online Shop</h3>
-          <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;flex:1;">A fully set-up online store with secure payments and smooth checkout — ready to take orders from day one, around the clock.</p>
-          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-ecommerce')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More →</button>
+          <h3 style="font-size:1.1rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Online Shop</h3>
+          <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;flex:1;">Fully set-up online stores with secure payments and smooth checkout. Ready to take orders from day one, around the clock.</p>
+          <ul style="list-style:none;font-size:0.8rem;color:var(--muted);line-height:1.8;margin:0.5rem 0;">
+            <li>✓ Secure payments</li>
+            <li>✓ Easy checkout</li>
+            <li>✓ Order management</li>
+          </ul>
+          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-ecommerce')" style="margin-top:0.8rem;padding:0.6rem 1.2rem;font-size:0.78rem;width:100%;">Learn More →</button>
         </div>
 
-        <div class="glow-card" onclick="showPage('svc-seo')" style="background:var(--card-bg);padding:1.6rem 1.5rem;cursor:pointer;transition:background 0.2s,border-color 0.2s;display:flex;flex-direction:column;gap:0.8rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
+        <div class="glow-card" onclick="showPage('svc-seo')" style="background:var(--card-bg);padding:2rem;cursor:pointer;transition:background 0.2s,border-color 0.2s;display:flex;flex-direction:column;gap:1rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
           <div style="display:flex;align-items:center;gap:8px;">
             <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);opacity:0.5;letter-spacing:2px;">04</span>
             <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
           </div>
-          <h3 style="font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Get Found on Google</h3>
-          <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;flex:1;">We optimise your site so local customers find you first. Monthly reporting, real rankings, more enquiries — every month.</p>
-          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-seo')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More →</button>
+          <h3 style="font-size:1.1rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Get Found on Google</h3>
+          <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;flex:1;">We optimise your site so local customers find you first. Monthly reporting, real rankings, more enquiries every month.</p>
+          <ul style="list-style:none;font-size:0.8rem;color:var(--muted);line-height:1.8;margin:0.5rem 0;">
+            <li>✓ Local SEO</li>
+            <li>✓ Monthly reports</li>
+            <li>✓ Real rankings</li>
+          </ul>
+          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-seo')" style="margin-top:0.8rem;padding:0.6rem 1.2rem;font-size:0.78rem;width:100%;">Learn More →</button>
         </div>
 
-        <div class="glow-card" onclick="showPage('svc-branding')" style="background:var(--card-bg);padding:1.6rem 1.5rem;cursor:pointer;transition:background 0.2s,border-color 0.2s;display:flex;flex-direction:column;gap:0.8rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);opacity:0.5;letter-spacing:2px;">05</span>
-            <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
+      </div>
+
+      <!-- INFO SECTION -->
+      <div style="max-width:1000px;margin:0 auto 5rem;padding:3rem 5%;background:rgba(0,200,255,0.03);border:1px solid rgba(0,200,255,0.1);border-radius:var(--radius);text-align:center;">
+        <h3 style="font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:1rem;">Why Choose Our Services?</h3>
+        <p style="color:var(--muted);line-height:1.8;margin-bottom:1.5rem;">From concept to launch, every project is backed by our experience, expertise, and commitment to your success. We handle the technical complexity so you can focus on growing your business.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.5rem;margin-top:2rem;">
+          <div style="padding:1rem;">
+            <div style="font-size:1.8rem;color:var(--blue);font-weight:700;margin-bottom:0.3rem;">50+</div>
+            <div style="font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">Projects Built</div>
           </div>
-          <h3 style="font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Logo &amp; Branding</h3>
-          <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;flex:1;">A professional logo and full brand identity — colours, fonts, and guidelines — that makes your business look established and impossible to forget.</p>
-          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-branding')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More →</button>
-        </div>
-
-        <div class="glow-card" onclick="showPage('svc-maintenance')" style="background:var(--card-bg);padding:1.6rem 1.5rem;cursor:pointer;transition:background 0.2s,border-color 0.2s;display:flex;flex-direction:column;gap:0.8rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);opacity:0.5;letter-spacing:2px;">06</span>
-            <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
+          <div style="padding:1rem;">
+            <div style="font-size:1.8rem;color:var(--blue);font-weight:700;margin-bottom:0.3rem;">100%</div>
+            <div style="font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">Client Satisfaction</div>
           </div>
-          <h3 style="font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Ongoing Support</h3>
-          <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;flex:1;">Monthly care — updates, security, backups, and content changes handled for you. Your site stays fast, safe, and up to date.</p>
-          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-maintenance')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More →</button>
+          <div style="padding:1rem;">
+            <div style="font-size:1.8rem;color:var(--blue);font-weight:700;margin-bottom:0.3rem;">24h</div>
+            <div style="font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">Response Time</div>
+          </div>
         </div>
-
       </div>
 
 
