@@ -113,7 +113,11 @@
       }
       .s-title {
         font-size: clamp(1.9rem, 4vw, 3.2rem); font-weight: 700;
-        line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 1rem; color: #f7f8f8;
+        line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 1rem;
+        background: linear-gradient(135deg, #ffffff 0%, #00d4ff 100%);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        background-clip: text; text-shadow: 0 0 30px rgba(0,212,255,0.3);
+        filter: drop-shadow(0 0 20px rgba(0,212,255,0.25));
       }
       .s-sub { font-size: 1rem; color: var(--muted); line-height: 1.8; max-width: 520px; }
       .s-line { width: 36px; height: 1px; background: var(--blue); margin: 1rem 0 2.5rem; }
