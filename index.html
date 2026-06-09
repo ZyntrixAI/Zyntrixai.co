@@ -817,14 +817,14 @@
         .stat-l { font-size: 0.52rem; }
 
         /* Home service list */
-        .svc-list { padding: 0 16px 3rem; }
-        .svc-row { grid-template-columns: 36px 1fr; gap: 0.8rem; padding: 1rem 0; }
-        .svc-row-simple { grid-template-columns: 36px 1fr; }
-        .home-work-grid { grid-template-columns: 1fr; }
+        .svc-list { padding: 0 16px 3rem; text-align: center; }
+        .svc-row { grid-template-columns: 36px 1fr; gap: 0.8rem; padding: 1rem 0; justify-content: center; }
+        .svc-row-simple { grid-template-columns: 36px 1fr; justify-content: center; }
+        .home-work-grid { grid-template-columns: 1fr; justify-content: center; }
         .hw-item { height: 220px; }
         .home-process { grid-template-columns: 1fr; }
         .home-svc-grid { grid-template-columns: 1fr; }
-        .hp-step { padding: 1.4rem 1rem; }
+        .hp-step { padding: 1.4rem 1rem; text-align: center; }
 
         /* Testimonials */
         .testi-grid { grid-template-columns: 1fr; gap: 0.8rem; }
@@ -832,13 +832,15 @@
         .testi-q { font-size: 0.8rem; }
 
         /* About */
-        .about-layout { grid-template-columns: 1fr; gap: 2rem; }
+        .about-layout { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
         .about-visual { max-width: 160px; height: 160px; margin: 0 auto; }
         .about-text { text-align: center; }
-        .about-list li { font-size: 0.82rem; }
+        .about-list { text-align: center; }
+        .about-list li { font-size: 0.82rem; justify-content: center; }
         .values-grid { grid-template-columns: 1fr; gap: 0.8rem; }
         .team-grid { grid-template-columns: 1fr; gap: 0.8rem; }
-        .value-card { padding: 1.2rem; }
+        .value-card { padding: 1.2rem; text-align: center; }
+        .team-card { text-align: center; }
 
         /* Forms */
         .contact-layout, .booking-layout { grid-template-columns: 1fr; gap: 1.5rem; padding: 1rem 16px 2.5rem; }
@@ -846,21 +848,26 @@
         .form-group input, .form-group textarea, .form-group select { font-size: 16px; } /* prevents iOS zoom */
 
         /* Services page */
-        .svcs-full, .services-grid { grid-template-columns: 1fr; padding: 0 16px 2.5rem; }
-        .svc-detail-body { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.5rem 16px; }
-        .svc-detail-hero { padding: 1.5rem 16px 1rem; }
-        .svc-price-card { position: static; padding: 1.4rem; }
-        .svc-detail-stats { gap: 1.2rem; padding: 1.2rem 16px; flex-wrap: wrap; }
-        .svc-feature-list li { font-size: 0.82rem; }
-        .build-step { padding: 1.2rem; text-align: left; }
-        .build-step-num { justify-content: flex-start; }
-        .build-step p { text-align: left; }
+        .svcs-full, .services-grid { grid-template-columns: 1fr; padding: 0 16px 2.5rem; text-align: center; }
+        .svc-detail-body { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.5rem 16px; text-align: center; }
+        .svc-detail-hero { padding: 1.5rem 16px 1rem; text-align: center; }
+        .svc-price-card { position: static; padding: 1.4rem; text-align: center; }
+        .svc-detail-stats { gap: 1.2rem; padding: 1.2rem 16px; flex-wrap: wrap; justify-content: center; }
+        .svc-feature-list { text-align: center; }
+        .svc-feature-list li { font-size: 0.82rem; justify-content: center; }
+        .build-step { padding: 1.2rem; text-align: center; }
+        .build-step-num { justify-content: center; }
+        .build-step p { text-align: center; }
 
         /* Portfolio */
-        .portfolio-grid { grid-template-columns: 1fr; padding: 0 16px 3rem; }
+        .portfolio-grid { grid-template-columns: 1fr; padding: 0 16px 3rem; text-align: center; justify-content: center; }
+        .project-card { margin: 0 auto; }
+        .project-info { text-align: center; }
 
         /* Blog */
-        .blog-grid { grid-template-columns: 1fr; gap: 0.8rem; padding: 0 16px 3rem; }
+        .blog-grid { grid-template-columns: 1fr; gap: 0.8rem; padding: 0 16px 3rem; text-align: center; }
+        .blog-card { text-align: center; }
+        .blog-body { text-align: center; }
 
         /* Pricing */
         .pricing-grid { grid-template-columns: 1fr !important; padding: 0.5rem 16px 2.5rem; }
