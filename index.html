@@ -1,9 +1,9 @@
-﻿<!doctype html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ZyntrixAI</title>
+    <title>ZyntrixAI - Web Design & Lead Management CRM</title>
     <link rel="icon" type="image/svg+xml" href="logo.svg" />
     <link rel="shortcut icon" type="image/svg+xml" href="logo.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -553,9 +553,19 @@
         from { transform: translateX(0); }
         to   { transform: translateX(-50%); }
       }
-      @keyframes footerScroll {
-        from { transform: translateX(0); }
-        to   { transform: translateX(-50%); }
+      @keyframes fadeCarousel {
+        0% { opacity: 0; }
+        15% { opacity: 1; }
+        50% { opacity: 1; }
+        65% { opacity: 0; }
+        100% { opacity: 0; }
+      }
+      @keyframes itemFade {
+        0% { opacity: 0; }
+        15% { opacity: 1; }
+        50% { opacity: 1; }
+        65% { opacity: 0; }
+        100% { opacity: 0; }
       }
       .tech-badge {
         padding: 0.55rem 1.4rem; border: 1px solid var(--border); border-radius: 999px;
@@ -933,6 +943,7 @@
         <li><a onclick="showPage('blog')" data-page="blog">Blog</a></li>
         <li><a onclick="showPage('about')" data-page="about">About</a></li>
         <li><a onclick="showPage('contact')" data-page="contact">Contact</a></li>
+        <li><a onclick="enterCRM()" style="color:#00c8ff;font-weight:600;">CRM Dashboard →</a></li>
       </ul>
       <button class="nav-cta" onclick="showPage('booking')">Start a Project</button>
       <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -2656,24 +2667,11 @@
         </div>
       </div>
 
-      <!-- FOOTNOTE WITH CONTINUOUS SCROLLING ANIMATION -->
-      <div style="overflow:hidden;position:relative;padding:1.2rem 0 2rem;height:2.6rem;display:flex;align-items:center;">
-        <div style="position:absolute;left:0;right:0;width:100%;background:linear-gradient(to right,var(--bg) 0%,transparent 8%,transparent 92%,var(--bg) 100%);z-index:2;pointer-events:none;height:100%;"></div>
-        <div style="display:flex;gap:4rem;animation:footerScroll 18s linear infinite;width:max-content;">
-          <div style="color:var(--muted);font-size:0.75rem;line-height:1.8;font-family:monospace;white-space:nowrap;flex-shrink:0;">
-            ◆ All prices in AUD · Not sure which plan? <button onclick="showPage('booking')" style="background:none;border:none;color:var(--blue);cursor:pointer;font-size:0.75rem;font-family:inherit;">Book a free call →</button>
-          </div>
-          <div style="color:var(--muted);font-size:0.75rem;line-height:1.8;font-family:monospace;white-space:nowrap;flex-shrink:0;">
-            ◆ All prices in AUD · Not sure which plan? <button onclick="showPage('booking')" style="background:none;border:none;color:var(--blue);cursor:pointer;font-size:0.75rem;font-family:inherit;">Book a free call →</button>
-          </div>
-          <div style="color:var(--muted);font-size:0.75rem;line-height:1.8;font-family:monospace;white-space:nowrap;flex-shrink:0;">
-            ◆ All prices in AUD · Not sure which plan? <button onclick="showPage('booking')" style="background:none;border:none;color:var(--blue);cursor:pointer;font-size:0.75rem;font-family:inherit;">Book a free call →</button>
-          </div>
-          <div style="color:var(--muted);font-size:0.75rem;line-height:1.8;font-family:monospace;white-space:nowrap;flex-shrink:0;">
-            ◆ All prices in AUD · Not sure which plan? <button onclick="showPage('booking')" style="background:none;border:none;color:var(--blue);cursor:pointer;font-size:0.75rem;font-family:inherit;">Book a free call →</button>
-          </div>
-          <div style="color:var(--muted);font-size:0.75rem;line-height:1.8;font-family:monospace;white-space:nowrap;flex-shrink:0;">
-            ◆ All prices in AUD · Not sure which plan? <button onclick="showPage('booking')" style="background:none;border:none;color:var(--blue);cursor:pointer;font-size:0.75rem;font-family:inherit;">Book a free call →</button>
+      <!-- FOOTNOTE WITH FADE IN/OUT ANIMATION -->
+      <div style="padding:1.2rem 0 2rem;height:2.6rem;display:flex;align-items:center;justify-content:center;">
+        <div style="display:flex;gap:6rem;animation:fadeCarousel 15s ease-in-out infinite;">
+          <div style="color:var(--muted);font-size:0.75rem;line-height:1.8;font-family:monospace;white-space:nowrap;flex-shrink:0;animation:itemFade 15s ease-in-out infinite;">
+            All prices in AUD · Not sure which plan? <button onclick="showPage('booking')" style="background:none;border:none;color:var(--blue);cursor:pointer;font-size:0.75rem;font-family:inherit;">Book a free call →</button>
           </div>
         </div>
       </div>
