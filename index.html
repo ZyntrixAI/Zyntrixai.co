@@ -553,6 +553,10 @@
         from { transform: translateX(0); }
         to   { transform: translateX(-50%); }
       }
+      @keyframes footerScroll {
+        from { transform: translateX(0); }
+        to   { transform: translateX(-50%); }
+      }
       .tech-badge {
         padding: 0.55rem 1.4rem; border: 1px solid var(--border); border-radius: 999px;
         font-size: 0.78rem; color: var(--muted); background: transparent;
@@ -2652,9 +2656,17 @@
         </div>
       </div>
 
-      <!-- FOOTNOTE -->
-      <div style="text-align:center;padding:1rem 24px 2rem;color:var(--muted);font-size:0.75rem;line-height:1.8;font-family:monospace;">
-        All prices in AUD · Not sure which plan? <button onclick="showPage('booking')" style="background:none;border:none;color:var(--blue);cursor:pointer;font-size:0.75rem;font-family:inherit;">Book a free call →</button>
+      <!-- FOOTNOTE WITH ANIMATION -->
+      <div style="overflow:hidden;position:relative;padding:1rem 0 2rem;height:2.4rem;display:flex;align-items:center;">
+        <div style="position:absolute;left:0;right:0;width:100%;background:linear-gradient(to right,var(--bg) 0%,transparent 5%,transparent 95%,var(--bg) 100%);z-index:2;pointer-events:none;height:100%;"></div>
+        <div style="display:flex;gap:3rem;animation:footerScroll 12s linear infinite;padding:0 5%;width:max-content;">
+          <div style="color:var(--muted);font-size:0.75rem;line-height:1.8;font-family:monospace;white-space:nowrap;">
+            All prices in AUD · Not sure which plan? <button onclick="showPage('booking')" style="background:none;border:none;color:var(--blue);cursor:pointer;font-size:0.75rem;font-family:inherit;">Book a free call →</button>
+          </div>
+          <div style="color:var(--muted);font-size:0.75rem;line-height:1.8;font-family:monospace;white-space:nowrap;">
+            All prices in AUD · Not sure which plan? <button onclick="showPage('booking')" style="background:none;border:none;color:var(--blue);cursor:pointer;font-size:0.75rem;font-family:inherit;">Book a free call →</button>
+          </div>
+        </div>
       </div>
 
 
