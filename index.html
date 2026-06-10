@@ -612,13 +612,13 @@
       .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
       .form-group label { font-size: 0.72rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
       .form-group input, .form-group textarea, .form-group select {
-        background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-        border-radius: 10px; padding: 14px 16px; color: var(--text);
+        background: transparent; border: 1px solid rgba(0,200,255,0.25);
+        border-radius: 0px; padding: 12px 14px; color: var(--text);
         font-family: 'Orbitron', system-ui, sans-serif; font-size: 0.875rem;
         outline: none; transition: all 0.2s ease; width: 100%;
       }
       .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-        border-color: rgba(0,200,255,0.4); background: rgba(255,255,255,0.06);
+        border-color: rgba(0,200,255,0.6); background: rgba(0,200,255,0.06); box-shadow: 0 0 12px rgba(0,200,255,0.2);
       }
       .form-group textarea { resize: vertical; min-height: 120px; }
       .form-group select option { background: #111; }
