@@ -639,15 +639,15 @@
       .booking-steps p { font-size: 0.82rem; color: var(--muted); }
 
       /* ── PORTFOLIO ── */
-      .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding: 0 5% 5rem; }
+      .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; padding: 0 5% 5rem; max-width: 1100px; margin: 0 auto; }
       .project-card { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color 0.2s, background 0.2s; cursor: pointer; background: var(--card-bg); }
       .project-card:hover { border-color: var(--border-hover); background: var(--card-hover); }
-      .project-mockup { height: 190px; overflow: hidden; border-bottom: 1px solid var(--border); }
-      .project-info { padding: 1rem; }
-      .project-tag { display: inline-block; font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); border: 1px solid rgba(0,200,255,0.2); border-radius: 999px; padding: 0.2rem 0.7rem; margin-bottom: 0.7rem; }
-      .project-info h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
-      .project-info p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.9rem; }
-      .project-link { font-size: 0.82rem; color: var(--blue); transition: opacity 0.2s; }
+      .project-mockup { height: 140px; overflow: hidden; border-bottom: 1px solid var(--border); }
+      .project-info { padding: 0.8rem; }
+      .project-tag { display: inline-block; font-size: 0.6rem; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); border: 1px solid rgba(0,200,255,0.2); border-radius: 999px; padding: 0.15rem 0.5rem; margin-bottom: 0.5rem; }
+      .project-info h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; }
+      .project-info p { font-size: 0.78rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.7rem; }
+      .project-link { font-size: 0.75rem; color: var(--blue); transition: opacity 0.2s; }
       .project-link:hover { opacity: 0.75; }
       .filter-btn { padding: 0.4rem 1.1rem; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.78rem; border-radius: 999px; cursor: pointer; transition: all 0.2s; font-family: 'Orbitron', system-ui, sans-serif; }
       .filter-btn:hover, .filter-btn.active { border-color: var(--blue); color: var(--blue); }
