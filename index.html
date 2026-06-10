@@ -187,7 +187,7 @@
         cursor: pointer; transition: background 0.2s;
         border: none; border-radius: 0;
       }
-      .svc-card:hover { background: rgba(0,200,255,0.04); }
+      .svc-card:hover { }
       .svc-num {
         font-size: 0.65rem; font-weight: 700; letter-spacing: 2px;
         color: var(--blue); opacity: 0.5; font-family: monospace;
@@ -242,7 +242,7 @@
         gap: 1.2rem; margin-top: 3rem;
       }
       .testi-card { background: transparent; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.5rem; display: flex; flex-direction: column; transition: background 0.2s, border-color 0.2s; }
-      .testi-card:hover { background: rgba(0,200,255,0.05); border-color: var(--border-hover); }
+      .testi-card:hover { border-color: var(--border-hover); }
       .testi-stars { font-size: 0.65rem; letter-spacing: 2px; color: var(--blue); margin-bottom: 0.7rem; font-family: monospace; }
       .testi-q { font-size: 0.82rem; color: rgba(237,237,237,0.75); line-height: 1.7; flex: 1; margin-bottom: 1rem; }
       .testi-name { font-size: 0.82rem; font-weight: 600; color: #f7f8f8; }
@@ -324,7 +324,7 @@
         padding: 2rem; background: transparent; position: sticky; top: 80px;
         transition: background 0.2s, border-color 0.2s;
       }
-      .svc-price-card:hover { background: rgba(0,200,255,0.05); border-color: var(--border-hover); }
+      .svc-price-card:hover { border-color: var(--border-hover); }
       .svc-price-label { font-size: 0.62rem; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); font-family: monospace; margin-bottom: 0.8rem; display: block; }
       .svc-big-price { font-size: 3rem; font-weight: 700; color: #f7f8f8; line-height: 1; margin-bottom: 0.6rem; }
       .svc-big-price sup { font-size: 1.4rem; vertical-align: top; margin-top: 0.4rem; }
@@ -454,7 +454,7 @@
         box-shadow: rgba(0,0,0,0.4) 0px 2px 4px 0px;
       }
       .svc-card:hover, .service-card:hover {
-        background: rgba(0,200,255,0.05); border-color: var(--border-hover);
+        border-color: var(--border-hover);
       }
       .svc-card h3, .service-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
       .svc-card p, .service-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; flex: 1; }
@@ -584,14 +584,14 @@
       .about-list li::before { content: '▹'; color: var(--blue); flex-shrink: 0; }
       .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 2.5rem; }
       .value-card { background: transparent; border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem 1.8rem; text-align: center; transition: background 0.2s, border-color 0.2s; }
-      .value-card:hover { background: rgba(0,200,255,0.05); border-color: var(--border-hover); }
+      .value-card:hover { border-color: var(--border-hover); }
       .value-num { font-size: 0.62rem; font-family: monospace; color: var(--blue); letter-spacing: 2px; opacity: 0.5; margin-bottom: 1.2rem; transition: opacity 0.2s; }
       .value-card:hover .value-num { opacity: 1; }
       .value-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; color: #f7f8f8; letter-spacing: -0.01em; }
       .value-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
       .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.2rem; margin-top: 2.5rem; }
       .team-card { background: transparent; border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; transition: background 0.2s, border-color 0.2s; }
-      .team-card:hover { background: rgba(0,200,255,0.05); border-color: var(--border-hover); }
+      .team-card:hover { border-color: var(--border-hover); }
       .team-num { font-size: 0.62rem; font-family: monospace; color: var(--blue); letter-spacing: 2px; opacity: 0.5; margin-bottom: 1.2rem; transition: opacity 0.2s; }
       .team-card:hover .team-num { opacity: 1; }
       .team-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: #f7f8f8; letter-spacing: -0.01em; }
@@ -640,7 +640,7 @@
       /* ── PORTFOLIO ── */
       .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding: 0 5% 5rem; }
       .project-card { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color 0.2s, background 0.2s; cursor: pointer; background: transparent; }
-      .project-card:hover { border-color: var(--border-hover); background: rgba(0,200,255,0.05); }
+      .project-card:hover { border-color: var(--border-hover); }
       .project-mockup { height: 190px; overflow: hidden; border-bottom: 1px solid var(--border); }
       .project-info { padding: 1.4rem; }
       .project-tag { display: inline-block; font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); border: 1px solid rgba(0,200,255,0.2); border-radius: 999px; padding: 0.2rem 0.7rem; margin-bottom: 0.7rem; }
@@ -654,7 +654,7 @@
       /* ── PRICING ── */
       .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 1.5rem; padding: 2rem 5% 5rem; align-items: start; }
       .pricing-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.6rem; position: relative; background: transparent; transition: background 0.2s, border-color 0.2s; }
-      .pricing-card:hover { background: rgba(0,200,255,0.05); border-color: var(--border-hover); }
+      .pricing-card:hover { border-color: var(--border-hover); }
       .pricing-card.featured { border-color: var(--blue); }
       .pricing-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--blue); color: #000; font-size: 0.6rem; font-weight: 700; letter-spacing: 2px; padding: 3px 12px; border-radius: 999px; white-space: nowrap; }
       .pricing-tier { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; font-family: 'Orbitron', sans-serif; }
@@ -736,7 +736,7 @@
       /* ── BLOG ── */
       .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; padding: 0 5% 4rem; }
       .blog-card { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; cursor: pointer; display: flex; flex-direction: column; transition: border-color 0.2s, background 0.2s; background: transparent; }
-      .blog-card:hover { border-color: var(--border-hover); background: rgba(0,200,255,0.05); }
+      .blog-card:hover { border-color: var(--border-hover); }
       .blog-thumb { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; border-bottom: 1px solid var(--border); flex-direction: column; gap: 0.4rem; }
       .blog-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
       .blog-cat { display: inline-block; font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); border: 1px solid rgba(0,200,255,0.2); border-radius: 999px; padding: 0.2rem 0.7rem; margin-bottom: 0.8rem; align-self: flex-start; }
@@ -2564,7 +2564,7 @@
           </div>
 
           <!-- BUNDLE 2: SCALE + GROWTH (featured) -->
-          <div class="glow-card" style="background:transparent;padding:2.2rem 2rem;display:flex;flex-direction:column;gap:0;border:1px solid var(--blue);border-top:2px solid var(--blue);border-radius:var(--radius);position:relative;cursor:pointer;" onclick="openPricingModal('scale')" onmouseover="this.style.background='var(--card-hover)'" onmouseout="this.style.background='var(--card-bg)'">
+          <div class="glow-card" style="background:transparent;padding:2.2rem 2rem;display:flex;flex-direction:column;gap:0;border:1px solid var(--blue);border-top:2px solid var(--blue);border-radius:var(--radius);position:relative;cursor:pointer;" onclick="openPricingModal('scale')">
             <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--blue),transparent);"></div>
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.8rem;">
               <div style="display:flex;align-items:center;gap:8px;">
@@ -2619,7 +2619,7 @@
           </div>
 
           <!-- RETAINER 2: GROWTH (featured) -->
-          <div class="glow-card" style="background:transparent;padding:2.2rem 2rem;display:flex;flex-direction:column;gap:0;border:1px solid var(--blue);border-top:2px solid var(--blue);border-radius:var(--radius);position:relative;cursor:pointer;" onclick="openPricingModal('growthRetainer')" onmouseover="this.style.background='var(--card-hover)'" onmouseout="this.style.background='var(--card-bg)'">
+          <div class="glow-card" style="background:transparent;padding:2.2rem 2rem;display:flex;flex-direction:column;gap:0;border:1px solid var(--blue);border-top:2px solid var(--blue);border-radius:var(--radius);position:relative;cursor:pointer;" onclick="openPricingModal('growthRetainer')">
             <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--blue),transparent);"></div>
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.8rem;">
               <div style="display:flex;align-items:center;gap:8px;">
