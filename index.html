@@ -100,15 +100,16 @@
       /* ── SECTION BADGE (kaev.ai pill) ── */
       .s-eyebrow {
         display: inline-flex; align-items: center; gap: 8px;
-        padding: 5px 12px; border-radius: 999px;
-        border: 1px solid rgba(0,200,255,0.18);
-        background: rgba(0,200,255,0.04);
+        padding: 6px 14px; border-radius: 0px;
+        border: 2px solid rgba(0,200,255,0.4);
+        background: transparent;
         font-size: 0.67rem; font-weight: 600; letter-spacing: 1.5px;
         text-transform: uppercase; color: var(--blue); margin-bottom: 1.2rem;
+        box-shadow: 0 0 12px rgba(0,200,255,0.15);
       }
       .s-eyebrow::before {
-        content: ''; width: 5px; height: 5px; border-radius: 50%;
-        background: var(--blue); box-shadow: 0 0 6px rgba(0,200,255,0.6);
+        content: ''; width: 4px; height: 4px; border-radius: 0px;
+        background: var(--blue); box-shadow: 0 0 8px rgba(0,200,255,0.8);
         flex-shrink: 0;
       }
       .s-title {
