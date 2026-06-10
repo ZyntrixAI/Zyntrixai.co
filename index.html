@@ -225,8 +225,8 @@
         border: 1px solid var(--border); border-radius: var(--radius);
         overflow: hidden; margin-top: 3rem;
       }
-      .hp-step { background: var(--card-bg); padding: 2.5rem 1.75rem; transition: background 0.2s; }
-      .hp-step:hover { background: var(--card-hover); }
+      .hp-step { background: transparent; padding: 2.5rem 1.75rem; transition: background 0.2s; }
+      .hp-step:hover { background: rgba(0,200,255,0.05); }
       .hp-num {
         font-size: 0.62rem; letter-spacing: 2px; color: var(--blue);
         opacity: 0.45; margin-bottom: 1rem; font-weight: 700; font-family: monospace;
@@ -241,8 +241,8 @@
         display: grid; grid-template-columns: repeat(3, 1fr);
         gap: 1.2rem; margin-top: 3rem;
       }
-      .testi-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.5rem; display: flex; flex-direction: column; transition: background 0.2s, border-color 0.2s; }
-      .testi-card:hover { background: var(--card-hover); border-color: var(--border-hover); }
+      .testi-card { background: transparent; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.5rem; display: flex; flex-direction: column; transition: background 0.2s, border-color 0.2s; }
+      .testi-card:hover { background: rgba(0,200,255,0.05); border-color: var(--border-hover); }
       .testi-stars { font-size: 0.65rem; letter-spacing: 2px; color: var(--blue); margin-bottom: 0.7rem; font-family: monospace; }
       .testi-q { font-size: 0.82rem; color: rgba(237,237,237,0.75); line-height: 1.7; flex: 1; margin-bottom: 1rem; }
       .testi-name { font-size: 0.82rem; font-weight: 600; color: #f7f8f8; }
@@ -322,10 +322,10 @@
       .svc-feature-list li::before { content: '↗'; color: var(--blue); font-size: 0.72rem; flex-shrink: 0; }
       .svc-price-card {
         border: 1px solid var(--border); border-radius: var(--radius);
-        padding: 2rem; background: var(--card-bg); position: sticky; top: 80px;
+        padding: 2rem; background: transparent; position: sticky; top: 80px;
         transition: background 0.2s, border-color 0.2s;
       }
-      .svc-price-card:hover { background: var(--card-hover); border-color: var(--border-hover); }
+      .svc-price-card:hover { background: rgba(0,200,255,0.05); border-color: var(--border-hover); }
       .svc-price-label { font-size: 0.62rem; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); font-family: monospace; margin-bottom: 0.8rem; display: block; }
       .svc-big-price { font-size: 3rem; font-weight: 700; color: #f7f8f8; line-height: 1; margin-bottom: 0.6rem; }
       .svc-big-price sup { font-size: 1.4rem; vertical-align: top; margin-top: 0.4rem; }
@@ -375,10 +375,10 @@
         border: 1px solid var(--border); padding: 2rem 2.5rem;
         text-align: center; margin-bottom: 1.2rem;
         transition: background 0.2s, border-color 0.2s;
-        background: var(--card-bg); border-radius: var(--radius);
+        background: transparent; border-radius: var(--radius);
       }
       .build-step:last-child { margin-bottom: 0; }
-      .build-step:hover { background: var(--card-hover); border-color: var(--border-hover); }
+      .build-step:hover { background: rgba(0,200,255,0.05); border-color: var(--border-hover); }
       .build-step-num {
         font-size: 0.65rem; font-family: monospace; color: var(--blue);
         letter-spacing: 2px; margin-bottom: 0.65rem;
@@ -451,11 +451,11 @@
         padding: 2rem; cursor: pointer;
         transition: border-color 0.2s ease, background-color 0.2s ease;
         display: flex; flex-direction: column; align-items: center; text-align: center;
-        background: var(--card-bg);
+        background: transparent;
         box-shadow: rgba(0,0,0,0.4) 0px 2px 4px 0px;
       }
       .svc-card:hover, .service-card:hover {
-        background: var(--card-hover); border-color: var(--border-hover);
+        background: rgba(0,200,255,0.05); border-color: var(--border-hover);
       }
       .svc-card h3, .service-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
       .svc-card p, .service-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; flex: 1; }
@@ -555,7 +555,7 @@
       }
       .tech-badge {
         padding: 0.55rem 1.4rem; border: 1px solid var(--border); border-radius: 999px;
-        font-size: 0.78rem; color: var(--muted); background: var(--card-bg);
+        font-size: 0.78rem; color: var(--muted); background: transparent;
         white-space: nowrap; transition: all 0.2s; cursor: default; flex-shrink: 0;
       }
       .tech-badge:hover { border-color: var(--blue); color: var(--blue); background: rgba(0,200,255,0.05); }
@@ -584,15 +584,15 @@
       .about-list li { display: flex; gap: 0.8rem; align-items: flex-start; font-size: 0.9rem; color: var(--muted); padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
       .about-list li::before { content: '▹'; color: var(--blue); flex-shrink: 0; }
       .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 2.5rem; }
-      .value-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem 1.8rem; text-align: center; transition: background 0.2s, border-color 0.2s; }
-      .value-card:hover { background: var(--card-hover); border-color: var(--border-hover); }
+      .value-card { background: transparent; border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem 1.8rem; text-align: center; transition: background 0.2s, border-color 0.2s; }
+      .value-card:hover { background: rgba(0,200,255,0.05); border-color: var(--border-hover); }
       .value-num { font-size: 0.62rem; font-family: monospace; color: var(--blue); letter-spacing: 2px; opacity: 0.5; margin-bottom: 1.2rem; transition: opacity 0.2s; }
       .value-card:hover .value-num { opacity: 1; }
       .value-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; color: #f7f8f8; letter-spacing: -0.01em; }
       .value-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
       .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.2rem; margin-top: 2.5rem; }
-      .team-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; transition: background 0.2s, border-color 0.2s; }
-      .team-card:hover { background: var(--card-hover); border-color: var(--border-hover); }
+      .team-card { background: transparent; border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; transition: background 0.2s, border-color 0.2s; }
+      .team-card:hover { background: rgba(0,200,255,0.05); border-color: var(--border-hover); }
       .team-num { font-size: 0.62rem; font-family: monospace; color: var(--blue); letter-spacing: 2px; opacity: 0.5; margin-bottom: 1.2rem; transition: opacity 0.2s; }
       .team-card:hover .team-num { opacity: 1; }
       .team-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: #f7f8f8; letter-spacing: -0.01em; }
@@ -640,8 +640,8 @@
 
       /* ── PORTFOLIO ── */
       .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding: 0 5% 5rem; }
-      .project-card { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color 0.2s, background 0.2s; cursor: pointer; background: var(--card-bg); }
-      .project-card:hover { border-color: var(--border-hover); background: var(--card-hover); }
+      .project-card { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color 0.2s, background 0.2s; cursor: pointer; background: transparent; }
+      .project-card:hover { border-color: var(--border-hover); background: rgba(0,200,255,0.05); }
       .project-mockup { height: 190px; overflow: hidden; border-bottom: 1px solid var(--border); }
       .project-info { padding: 1.4rem; }
       .project-tag { display: inline-block; font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); border: 1px solid rgba(0,200,255,0.2); border-radius: 999px; padding: 0.2rem 0.7rem; margin-bottom: 0.7rem; }
@@ -654,8 +654,8 @@
 
       /* ── PRICING ── */
       .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 1.5rem; padding: 2rem 5% 5rem; align-items: start; }
-      .pricing-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.6rem; position: relative; background: var(--card-bg); transition: background 0.2s, border-color 0.2s; }
-      .pricing-card:hover { background: var(--card-hover); border-color: var(--border-hover); }
+      .pricing-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.6rem; position: relative; background: transparent; transition: background 0.2s, border-color 0.2s; }
+      .pricing-card:hover { background: rgba(0,200,255,0.05); border-color: var(--border-hover); }
       .pricing-card.featured { border-color: var(--blue); }
       .pricing-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--blue); color: #000; font-size: 0.6rem; font-weight: 700; letter-spacing: 2px; padding: 3px 12px; border-radius: 999px; white-space: nowrap; }
       .pricing-tier { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; font-family: 'Orbitron', sans-serif; }
@@ -705,21 +705,21 @@
       .modal-billing { font-size: 0.7rem; color: var(--muted); font-family: monospace; }
       .modal-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin: 1.2rem 0; }
       .modal-section-label { font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); font-family: monospace; margin-bottom: 0.8rem; margin-top: 1.4rem; display: block; }
-      .modal-features { list-style: none; display: flex; flex-direction: column; gap: 0; margin-bottom: 1.2rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+      .modal-features { list-style: none; display: flex; flex-direction: column; gap: 0; margin-bottom: 1.2rem; background: transparent; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
       .modal-features li { display: flex; gap: 0.8rem; font-size: 0.84rem; padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); transition: background 0.15s; }
       .modal-features li:last-child { border-bottom: none; }
-      .modal-features li:hover { background: var(--card-hover); }
+      .modal-features li:hover { background: rgba(0,200,255,0.05); }
       .modal-features li .check { color: var(--blue); flex-shrink: 0; font-size: 0.75rem; margin-top: 1px; }
       .modal-features li .cross { color: rgba(255,255,255,0.18); flex-shrink: 0; font-size: 0.75rem; margin-top: 1px; }
       .modal-features li.off { color: rgba(255,255,255,0.22); }
       .modal-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 1.4rem 0; }
       .modal-meta-item {
-        background: var(--card-bg); border: 1px solid var(--border);
+        background: transparent; border: 1px solid var(--border);
         border-radius: var(--radius); padding: 1rem 1.1rem;
         position: relative; overflow: hidden;
         transition: background 0.2s, border-color 0.2s;
       }
-      .modal-meta-item:hover { background: var(--card-hover); border-color: var(--border-hover); }
+      .modal-meta-item:hover { background: rgba(0,200,255,0.05); border-color: var(--border-hover); }
       .modal-meta-item span { display: block; font-size: 0.6rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); margin-bottom: 0.4rem; font-family: monospace; }
       .modal-meta-item strong { font-size: 0.88rem; font-weight: 600; color: var(--text); }
       .modal-actions { display: flex; gap: 0.8rem; margin-top: 1.6rem; }
@@ -736,8 +736,8 @@
 
       /* ── BLOG ── */
       .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; padding: 0 5% 4rem; }
-      .blog-card { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; cursor: pointer; display: flex; flex-direction: column; transition: border-color 0.2s, background 0.2s; background: var(--card-bg); }
-      .blog-card:hover { border-color: var(--border-hover); background: var(--card-hover); }
+      .blog-card { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; cursor: pointer; display: flex; flex-direction: column; transition: border-color 0.2s, background 0.2s; background: transparent; }
+      .blog-card:hover { border-color: var(--border-hover); background: rgba(0,200,255,0.05); }
       .blog-thumb { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; border-bottom: 1px solid var(--border); flex-direction: column; gap: 0.4rem; }
       .blog-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
       .blog-cat { display: inline-block; font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); border: 1px solid rgba(0,200,255,0.2); border-radius: 999px; padding: 0.2rem 0.7rem; margin-bottom: 0.8rem; align-self: flex-start; }
