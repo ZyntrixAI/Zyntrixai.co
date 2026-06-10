@@ -612,13 +612,13 @@
       .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
       .form-group label { font-size: 0.72rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
       .form-group input, .form-group textarea, .form-group select {
-        background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-        border-radius: 10px; padding: 14px 16px; color: var(--text);
+        background: rgba(0,200,255,0.03); border: 1px solid rgba(0,200,255,0.25);
+        border-radius: 0px; padding: 12px 14px; color: var(--text);
         font-family: 'Orbitron', system-ui, sans-serif; font-size: 0.875rem;
         outline: none; transition: all 0.2s ease; width: 100%;
       }
       .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-        border-color: rgba(0,200,255,0.4); background: rgba(255,255,255,0.06);
+        border-color: rgba(0,200,255,0.6); background: rgba(0,200,255,0.06); box-shadow: 0 0 12px rgba(0,200,255,0.2);
       }
       .form-group textarea { resize: vertical; min-height: 120px; }
       .form-group select option { background: #111; }
@@ -2683,7 +2683,7 @@
         </div>
 
         <!-- BOOKING FORM -->
-        <div style="margin-top:3rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--card-bg);overflow:hidden;max-width:520px;margin-left:auto;margin-right:auto;">
+        <div style="margin-top:3rem;border:2px solid rgba(0,200,255,0.4);border-radius:2px;background:var(--card-bg);overflow:hidden;max-width:520px;margin-left:auto;margin-right:auto;box-shadow:0 0 20px rgba(0,200,255,0.15), inset 0 0 20px rgba(0,200,255,0.05);">
           <div style="padding:1.6rem 1.8rem 1.2rem;border-bottom:1px solid var(--border);">
             <span class="s-eyebrow" style="margin-bottom:0.6rem;">Book a Free Call</span>
             <h3 style="font-size:1rem;font-weight:700;color:#f7f8f8;text-transform:none;letter-spacing:-0.01em;margin-bottom:0.3rem;">Let's figure out the right package for you</h3>
