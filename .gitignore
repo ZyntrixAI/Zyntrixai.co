@@ -41,3 +41,4 @@ candle-shop/
 
 # macOS
 .DS_Store
+.vercel

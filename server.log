@@ -1,0 +1,218 @@
+::1 - - [10/Jun/2026 21:24:22] "GET / HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 21:24:52] "GET /leads-app.html HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 21:24:53] code 404, message File not found
+::1 - - [10/Jun/2026 21:24:53] "GET /app.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:25:23] "GET /leads-app.html HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 21:25:34] "GET /leads-app.html HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 21:25:34] "GET /logo.png HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 21:26:05] "GET /leads-app.html HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 21:26:12] "GET /leads-app.html HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 21:26:29] "GET /leads-app.html HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 21:28:43] "GET /leads-app.html HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 21:34:51] "GET /leads-app.html HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 21:35:37] "GET /leads-app.html HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 21:35:37] code 404, message File not found
+::1 - - [10/Jun/2026 21:35:37] "GET /style.css HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:35:37] code 404, message File not found
+::1 - - [10/Jun/2026 21:35:37] "GET /shader-bg.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:35:37] code 404, message File not found
+::1 - - [10/Jun/2026 21:35:37] "GET /animated-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:35:37] code 404, message File not found
+::1 - - [10/Jun/2026 21:35:37] "GET /glow-card.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:35:37] code 404, message File not found
+::1 - - [10/Jun/2026 21:35:37] "GET /pixel-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:37:39] "GET /leads-app.html HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 21:38:02] "GET /leads-app.html HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 21:38:02] code 404, message File not found
+::1 - - [10/Jun/2026 21:38:02] "GET /style.css HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:38:02] code 404, message File not found
+::1 - - [10/Jun/2026 21:38:02] code 404, message File not found
+::1 - - [10/Jun/2026 21:38:02] "GET /animated-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:38:02] "GET /shader-bg.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:38:02] code 404, message File not found
+::1 - - [10/Jun/2026 21:38:02] "GET /glow-card.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:38:02] code 404, message File not found
+::1 - - [10/Jun/2026 21:38:02] "GET /pixel-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:39:13] "GET /leads-app.html HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 21:40:08] "GET /leads-app.html HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 21:40:08] "GET /style.css HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 21:40:08] code 404, message File not found
+::1 - - [10/Jun/2026 21:40:08] "GET /shader-bg.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:40:08] code 404, message File not found
+::1 - - [10/Jun/2026 21:40:08] "GET /animated-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:40:08] code 404, message File not found
+::1 - - [10/Jun/2026 21:40:08] code 404, message File not found
+::1 - - [10/Jun/2026 21:40:08] "GET /glow-card.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:40:08] "GET /pixel-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:42:15] "GET /leads-app.html HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 21:42:15] code 404, message File not found
+::1 - - [10/Jun/2026 21:42:15] "GET /shader-bg.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:42:15] "GET /style.css HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 21:42:15] code 404, message File not found
+::1 - - [10/Jun/2026 21:42:15] "GET /animated-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:42:15] code 404, message File not found
+::1 - - [10/Jun/2026 21:42:15] "GET /glow-card.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:42:15] code 404, message File not found
+::1 - - [10/Jun/2026 21:42:15] "GET /pixel-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:42:33] "GET /leads-app.html HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 21:43:09] "GET /leads-app.html HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 21:43:09] code 404, message File not found
+::1 - - [10/Jun/2026 21:43:09] code 404, message File not found
+::1 - - [10/Jun/2026 21:43:09] code 404, message File not found
+::1 - - [10/Jun/2026 21:43:09] code 404, message File not found
+::1 - - [10/Jun/2026 21:43:09] "GET /shader-bg.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:43:09] "GET /glow-card.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:43:09] "GET /style.css HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 21:43:09] "GET /animated-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:43:09] "GET /pixel-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:46:38] "GET /leads-app.html HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 21:46:38] "GET /style.css HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 21:46:38] code 404, message File not found
+::1 - - [10/Jun/2026 21:46:38] code 404, message File not found
+::1 - - [10/Jun/2026 21:46:38] "GET /shader-bg.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:46:38] code 404, message File not found
+::1 - - [10/Jun/2026 21:46:38] code 404, message File not found
+::1 - - [10/Jun/2026 21:46:38] "GET /glow-card.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:46:38] "GET /animated-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:46:38] "GET /pixel-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:50:35] "GET /leads-app.html HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 21:50:35] code 404, message File not found
+::1 - - [10/Jun/2026 21:50:35] "GET /style.css HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 21:50:35] "GET /shader-bg.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:50:35] code 404, message File not found
+::1 - - [10/Jun/2026 21:50:35] code 404, message File not found
+::1 - - [10/Jun/2026 21:50:35] "GET /animated-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:50:35] "GET /glow-card.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:50:35] code 404, message File not found
+::1 - - [10/Jun/2026 21:50:35] "GET /pixel-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:55:18] "GET /leads-app.html HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 21:55:18] "GET /style.css HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 21:55:18] code 404, message File not found
+::1 - - [10/Jun/2026 21:55:18] "GET /shader-bg.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:55:18] code 404, message File not found
+::1 - - [10/Jun/2026 21:55:18] "GET /pixel-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:55:18] code 404, message File not found
+::1 - - [10/Jun/2026 21:55:18] "GET /glow-card.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:55:18] code 404, message File not found
+::1 - - [10/Jun/2026 21:55:18] "GET /animated-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:58:12] "GET /leads-app.html HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 21:58:12] "GET /style.css HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 21:58:12] code 404, message File not found
+::1 - - [10/Jun/2026 21:58:12] "GET /shader-bg.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:58:12] code 404, message File not found
+::1 - - [10/Jun/2026 21:58:12] "GET /animated-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:58:12] code 404, message File not found
+::1 - - [10/Jun/2026 21:58:12] "GET /glow-card.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 21:58:12] code 404, message File not found
+::1 - - [10/Jun/2026 21:58:12] "GET /pixel-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 22:01:19] "GET /leads-app.html HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 22:01:19] "GET /style.css HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 22:01:19] code 404, message File not found
+::1 - - [10/Jun/2026 22:01:19] "GET /shader-bg.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 22:04:34] "GET /leads-app.html HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 22:04:34] code 404, message File not found
+::1 - - [10/Jun/2026 22:04:34] "GET /style.css HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 22:04:34] "GET /shader-bg.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 22:04:38] "GET /leads-app.html HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 22:04:38] code 404, message File not found
+::1 - - [10/Jun/2026 22:04:38] "GET /shader-bg.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 22:09:45] "GET /leads-app.html HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 22:09:45] code 404, message File not found
+::1 - - [10/Jun/2026 22:09:45] "GET /style.css HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 22:09:45] "GET /shader-bg.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 22:14:16] "GET /leads-app.html HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 22:14:16] "GET /style.css HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 22:15:23] code 404, message File not found
+::1 - - [10/Jun/2026 22:15:23] "GET /leads-app.html HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 22:15:23] code 404, message File not found
+::1 - - [10/Jun/2026 22:15:23] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 22:15:37] code 404, message File not found
+::1 - - [10/Jun/2026 22:15:37] "GET /leads-app.html HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 22:34:26] "GET /crm.html HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 22:34:26] code 404, message File not found
+::1 - - [10/Jun/2026 22:34:26] "GET /shader-bg.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 22:34:26] "GET /app.js HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 22:34:26] code 404, message File not found
+::1 - - [10/Jun/2026 22:34:26] "GET /animated-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 22:34:26] "GET /style.css HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 22:34:26] code 404, message File not found
+::1 - - [10/Jun/2026 22:34:26] "GET /glow-card.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 22:34:26] code 404, message File not found
+::1 - - [10/Jun/2026 22:34:26] "GET /pixel-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 22:38:32] "GET /crm.html HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 22:38:32] "GET /style.css HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 22:38:32] code 404, message File not found
+::1 - - [10/Jun/2026 22:38:32] "GET /animated-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 22:38:32] code 404, message File not found
+::1 - - [10/Jun/2026 22:38:32] "GET /app.js HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 22:38:32] "GET /shader-bg.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 22:38:32] code 404, message File not found
+::1 - - [10/Jun/2026 22:38:32] "GET /glow-card.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 22:38:32] code 404, message File not found
+::1 - - [10/Jun/2026 22:38:32] "GET /pixel-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 22:47:02] "GET /index.html HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 22:47:03] "GET /logo.svg HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 22:56:57] "GET /index.html HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 22:56:58] "GET /logo.svg HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 22:57:19] "GET /index.html HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 22:57:19] "GET /logo.svg HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 23:03:20] "GET /crm.html HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 23:03:20] "GET /style.css HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 23:03:20] "GET /app.js HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 23:03:20] code 404, message File not found
+::1 - - [10/Jun/2026 23:03:20] "GET /shader-bg.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:03:20] code 404, message File not found
+::1 - - [10/Jun/2026 23:03:20] "GET /animated-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:03:20] code 404, message File not found
+::1 - - [10/Jun/2026 23:03:20] "GET /glow-card.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:03:20] code 404, message File not found
+::1 - - [10/Jun/2026 23:03:20] "GET /pixel-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:05:30] "GET /crm.html HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 23:05:31] code 404, message File not found
+::1 - - [10/Jun/2026 23:05:31] "GET /shader-bg.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:05:31] code 404, message File not found
+::1 - - [10/Jun/2026 23:05:31] "GET /animated-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:05:31] code 404, message File not found
+::1 - - [10/Jun/2026 23:05:31] "GET /glow-card.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:05:31] code 404, message File not found
+::1 - - [10/Jun/2026 23:05:31] "GET /pixel-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:05:42] "GET /crm.html HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 23:05:42] code 404, message File not found
+::1 - - [10/Jun/2026 23:05:42] "GET /shader-bg.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:05:42] code 404, message File not found
+::1 - - [10/Jun/2026 23:05:42] "GET /animated-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:05:42] code 404, message File not found
+::1 - - [10/Jun/2026 23:05:42] "GET /glow-card.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:05:42] code 404, message File not found
+::1 - - [10/Jun/2026 23:05:42] "GET /pixel-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:09:38] "GET /crm.html HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 23:09:38] code 404, message File not found
+::1 - - [10/Jun/2026 23:09:38] code 404, message File not found
+::1 - - [10/Jun/2026 23:09:38] code 404, message File not found
+::1 - - [10/Jun/2026 23:09:38] code 404, message File not found
+::1 - - [10/Jun/2026 23:09:38] "GET /glow-card.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:09:38] "GET /pixel-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:09:38] "GET /app.js HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 23:09:38] "GET /animated-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:09:38] "GET /shader-bg.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:09:38] "GET /style.css HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 23:09:45] "GET /crm.html HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 23:09:45] code 404, message File not found
+::1 - - [10/Jun/2026 23:09:45] "GET /pixel-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:09:45] code 404, message File not found
+::1 - - [10/Jun/2026 23:09:45] "GET /glow-card.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:09:45] code 404, message File not found
+::1 - - [10/Jun/2026 23:09:45] "GET /animated-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:09:45] code 404, message File not found
+::1 - - [10/Jun/2026 23:09:45] "GET /shader-bg.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:20:17] "GET /crm.html HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 23:20:17] "GET /style.css HTTP/1.1" 200 -
+::1 - - [10/Jun/2026 23:20:17] "GET /app.js HTTP/1.1" 304 -
+::1 - - [10/Jun/2026 23:20:17] code 404, message File not found
+::1 - - [10/Jun/2026 23:20:17] "GET /shader-bg.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:20:17] code 404, message File not found
+::1 - - [10/Jun/2026 23:20:17] "GET /animated-btn.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:20:17] code 404, message File not found
+::1 - - [10/Jun/2026 23:20:17] "GET /glow-card.js HTTP/1.1" 404 -
+::1 - - [10/Jun/2026 23:20:17] code 404, message File not found
+::1 - - [10/Jun/2026 23:20:17] "GET /pixel-btn.js HTTP/1.1" 404 -
