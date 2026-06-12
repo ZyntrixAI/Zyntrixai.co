@@ -1202,146 +1202,141 @@
         <p class="s-sub" style="margin:0 auto;">We design, build, and grow websites for Australian businesses. Clear services, real results, no jargon.</p>
       </div>
 
-      <!-- FEATURED SERVICES (3 CARDS) - REDESIGNED -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:2rem;max-width:1200px;margin:0 auto 5rem;padding:0 5%;">
+      <!-- FEATURED SERVICES - TRANSPARENT & SHARP -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:3rem;max-width:1200px;margin:0 auto 6rem;padding:0 5%;">
 
-        <!-- DESIGN CARD -->
-        <div onclick="showPage('svc-design')" style="background:linear-gradient(135deg, rgba(138,43,226,0.12) 0%, rgba(0,200,255,0.06) 100%);padding:3rem;cursor:pointer;transition:all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);display:flex;flex-direction:column;gap:1.5rem;border:2px solid rgba(138,43,226,0.25);border-radius:16px;position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);" onmouseover="this.style.transform='translateY(-12px) scale(1.02)';this.style.borderColor='rgba(138,43,226,0.6)';this.style.boxShadow='0 35px 80px rgba(138,43,226,0.25), inset 0 1px 0 rgba(255,255,255,0.15)'" onmouseout="this.style.transform='translateY(0) scale(1)';this.style.borderColor='rgba(138,43,226,0.25)';this.style.boxShadow='0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)'">
-          <div style="position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:radial-gradient(circle, rgba(138,43,226,0.15) 0%, transparent 70%);border-radius:50%;z-index:0;"></div>
-          <div style="position:absolute;bottom:-20px;left:-30px;width:140px;height:140px;background:radial-gradient(circle, rgba(0,200,255,0.08) 0%, transparent 70%);border-radius:50%;z-index:0;"></div>
-          <div style="position:relative;z-index:1;">
-            <div style="font-size:3.2rem;margin-bottom:0.8rem;filter:drop-shadow(0 4px 12px rgba(138,43,226,0.3));">🎨</div>
-            <h3 style="font-size:1.4rem;font-weight:900;color:#fff;letter-spacing:-0.025em;margin:0;text-shadow:0 2px 8px rgba(0,0,0,0.3);">Web Design</h3>
+        <!-- DESIGN -->
+        <div onclick="showPage('svc-design')" style="cursor:pointer;transition:all 0.3s;display:flex;flex-direction:column;gap:2rem;">
+          <div style="padding:2rem;border:2px solid rgba(138,43,226,0.3);border-radius:8px;background:rgba(138,43,226,0.03);backdrop-filter:blur(10px);transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(138,43,226,0.6)';this.style.background='rgba(138,43,226,0.08)'" onmouseout="this.style.borderColor='rgba(138,43,226,0.3)';this.style.background='rgba(138,43,226,0.03)'">
+            <div style="font-size:3rem;margin-bottom:1rem;">🎨</div>
+            <button class="btn-primary" onclick="event.stopPropagation();showPage('svc-design')" style="padding:0.7rem 1.2rem;font-size:0.8rem;width:100%;background:var(--blue);color:#000;">Explore Design →</button>
           </div>
-          <p style="font-size:0.95rem;color:rgba(255,255,255,0.9);line-height:1.85;flex:1;position:relative;z-index:1;margin:0;">Stunning visuals that turn visitors into customers. Pixel-perfect layouts designed to convert.</p>
-          <div style="position:relative;z-index:1;display:flex;gap:0.8rem;align-items:center;margin-top:0.5rem;">
-            <span style="font-size:0.75rem;background:rgba(138,43,226,0.2);color:rgba(138,43,226,0.9);padding:0.4rem 0.9rem;border-radius:20px;border:1px solid rgba(138,43,226,0.3);">Custom Design</span>
-            <span style="font-size:0.75rem;background:rgba(0,200,255,0.12);color:rgba(0,200,255,0.8);padding:0.4rem 0.9rem;border-radius:20px;border:1px solid rgba(0,200,255,0.25);">Conversion Focus</span>
+          <div>
+            <h3 style="font-size:1.3rem;font-weight:800;color:#fff;margin:0 0 0.8rem 0;letter-spacing:-0.02em;">Web Design</h3>
+            <p style="font-size:0.9rem;color:var(--muted);line-height:1.8;margin:0;">Beautiful, conversion-focused designs that captivate. Pixel-perfect layouts that sell.</p>
           </div>
-          <button class="btn-primary" onclick="event.stopPropagation();showPage('svc-design')" style="margin-top:auto;padding:0.85rem 1.4rem;font-size:0.82rem;width:100%;position:relative;z-index:1;font-weight:700;background:linear-gradient(135deg, var(--blue) 0%, rgba(0,200,255,0.7) 100%);border:none;">Explore Design →</button>
         </div>
 
-        <!-- DEVELOPMENT CARD -->
-        <div onclick="showPage('svc-dev')" style="background:linear-gradient(135deg, rgba(0,200,255,0.15) 0%, rgba(34,182,255,0.06) 100%);padding:3rem;cursor:pointer;transition:all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);display:flex;flex-direction:column;gap:1.5rem;border:2px solid rgba(0,200,255,0.4);border-radius:16px;position:relative;overflow:hidden;box-shadow:0 12px 40px rgba(0,200,255,0.15), inset 0 1px 0 rgba(255,255,255,0.15);" onmouseover="this.style.transform='translateY(-12px) scale(1.02)';this.style.borderColor='rgba(0,200,255,0.7)';this.style.boxShadow='0 40px 90px rgba(0,200,255,0.3), inset 0 1px 0 rgba(255,255,255,0.2)'" onmouseout="this.style.transform='translateY(0) scale(1)';this.style.borderColor='rgba(0,200,255,0.4)';this.style.boxShadow='0 12px 40px rgba(0,200,255,0.15), inset 0 1px 0 rgba(255,255,255,0.15)'">
-          <div style="position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:radial-gradient(circle, rgba(0,200,255,0.2) 0%, transparent 70%);border-radius:50%;z-index:0;"></div>
-          <div style="position:absolute;bottom:-30px;left:-40px;width:160px;height:160px;background:radial-gradient(circle, rgba(34,182,255,0.1) 0%, transparent 70%);border-radius:50%;z-index:0;"></div>
-          <div style="position:relative;z-index:1;">
-            <div style="font-size:3.2rem;margin-bottom:0.8rem;filter:drop-shadow(0 4px 12px rgba(0,200,255,0.4));">⚡</div>
-            <h3 style="font-size:1.4rem;font-weight:900;color:#fff;letter-spacing:-0.025em;margin:0;text-shadow:0 2px 8px rgba(0,0,0,0.3);">Lightning Fast Code</h3>
+        <!-- DEVELOPMENT -->
+        <div onclick="showPage('svc-dev')" style="cursor:pointer;transition:all 0.3s;display:flex;flex-direction:column;gap:2rem;">
+          <div style="padding:2rem;border:2px solid rgba(0,200,255,0.3);border-radius:8px;background:rgba(0,200,255,0.03);backdrop-filter:blur(10px);transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(0,200,255,0.6)';this.style.background='rgba(0,200,255,0.08)'" onmouseout="this.style.borderColor='rgba(0,200,255,0.3)';this.style.background='rgba(0,200,255,0.03)'">
+            <div style="font-size:3rem;margin-bottom:1rem;">⚡</div>
+            <button class="btn-primary" onclick="event.stopPropagation();showPage('svc-dev')" style="padding:0.7rem 1.2rem;font-size:0.8rem;width:100%;background:var(--blue);color:#000;">Explore Development →</button>
           </div>
-          <p style="font-size:0.95rem;color:rgba(255,255,255,0.92);line-height:1.85;flex:1;position:relative;z-index:1;margin:0;">Hand-coded perfection. Optimized for speed, security, and SEO. We don't use templates.</p>
-          <div style="position:relative;z-index:1;display:flex;gap:0.8rem;align-items:center;margin-top:0.5rem;">
-            <span style="font-size:0.75rem;background:rgba(0,200,255,0.15);color:rgba(0,200,255,0.9);padding:0.4rem 0.9rem;border-radius:20px;border:1px solid rgba(0,200,255,0.35);">90+ Lighthouse</span>
-            <span style="font-size:0.75rem;background:rgba(34,182,255,0.12);color:rgba(34,182,255,0.85);padding:0.4rem 0.9rem;border-radius:20px;border:1px solid rgba(34,182,255,0.3);">Mobile Ready</span>
+          <div>
+            <h3 style="font-size:1.3rem;font-weight:800;color:#fff;margin:0 0 0.8rem 0;letter-spacing:-0.02em;">Lightning Fast Code</h3>
+            <p style="font-size:0.9rem;color:var(--muted);line-height:1.8;margin:0;">Hand-coded, optimized for speed. No templates. 90+ Lighthouse, mobile-ready, secure.</p>
           </div>
-          <button class="btn-primary" onclick="event.stopPropagation();showPage('svc-dev')" style="margin-top:auto;padding:0.85rem 1.4rem;font-size:0.82rem;width:100%;position:relative;z-index:1;font-weight:700;background:linear-gradient(135deg, var(--blue) 0%, rgba(34,182,255,0.8) 100%);border:none;color:#000;">Explore Development →</button>
         </div>
 
-        <!-- ECOMMERCE CARD -->
-        <div onclick="showPage('svc-ecommerce')" style="background:linear-gradient(135deg, rgba(76,175,80,0.12) 0%, rgba(0,200,255,0.05) 100%);padding:3rem;cursor:pointer;transition:all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);display:flex;flex-direction:column;gap:1.5rem;border:2px solid rgba(76,175,80,0.25);border-radius:16px;position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);" onmouseover="this.style.transform='translateY(-12px) scale(1.02)';this.style.borderColor='rgba(76,175,80,0.5)';this.style.boxShadow='0 35px 80px rgba(76,175,80,0.2), inset 0 1px 0 rgba(255,255,255,0.15)'" onmouseout="this.style.transform='translateY(0) scale(1)';this.style.borderColor='rgba(76,175,80,0.25)';this.style.boxShadow='0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)'">
-          <div style="position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:radial-gradient(circle, rgba(76,175,80,0.12) 0%, transparent 70%);border-radius:50%;z-index:0;"></div>
-          <div style="position:absolute;bottom:-20px;left:-30px;width:140px;height:140px;background:radial-gradient(circle, rgba(0,200,255,0.07) 0%, transparent 70%);border-radius:50%;z-index:0;"></div>
-          <div style="position:relative;z-index:1;">
-            <div style="font-size:3.2rem;margin-bottom:0.8rem;filter:drop-shadow(0 4px 12px rgba(76,175,80,0.3));">🛒</div>
-            <h3 style="font-size:1.4rem;font-weight:900;color:#fff;letter-spacing:-0.025em;margin:0;text-shadow:0 2px 8px rgba(0,0,0,0.3);">Online Stores</h3>
+        <!-- ECOMMERCE -->
+        <div onclick="showPage('svc-ecommerce')" style="cursor:pointer;transition:all 0.3s;display:flex;flex-direction:column;gap:2rem;">
+          <div style="padding:2rem;border:2px solid rgba(76,175,80,0.3);border-radius:8px;background:rgba(76,175,80,0.03);backdrop-filter:blur(10px);transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(76,175,80,0.6)';this.style.background='rgba(76,175,80,0.08)'" onmouseout="this.style.borderColor='rgba(76,175,80,0.3)';this.style.background='rgba(76,175,80,0.03)'">
+            <div style="font-size:3rem;margin-bottom:1rem;">🛒</div>
+            <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-ecommerce')" style="padding:0.7rem 1.2rem;font-size:0.8rem;width:100%;border:2px solid rgba(76,175,80,0.4);color:rgba(76,175,80,0.9);transition:all 0.2s;" onmouseover="this.style.background='rgba(76,175,80,0.1)';this.style.borderColor='rgba(76,175,80,0.6)'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(76,175,80,0.4)'">Explore E-Commerce →</button>
           </div>
-          <p style="font-size:0.95rem;color:rgba(255,255,255,0.9);line-height:1.85;flex:1;position:relative;z-index:1;margin:0;">Fully operational stores with payments, inventory, shipping. Everything ready to sell day one.</p>
-          <div style="position:relative;z-index:1;display:flex;gap:0.8rem;align-items:center;margin-top:0.5rem;">
-            <span style="font-size:0.75rem;background:rgba(76,175,80,0.15);color:rgba(76,175,80,0.9);padding:0.4rem 0.9rem;border-radius:20px;border:1px solid rgba(76,175,80,0.3);">Full E-Commerce</span>
-            <span style="font-size:0.75rem;background:rgba(0,200,255,0.12);color:rgba(0,200,255,0.8);padding:0.4rem 0.9rem;border-radius:20px;border:1px solid rgba(0,200,255,0.25);">Payments Included</span>
+          <div>
+            <h3 style="font-size:1.3rem;font-weight:800;color:#fff;margin:0 0 0.8rem 0;letter-spacing:-0.02em;">Online Stores</h3>
+            <p style="font-size:0.9rem;color:var(--muted);line-height:1.8;margin:0;">Ready-to-sell stores with payments, inventory, checkout. Operational day one.</p>
           </div>
-          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-ecommerce')" style="margin-top:auto;padding:0.85rem 1.4rem;font-size:0.82rem;width:100%;position:relative;z-index:1;font-weight:700;border:2px solid rgba(76,175,80,0.4);color:rgba(76,175,80,0.9);transition:all 0.2s;" onmouseover="this.style.background='rgba(76,175,80,0.1)';this.style.borderColor='rgba(76,175,80,0.6)'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(76,175,80,0.4)'">Explore E-Commerce →</button>
         </div>
 
       </div>
 
-      <!-- ADDITIONAL SERVICES (SMALLER) - REDESIGNED -->
-      <div style="max-width:1100px;margin:0 auto 5rem;padding:0 5%;">
-        <div style="text-align:center;margin-bottom:3rem;">
-          <p style="font-size:0.82rem;color:var(--muted);letter-spacing:0.5px;text-transform:uppercase;">We also offer:</p>
+      <!-- ADDITIONAL SERVICES - TRANSPARENT & MINIMAL -->
+      <div style="max-width:1100px;margin:0 auto 6rem;padding:0 5%;">
+        <div style="margin-bottom:3rem;border-top:1px solid var(--border);padding-top:3rem;">
+          <p style="font-size:0.82rem;color:var(--muted);letter-spacing:0.5px;text-transform:uppercase;margin:0;">We also offer:</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:2rem;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:3rem;">
 
-          <div onclick="showPage('svc-seo')" style="padding:2rem;border:2px solid rgba(0,200,255,0.2);border-radius:12px;cursor:pointer;transition:all 0.25s;background:linear-gradient(135deg, rgba(0,200,255,0.04) 0%, transparent 100%);position:relative;overflow:hidden;" onmouseover="this.style.background='linear-gradient(135deg, rgba(0,200,255,0.1) 0%, transparent 100%)';this.style.borderColor='rgba(0,200,255,0.4)';this.style.transform='translateY(-4px)'" onmouseout="this.style.background='linear-gradient(135deg, rgba(0,200,255,0.04) 0%, transparent 100%)';this.style.borderColor='rgba(0,200,255,0.2)';this.style.transform='translateY(0)'">
-            <div style="position:absolute;top:-30px;right:-30px;width:100px;height:100px;background:radial-gradient(circle, rgba(0,200,255,0.08) 0%, transparent 70%);border-radius:50%;"></div>
-            <div style="position:relative;z-index:1;">
-              <div style="font-size:2rem;margin-bottom:0.8rem;">🔍</div>
-              <h4 style="font-size:1rem;font-weight:800;color:var(--text);margin-bottom:0.75rem;letter-spacing:-0.01em;">SEO &amp; Growth</h4>
-              <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem;">Get found on Google. 20+ keywords tracked monthly. Real traffic, real leads.</p>
-              <div style="font-size:0.8rem;color:var(--blue);cursor:pointer;font-weight:600;transition:all 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--blue)'">Learn More →</div>
+          <div onclick="showPage('svc-seo')" style="cursor:pointer;transition:all 0.3s;display:flex;flex-direction:column;gap:1.5rem;">
+            <div style="display:flex;align-items:center;gap:1.5rem;padding:1.5rem;border:1px solid rgba(0,200,255,0.2);border-radius:8px;background:rgba(0,200,255,0.02);transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(0,200,255,0.4)';this.style.background='rgba(0,200,255,0.05)'" onmouseout="this.style.borderColor='rgba(0,200,255,0.2)';this.style.background='rgba(0,200,255,0.02)'">
+              <div style="font-size:2.5rem;flex-shrink:0;">🔍</div>
+              <div style="flex:1;">
+                <h4 style="font-size:0.95rem;font-weight:800;color:var(--text);margin:0 0 0.4rem 0;">SEO &amp; Growth</h4>
+                <p style="font-size:0.8rem;color:var(--muted);margin:0;">Get found on Google</p>
+              </div>
             </div>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;margin:0;">20+ keywords tracked monthly. Real traffic, real leads. Conversion reporting included.</p>
           </div>
 
-          <div onclick="showPage('svc-branding')" style="padding:2rem;border:2px solid rgba(138,43,226,0.2);border-radius:12px;cursor:pointer;transition:all 0.25s;background:linear-gradient(135deg, rgba(138,43,226,0.04) 0%, transparent 100%);position:relative;overflow:hidden;" onmouseover="this.style.background='linear-gradient(135deg, rgba(138,43,226,0.1) 0%, transparent 100%)';this.style.borderColor='rgba(138,43,226,0.4)';this.style.transform='translateY(-4px)'" onmouseout="this.style.background='linear-gradient(135deg, rgba(138,43,226,0.04) 0%, transparent 100%)';this.style.borderColor='rgba(138,43,226,0.2)';this.style.transform='translateY(0)'">
-            <div style="position:absolute;top:-30px;right:-30px;width:100px;height:100px;background:radial-gradient(circle, rgba(138,43,226,0.08) 0%, transparent 70%);border-radius:50%;"></div>
-            <div style="position:relative;z-index:1;">
-              <div style="font-size:2rem;margin-bottom:0.8rem;">✨</div>
-              <h4 style="font-size:1rem;font-weight:800;color:var(--text);margin-bottom:0.75rem;letter-spacing:-0.01em;">Logo &amp; Branding</h4>
-              <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem;">Professional logos, brand guidelines, visual identity. Look premium from day one.</p>
-              <div style="font-size:0.8rem;color:rgba(138,43,226,0.8);cursor:pointer;font-weight:600;transition:all 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(138,43,226,0.8)'">Learn More →</div>
+          <div onclick="showPage('svc-branding')" style="cursor:pointer;transition:all 0.3s;display:flex;flex-direction:column;gap:1.5rem;">
+            <div style="display:flex;align-items:center;gap:1.5rem;padding:1.5rem;border:1px solid rgba(138,43,226,0.2);border-radius:8px;background:rgba(138,43,226,0.02);transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(138,43,226,0.4)';this.style.background='rgba(138,43,226,0.05)'" onmouseout="this.style.borderColor='rgba(138,43,226,0.2)';this.style.background='rgba(138,43,226,0.02)'">
+              <div style="font-size:2.5rem;flex-shrink:0;">✨</div>
+              <div style="flex:1;">
+                <h4 style="font-size:0.95rem;font-weight:800;color:var(--text);margin:0 0 0.4rem 0;">Logo &amp; Branding</h4>
+                <p style="font-size:0.8rem;color:var(--muted);margin:0;">Full identity system</p>
+              </div>
             </div>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;margin:0;">Logo, brand guidelines, color palettes, typography. Look premium from day one.</p>
           </div>
 
-          <div onclick="showPage('svc-maintenance')" style="padding:2rem;border:2px solid rgba(76,175,80,0.2);border-radius:12px;cursor:pointer;transition:all 0.25s;background:linear-gradient(135deg, rgba(76,175,80,0.04) 0%, transparent 100%);position:relative;overflow:hidden;" onmouseover="this.style.background='linear-gradient(135deg, rgba(76,175,80,0.1) 0%, transparent 100%)';this.style.borderColor='rgba(76,175,80,0.4)';this.style.transform='translateY(-4px)'" onmouseout="this.style.background='linear-gradient(135deg, rgba(76,175,80,0.04) 0%, transparent 100%)';this.style.borderColor='rgba(76,175,80,0.2)';this.style.transform='translateY(0)'">
-            <div style="position:absolute;top:-30px;right:-30px;width:100px;height:100px;background:radial-gradient(circle, rgba(76,175,80,0.08) 0%, transparent 70%);border-radius:50%;"></div>
-            <div style="position:relative;z-index:1;">
-              <div style="font-size:2rem;margin-bottom:0.8rem;">🔧</div>
-              <h4 style="font-size:1rem;font-weight:800;color:var(--text);margin-bottom:0.75rem;letter-spacing:-0.01em;">Ongoing Support</h4>
-              <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem;">Monthly maintenance, updates, security, backups. Peace of mind included.</p>
-              <div style="font-size:0.8rem;color:rgba(76,175,80,0.8);cursor:pointer;font-weight:600;transition:all 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(76,175,80,0.8)'">Learn More →</div>
+          <div onclick="showPage('svc-maintenance')" style="cursor:pointer;transition:all 0.3s;display:flex;flex-direction:column;gap:1.5rem;">
+            <div style="display:flex;align-items:center;gap:1.5rem;padding:1.5rem;border:1px solid rgba(76,175,80,0.2);border-radius:8px;background:rgba(76,175,80,0.02);transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(76,175,80,0.4)';this.style.background='rgba(76,175,80,0.05)'" onmouseout="this.style.borderColor='rgba(76,175,80,0.2)';this.style.background='rgba(76,175,80,0.02)'">
+              <div style="font-size:2.5rem;flex-shrink:0;">🔧</div>
+              <div style="flex:1;">
+                <h4 style="font-size:0.95rem;font-weight:800;color:var(--text);margin:0 0 0.4rem 0;">Ongoing Support</h4>
+                <p style="font-size:0.8rem;color:var(--muted);margin:0;">Monthly care plan</p>
+              </div>
             </div>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;margin:0;">Maintenance, updates, security, backups. Your site stays fast, safe, and current.</p>
           </div>
 
         </div>
       </div>
 
 
-      <!-- PROCESS - MODERN & STRIKING -->
+      <!-- PROCESS - TRANSPARENT & MINIMAL -->
       <div style="padding:4rem 5% 5rem;max-width:1200px;margin:0 auto;">
         <div style="text-align:center;margin-bottom:4rem;">
           <span class="s-eyebrow">Get Started</span>
           <h2 class="s-title">4 simple steps</h2>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:2.5rem;margin-top:3rem;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:2rem;margin-top:3rem;">
 
-          <!-- Step 1 -->
-          <div style="text-align:center;position:relative;padding:2.5rem 1.5rem;background:linear-gradient(135deg, rgba(0,200,255,0.05) 0%, transparent 100%);border:2px solid rgba(0,200,255,0.15);border-radius:12px;transition:all 0.2s;cursor:default;" onmouseover="this.style.borderColor='rgba(0,200,255,0.3)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(0,200,255,0.15)';this.style.transform='translateY(0)'">
-            <div style="position:absolute;top:-15px;left:50%;transform:translateX(-50%);width:40px;height:40px;background:linear-gradient(135deg, var(--blue) 0%, rgba(0,200,255,0.7) 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#000;font-size:1.1rem;box-shadow:0 8px 20px rgba(0,200,255,0.3);">01</div>
-            <div style="margin-bottom:1.5rem;margin-top:1rem;">
-              <div style="font-size:2rem;margin-bottom:0.8rem;">📞</div>
+          <div style="display:flex;flex-direction:column;gap:1.5rem;">
+            <div style="display:flex;align-items:center;gap:1.5rem;">
+              <div style="font-size:2rem;flex-shrink:0;">📞</div>
+              <div>
+                <div style="font-size:0.75rem;color:var(--blue);font-weight:700;letter-spacing:1px;margin-bottom:0.3rem;">STEP 01</div>
+                <h3 style="font-size:1.1rem;font-weight:800;color:var(--text);margin:0;">Contact Us</h3>
+              </div>
             </div>
-            <h3 style="font-size:1.15rem;font-weight:800;color:var(--text);margin-bottom:0.8rem;letter-spacing:-0.01em;">Contact Us</h3>
             <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;margin:0;">Fill out a quick form or book a free call. Tell us what you need.</p>
           </div>
 
-          <!-- Step 2 -->
-          <div style="text-align:center;position:relative;padding:2.5rem 1.5rem;background:linear-gradient(135deg, rgba(138,43,226,0.05) 0%, transparent 100%);border:2px solid rgba(138,43,226,0.15);border-radius:12px;transition:all 0.2s;cursor:default;" onmouseover="this.style.borderColor='rgba(138,43,226,0.3)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(138,43,226,0.15)';this.style.transform='translateY(0)'">
-            <div style="position:absolute;top:-15px;left:50%;transform:translateX(-50%);width:40px;height:40px;background:linear-gradient(135deg, rgba(138,43,226,0.9) 0%, rgba(138,43,226,0.7) 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:1.1rem;box-shadow:0 8px 20px rgba(138,43,226,0.3);">02</div>
-            <div style="margin-bottom:1.5rem;margin-top:1rem;">
-              <div style="font-size:2rem;margin-bottom:0.8rem;">📋</div>
+          <div style="display:flex;flex-direction:column;gap:1.5rem;">
+            <div style="display:flex;align-items:center;gap:1.5rem;">
+              <div style="font-size:2rem;flex-shrink:0;">📋</div>
+              <div>
+                <div style="font-size:0.75rem;color:rgba(138,43,226,0.8);font-weight:700;letter-spacing:1px;margin-bottom:0.3rem;">STEP 02</div>
+                <h3 style="font-size:1.1rem;font-weight:800;color:var(--text);margin:0;">Quote & Approval</h3>
+              </div>
             </div>
-            <h3 style="font-size:1.15rem;font-weight:800;color:var(--text);margin-bottom:0.8rem;letter-spacing:-0.01em;">Quote & Approval</h3>
             <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;margin:0;">Fixed price proposal within 48 hours. You approve before we build.</p>
           </div>
 
-          <!-- Step 3 -->
-          <div style="text-align:center;position:relative;padding:2.5rem 1.5rem;background:linear-gradient(135deg, rgba(34,182,255,0.05) 0%, transparent 100%);border:2px solid rgba(34,182,255,0.15);border-radius:12px;transition:all 0.2s;cursor:default;" onmouseover="this.style.borderColor='rgba(34,182,255,0.3)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(34,182,255,0.15)';this.style.transform='translateY(0)'">
-            <div style="position:absolute;top:-15px;left:50%;transform:translateX(-50%);width:40px;height:40px;background:linear-gradient(135deg, rgba(34,182,255,0.9) 0%, rgba(34,182,255,0.7) 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#000;font-size:1.1rem;box-shadow:0 8px 20px rgba(34,182,255,0.3);">03</div>
-            <div style="margin-bottom:1.5rem;margin-top:1rem;">
-              <div style="font-size:2rem;margin-bottom:0.8rem;">⚙️</div>
+          <div style="display:flex;flex-direction:column;gap:1.5rem;">
+            <div style="display:flex;align-items:center;gap:1.5rem;">
+              <div style="font-size:2rem;flex-shrink:0;">⚙️</div>
+              <div>
+                <div style="font-size:0.75rem;color:rgba(34,182,255,0.8);font-weight:700;letter-spacing:1px;margin-bottom:0.3rem;">STEP 03</div>
+                <h3 style="font-size:1.1rem;font-weight:800;color:var(--text);margin:0;">We Build</h3>
+              </div>
             </div>
-            <h3 style="font-size:1.15rem;font-weight:800;color:var(--text);margin-bottom:0.8rem;letter-spacing:-0.01em;">We Build</h3>
             <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;margin:0;">Hand-coded, fast, mobile-ready. You review on a private preview link.</p>
           </div>
 
-          <!-- Step 4 -->
-          <div style="text-align:center;position:relative;padding:2.5rem 1.5rem;background:linear-gradient(135deg, rgba(76,175,80,0.05) 0%, transparent 100%);border:2px solid rgba(76,175,80,0.15);border-radius:12px;transition:all 0.2s;cursor:default;" onmouseover="this.style.borderColor='rgba(76,175,80,0.3)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(76,175,80,0.15)';this.style.transform='translateY(0)'">
-            <div style="position:absolute;top:-15px;left:50%;transform:translateX(-50%);width:40px;height:40px;background:linear-gradient(135deg, rgba(76,175,80,0.9) 0%, rgba(76,175,80,0.7) 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:1.1rem;box-shadow:0 8px 20px rgba(76,175,80,0.3);">04</div>
-            <div style="margin-bottom:1.5rem;margin-top:1rem;">
-              <div style="font-size:2rem;margin-bottom:0.8rem;">🚀</div>
+          <div style="display:flex;flex-direction:column;gap:1.5rem;">
+            <div style="display:flex;align-items:center;gap:1.5rem;">
+              <div style="font-size:2rem;flex-shrink:0;">🚀</div>
+              <div>
+                <div style="font-size:0.75rem;color:rgba(76,175,80,0.8);font-weight:700;letter-spacing:1px;margin-bottom:0.3rem;">STEP 04</div>
+                <h3 style="font-size:1.1rem;font-weight:800;color:var(--text);margin:0;">Go Live</h3>
+              </div>
             </div>
-            <h3 style="font-size:1.15rem;font-weight:800;color:var(--text);margin-bottom:0.8rem;letter-spacing:-0.01em;">Go Live</h3>
             <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;margin:0;">Domain, hosting, SSL, analytics. Everything handled. You own it all.</p>
           </div>
 
