@@ -1202,8 +1202,8 @@
         <p class="s-sub" style="margin:0 auto;">We design, build, and grow websites for Australian businesses. Clear services, real results, no jargon.</p>
       </div>
 
-      <!-- SERVICE CARDS -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:2rem;max-width:1000px;margin:0 auto 5rem;padding:0 5%;">
+      <!-- FEATURED SERVICES (3 CARDS) -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:2rem;max-width:1000px;margin:0 auto 4rem;padding:0 5%;">
 
         <div class="glow-card" onclick="showPage('svc-design')" style="background:transparent;padding:2.2rem 2rem;cursor:pointer;transition:background 0.2s,border-color 0.2s;display:flex;flex-direction:column;gap:1rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
           <div style="display:flex;align-items:center;gap:8px;">
@@ -1235,36 +1235,30 @@
           <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-ecommerce')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More →</button>
         </div>
 
-        <div class="glow-card" onclick="showPage('svc-seo')" style="background:transparent;padding:1.6rem 1.5rem;cursor:pointer;transition:background 0.2s,border-color 0.2s;display:flex;flex-direction:column;gap:0.8rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);opacity:0.5;letter-spacing:2px;">04</span>
-            <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
-          </div>
-          <h3 style="font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Get Found on Google</h3>
-          <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;flex:1;">We optimise your site so local customers find you first. Monthly reporting, real rankings, more enquiries — every month.</p>
-          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-seo')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More →</button>
-        </div>
+      </div>
 
-        <div class="glow-card" onclick="showPage('svc-branding')" style="background:transparent;padding:1.6rem 1.5rem;cursor:pointer;transition:background 0.2s,border-color 0.2s;display:flex;flex-direction:column;gap:0.8rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);opacity:0.5;letter-spacing:2px;">05</span>
-            <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
-          </div>
-          <h3 style="font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Logo &amp; Branding</h3>
-          <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;flex:1;">A professional logo and full brand identity — colours, fonts, and guidelines — that makes your business look established and impossible to forget.</p>
-          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-branding')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More →</button>
+      <!-- ADDITIONAL SERVICES (SMALLER) -->
+      <div style="max-width:900px;margin:0 auto 5rem;padding:0 5%;">
+        <div style="text-align:center;margin-bottom:2.5rem;">
+          <p style="font-size:0.82rem;color:var(--muted);letter-spacing:0.5px;">We also offer:</p>
         </div>
-
-        <div class="glow-card" onclick="showPage('svc-maintenance')" style="background:transparent;padding:1.6rem 1.5rem;cursor:pointer;transition:background 0.2s,border-color 0.2s;display:flex;flex-direction:column;gap:0.8rem;border:1px solid var(--border);border-radius:var(--radius);" onmouseover="this.style.background='var(--card-hover)';this.style.borderColor='var(--border-hover)'" onmouseout="this.style.background='var(--card-bg)';this.style.borderColor='var(--border)'">
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="font-size:0.62rem;font-family:monospace;color:var(--blue);opacity:0.5;letter-spacing:2px;">06</span>
-            <span style="width:5px;height:5px;border-radius:50%;background:rgba(0,200,255,0.25);display:inline-block;"></span>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:1.5rem;">
+          <div onclick="showPage('svc-seo')" style="padding:1.5rem;border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;transition:all 0.2s;background:transparent;" onmouseover="this.style.background='rgba(0,200,255,0.03)';this.style.borderColor='rgba(0,200,255,0.3)'" onmouseout="this.style.background='transparent';this.style.borderColor='var(--border)'">
+            <h4 style="font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:0.6rem;">SEO &amp; Growth</h4>
+            <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:0;">Get found on Google. 20+ keywords tracked monthly.</p>
+            <div style="font-size:0.75rem;color:var(--blue);margin-top:0.8rem;cursor:pointer;">Learn More →</div>
           </div>
-          <h3 style="font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;">Ongoing Support</h3>
-          <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;flex:1;">Monthly care — updates, security, backups, and content changes handled for you. Your site stays fast, safe, and up to date.</p>
-          <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-maintenance')" style="margin-top:0.4rem;padding:0.5rem 1rem;font-size:0.75rem;width:100%;">Learn More →</button>
+          <div onclick="showPage('svc-branding')" style="padding:1.5rem;border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;transition:all 0.2s;background:transparent;" onmouseover="this.style.background='rgba(0,200,255,0.03)';this.style.borderColor='rgba(0,200,255,0.3)'" onmouseout="this.style.background='transparent';this.style.borderColor='var(--border)'">
+            <h4 style="font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:0.6rem;">Logo &amp; Branding</h4>
+            <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:0;">Professional logos, brand guidelines, full identity system.</p>
+            <div style="font-size:0.75rem;color:var(--blue);margin-top:0.8rem;cursor:pointer;">Learn More →</div>
+          </div>
+          <div onclick="showPage('svc-maintenance')" style="padding:1.5rem;border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;transition:all 0.2s;background:transparent;" onmouseover="this.style.background='rgba(0,200,255,0.03)';this.style.borderColor='rgba(0,200,255,0.3)'" onmouseout="this.style.background='transparent';this.style.borderColor='var(--border)'">
+            <h4 style="font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:0.6rem;">Ongoing Support</h4>
+            <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:0;">Monthly maintenance, updates, security, backups.</p>
+            <div style="font-size:0.75rem;color:var(--blue);margin-top:0.8rem;cursor:pointer;">Learn More →</div>
+          </div>
         </div>
-
       </div>
 
 
@@ -1272,11 +1266,11 @@
       <div style="padding:3rem 5% 4rem;max-width:900px;margin:0 auto;">
         <div style="text-align:center;margin-bottom:3.5rem;">
           <span class="s-eyebrow">How It Works</span>
-          <h2 class="s-title">Exactly what happens,<br>start to finish</h2>
-          <p class="s-sub" style="margin:0 auto;">Every step is clear, every decision is yours. Here's the full process — no surprises.</p>
+          <h2 class="s-title">Simple, clear, transparent</h2>
+          <p class="s-sub" style="margin:0 auto;">From start to finish — every step is straightforward. No hidden fees, no surprises.</p>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:2rem;margin-top:2rem;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:2rem;margin-top:2rem;">
 
           <div class="build-step glow-card">
             <div class="build-step-num">01</div>
