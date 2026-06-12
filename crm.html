@@ -27,6 +27,7 @@
         <button class="nav-btn" data-tab="leads" onclick="switchTab('leads')">All Leads</button>
         <button class="nav-btn" data-tab="outreach" onclick="switchTab('outreach')">Outreach</button>
         <button class="nav-btn" data-tab="analytics" onclick="switchTab('analytics')">Analytics</button>
+        <button class="nav-btn" data-tab="forms" onclick="switchTab('forms')">Forms</button>
         <button class="nav-btn" data-tab="enquiries" onclick="switchTab('enquiries')" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;">
           <span>Enquiries</span>
           <span id="enquiry-badge" class="enq-badge hidden">0</span>
@@ -322,6 +323,79 @@
         <div id="analytics-content"></div>
       </section>
 
+      <!-- FORMS -->
+      <section id="tab-forms" class="tab">
+        <h1>Website <span class="fade">Forms</span></h1>
+        <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:2rem;">Share these forms on your website to capture customer inquiries and information.</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:1100px;">
+          <!-- CONTACT FORM -->
+          <div class="card">
+            <h3>📧 Contact Form</h3>
+            <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.5rem;">For general inquiries and questions</p>
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" id="contact-name" placeholder="John Smith" />
+            </div>
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" id="contact-email" placeholder="john@example.com" />
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" id="contact-phone" placeholder="02 1234 5678" />
+            </div>
+            <div class="form-group">
+              <label>Message *</label>
+              <textarea id="contact-message" rows="5" placeholder="Tell us what you need..." style="font-family:inherit;line-height:1.6"></textarea>
+            </div>
+            <button class="btn btn-primary" onclick="submitContactForm()" style="width:100%;">Submit Contact Form</button>
+          </div>
+
+          <!-- CUSTOMER INFO FORM -->
+          <div class="card">
+            <h3>🏢 Customer Information</h3>
+            <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.5rem;">For collecting detailed business info</p>
+            <div class="form-group">
+              <label>Business Name *</label>
+              <input type="text" id="customer-business" placeholder="Your Business" />
+            </div>
+            <div class="form-group">
+              <label>Contact Name *</label>
+              <input type="text" id="customer-contact" placeholder="Your Name" />
+            </div>
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" id="customer-email" placeholder="contact@business.com" />
+            </div>
+            <div class="form-group">
+              <label>Phone *</label>
+              <input type="tel" id="customer-phone" placeholder="02 1234 5678" />
+            </div>
+            <div class="form-group">
+              <label>Website</label>
+              <input type="url" id="customer-website" placeholder="https://yoursite.com" />
+            </div>
+            <div class="form-group">
+              <label>Business Category</label>
+              <input type="text" id="customer-category" placeholder="e.g. Plumber, Cafe, Salon" />
+            </div>
+            <div class="form-group">
+              <label>Service Required</label>
+              <textarea id="customer-service" rows="3" placeholder="What service are you interested in?" style="font-family:inherit;line-height:1.6"></textarea>
+            </div>
+            <button class="btn btn-primary" onclick="submitCustomerForm()" style="width:100%;">Submit Customer Info</button>
+          </div>
+        </div>
+
+        <!-- SUBMISSIONS LIST -->
+        <div style="margin-top:3rem;">
+          <h3>Recent Submissions</h3>
+          <div id="forms-submissions-list" style="display:grid;gap:1rem;margin-top:1rem;"></div>
+          <div id="forms-empty-state" style="text-align:center;padding:2rem;color:var(--text-muted);">No submissions yet</div>
+        </div>
+      </section>
+
       <!-- ENQUIRIES -->
       <section id="tab-enquiries" class="tab">
         <h1>Client <span class="fade">Enquiries</span></h1>
@@ -451,5 +525,167 @@
   <script src="animated-btn.js"></script>
   <script src="glow-card.js"></script>
   <script src="pixel-btn.js"></script>
+
+  <script>
+    // Form submission handlers
+    function submitContactForm() {
+      const name = document.getElementById('contact-name').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      const phone = document.getElementById('contact-phone').value.trim();
+      const message = document.getElementById('contact-message').value.trim();
+
+      if (!name || !email || !message) {
+        alert('Please fill in all required fields (Name, Email, Message)');
+        return;
+      }
+
+      const submission = {
+        id: 'contact_' + Date.now(),
+        type: 'contact',
+        name: name,
+        email: email,
+        phone: phone,
+        message: message,
+        submittedAt: new Date().toISOString(),
+        status: 'new'
+      };
+
+      // Save to localStorage
+      let submissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]');
+      submissions.unshift(submission);
+      localStorage.setItem('formSubmissions', JSON.stringify(submissions));
+
+      // Clear form
+      document.getElementById('contact-name').value = '';
+      document.getElementById('contact-email').value = '';
+      document.getElementById('contact-phone').value = '';
+      document.getElementById('contact-message').value = '';
+
+      alert('✓ Contact form submitted! Check Enquiries tab.');
+      loadFormSubmissions();
+      switchTab('enquiries');
+    }
+
+    function submitCustomerForm() {
+      const business = document.getElementById('customer-business').value.trim();
+      const contact = document.getElementById('customer-contact').value.trim();
+      const email = document.getElementById('customer-email').value.trim();
+      const phone = document.getElementById('customer-phone').value.trim();
+      const website = document.getElementById('customer-website').value.trim();
+      const category = document.getElementById('customer-category').value.trim();
+      const service = document.getElementById('customer-service').value.trim();
+
+      if (!business || !contact || !email || !phone) {
+        alert('Please fill in all required fields (Business, Contact, Email, Phone)');
+        return;
+      }
+
+      const submission = {
+        id: 'customer_' + Date.now(),
+        type: 'customer',
+        businessName: business,
+        contactName: contact,
+        email: email,
+        phone: phone,
+        website: website,
+        category: category,
+        service: service,
+        submittedAt: new Date().toISOString(),
+        status: 'new'
+      };
+
+      // Save to localStorage
+      let submissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]');
+      submissions.unshift(submission);
+      localStorage.setItem('formSubmissions', JSON.stringify(submissions));
+
+      // Clear form
+      document.getElementById('customer-business').value = '';
+      document.getElementById('customer-contact').value = '';
+      document.getElementById('customer-email').value = '';
+      document.getElementById('customer-phone').value = '';
+      document.getElementById('customer-website').value = '';
+      document.getElementById('customer-category').value = '';
+      document.getElementById('customer-service').value = '';
+
+      alert('✓ Customer info submitted! Check Enquiries tab.');
+      loadFormSubmissions();
+      switchTab('enquiries');
+    }
+
+    function loadFormSubmissions() {
+      const submissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]');
+      const listEl = document.getElementById('forms-submissions-list');
+      const emptyEl = document.getElementById('forms-empty-state');
+
+      if (submissions.length === 0) {
+        listEl.innerHTML = '';
+        emptyEl.style.display = 'block';
+        return;
+      }
+
+      emptyEl.style.display = 'none';
+      listEl.innerHTML = submissions.slice(0, 10).map(sub => `
+        <div style="border:1px solid var(--border);border-radius:6px;padding:1rem;background:var(--surface);">
+          <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:0.75rem;">
+            <div>
+              <div style="font-weight:600;color:var(--text);">
+                ${sub.type === 'contact' ? sub.name : sub.businessName}
+              </div>
+              <div style="font-size:0.8rem;color:var(--text-muted);">
+                ${sub.type === 'contact' ? 'Contact Inquiry' : 'Customer Info'} • ${sub.email}
+              </div>
+            </div>
+            <span style="font-size:0.75rem;color:var(--text-muted);">${new Date(sub.submittedAt).toLocaleDateString()}</span>
+          </div>
+          <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.75rem;">
+            ${sub.type === 'contact' ? `Message: ${sub.message}` : `Business: ${sub.category || 'N/A'}`}
+          </div>
+          <button class="btn btn-ghost btn-sm" onclick="convertToLead('${sub.id}')">→ Convert to Lead</button>
+        </div>
+      `).join('');
+    }
+
+    function convertToLead(submissionId) {
+      const submissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]');
+      const sub = submissions.find(s => s.id === submissionId);
+      if (!sub) return;
+
+      const lead = {
+        id: 'form_' + Date.now(),
+        name: sub.type === 'contact' ? sub.name : sub.businessName,
+        email: sub.email,
+        phone: sub.phone,
+        website: sub.website || '',
+        category: sub.category || sub.type,
+        city: '',
+        state: '',
+        status: 'new',
+        score: 75,
+        notes: sub.type === 'contact' ? sub.message : sub.service,
+        source: 'website_form',
+        createdAt: new Date().toISOString()
+      };
+
+      // Save to leads (assuming there's a leads storage)
+      let leads = JSON.parse(localStorage.getItem('leads') || '[]');
+      leads.unshift(lead);
+      localStorage.setItem('leads', JSON.stringify(leads));
+
+      // Mark as converted
+      sub.status = 'converted';
+      localStorage.setItem('formSubmissions', JSON.stringify(submissions));
+
+      alert('✓ Added to All Leads. Switch to "All Leads" to view.');
+      loadFormSubmissions();
+    }
+
+    // Load form submissions on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      loadFormSubmissions();
+      // Reload every 5 seconds to show new submissions
+      setInterval(loadFormSubmissions, 5000);
+    });
+  </script>
 </body>
 </html>
