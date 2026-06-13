@@ -31,6 +31,8 @@
         <button class="nav-btn" data-tab="clients" onclick="switchTab('clients')">Clients</button>
         <button class="nav-btn" data-tab="retainers" onclick="switchTab('retainers')">Retainers</button>
         <button class="nav-btn" data-tab="services" onclick="switchTab('services')">Services</button>
+        <button class="nav-btn" data-tab="invoices" onclick="switchTab('invoices')">Invoices</button>
+        <button class="nav-btn" data-tab="reporting" onclick="switchTab('reporting')">Reporting</button>
         <button class="nav-btn" data-tab="forms" onclick="switchTab('forms')">Forms</button>
         <button class="nav-btn" data-tab="enquiries" onclick="switchTab('enquiries')" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;">
           <span>Enquiries</span>
@@ -366,6 +368,21 @@
           <button class="btn btn-primary btn-sm" onclick="openServiceModal()">+ Add Service</button>
         </div>
         <div id="services-list"></div>
+      </section>
+
+      <!-- INVOICES -->
+      <section id="tab-invoices" class="tab">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
+          <h1>Invoi<span class="fade">ces</span></h1>
+          <button class="btn btn-primary btn-sm" onclick="openInvoiceModal()">+ Create Invoice</button>
+        </div>
+        <div id="invoices-list"></div>
+      </section>
+
+      <!-- REPORTING -->
+      <section id="tab-reporting" class="tab">
+        <h1>Reporti<span class="fade">ng</span></h1>
+        <div id="reporting-wrap"></div>
       </section>
 
       <!-- FORMS -->
@@ -840,6 +857,33 @@
       <div class="modal-footer">
         <button class="btn btn-ghost" onclick="closeServiceModal()">Cancel</button>
         <button class="btn btn-primary" onclick="saveService()">Save Service</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 3A: INVOICE MODAL -->
+  <div id="invoice-modal" class="modal hidden">
+    <div class="modal-box" style="max-width:540px">
+      <div class="modal-header">
+        <h2>Create Invoice</h2>
+        <button class="modal-close" onclick="closeInvoiceModal()">×</button>
+      </div>
+      <div class="modal-body" style="padding:1.5rem">
+        <input type="hidden" id="invoice-id" />
+        <div class="form-group">
+          <label>Client *</label>
+          <select id="invoice-client">
+            <option value="">Select client...</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Retainer (optional)</label><select id="invoice-retainer"><option value="">No retainer</option></select></div>
+        <div class="form-group"><label>Amount *</label><input type="number" id="invoice-amount" placeholder="1500" /></div>
+        <div class="form-group"><label>Due Date *</label><input type="date" id="invoice-due" /></div>
+        <div class="form-group"><label>Notes</label><textarea id="invoice-notes" rows="3" placeholder="Invoice notes..."></textarea></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" onclick="closeInvoiceModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveInvoice()">Create Invoice</button>
       </div>
     </div>
   </div>

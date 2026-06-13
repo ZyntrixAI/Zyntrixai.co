@@ -31,6 +31,21 @@ let servicesDatabase = [];
 const RETAINER_STATUS = ['active', 'paused', 'ended'];
 const SERVICE_STATUS = ['pending', 'in-progress', 'completed', 'on-hold'];
 
+// ===== PHASE 3A: INVOICING & PAYMENTS =====
+let invoicesDatabase = [];
+const INVOICE_STATUS = ['draft', 'sent', 'paid', 'overdue', 'cancelled'];
+
+// ===== PHASE 3B: CLIENT PORTAL =====
+let portalTokens = {};
+
+// ===== PHASE 3C: AUTOMATION =====
+let automationRules = [];
+const AUTOMATION_TRIGGERS = ['invoice_created', 'payment_due', 'service_complete', 'retainer_renewal'];
+const AUTOMATION_ACTIONS = ['send_email', 'create_invoice', 'update_status', 'send_reminder'];
+
+// ===== PHASE 3D: REPORTING =====
+let reportCache = {};
+
 // ===== PERFORMANCE OPTIMIZATION =====
 let filterDebounceTimer;
 let currentFilterCache = { results: null, timestamp: 0 };
@@ -177,6 +192,9 @@ function initializeApp() {
   clientsDatabase = JSON.parse(localStorage.getItem('zyntrix_clients')) || [];
   retainersDatabase = JSON.parse(localStorage.getItem('zyntrix_retainers')) || [];
   servicesDatabase = JSON.parse(localStorage.getItem('zyntrix_services')) || [];
+  invoicesDatabase = JSON.parse(localStorage.getItem('zyntrix_invoices')) || [];
+  automationRules = JSON.parse(localStorage.getItem('zyntrix_automation')) || [];
+  portalTokens = JSON.parse(localStorage.getItem('zyntrix_portal_tokens')) || {};
 
   // Initialize default templates if none exist
   if (templatesDatabase.length === 0) {
@@ -418,17 +436,33 @@ function switchTab(tabName) {
   } else if (tabName === 'services') {
     renderServices();
     populateClientDropdowns();
+  } else if (tabName === 'invoices') {
+    renderInvoices();
+    populateClientDropdowns();
+  } else if (tabName === 'reporting') {
+    renderReporting();
   } else if (tabName === 'settings') {
     renderCustomFields();
   }
 }
 
 function populateClientDropdowns() {
-  const selects = document.querySelectorAll('#retainer-client, #service-client');
+  const selects = document.querySelectorAll('#retainer-client, #service-client, #invoice-client');
   selects.forEach(select => {
     const currentValue = select.value;
     select.innerHTML = '<option value="">Select client...</option>' + clientsDatabase.map(c =>
       `<option value="${c.id}">${c.name}</option>`
+    ).join('');
+    select.value = currentValue;
+  });
+
+  const retainerSelects = document.querySelectorAll('#invoice-retainer');
+  retainerSelects.forEach(select => {
+    const currentValue = select.value;
+    const clientId = document.getElementById('invoice-client')?.value;
+    const clientRetainers = retainersDatabase.filter(r => r.clientId === clientId);
+    select.innerHTML = '<option value="">No retainer</option>' + clientRetainers.map(r =>
+      `<option value="${r.id}">${r.serviceType} - $${r.amount}/mo</option>`
     ).join('');
     select.value = currentValue;
   });
@@ -1392,6 +1426,9 @@ function saveAllData() {
   localStorage.setItem('zyntrix_clients', JSON.stringify(clientsDatabase));
   localStorage.setItem('zyntrix_retainers', JSON.stringify(retainersDatabase));
   localStorage.setItem('zyntrix_services', JSON.stringify(servicesDatabase));
+  localStorage.setItem('zyntrix_invoices', JSON.stringify(invoicesDatabase));
+  localStorage.setItem('zyntrix_automation', JSON.stringify(automationRules));
+  localStorage.setItem('zyntrix_portal_tokens', JSON.stringify(portalTokens));
 }
 
 // ===== PHASE 1: DEAL PIPELINE =====
@@ -1889,4 +1926,214 @@ function deleteService(id) {
 
 function closeServiceModal() {
   document.getElementById('service-modal').classList.add('hidden');
+}
+// ===== PHASE 3A: INVOICING & PAYMENTS =====
+function renderInvoices() {
+  const wrap = document.getElementById('invoices-list');
+  if (!wrap) return;
+
+  const stats = {
+    total: 0,
+    paid: 0,
+    pending: 0,
+    overdue: 0
+  };
+
+  invoicesDatabase.forEach(inv => {
+    stats.total += parseFloat(inv.amount) || 0;
+    if (inv.status === 'paid') stats.paid += parseFloat(inv.amount) || 0;
+    if (['sent', 'draft'].includes(inv.status)) stats.pending += parseFloat(inv.amount) || 0;
+    if (inv.status === 'overdue') stats.overdue += parseFloat(inv.amount) || 0;
+  });
+
+  wrap.innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem">
+      <div style="background:rgba(0,200,255,0.1);padding:1.5rem;border-radius:12px;border:1px solid rgba(0,200,255,0.3)">
+        <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem">Total Revenue</div>
+        <div style="font-size:2rem;font-weight:900;color:var(--accent)">$${stats.total.toFixed(0)}</div>
+      </div>
+      <div style="background:rgba(16,185,129,0.1);padding:1.5rem;border-radius:12px;border:1px solid rgba(16,185,129,0.3)">
+        <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem">Paid</div>
+        <div style="font-size:2rem;font-weight:900;color:#10b981">$${stats.paid.toFixed(0)}</div>
+      </div>
+      <div style="background:rgba(245,158,11,0.1);padding:1.5rem;border-radius:12px;border:1px solid rgba(245,158,11,0.3)">
+        <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem">Pending</div>
+        <div style="font-size:2rem;font-weight:900;color:#f59e0b">$${stats.pending.toFixed(0)}</div>
+      </div>
+      <div style="background:rgba(239,68,68,0.1);padding:1.5rem;border-radius:12px;border:1px solid rgba(239,68,68,0.3)">
+        <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem">Overdue</div>
+        <div style="font-size:2rem;font-weight:900;color:#ef4444">$${stats.overdue.toFixed(0)}</div>
+      </div>
+    </div>
+  ` + invoicesDatabase.map(inv => {
+    const client = clientsDatabase.find(c => c.id === inv.clientId);
+    const dueDate = new Date(inv.dueDate);
+    const today = new Date();
+    const daysOverdue = Math.ceil((today - dueDate) / (1000 * 60 * 60 * 24));
+
+    return `
+      <div style="background:var(--card-bg);border:1px solid var(--border-light);border-radius:12px;padding:1.5rem;margin-bottom:1rem">
+        <div style="display:flex;justify-content:space-between;align-items:start">
+          <div>
+            <h3 style="margin-bottom:0.25rem">${inv.invoiceNumber}</h3>
+            <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:1rem">${client?.name || 'Unknown'}</p>
+          </div>
+          <span style="background:${inv.status === 'paid' ? '#10b981' : inv.status === 'overdue' ? '#ef4444' : '#f59e0b'};color:white;padding:0.4rem 0.8rem;border-radius:6px;font-size:0.8rem;font-weight:600">${inv.status.toUpperCase()}</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1rem;font-size:0.9rem">
+          <div><strong>Amount:</strong> $${inv.amount}</div>
+          <div><strong>Due:</strong> ${dueDate.toLocaleDateString()}</div>
+          <div><strong>Issued:</strong> ${new Date(inv.issuedDate).toLocaleDateString()}</div>
+          <div><strong>${inv.status === 'overdue' ? 'Overdue: ' + daysOverdue + ' days' : 'Due in: ' + Math.max(0, Math.ceil((dueDate - today) / (1000 * 60 * 60 * 24))) + ' days'}</strong></div>
+        </div>
+        <div style="display:flex;gap:0.5rem">
+          <button class="btn btn-ghost btn-sm" onclick="viewInvoice('${inv.id}')">View</button>
+          <button class="btn btn-ghost btn-sm" onclick="editInvoice('${inv.id}')">Edit</button>
+          <button class="btn btn-ghost btn-sm" onclick="sendInvoice('${inv.id}')">Send</button>
+          <button class="btn btn-ghost btn-sm" onclick="markPaid('${inv.id}')">Mark Paid</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteInvoice('${inv.id}')">Delete</button>
+        </div>
+      </div>
+    `;
+  }).join('') || '<p style="color:var(--text-muted)">No invoices yet.</p>';
+}
+
+function openInvoiceModal() {
+  document.getElementById('invoice-modal').classList.remove('hidden');
+  document.getElementById('invoice-id').value = '';
+  document.getElementById('invoice-client').value = '';
+  document.getElementById('invoice-retainer').value = '';
+  document.getElementById('invoice-amount').value = '';
+  document.getElementById('invoice-due').value = new Date().toISOString().split('T')[0];
+  document.getElementById('invoice-notes').value = '';
+}
+
+function saveInvoice() {
+  const id = document.getElementById('invoice-id').value;
+  const clientId = document.getElementById('invoice-client').value;
+  const retainerId = document.getElementById('invoice-retainer').value;
+  const amount = parseFloat(document.getElementById('invoice-amount').value);
+  const dueDate = document.getElementById('invoice-due').value;
+  const notes = document.getElementById('invoice-notes').value;
+
+  if (!clientId || !amount || !dueDate) {
+    alert('Please fill required fields');
+    return;
+  }
+
+  if (id) {
+    const inv = invoicesDatabase.find(i => i.id === id);
+    if (inv) {
+      inv.clientId = clientId;
+      inv.retainerId = retainerId;
+      inv.amount = amount;
+      inv.dueDate = dueDate;
+      inv.notes = notes;
+    }
+  } else {
+    const invoiceNumber = 'INV-' + new Date().getFullYear() + '-' + String(invoicesDatabase.length + 1).padStart(4, '0');
+    invoicesDatabase.push({
+      id: 'inv_' + Date.now(),
+      invoiceNumber,
+      clientId,
+      retainerId,
+      amount,
+      dueDate,
+      issuedDate: new Date().toISOString().split('T')[0],
+      status: 'draft',
+      notes,
+      createdAt: new Date().toISOString()
+    });
+  }
+
+  saveAllData();
+  renderInvoices();
+  document.getElementById('invoice-modal').classList.add('hidden');
+  alert('Invoice saved!');
+}
+
+function sendInvoice(id) {
+  const inv = invoicesDatabase.find(i => i.id === id);
+  if (!inv) return;
+  inv.status = 'sent';
+  inv.sentDate = new Date().toISOString().split('T')[0];
+  saveAllData();
+  renderInvoices();
+  alert('Invoice marked as sent!');
+}
+
+function markPaid(id) {
+  const inv = invoicesDatabase.find(i => i.id === id);
+  if (!inv) return;
+  inv.status = 'paid';
+  inv.paidDate = new Date().toISOString().split('T')[0];
+  saveAllData();
+  renderInvoices();
+  alert('Invoice marked as paid!');
+}
+
+function deleteInvoice(id) {
+  if (confirm('Delete this invoice?')) {
+    invoicesDatabase = invoicesDatabase.filter(i => i.id !== id);
+    saveAllData();
+    renderInvoices();
+  }
+}
+
+function closeInvoiceModal() {
+  document.getElementById('invoice-modal').classList.add('hidden');
+}
+
+function viewInvoice(id) {
+  const inv = invoicesDatabase.find(i => i.id === id);
+  const client = clientsDatabase.find(c => c.id === inv.clientId);
+  if (!inv) return;
+  alert(`Invoice: ${inv.invoiceNumber}\nClient: ${client?.name}\nAmount: $${inv.amount}\nDue: ${inv.dueDate}\nStatus: ${inv.status}`);
+}
+
+function editInvoice(id) {
+  const inv = invoicesDatabase.find(i => i.id === id);
+  if (!inv) return;
+  document.getElementById('invoice-id').value = inv.id;
+  document.getElementById('invoice-client').value = inv.clientId;
+  document.getElementById('invoice-retainer').value = inv.retainerId || '';
+  document.getElementById('invoice-amount').value = inv.amount;
+  document.getElementById('invoice-due').value = inv.dueDate;
+  document.getElementById('invoice-notes').value = inv.notes || '';
+  document.getElementById('invoice-modal').classList.remove('hidden');
+}
+
+function renderReporting() {
+  const wrap = document.getElementById('reporting-wrap');
+  if (!wrap) return;
+
+  const mRR = retainersDatabase.filter(r => r.status === 'active').reduce((a,r) => a + parseFloat(r.amount), 0);
+  const aRR = mRR * 12;
+  const totalRevenue = invoicesDatabase.filter(i => i.status === 'paid').reduce((a,i) => a + parseFloat(i.amount), 0);
+  const pendingRevenue = invoicesDatabase.filter(i => i.status !== 'paid').reduce((a,i) => a + parseFloat(i.amount), 0);
+
+  wrap.innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem">
+      <div style="background:rgba(16,185,129,0.1);padding:2rem;border-radius:12px;border:1px solid rgba(16,185,129,0.3)">
+        <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:1px">MRR</div>
+        <div style="font-size:2.5rem;font-weight:900;color:#10b981">$${mRR.toFixed(0)}</div>
+      </div>
+      <div style="background:rgba(59,182,250,0.1);padding:2rem;border-radius:12px;border:1px solid rgba(59,182,250,0.3)">
+        <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:1px">ARR</div>
+        <div style="font-size:2.5rem;font-weight:900;color:#3bb6fa">$${aRR.toFixed(0)}</div>
+      </div>
+      <div style="background:rgba(245,158,11,0.1);padding:2rem;border-radius:12px;border:1px solid rgba(245,158,11,0.3)">
+        <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:1px">Pending</div>
+        <div style="font-size:2.5rem;font-weight:900;color:#f59e0b">$${pendingRevenue.toFixed(0)}</div>
+      </div>
+    </div>
+    <div style="background:var(--card-bg);border:1px solid var(--border-light);border-radius:12px;padding:2rem">
+      <h3>Summary</h3>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:1rem;font-size:0.95rem">
+        <li><strong>Total Clients:</strong> ${clientsDatabase.length}</li>
+        <li><strong>Total Revenue (Paid):</strong> $${totalRevenue.toFixed(0)}</li>
+        <li><strong>Pending Revenue:</strong> $${pendingRevenue.toFixed(0)}</li>
+      </ul>
+    </div>
+  `;
 }
