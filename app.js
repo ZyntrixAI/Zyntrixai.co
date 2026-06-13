@@ -24,6 +24,13 @@ const STAGE_COLORS = {
   'lost': '#6b7280'
 };
 
+// ===== PHASE 2: RETAINERS & CLIENTS =====
+let clientsDatabase = [];
+let retainersDatabase = [];
+let servicesDatabase = [];
+const RETAINER_STATUS = ['active', 'paused', 'ended'];
+const SERVICE_STATUS = ['pending', 'in-progress', 'completed', 'on-hold'];
+
 // ===== PERFORMANCE OPTIMIZATION =====
 let filterDebounceTimer;
 let currentFilterCache = { results: null, timestamp: 0 };
@@ -167,6 +174,9 @@ function initializeApp() {
   enquiriesDatabase = JSON.parse(localStorage.getItem('zyntrix_enquiries')) || [];
   configData = JSON.parse(localStorage.getItem('zyntrix_config')) || {};
   customFieldsDatabase = JSON.parse(localStorage.getItem('zyntrix_custom_fields')) || [];
+  clientsDatabase = JSON.parse(localStorage.getItem('zyntrix_clients')) || [];
+  retainersDatabase = JSON.parse(localStorage.getItem('zyntrix_retainers')) || [];
+  servicesDatabase = JSON.parse(localStorage.getItem('zyntrix_services')) || [];
 
   // Initialize default templates if none exist
   if (templatesDatabase.length === 0) {
@@ -400,9 +410,28 @@ function switchTab(tabName) {
     renderPipeline();
   } else if (tabName === 'calendar') {
     renderCalendar();
+  } else if (tabName === 'clients') {
+    renderClients();
+  } else if (tabName === 'retainers') {
+    renderRetainers();
+    populateClientDropdowns();
+  } else if (tabName === 'services') {
+    renderServices();
+    populateClientDropdowns();
   } else if (tabName === 'settings') {
     renderCustomFields();
   }
+}
+
+function populateClientDropdowns() {
+  const selects = document.querySelectorAll('#retainer-client, #service-client');
+  selects.forEach(select => {
+    const currentValue = select.value;
+    select.innerHTML = '<option value="">Select client...</option>' + clientsDatabase.map(c =>
+      `<option value="${c.id}">${c.name}</option>`
+    ).join('');
+    select.value = currentValue;
+  });
 }
 
 function switchSub(subName) {
@@ -1345,102 +1374,6 @@ function renderFollowupsFullList() {
   document.getElementById('followups-full-list').innerHTML = html;
 }
 
-// ===== EXPORT & IMPORT =====
-function exportLeadsCSV() {
-  if (leadsDatabase.length === 0) {
-    alert('No leads to export');
-    return;
-  }
-
-  const headers = ['Name', 'Email', 'Phone', 'Category', 'City', 'State', 'Website', 'Status', 'Score', 'Notes'];
-  const rows = leadsDatabase.map(l => [
-    l.name,
-    l.email || '',
-    l.phone || '',
-    l.category || '',
-    l.city || '',
-    l.state || '',
-    l.website || '',
-    l.status || 'new',
-    l.score || 0,
-    l.notes || ''
-  ]);
-
-  const csv = [headers, ...rows].map(row =>
-    row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(',')
-  ).join('\n');
-
-  const link = document.createElement('a');
-  link.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
-  link.download = `leads-${new Date().toISOString().split('T')[0]}.csv`;
-  link.click();
-}
-
-function triggerImport() {
-  document.getElementById('csv-import-input').click();
-}
-
-function handleImportFile(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    const csv = e.target.result;
-    const lines = csv.split('\n').filter(l => l.trim());
-    const headers = lines[0].split(',').map(h => h.toLowerCase().trim());
-
-    const duplicateWarnings = [];
-    let imported = 0;
-
-    for (let i = 1; i < lines.length; i++) {
-      const values = lines[i].split(',').map(v => v.replace(/"/g, '').trim());
-      const obj = {};
-      headers.forEach((h, idx) => {
-        obj[h] = values[idx];
-      });
-
-      if (!obj.name) continue;
-
-      const newLead = {
-        id: 'lead_' + Date.now() + '_' + Math.random(),
-        name: obj.name,
-        email: obj.email || '',
-        phone: obj.phone || '',
-        category: obj.category || '',
-        city: obj.city || '',
-        state: obj.state || '',
-        website: obj.website || '',
-        status: obj.status || 'new',
-        score: parseInt(obj.score) || 0,
-        notes: obj.notes || '',
-        dealStage: 'prospect',
-        createdAt: new Date().toISOString()
-      };
-
-      const dupeWarning = warnDuplicates(newLead);
-      if (dupeWarning) {
-        duplicateWarnings.push(`${newLead.name}: ${dupeWarning}`);
-      }
-
-      leadsDatabase.push(newLead);
-      imported++;
-    }
-
-    saveLeadsData();
-    renderLeadsTable();
-    updateLeadsCount();
-    renderDashboard();
-
-    let msg = `✓ Imported ${imported} leads`;
-    if (duplicateWarnings.length > 0) {
-      msg += `\n\n⚠️ Duplicates detected:\n${duplicateWarnings.slice(0, 3).join('\n')}${duplicateWarnings.length > 3 ? `\n... and ${duplicateWarnings.length - 3} more` : ''}`;
-    }
-    alert(msg);
-  };
-  reader.readAsText(file);
-}
-
 // ===== DATA PERSISTENCE =====
 function saveLeadsData() {
   localStorage.setItem('zyntrix_leads', JSON.stringify(leadsDatabase));
@@ -1456,6 +1389,9 @@ function saveAllData() {
   localStorage.setItem('zyntrix_config', JSON.stringify(configData));
   localStorage.setItem('zyntrix_filters', JSON.stringify(savedFilters));
   localStorage.setItem('zyntrix_custom_fields', JSON.stringify(customFieldsDatabase));
+  localStorage.setItem('zyntrix_clients', JSON.stringify(clientsDatabase));
+  localStorage.setItem('zyntrix_retainers', JSON.stringify(retainersDatabase));
+  localStorage.setItem('zyntrix_services', JSON.stringify(servicesDatabase));
 }
 
 // ===== PHASE 1: DEAL PIPELINE =====
@@ -1606,4 +1542,351 @@ function deleteCustomField(id) {
     saveAllData();
     renderCustomFields();
   }
+}
+
+// ===== PHASE 2: CLIENT MANAGEMENT =====
+function renderClients() {
+  const wrap = document.getElementById('clients-list');
+  if (!wrap) return;
+
+  wrap.innerHTML = clientsDatabase.map(client => `
+    <div class="client-card" style="background:var(--surface2);padding:1.5rem;border-radius:12px;border:1px solid var(--border-light);margin-bottom:1rem">
+      <div style="display:flex;justify-content:space-between;align-items:start">
+        <div>
+          <h3 style="margin-bottom:0.5rem">${client.name}</h3>
+          <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:0.75rem">${client.contactPerson || 'No contact'} • ${client.email || 'No email'}</p>
+          <div style="display:flex;gap:1rem;font-size:0.85rem">
+            <span>📞 ${client.phone || 'N/A'}</span>
+            <span>🌐 ${client.website || 'N/A'}</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:0.5rem">
+          <button class="btn btn-ghost btn-sm" onclick="editClient('${client.id}')">Edit</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteClient('${client.id}')">Delete</button>
+        </div>
+      </div>
+      <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border-light)">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;font-size:0.9rem">
+          <div><strong>Retainers:</strong> ${retainersDatabase.filter(r => r.clientId === client.id).length}</div>
+          <div><strong>Status:</strong> <span style="color:#10b981">Active</span></div>
+          <div><strong>Services:</strong> ${servicesDatabase.filter(s => s.clientId === client.id).length}</div>
+        </div>
+      </div>
+    </div>
+  `).join('') || '<p style="color:var(--text-muted)">No clients yet. Create one below.</p>';
+}
+
+function openClientModal() {
+  document.getElementById('client-modal').classList.remove('hidden');
+  document.getElementById('client-id').value = '';
+  document.getElementById('client-name').value = '';
+  document.getElementById('client-email').value = '';
+  document.getElementById('client-phone').value = '';
+  document.getElementById('client-person').value = '';
+  document.getElementById('client-website').value = '';
+}
+
+function saveClient() {
+  const id = document.getElementById('client-id').value;
+  const name = document.getElementById('client-name').value;
+  const email = document.getElementById('client-email').value;
+  const phone = document.getElementById('client-phone').value;
+  const contactPerson = document.getElementById('client-person').value;
+  const website = document.getElementById('client-website').value;
+
+  if (!name) { alert('Client name required'); return; }
+
+  if (id) {
+    const client = clientsDatabase.find(c => c.id === id);
+    if (client) {
+      client.name = name;
+      client.email = email;
+      client.phone = phone;
+      client.contactPerson = contactPerson;
+      client.website = website;
+    }
+  } else {
+    clientsDatabase.push({
+      id: 'client_' + Date.now(),
+      name, email, phone, contactPerson, website,
+      createdAt: new Date().toISOString()
+    });
+  }
+
+  saveAllData();
+  renderClients();
+  document.getElementById('client-modal').classList.add('hidden');
+  alert('Client saved!');
+}
+
+function editClient(id) {
+  const client = clientsDatabase.find(c => c.id === id);
+  if (!client) return;
+  document.getElementById('client-id').value = client.id;
+  document.getElementById('client-name').value = client.name;
+  document.getElementById('client-email').value = client.email || '';
+  document.getElementById('client-phone').value = client.phone || '';
+  document.getElementById('client-person').value = client.contactPerson || '';
+  document.getElementById('client-website').value = client.website || '';
+  document.getElementById('client-modal').classList.remove('hidden');
+}
+
+function deleteClient(id) {
+  if (confirm('Delete this client? Associated retainers and services will remain.')) {
+    clientsDatabase = clientsDatabase.filter(c => c.id !== id);
+    saveAllData();
+    renderClients();
+  }
+}
+
+function closeClientModal() {
+  document.getElementById('client-modal').classList.add('hidden');
+}
+
+// ===== PHASE 2: RETAINER MANAGEMENT =====
+function renderRetainers() {
+  const wrap = document.getElementById('retainers-list');
+  if (!wrap) return;
+
+  let totalMRR = 0;
+  let totalARR = 0;
+  const activeRetainers = retainersDatabase.filter(r => r.status === 'active');
+
+  activeRetainers.forEach(r => {
+    totalMRR += parseFloat(r.amount) || 0;
+  });
+  totalARR = totalMRR * 12;
+
+  wrap.innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem">
+      <div style="background:rgba(0,200,255,0.1);padding:1.5rem;border-radius:12px;border:1px solid rgba(0,200,255,0.3)">
+        <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem">Monthly Recurring Revenue</div>
+        <div style="font-size:2rem;font-weight:900;color:var(--accent)">$${totalMRR.toFixed(0)}</div>
+      </div>
+      <div style="background:rgba(0,200,255,0.1);padding:1.5rem;border-radius:12px;border:1px solid rgba(0,200,255,0.3)">
+        <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem">Annual Recurring Revenue</div>
+        <div style="font-size:2rem;font-weight:900;color:var(--accent)">$${totalARR.toFixed(0)}</div>
+      </div>
+      <div style="background:rgba(0,200,255,0.1);padding:1.5rem;border-radius:12px;border:1px solid rgba(0,200,255,0.3)">
+        <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem">Active Retainers</div>
+        <div style="font-size:2rem;font-weight:900;color:var(--accent)">${activeRetainers.length}</div>
+      </div>
+    </div>
+  `;
+
+  wrap.innerHTML += retainersDatabase.map(r => {
+    const client = clientsDatabase.find(c => c.id === r.clientId);
+    const renewalDate = new Date(r.renewalDate);
+    const today = new Date();
+    const daysLeft = Math.ceil((renewalDate - today) / (1000 * 60 * 60 * 24));
+
+    return `
+      <div style="background:var(--card-bg);border:1px solid var(--border-light);border-radius:12px;padding:1.5rem;margin-bottom:1rem">
+        <div style="display:flex;justify-content:space-between;align-items:start">
+          <div>
+            <h3 style="margin-bottom:0.25rem">${client?.name || 'Unknown Client'}</h3>
+            <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:1rem">${r.serviceType}</p>
+            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;font-size:0.9rem">
+              <div><strong>Amount:</strong> $${r.amount}/month</div>
+              <div><strong>Status:</strong> <span style="color:${r.status === 'active' ? '#10b981' : '#ef4444'}">${r.status.toUpperCase()}</span></div>
+              <div><strong>Start:</strong> ${new Date(r.startDate).toLocaleDateString()}</div>
+              <div><strong>Renewal:</strong> ${renewalDate.toLocaleDateString()} (${daysLeft} days)</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:0.5rem">
+            <button class="btn btn-ghost btn-sm" onclick="editRetainer('${r.id}')">Edit</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteRetainer('${r.id}')">Delete</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function openRetainerModal() {
+  document.getElementById('retainer-modal').classList.remove('hidden');
+  document.getElementById('retainer-id').value = '';
+  document.getElementById('retainer-client').value = '';
+  document.getElementById('retainer-service').value = '';
+  document.getElementById('retainer-amount').value = '';
+  document.getElementById('retainer-status').value = 'active';
+  document.getElementById('retainer-start').value = new Date().toISOString().split('T')[0];
+  document.getElementById('retainer-renewal').value = '';
+}
+
+function saveRetainer() {
+  const id = document.getElementById('retainer-id').value;
+  const clientId = document.getElementById('retainer-client').value;
+  const serviceType = document.getElementById('retainer-service').value;
+  const amount = parseFloat(document.getElementById('retainer-amount').value);
+  const status = document.getElementById('retainer-status').value;
+  const startDate = document.getElementById('retainer-start').value;
+  const renewalDate = document.getElementById('retainer-renewal').value;
+
+  if (!clientId || !serviceType || !amount || !renewalDate) {
+    alert('Please fill all required fields');
+    return;
+  }
+
+  if (id) {
+    const r = retainersDatabase.find(r => r.id === id);
+    if (r) {
+      r.clientId = clientId;
+      r.serviceType = serviceType;
+      r.amount = amount;
+      r.status = status;
+      r.startDate = startDate;
+      r.renewalDate = renewalDate;
+    }
+  } else {
+    retainersDatabase.push({
+      id: 'ret_' + Date.now(),
+      clientId, serviceType, amount, status, startDate, renewalDate,
+      createdAt: new Date().toISOString()
+    });
+  }
+
+  saveAllData();
+  renderRetainers();
+  document.getElementById('retainer-modal').classList.add('hidden');
+  alert('Retainer saved!');
+}
+
+function editRetainer(id) {
+  const r = retainersDatabase.find(r => r.id === id);
+  if (!r) return;
+  document.getElementById('retainer-id').value = r.id;
+  document.getElementById('retainer-client').value = r.clientId;
+  document.getElementById('retainer-service').value = r.serviceType;
+  document.getElementById('retainer-amount').value = r.amount;
+  document.getElementById('retainer-status').value = r.status;
+  document.getElementById('retainer-start').value = r.startDate;
+  document.getElementById('retainer-renewal').value = r.renewalDate;
+  document.getElementById('retainer-modal').classList.remove('hidden');
+}
+
+function deleteRetainer(id) {
+  if (confirm('Delete this retainer?')) {
+    retainersDatabase = retainersDatabase.filter(r => r.id !== id);
+    saveAllData();
+    renderRetainers();
+  }
+}
+
+function closeRetainerModal() {
+  document.getElementById('retainer-modal').classList.add('hidden');
+}
+
+// ===== PHASE 2: SERVICE TRACKING =====
+function renderServices() {
+  const wrap = document.getElementById('services-list');
+  if (!wrap) return;
+
+  wrap.innerHTML = servicesDatabase.map(s => {
+    const client = clientsDatabase.find(c => c.id === s.clientId);
+    const percent = s.totalHours ? Math.round((s.hoursUsed / s.totalHours) * 100) : 0;
+
+    return `
+      <div style="background:var(--card-bg);border:1px solid var(--border-light);border-radius:12px;padding:1.5rem;margin-bottom:1rem">
+        <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:1rem">
+          <div>
+            <h3 style="margin-bottom:0.25rem">${s.name}</h3>
+            <p style="color:var(--text-muted);font-size:0.85rem">${client?.name || 'Unknown'}</p>
+          </div>
+          <span style="background:${s.status === 'completed' ? '#10b981' : s.status === 'in-progress' ? '#f59e0b' : '#6b7280'};color:white;padding:0.4rem 0.8rem;border-radius:6px;font-size:0.8rem;font-weight:600">${s.status.toUpperCase()}</span>
+        </div>
+        <p style="color:var(--text-muted);margin-bottom:1rem;font-size:0.9rem">${s.description}</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1rem;font-size:0.85rem">
+          <div><strong>Due:</strong> ${new Date(s.dueDate).toLocaleDateString()}</div>
+          <div><strong>Hours:</strong> ${s.hoursUsed}/${s.totalHours}h (${percent}%)</div>
+          <div><strong>Created:</strong> ${new Date(s.createdAt).toLocaleDateString()}</div>
+        </div>
+        <div style="background:var(--surface2);height:8px;border-radius:4px;margin-bottom:1rem;overflow:hidden">
+          <div style="background:var(--accent);height:100%;width:${percent}%;transition:width 0.3s"></div>
+        </div>
+        <div style="display:flex;gap:0.5rem">
+          <button class="btn btn-ghost btn-sm" onclick="editService('${s.id}')">Edit</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteService('${s.id}')">Delete</button>
+        </div>
+      </div>
+    `;
+  }).join('') || '<p style="color:var(--text-muted)">No services yet. Create one below.</p>';
+}
+
+function openServiceModal() {
+  document.getElementById('service-modal').classList.remove('hidden');
+  document.getElementById('service-id').value = '';
+  document.getElementById('service-client').value = '';
+  document.getElementById('service-name').value = '';
+  document.getElementById('service-desc').value = '';
+  document.getElementById('service-status').value = 'pending';
+  document.getElementById('service-due').value = '';
+  document.getElementById('service-hours').value = '';
+  document.getElementById('service-used').value = '';
+}
+
+function saveService() {
+  const id = document.getElementById('service-id').value;
+  const clientId = document.getElementById('service-client').value;
+  const name = document.getElementById('service-name').value;
+  const description = document.getElementById('service-desc').value;
+  const status = document.getElementById('service-status').value;
+  const dueDate = document.getElementById('service-due').value;
+  const totalHours = parseFloat(document.getElementById('service-hours').value) || 0;
+  const hoursUsed = parseFloat(document.getElementById('service-used').value) || 0;
+
+  if (!clientId || !name || !dueDate) {
+    alert('Please fill required fields');
+    return;
+  }
+
+  if (id) {
+    const svc = servicesDatabase.find(s => s.id === id);
+    if (svc) {
+      svc.clientId = clientId;
+      svc.name = name;
+      svc.description = description;
+      svc.status = status;
+      svc.dueDate = dueDate;
+      svc.totalHours = totalHours;
+      svc.hoursUsed = hoursUsed;
+    }
+  } else {
+    servicesDatabase.push({
+      id: 'svc_' + Date.now(),
+      clientId, name, description, status, dueDate, totalHours, hoursUsed,
+      createdAt: new Date().toISOString()
+    });
+  }
+
+  saveAllData();
+  renderServices();
+  document.getElementById('service-modal').classList.add('hidden');
+  alert('Service saved!');
+}
+
+function editService(id) {
+  const svc = servicesDatabase.find(s => s.id === id);
+  if (!svc) return;
+  document.getElementById('service-id').value = svc.id;
+  document.getElementById('service-client').value = svc.clientId;
+  document.getElementById('service-name').value = svc.name;
+  document.getElementById('service-desc').value = svc.description;
+  document.getElementById('service-status').value = svc.status;
+  document.getElementById('service-due').value = svc.dueDate;
+  document.getElementById('service-hours').value = svc.totalHours;
+  document.getElementById('service-used').value = svc.hoursUsed;
+  document.getElementById('service-modal').classList.remove('hidden');
+}
+
+function deleteService(id) {
+  if (confirm('Delete this service?')) {
+    servicesDatabase = servicesDatabase.filter(s => s.id !== id);
+    saveAllData();
+    renderServices();
+  }
+}
+
+function closeServiceModal() {
+  document.getElementById('service-modal').classList.add('hidden');
 }

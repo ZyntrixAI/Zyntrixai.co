@@ -28,6 +28,9 @@
         <button class="nav-btn" data-tab="analytics" onclick="switchTab('analytics')">Analytics</button>
         <button class="nav-btn" data-tab="pipeline" onclick="switchTab('pipeline')">Pipeline</button>
         <button class="nav-btn" data-tab="calendar" onclick="switchTab('calendar')">Calendar</button>
+        <button class="nav-btn" data-tab="clients" onclick="switchTab('clients')">Clients</button>
+        <button class="nav-btn" data-tab="retainers" onclick="switchTab('retainers')">Retainers</button>
+        <button class="nav-btn" data-tab="services" onclick="switchTab('services')">Services</button>
         <button class="nav-btn" data-tab="forms" onclick="switchTab('forms')">Forms</button>
         <button class="nav-btn" data-tab="enquiries" onclick="switchTab('enquiries')" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;">
           <span>Enquiries</span>
@@ -336,6 +339,33 @@
         <h1>Follow-up <span class="fade">Calendar</span></h1>
         <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:1.5rem;">See all your follow-up dates at a glance.</p>
         <div id="calendar-wrap" style="background:var(--surface2);border-radius:12px;padding:2rem;"></div>
+      </section>
+
+      <!-- CLIENTS -->
+      <section id="tab-clients" class="tab">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
+          <h1>Cli<span class="fade">ents</span></h1>
+          <button class="btn btn-primary btn-sm" onclick="openClientModal()">+ Add Client</button>
+        </div>
+        <div id="clients-list"></div>
+      </section>
+
+      <!-- RETAINERS -->
+      <section id="tab-retainers" class="tab">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
+          <h1>Retain<span class="fade">ers</span></h1>
+          <button class="btn btn-primary btn-sm" onclick="openRetainerModal()">+ Add Retainer</button>
+        </div>
+        <div id="retainers-list"></div>
+      </section>
+
+      <!-- SERVICES -->
+      <section id="tab-services" class="tab">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
+          <h1>Servi<span class="fade">ces</span></h1>
+          <button class="btn btn-primary btn-sm" onclick="openServiceModal()">+ Add Service</button>
+        </div>
+        <div id="services-list"></div>
       </section>
 
       <!-- FORMS -->
@@ -734,5 +764,85 @@
       setInterval(loadFormSubmissions, 5000);
     });
   </script>
+
+  <!-- PHASE 2: CLIENT MODAL -->
+  <div id="client-modal" class="modal hidden">
+    <div class="modal-box" style="max-width:540px">
+      <div class="modal-header">
+        <h2>Add Client</h2>
+        <button class="modal-close" onclick="closeClientModal()">×</button>
+      </div>
+      <div class="modal-body" style="padding:1.5rem">
+        <input type="hidden" id="client-id" />
+        <div class="form-group"><label>Client Name *</label><input type="text" id="client-name" /></div>
+        <div class="form-group"><label>Contact Person</label><input type="text" id="client-person" /></div>
+        <div class="form-group"><label>Email</label><input type="email" id="client-email" /></div>
+        <div class="form-group"><label>Phone</label><input type="tel" id="client-phone" /></div>
+        <div class="form-group"><label>Website</label><input type="text" id="client-website" /></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" onclick="closeClientModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveClient()">Save Client</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 2: RETAINER MODAL -->
+  <div id="retainer-modal" class="modal hidden">
+    <div class="modal-box" style="max-width:540px">
+      <div class="modal-header">
+        <h2>Add Retainer</h2>
+        <button class="modal-close" onclick="closeRetainerModal()">×</button>
+      </div>
+      <div class="modal-body" style="padding:1.5rem">
+        <input type="hidden" id="retainer-id" />
+        <div class="form-group">
+          <label>Client *</label>
+          <select id="retainer-client">
+            <option value="">Select client...</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Service Type *</label><input type="text" id="retainer-service" placeholder="e.g. Monthly SEO, Weekly Support" /></div>
+        <div class="form-group"><label>Amount ($/month) *</label><input type="number" id="retainer-amount" placeholder="1500" /></div>
+        <div class="form-group"><label>Status</label><select id="retainer-status"><option value="active">Active</option><option value="paused">Paused</option><option value="ended">Ended</option></select></div>
+        <div class="form-group"><label>Start Date</label><input type="date" id="retainer-start" /></div>
+        <div class="form-group"><label>Renewal Date *</label><input type="date" id="retainer-renewal" /></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" onclick="closeRetainerModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveRetainer()">Save Retainer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 2: SERVICE MODAL -->
+  <div id="service-modal" class="modal hidden">
+    <div class="modal-box" style="max-width:540px">
+      <div class="modal-header">
+        <h2>Add Service</h2>
+        <button class="modal-close" onclick="closeServiceModal()">×</button>
+      </div>
+      <div class="modal-body" style="padding:1.5rem">
+        <input type="hidden" id="service-id" />
+        <div class="form-group">
+          <label>Client *</label>
+          <select id="service-client">
+            <option value="">Select client...</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Service Name *</label><input type="text" id="service-name" placeholder="e.g. Weekly Reports, Code Review" /></div>
+        <div class="form-group"><label>Description</label><input type="text" id="service-desc" placeholder="What does this service involve?" /></div>
+        <div class="form-group"><label>Due Date *</label><input type="date" id="service-due" /></div>
+        <div class="form-group"><label>Total Hours</label><input type="number" id="service-hours" placeholder="40" /></div>
+        <div class="form-group"><label>Hours Used</label><input type="number" id="service-used" placeholder="0" /></div>
+        <div class="form-group"><label>Status</label><select id="service-status"><option value="pending">Pending</option><option value="in-progress">In Progress</option><option value="completed">Completed</option><option value="on-hold">On Hold</option></select></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" onclick="closeServiceModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveService()">Save Service</button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JTM Autocare - Professional Car Detailing Hamilton Victoria</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent-light: #ff6b7a;
+            --text: #ffffff;
+            --text-light: #b0b0b0;
+            --border: #2d2d44;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ANIMATED CAR BACKGROUND */
+        #car-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.15;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent);
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(233, 69, 96, 0.3);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 5% 5rem;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(233, 69, 96, 0.15);
+            border: 1px solid var(--accent);
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(233, 69, 96, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* STATS */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat {
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        /* SERVICES SECTION */
+        .services {
+            padding: 6rem 5%;
+            background: var(--secondary);
+            border-top: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 3.5rem;
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--primary);
+            border: 1px solid var(--border);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(233, 69, 96, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .service-price {
+            color: var(--accent);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        /* BEFORE/AFTER GALLERY */
+        .gallery {
+            padding: 6rem 5%;
+            background: var(--primary);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            height: 350px;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .gallery-item:hover {
+            border-color: var(--accent);
+            transform: scale(1.02);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-label {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* TESTIMONIALS */
+        .testimonials {
+            padding: 6rem 5%;
+            background: var(--secondary);
+            border-top: 1px solid var(--border);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--primary);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--accent);
+        }
+
+        .stars {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-text {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .testimonial-role {
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+
+        /* BOOKING SECTION */
+        .booking-section {
+            padding: 6rem 5%;
+            background: var(--primary);
+        }
+
+        .booking-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .booking-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .booking-info p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .booking-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .booking-features li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .booking-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* CALENDAR */
+        .calendar {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .calendar-nav {
+            background: none;
+            border: none;
+            color: var(--accent);
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .calendar-month {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .weekday {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            padding: 0.5rem;
+            font-weight: 600;
+        }
+
+        .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+        }
+
+        .day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .day:hover:not(.disabled) {
+            border-color: var(--accent);
+            background: rgba(233, 69, 96, 0.1);
+        }
+
+        .day.available {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .day.booked {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        .day.disabled {
+            color: var(--text-light);
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .day.today {
+            border-color: var(--accent);
+        }
+
+        /* TIME SLOTS */
+        .time-slots {
+            margin-top: 1.5rem;
+        }
+
+        .time-slots-title {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .slots-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+        }
+
+        .time-slot {
+            padding: 0.8rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .time-slot:hover:not(.disabled) {
+            border-color: var(--accent);
+            background: rgba(233, 69, 96, 0.1);
+        }
+
+        .time-slot.available {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .time-slot.selected {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        .time-slot.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* BOOKING FORM */
+        .booking-form {
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem;
+            border: 1px solid var(--border);
+            background: var(--primary);
+            color: var(--text);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(233, 69, 96, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* PRODUCTS SECTION */
+        .products {
+            padding: 6rem 5%;
+            background: var(--secondary);
+            border-top: 1px solid var(--border);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--primary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .product-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.1), rgba(233, 69, 96, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* CONTACT SECTION */
+        .contact {
+            padding: 6rem 5%;
+            background: var(--primary);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .contact-item p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-light);
+        }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        footer p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 3%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-cta {
+                padding: 0.6rem 1.4rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 6rem 3% 3rem;
+            }
+
+            .booking-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .services-grid,
+            .gallery-grid,
+            .testimonials-grid,
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .slots-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Car Canvas -->
+    <canvas id="car-canvas"></canvas>
+
+    <div class="content-wrapper">
+        <!-- Navigation -->
+        <nav>
+            <div class="nav-logo">JTM AUTOCARE</div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#booking">Booking</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="nav-cta" onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' })">
+                Book Now
+            </button>
+        </nav>
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">PROFESSIONAL CAR DETAILING</div>
+                <h1>Transform Your <span>Vehicle</span> Into Showroom Condition</h1>
+                <p class="hero-description">
+                    Expert automotive detailing services in Hamilton, Victoria.
+                    From deep cleaning to protective coatings, we make your car look brand new.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' })">
+                        Book a Service
+                    </button>
+                    <button class="btn btn-secondary" onclick="document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' })">
+                        View Before & After
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Happy Customers</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">5★</div>
+                        <div class="stat-label">Average Rating</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">7 Days</div>
+                        <div class="stat-label">Sat-Sun Open</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES SECTION -->
+        <section id="services" class="services">
+            <h2 class="section-title">Our Detailing Services</h2>
+            <p class="section-subtitle">Professional automotive detailing solutions tailored to your vehicle's needs</p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🧼</div>
+                    <h3>Full Service Detailing</h3>
+                    <p>Complete interior and exterior cleaning with protective treatments</p>
+                    <div class="service-price">$299</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3>Premium Package</h3>
+                    <p>Deep cleaning, wax protection, interior conditioning and more</p>
+                    <div class="service-price">$499</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Ceramic Coating</h3>
+                    <p>Long-lasting protective coating for ultimate shine and durability</p>
+                    <div class="service-price">$899</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🚗</div>
+                    <h3>Exterior Wash & Wax</h3>
+                    <p>Professional wash with premium wax application for protection</p>
+                    <div class="service-price">$179</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🧴</div>
+                    <h3>Interior Deep Clean</h3>
+                    <p>Complete interior detailing - seats, carpets, dashboard and trim</p>
+                    <div class="service-price">$249</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🌟</div>
+                    <h3>Showroom Package</h3>
+                    <p>Complete transformation - our most comprehensive service</p>
+                    <div class="service-price">$699</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALLERY SECTION -->
+        <section id="gallery" class="gallery">
+            <h2 class="section-title">Before & After Gallery</h2>
+            <p class="section-subtitle">See the transformation we deliver on every vehicle</p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x400/e94560/ffffff?text=Before" alt="Before detailing">
+                    <span class="gallery-label">Before</span>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x400/2ecc71/ffffff?text=After" alt="After detailing">
+                    <span class="gallery-label" style="background: #2ecc71;">After</span>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x400/e94560/ffffff?text=Before" alt="Before detailing">
+                    <span class="gallery-label">Before</span>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x400/2ecc71/ffffff?text=After" alt="After detailing">
+                    <span class="gallery-label" style="background: #2ecc71;">After</span>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x400/e94560/ffffff?text=Before" alt="Before detailing">
+                    <span class="gallery-label">Before</span>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x400/2ecc71/ffffff?text=After" alt="After detailing">
+                    <span class="gallery-label" style="background: #2ecc71;">After</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS SECTION -->
+        <section class="testimonials">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <p class="section-subtitle">Real reviews from satisfied customers</p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★ ★ ★ ★ ★</div>
+                    <p class="testimonial-text">
+                        "Did a great job on my car, got all the dog hair and dirt out that I struggled to get out. 100% would recommend."
+                    </p>
+                    <div class="testimonial-author">Genevieve Sellers</div>
+                    <div class="testimonial-role">Verified Customer</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★ ★ ★ ★ ★</div>
+                    <p class="testimonial-text">
+                        "Recommend 100%, unreal job and very professional! Worth every cent."
+                    </p>
+                    <div class="testimonial-author">Tyler Smith</div>
+                    <div class="testimonial-role">Verified Customer</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★ ★ ★ ★ ★</div>
+                    <p class="testimonial-text">
+                        "Jayden does an amazing job. We took our Calais in for the full package and it came back looking brand new. Highly recommend!"
+                    </p>
+                    <div class="testimonial-author">Robyn Soulsby</div>
+                    <div class="testimonial-role">Verified Customer</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★ ★ ★ ★ ★</div>
+                    <p class="testimonial-text">
+                        "Worked some magic and made the car look brand new. Highly recommend."
+                    </p>
+                    <div class="testimonial-author">Milly Monolith</div>
+                    <div class="testimonial-role">Verified Customer</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOOKING SECTION -->
+        <section id="booking" class="booking-section">
+            <div class="booking-container">
+                <div class="booking-info">
+                    <h2>Schedule Your Appointment</h2>
+                    <p>
+                        Our booking system lets you see availability weeks in advance.
+                        Choose your preferred date and time, and we'll get your vehicle
+                        looking pristine.
+                    </p>
+
+                    <ul class="booking-features">
+                        <li>Same-day confirmation</li>
+                        <li>Flexible scheduling</li>
+                        <li>Saturday & Sunday available</li>
+                        <li>Professional team</li>
+                        <li>Satisfaction guaranteed</li>
+                    </ul>
+
+                    <div style="background: rgba(233, 69, 96, 0.1); padding: 1.5rem; border-radius: 8px; border-left: 3px solid var(--accent);">
+                        <p><strong>📍 Location:</strong> Hamilton, Victoria</p>
+                        <p><strong>📞 Phone:</strong> 0408 863 184</p>
+                        <p><strong>⏰ Hours:</strong> Saturday - Sunday</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="calendar">
+                        <div class="calendar-header">
+                            <button class="calendar-nav" onclick="previousMonth()">←</button>
+                            <div class="calendar-month" id="monthDisplay">January 2026</div>
+                            <button class="calendar-nav" onclick="nextMonth()">→</button>
+                        </div>
+
+                        <div class="weekdays">
+                            <div class="weekday">Sun</div>
+                            <div class="weekday">Mon</div>
+                            <div class="weekday">Tue</div>
+                            <div class="weekday">Wed</div>
+                            <div class="weekday">Thu</div>
+                            <div class="weekday">Fri</div>
+                            <div class="weekday">Sat</div>
+                        </div>
+
+                        <div class="days" id="daysContainer"></div>
+                    </div>
+
+                    <div id="timeSlots" style="display: none;">
+                        <div class="time-slots">
+                            <div class="time-slots-title">Available Times</div>
+                            <div class="slots-grid" id="slotsGrid"></div>
+                        </div>
+
+                        <div class="booking-form">
+                            <div class="form-group">
+                                <label>Your Name</label>
+                                <input type="text" id="customerName" placeholder="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" id="customerPhone" placeholder="0400 000 000">
+                            </div>
+                            <div class="form-group">
+                                <label>Service Type</label>
+                                <select id="serviceType">
+                                    <option>Full Service Detailing</option>
+                                    <option>Premium Package</option>
+                                    <option>Ceramic Coating</option>
+                                    <option>Exterior Wash & Wax</option>
+                                    <option>Interior Deep Clean</option>
+                                    <option>Showroom Package</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Car Details</label>
+                                <input type="text" id="carDetails" placeholder="e.g., 2020 Toyota Camry">
+                            </div>
+                            <div class="form-group">
+                                <label>Notes</label>
+                                <textarea id="notes" placeholder="Any special requests..."></textarea>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;" onclick="submitBooking()">
+                                Confirm Booking
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCTS SECTION -->
+        <section class="products">
+            <h2 class="section-title">Premium Products We Use</h2>
+            <p class="section-subtitle">Only the finest detailing products for superior results</p>
+
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">🟢</div>
+                    <div class="product-info">
+                        <h4>3D PRO ONE</h4>
+                        <p>Professional hybrid compound for superior detailing results</p>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">🔴</div>
+                    <div class="product-info">
+                        <h4>JUICE Products</h4>
+                        <p>High-performance cleaning and protection solutions</p>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">🟣</div>
+                    <div class="product-info">
+                        <h4>CQUIKD</h4>
+                        <p>Advanced ceramic protection and coating technology</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="contact">
+            <h2 class="section-title">Get In Touch</h2>
+
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h3>📞 Phone</h3>
+                    <p>
+                        <a href="tel:0408863184">0408 863 184</a><br>
+                        Available Saturday - Sunday
+                    </p>
+                </div>
+
+                <div class="contact-item">
+                    <h3>📍 Location</h3>
+                    <p>
+                        Hamilton, Victoria<br>
+                        Australia
+                    </p>
+                </div>
+
+                <div class="contact-item">
+                    <h3>✓ Registered & Insured</h3>
+                    <p>
+                        ABN: 97 857 625 151<br>
+                        Professional detailing certified
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>&copy; 2026 JTM Autocare. All rights reserved.</p>
+            <p>Professional Car Detailing • Hamilton, Victoria • Open Saturday & Sunday</p>
+        </footer>
+    </div>
+
+    <script>
+        // CALENDAR FUNCTIONALITY
+        let currentDate = new Date(2026, 0, 1); // Start from January 2026
+        const bookedDates = new Set();
+        let selectedDate = null;
+        let selectedTime = null;
+
+        function renderCalendar() {
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+
+            // Update header
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'];
+            document.getElementById('monthDisplay').textContent = `${monthNames[month]} ${year}`;
+
+            // Get first day of month and number of days
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            const daysContainer = document.getElementById('daysContainer');
+            daysContainer.innerHTML = '';
+
+            // Empty cells before first day
+            for (let i = 0; i < firstDay; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'day disabled';
+                daysContainer.appendChild(emptyDay);
+            }
+
+            // Days of the month
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayElement = document.createElement('div');
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const date = new Date(year, month, day);
+
+                dayElement.className = 'day';
+                dayElement.textContent = day;
+
+                // Check if weekend (Sat=6, Sun=0)
+                const isWeekend = date.getDay() === 0 || date.getDay() === 6;
+
+                // Determine day state
+                if (bookedDates.has(dateStr) && isWeekend) {
+                    dayElement.classList.add('booked');
+                } else if (!isWeekend) {
+                    dayElement.classList.add('disabled');
+                    dayElement.title = 'Closed on weekdays';
+                } else {
+                    dayElement.classList.add('available');
+                    dayElement.onclick = () => selectDate(dateStr, dayElement);
+                }
+
+                daysContainer.appendChild(dayElement);
+            }
+        }
+
+        function selectDate(dateStr, element) {
+            // Remove previous selection
+            document.querySelectorAll('.day.selected').forEach(el => {
+                el.classList.remove('selected');
+            });
+
+            selectedDate = dateStr;
+            element.classList.add('selected');
+
+            // Show time slots
+            renderTimeSlots();
+            document.getElementById('timeSlots').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('timeSlots').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        }
+
+        function renderTimeSlots() {
+            const times = ['8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM'];
+            const slotsGrid = document.getElementById('slotsGrid');
+            slotsGrid.innerHTML = '';
+
+            times.forEach(time => {
+                const slot = document.createElement('div');
+                slot.className = 'time-slot available';
+                slot.textContent = time;
+                slot.onclick = () => selectTime(time, slot);
+                slotsGrid.appendChild(slot);
+            });
+        }
+
+        function selectTime(time, element) {
+            document.querySelectorAll('.time-slot.selected').forEach(el => {
+                el.classList.remove('selected');
+            });
+
+            selectedTime = time;
+            element.classList.add('selected');
+        }
+
+        function previousMonth() {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+            document.getElementById('timeSlots').style.display = 'none';
+        }
+
+        function nextMonth() {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+            document.getElementById('timeSlots').style.display = 'none';
+        }
+
+        function submitBooking() {
+            const name = document.getElementById('customerName').value;
+            const phone = document.getElementById('customerPhone').value;
+            const service = document.getElementById('serviceType').value;
+            const car = document.getElementById('carDetails').value;
+
+            if (!name || !phone || !selectedDate || !selectedTime) {
+                alert('Please fill in all required fields and select a date and time.');
+                return;
+            }
+
+            // Mark date as booked (for demo purposes)
+            bookedDates.add(selectedDate);
+
+            // Show success message
+            alert(`Booking Confirmed!\n\nDate: ${selectedDate}\nTime: ${selectedTime}\nService: ${service}\n\nWe'll call you soon to confirm.`);
+
+            // Reset form
+            document.getElementById('customerName').value = '';
+            document.getElementById('customerPhone').value = '';
+            document.getElementById('carDetails').value = '';
+            document.getElementById('notes').value = '';
+            document.getElementById('timeSlots').style.display = 'none';
+            renderCalendar();
+        }
+
+        // ANIMATED CAR CANVAS
+        const canvas = document.getElementById('car-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function drawCar(x, y, scale) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.scale(scale, scale);
+
+            // Car body
+            ctx.fillStyle = '#e94560';
+            ctx.fillRect(-40, -15, 80, 30);
+
+            // Windows
+            ctx.fillStyle = 'rgba(100, 150, 200, 0.3)';
+            ctx.fillRect(-30, -10, 20, 15);
+            ctx.fillRect(10, -10, 20, 15);
+
+            // Wheels
+            ctx.fillStyle = '#333';
+            ctx.beginPath();
+            ctx.arc(-25, 20, 8, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(25, 20, 8, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Details
+            ctx.strokeStyle = 'rgba(233, 69, 96, 0.5)';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(-40, -15, 80, 30);
+
+            ctx.restore();
+        }
+
+        function animate() {
+            // Clear canvas
+            ctx.fillStyle = 'rgba(26, 26, 46, 0.02)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw multiple cars at different positions
+            const time = Date.now() / 50;
+            drawCar((time % (canvas.width + 100)) - 50, canvas.height * 0.3, 0.5);
+            drawCar((time * 0.7 % (canvas.width + 100)) - 50, canvas.height * 0.6, 0.4);
+            drawCar((time * 1.3 % (canvas.width + 100)) - 50, canvas.height * 0.15, 0.6);
+
+            requestAnimationFrame(animate);
+        }
+
+        // Initialize
+        resizeCanvas();
+        renderCalendar();
+        animate();
+
+        window.addEventListener('resize', resizeCanvas);
+
+        // Add smooth scrolling to nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Sticky nav effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.borderBottom = '1px solid var(--border)';
+            } else {
+                nav.style.borderBottom = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
