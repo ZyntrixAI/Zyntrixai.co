@@ -12,6 +12,18 @@ let enquiriesDatabase = [];
 let configData = {};
 let selectedLeadIds = new Set();
 
+// ===== PHASE 1 FEATURES =====
+let customFieldsDatabase = [];
+const DEAL_STAGES = ['prospect', 'qualified', 'proposal', 'negotiation', 'won', 'lost'];
+const STAGE_COLORS = {
+  'prospect': '#3b82f6',
+  'qualified': '#8b5cf6',
+  'proposal': '#f59e0b',
+  'negotiation': '#ef4444',
+  'won': '#10b981',
+  'lost': '#6b7280'
+};
+
 // ===== PERFORMANCE OPTIMIZATION =====
 let filterDebounceTimer;
 let currentFilterCache = { results: null, timestamp: 0 };
@@ -154,6 +166,7 @@ function initializeApp() {
   paymentsDatabase = JSON.parse(localStorage.getItem('zyntrix_payments')) || [];
   enquiriesDatabase = JSON.parse(localStorage.getItem('zyntrix_enquiries')) || [];
   configData = JSON.parse(localStorage.getItem('zyntrix_config')) || {};
+  customFieldsDatabase = JSON.parse(localStorage.getItem('zyntrix_custom_fields')) || [];
 
   // Initialize default templates if none exist
   if (templatesDatabase.length === 0) {
@@ -383,6 +396,12 @@ function switchTab(tabName) {
     renderFollowupsFullList();
   } else if (tabName === 'outreach') {
     renderSequencesList();
+  } else if (tabName === 'pipeline') {
+    renderPipeline();
+  } else if (tabName === 'calendar') {
+    renderCalendar();
+  } else if (tabName === 'settings') {
+    renderCustomFields();
   }
 }
 
@@ -957,7 +976,8 @@ function handleImportFile(event) {
         status: values[headers.indexOf('status')] || 'new',
         score: parseInt(values[headers.indexOf('score')]) || 0,
         notes: values[headers.indexOf('notes')] || '',
-        followupDate: values[headers.indexOf('followup_date')] || ''
+        followupDate: values[headers.indexOf('followup_date')] || '',
+        dealStage: 'prospect'
       };
 
       if (lead.name && (lead.email || lead.phone)) {
@@ -1394,6 +1414,7 @@ function handleImportFile(event) {
         status: obj.status || 'new',
         score: parseInt(obj.score) || 0,
         notes: obj.notes || '',
+        dealStage: 'prospect',
         createdAt: new Date().toISOString()
       };
 
@@ -1434,4 +1455,155 @@ function saveAllData() {
   localStorage.setItem('zyntrix_enquiries', JSON.stringify(enquiriesDatabase));
   localStorage.setItem('zyntrix_config', JSON.stringify(configData));
   localStorage.setItem('zyntrix_filters', JSON.stringify(savedFilters));
+  localStorage.setItem('zyntrix_custom_fields', JSON.stringify(customFieldsDatabase));
+}
+
+// ===== PHASE 1: DEAL PIPELINE =====
+function renderPipeline() {
+  const wrap = document.getElementById('pipeline-board');
+  if (!wrap) return;
+
+  wrap.innerHTML = '';
+  DEAL_STAGES.forEach(stage => {
+    const leadsInStage = leadsDatabase.filter(l => (l.dealStage || 'prospect') === stage);
+    const column = document.createElement('div');
+    column.className = 'pipeline-column';
+    column.innerHTML = `
+      <div class="pipeline-header" style="border-top: 3px solid ${STAGE_COLORS[stage]}">
+        <h3>${stage.charAt(0).toUpperCase() + stage.slice(1)}</h3>
+        <span class="pipeline-count">${leadsInStage.length}</span>
+      </div>
+      <div class="pipeline-cards" data-stage="${stage}">
+        ${leadsInStage.map(lead => `
+          <div class="pipeline-card" draggable="true" data-lead-id="${lead.id}" ondragstart="dragStartLead(event)">
+            <div class="pipeline-card-name">${lead.name}</div>
+            <div class="pipeline-card-meta">${lead.city}, ${lead.state}</div>
+            <div class="pipeline-card-amount">💰 Deal</div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    wrap.appendChild(column);
+  });
+  setupDragDrop();
+}
+
+function dragStartLead(e) {
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('leadId', e.target.closest('.pipeline-card').dataset.leadId);
+}
+
+function setupDragDrop() {
+  const columns = document.querySelectorAll('.pipeline-cards');
+  columns.forEach(col => {
+    col.ondragover = (e) => { e.preventDefault(); col.style.backgroundColor = 'rgba(0,200,255,0.1)'; };
+    col.ondragleave = () => { col.style.backgroundColor = ''; };
+    col.ondrop = (e) => {
+      e.preventDefault();
+      col.style.backgroundColor = '';
+      const leadId = e.dataTransfer.getData('leadId');
+      const newStage = col.dataset.stage;
+      const lead = leadsDatabase.find(l => l.id === leadId);
+      if (lead) {
+        lead.dealStage = newStage;
+        saveLeads();
+        renderPipeline();
+      }
+    };
+  });
+}
+
+// ===== PHASE 1: CALENDAR VIEW =====
+function renderCalendar() {
+  const cal = document.getElementById('calendar-wrap');
+  if (!cal) return;
+
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth();
+
+  const firstDay = new Date(year, month, 1);
+  const lastDay = new Date(year, month + 1, 0);
+  const days = lastDay.getDate();
+  const startOffset = firstDay.getDay();
+
+  let html = `<div class="calendar-grid">`;
+
+  // Month header
+  html += `<div class="calendar-header">${firstDay.toLocaleDateString('en-AU', { month: 'long', year: 'numeric' })}</div>`;
+
+  // Day names
+  ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(d => {
+    html += `<div class="calendar-day-header">${d}</div>`;
+  });
+
+  // Empty cells
+  for (let i = 0; i < startOffset; i++) html += `<div class="calendar-cell empty"></div>`;
+
+  // Days with follow-ups
+  for (let day = 1; day <= days; day++) {
+    const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+    const followups = leadsDatabase.filter(l => l.followupDate === dateStr);
+    html += `
+      <div class="calendar-cell ${followups.length ? 'has-followup' : ''}">
+        <div class="calendar-date">${day}</div>
+        ${followups.length ? `<div class="calendar-count">${followups.length} tasks</div>` : ''}
+      </div>
+    `;
+  }
+
+  html += `</div>`;
+  cal.innerHTML = html;
+}
+
+// ===== PHASE 1: CUSTOM FIELDS =====
+function renderCustomFields() {
+  const wrap = document.getElementById('custom-fields-list');
+  if (!wrap) return;
+
+  wrap.innerHTML = customFieldsDatabase.map(field => `
+    <div class="custom-field-item" style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem;border:1px solid var(--border);border-radius:6px;margin-bottom:0.5rem">
+      <div>
+        <strong>${field.name}</strong><br>
+        <small style="color:var(--text-muted)">${field.type} • ${field.description || 'No description'}</small>
+      </div>
+      <button class="btn btn-danger btn-sm" onclick="deleteCustomField('${field.id}')">Delete</button>
+    </div>
+  `).join('') || '<p style="color:var(--text-muted)">No custom fields yet. Add one below.</p>';
+}
+
+function addCustomField() {
+  const name = document.getElementById('new-field-name')?.value;
+  const type = document.getElementById('new-field-type')?.value;
+  const description = document.getElementById('new-field-desc')?.value;
+
+  if (!name || !type) {
+    alert('Please fill in name and type');
+    return;
+  }
+
+  const field = {
+    id: 'cf_' + Date.now(),
+    name,
+    type,
+    description,
+    createdAt: new Date().toISOString()
+  };
+
+  customFieldsDatabase.push(field);
+  saveAllData();
+  renderCustomFields();
+
+  document.getElementById('new-field-name').value = '';
+  document.getElementById('new-field-desc').value = '';
+
+  alert(`Custom field "${name}" added!`);
+}
+
+function deleteCustomField(id) {
+  if (confirm('Delete this field? Data in leads may be lost.')) {
+    customFieldsDatabase = customFieldsDatabase.filter(f => f.id !== id);
+    saveAllData();
+    renderCustomFields();
+  }
 }

@@ -26,6 +26,8 @@
         <button class="nav-btn" data-tab="leads" onclick="switchTab('leads')">All Leads</button>
         <button class="nav-btn" data-tab="outreach" onclick="switchTab('outreach')">Outreach</button>
         <button class="nav-btn" data-tab="analytics" onclick="switchTab('analytics')">Analytics</button>
+        <button class="nav-btn" data-tab="pipeline" onclick="switchTab('pipeline')">Pipeline</button>
+        <button class="nav-btn" data-tab="calendar" onclick="switchTab('calendar')">Calendar</button>
         <button class="nav-btn" data-tab="forms" onclick="switchTab('forms')">Forms</button>
         <button class="nav-btn" data-tab="enquiries" onclick="switchTab('enquiries')" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;">
           <span>Enquiries</span>
@@ -322,6 +324,20 @@
         <div id="analytics-content"></div>
       </section>
 
+      <!-- PIPELINE -->
+      <section id="tab-pipeline" class="tab">
+        <h1>Deal <span class="fade">Pipeline</span></h1>
+        <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:1.5rem;">Drag leads between stages to manage your sales pipeline.</p>
+        <div id="pipeline-board" style="display:grid;grid-template-columns:repeat(6,1fr);gap:1.25rem;min-height:500px;margin-bottom:2rem;"></div>
+      </section>
+
+      <!-- CALENDAR -->
+      <section id="tab-calendar" class="tab">
+        <h1>Follow-up <span class="fade">Calendar</span></h1>
+        <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:1.5rem;">See all your follow-up dates at a glance.</p>
+        <div id="calendar-wrap" style="background:var(--surface2);border-radius:12px;padding:2rem;"></div>
+      </section>
+
       <!-- FORMS -->
       <section id="tab-forms" class="tab">
         <h1>Website <span class="fade">Forms</span></h1>
@@ -431,6 +447,39 @@
           <div class="form-group">
             <label>Google Places API Key</label>
             <input type="password" id="cfg-google-key" placeholder="AIzaSy..." style="font-family:monospace" />
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>⭐ Custom Fields</h3>
+          <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:1.5rem;">Add custom fields to track additional lead information.</p>
+
+          <div id="custom-fields-list" style="margin-bottom:1.5rem;"></div>
+
+          <div style="background:var(--surface2);padding:1.5rem;border-radius:8px;border:1px solid var(--border-light)">
+            <h4 style="margin-bottom:1rem">Add New Field</h4>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Field Name *</label>
+                <input type="text" id="new-field-name" placeholder="e.g. Budget, Industry, Decision Maker" />
+              </div>
+              <div class="form-group">
+                <label>Field Type *</label>
+                <select id="new-field-type">
+                  <option value="">Select type...</option>
+                  <option value="text">Text</option>
+                  <option value="number">Number</option>
+                  <option value="date">Date</option>
+                  <option value="select">Dropdown</option>
+                  <option value="checkbox">Checkbox</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <input type="text" id="new-field-desc" placeholder="What is this field for?" />
+              </div>
+            </div>
+            <button class="btn btn-primary" onclick="addCustomField()" style="margin-top:1rem">+ Add Custom Field</button>
           </div>
         </div>
 
