@@ -1090,7 +1090,142 @@ function exportLeadsCSV() {
 
 // ===== ANALYTICS =====
 function renderAnalytics() {
-  // Placeholder analytics rendering
+  // Calculate KPIs
+  const totalLeads = leadsDatabase.length;
+  const converted = leadsDatabase.filter(l => l.status === 'converted').length;
+  const conversionRate = totalLeads > 0 ? ((converted / totalLeads) * 100).toFixed(1) : 0;
+  const emailsSent = outreachHistoryDatabase.length;
+  const avgScore = totalLeads > 0 ? (leadsDatabase.reduce((sum, l) => sum + (l.score || 0), 0) / totalLeads).toFixed(1) : 0;
+
+  // KPI HTML
+  const kpiHtml = `
+    <div class="analytics-kpi" style="text-align:center">
+      <div style="font-size:2rem;font-weight:900;color:var(--accent);font-family:'Orbitron',sans-serif">${totalLeads}</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Total Leads</div>
+    </div>
+    <div class="analytics-kpi" style="text-align:center">
+      <div style="font-size:2rem;font-weight:900;color:#22c55e;font-family:'Orbitron',sans-serif">${converted}</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Converted</div>
+    </div>
+    <div class="analytics-kpi" style="text-align:center">
+      <div style="font-size:2rem;font-weight:900;color:#f59e0b;font-family:'Orbitron',sans-serif">${conversionRate}%</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Conv. Rate</div>
+    </div>
+    <div class="analytics-kpi" style="text-align:center">
+      <div style="font-size:2rem;font-weight:900;color:#8b5cf6;font-family:'Orbitron',sans-serif">${emailsSent}</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Emails Sent</div>
+    </div>
+    <div class="analytics-kpi" style="text-align:center">
+      <div style="font-size:2rem;font-weight:900;color:#06b6d4;font-family:'Orbitron',sans-serif">${avgScore}</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Avg Score</div>
+    </div>
+  `;
+  const kpiContainer = document.getElementById('analytics-kpis');
+  if (kpiContainer) kpiContainer.innerHTML = kpiHtml;
+
+  // Leads over time (last 30 days)
+  const now = new Date();
+  const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+  const leadsByDay = {};
+  for (let i = 0; i < 30; i++) {
+    const d = new Date(thirtyDaysAgo.getTime() + i * 24 * 60 * 60 * 1000);
+    const dateStr = d.toISOString().split('T')[0];
+    leadsByDay[dateStr] = 0;
+  }
+  leadsDatabase.forEach(lead => {
+    if (lead.dateAdded) {
+      const dateStr = lead.dateAdded.split('T')[0];
+      if (leadsByDay.hasOwnProperty(dateStr)) leadsByDay[dateStr]++;
+    }
+  });
+
+  const dates = Object.keys(leadsByDay).sort();
+  const counts = dates.map(d => leadsByDay[d]);
+  const maxCount = Math.max(...counts, 5);
+  let leadsChart = '<svg width="100%" height="180" style="margin-top:1rem" viewBox="0 0 500 150">';
+  const barWidth = 480 / dates.length;
+  counts.forEach((count, i) => {
+    const height = (count / maxCount) * 120;
+    const x = 10 + i * barWidth;
+    const y = 130 - height;
+    leadsChart += `<rect x="${x}" y="${y}" width="${barWidth - 2}" height="${height}" fill="#00c8ff" opacity="0.7" rx="2"/>`;
+  });
+  leadsChart += '</svg>';
+  const leadsChartEl = document.getElementById('chart-leads-time');
+  if (leadsChartEl) leadsChartEl.innerHTML = leadsChart;
+
+  // Pipeline funnel (by status)
+  const statusCounts = {
+    'new': leadsDatabase.filter(l => l.status === 'new' || !l.status).length,
+    'contacted': leadsDatabase.filter(l => l.status === 'contacted').length,
+    'interested': leadsDatabase.filter(l => l.status === 'interested').length,
+    'converted': leadsDatabase.filter(l => l.status === 'converted').length,
+    'not_interested': leadsDatabase.filter(l => l.status === 'not_interested').length
+  };
+
+  let funnelHtml = '<div style="display:flex;flex-direction:column;gap:0.75rem;margin-top:1rem">';
+  Object.entries(statusCounts).forEach(([status, count]) => {
+    const pct = totalLeads > 0 ? ((count / totalLeads) * 100).toFixed(0) : 0;
+    const colors = { 'new': '#3b82f6', 'contacted': '#8b5cf6', 'interested': '#f59e0b', 'converted': '#10b981', 'not_interested': '#6b7280' };
+    funnelHtml += `
+      <div style="display:flex;align-items:center;gap:0.75rem">
+        <div style="flex:1;text-align:right;font-size:0.8rem;color:var(--text-muted);width:80px">${status}</div>
+        <div style="flex:2;height:24px;background:${colors[status]};border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:0.5rem;color:#fff;font-size:0.75rem;font-weight:600">${count}</div>
+        <div style="width:40px;text-align:right;font-size:0.75rem;color:var(--accent)">${pct}%</div>
+      </div>
+    `;
+  });
+  funnelHtml += '</div>';
+  const funnelEl = document.getElementById('chart-funnel');
+  if (funnelEl) funnelEl.innerHTML = funnelHtml;
+
+  // Top categories
+  const categoryCounts = {};
+  leadsDatabase.forEach(lead => {
+    const cat = lead.category || 'Unknown';
+    categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+  });
+  const topCats = Object.entries(categoryCounts)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 8);
+
+  let catHtml = '<div style="display:flex;flex-direction:column;gap:0.6rem;margin-top:1rem">';
+  const maxCatCount = Math.max(...topCats.map(c => c[1]), 1);
+  topCats.forEach(([cat, count]) => {
+    const barWidth = (count / maxCatCount) * 90;
+    catHtml += `
+      <div style="display:flex;align-items:center;gap:0.5rem">
+        <div style="width:60px;font-size:0.75rem;color:var(--text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${cat}</div>
+        <div style="flex:1;height:20px;background:rgba(0,200,255,0.3);border-radius:3px;overflow:hidden">
+          <div style="height:100%;width:${barWidth}%;background:#00c8ff"></div>
+        </div>
+        <div style="width:30px;text-align:right;font-size:0.75rem;color:var(--accent);font-weight:600">${count}</div>
+      </div>
+    `;
+  });
+  catHtml += '</div>';
+  const catEl = document.getElementById('chart-by-category');
+  if (catEl) catEl.innerHTML = catHtml;
+
+  // Website coverage
+  const hasWebsite = leadsDatabase.filter(l => l.website).length;
+  const noWebsite = totalLeads - hasWebsite;
+  const websiteHtml = `
+    <div style="display:flex;justify-content:center;align-items:flex-end;gap:2rem;margin-top:1rem;height:140px">
+      <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:0.5rem">
+        <div style="width:80px;height:${(hasWebsite / Math.max(totalLeads, 1)) * 120}px;background:#22c55e;border-radius:4px"></div>
+        <div style="font-size:0.75rem;color:var(--text-muted)">Has Website</div>
+        <div style="font-size:1.2rem;font-weight:700;color:#22c55e">${hasWebsite}</div>
+      </div>
+      <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:0.5rem">
+        <div style="width:80px;height:${(noWebsite / Math.max(totalLeads, 1)) * 120}px;background:#f59e0b;border-radius:4px"></div>
+        <div style="font-size:0.75rem;color:var(--text-muted)">No Website</div>
+        <div style="font-size:1.2rem;font-weight:700;color:#f59e0b">${noWebsite}</div>
+      </div>
+    </div>
+  `;
+  const websiteEl = document.getElementById('chart-website-split');
+  if (websiteEl) websiteEl.innerHTML = websiteHtml;
 }
 
 // ===== SETTINGS =====
