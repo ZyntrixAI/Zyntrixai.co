@@ -1,8 +1,60 @@
 {
+  "name": "zyntrix-leads",
+  "version": 2,
+  "public": false,
   "builds": [
     {
-      "src": "index.html",
+      "src": "crm.html",
       "use": "@vercel/static"
+    },
+    {
+      "src": "client-portal.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.png",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/crm",
+      "dest": "/crm.html"
+    },
+    {
+      "src": "/portal",
+      "dest": "/client-portal.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/crm.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, s-maxage=3600"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
+      ]
     }
   ]
 }
