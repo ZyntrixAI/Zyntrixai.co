@@ -441,6 +441,8 @@ function switchTab(tabName) {
     populateClientDropdowns();
   } else if (tabName === 'reporting') {
     renderReporting();
+  } else if (tabName === 'automation') {
+    renderAutomation();
   } else if (tabName === 'settings') {
     renderCustomFields();
   }
@@ -2136,4 +2138,76 @@ function renderReporting() {
       </ul>
     </div>
   `;
+}
+
+// ===== PHASE 3C: AUTOMATION =====
+function renderAutomation() {
+  const wrap = document.getElementById('automation-list');
+  if (!wrap) return;
+
+  wrap.innerHTML = automationRules.map(rule => `
+    <div style="background:var(--surface2);border:1px solid var(--border-light);border-radius:12px;padding:1.5rem;margin-bottom:1rem">
+      <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:1rem">
+        <div>
+          <h3 style="margin-bottom:0.5rem">When ${rule.trigger}</h3>
+          <p style="color:var(--text-muted);font-size:0.9rem">Then ${rule.action}</p>
+        </div>
+        <div style="display:flex;gap:0.5rem">
+          <button class="btn btn-ghost btn-sm" onclick="toggleAutoRule('${rule.id}')">${rule.enabled ? 'Disable' : 'Enable'}</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteAutoRule('${rule.id}')">Delete</button>
+        </div>
+      </div>
+      <div style="font-size:0.85rem;color:var(--text-muted)">Created: ${new Date(rule.createdAt).toLocaleDateString()}</div>
+    </div>
+  `).join('') || '<div style="color:var(--text-muted);text-align:center;padding:2rem">No automation rules yet. Create one to get started!</div>';
+}
+
+function openAutomationModal() {
+  document.getElementById('automation-modal').classList.remove('hidden');
+}
+
+function saveAutomation() {
+  const trigger = document.getElementById('auto-trigger')?.value;
+  const action = document.getElementById('auto-action')?.value;
+  const details = document.getElementById('auto-details')?.value || '';
+
+  if (!trigger || !action) {
+    alert('Please select trigger and action');
+    return;
+  }
+
+  automationRules.push({
+    id: 'rule_' + Date.now(),
+    trigger,
+    action,
+    details,
+    enabled: true,
+    createdAt: new Date().toISOString()
+  });
+
+  saveAllData();
+  renderAutomation();
+  document.getElementById('automation-modal').classList.add('hidden');
+  alert('Automation rule created!');
+}
+
+function toggleAutoRule(id) {
+  const rule = automationRules.find(r => r.id === id);
+  if (rule) {
+    rule.enabled = !rule.enabled;
+    saveAllData();
+    renderAutomation();
+  }
+}
+
+function deleteAutoRule(id) {
+  if (confirm('Delete this automation rule?')) {
+    automationRules = automationRules.filter(r => r.id !== id);
+    saveAllData();
+    renderAutomation();
+  }
+}
+
+function closeAutomationModal() {
+  document.getElementById('automation-modal').classList.add('hidden');
 }

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZyntrixLeads Client Portal</title>
+  <link rel="icon" type="image/png" href="logo.png" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #0a0e27;
+      --surface: #131829;
+      --surface2: #1a1f3a;
+      --text: #e0e0e0;
+      --text-muted: #888;
+      --accent: #00c8ff;
+      --border-light: #2a2f4a;
+      --success: #10b981;
+      --warning: #f59e0b;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .portal-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border-light);
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .portal-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .portal-logo img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .portal-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .portal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: var(--surface2);
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--accent);
+    }
+
+    .section {
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .item-card {
+      background: var(--surface2);
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 1rem;
+    }
+
+    .item-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .status-completed {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--success);
+    }
+
+    .status-pending {
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--warning);
+    }
+
+    .status-in-progress {
+      background: rgba(0, 200, 255, 0.2);
+      color: var(--accent);
+    }
+
+    .status-paid {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--success);
+    }
+
+    .status-unpaid {
+      background: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
+    }
+
+    .progress-bar {
+      background: var(--surface);
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 0.75rem 0;
+    }
+
+    .progress-fill {
+      background: linear-gradient(90deg, var(--accent), #00ff88);
+      height: 100%;
+      transition: width 0.3s;
+    }
+
+    .item-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+    }
+
+    .download-btn {
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .download-btn:hover {
+      opacity: 0.9;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-muted);
+    }
+
+    .empty-state-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .portal-footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border-light);
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .portal-header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .portal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-value {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="portal-header">
+    <div class="portal-logo">
+      <img src="logo.png" alt="Logo" />
+      <span>Client Portal</span>
+    </div>
+    <div style="font-size: 0.9rem; color: var(--text-muted);">
+      <span id="portal-client-name"></span>
+    </div>
+  </div>
+
+  <div class="portal-container">
+    <!-- Stats -->
+    <div class="portal-grid">
+      <div class="stat-card">
+        <div class="stat-label">Active Services</div>
+        <div class="stat-value" id="portal-services-count">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Monthly Investment</div>
+        <div class="stat-value" id="portal-retainer-amount">$0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Outstanding Invoices</div>
+        <div class="stat-value" id="portal-outstanding">$0</div>
+      </div>
+    </div>
+
+    <!-- Services Section -->
+    <div class="section">
+      <h2 class="section-title">📋 Your Services</h2>
+      <div id="portal-services"></div>
+    </div>
+
+    <!-- Retainers Section -->
+    <div class="section">
+      <h2 class="section-title">💼 Your Retainers</h2>
+      <div id="portal-retainers"></div>
+    </div>
+
+    <!-- Invoices Section -->
+    <div class="section">
+      <h2 class="section-title">📄 Your Invoices</h2>
+      <div id="portal-invoices"></div>
+    </div>
+  </div>
+
+  <div class="portal-footer">
+    <p>Questions? Contact your account manager or reply to any invoice email.</p>
+    <p style="margin-top: 1rem;">© 2026 ZyntrixLeads. All rights reserved.</p>
+  </div>
+
+  <script>
+    // Load portal data from localStorage
+    function loadPortalData() {
+      const token = new URLSearchParams(window.location.search).get('portal');
+      if (!token) {
+        document.body.innerHTML = '<div style="padding: 2rem; text-align: center; color: #888;">Invalid or missing portal token. Please contact your account manager for access.</div>';
+        return;
+      }
+
+      const portalTokens = JSON.parse(localStorage.getItem('zyntrix_portal_tokens') || '{}');
+      const tokenData = portalTokens[token];
+      if (!tokenData) {
+        document.body.innerHTML = '<div style="padding: 2rem; text-align: center; color: #888;">Invalid portal token. Please check the link provided by your account manager.</div>';
+        return;
+      }
+
+      const clientId = tokenData.clientId;
+      const clients = JSON.parse(localStorage.getItem('zyntrix_clients') || '[]');
+      const retainers = JSON.parse(localStorage.getItem('zyntrix_retainers') || '[]');
+      const services = JSON.parse(localStorage.getItem('zyntrix_services') || '[]');
+      const invoices = JSON.parse(localStorage.getItem('zyntrix_invoices') || '[]');
+
+      const client = clients.find(c => c.id === clientId);
+      if (!client) {
+        document.body.innerHTML = '<div style="padding: 2rem; text-align: center; color: #888;">Client not found.</div>';
+        return;
+      }
+
+      const clientRetainers = retainers.filter(r => r.clientId === clientId);
+      const clientServices = services.filter(s => s.clientId === clientId);
+      const clientInvoices = invoices.filter(i => i.clientId === clientId);
+
+      // Update header
+      document.getElementById('portal-client-name').textContent = `Welcome, ${client.name}!`;
+
+      // Update stats
+      document.getElementById('portal-services-count').textContent = clientServices.length;
+      document.getElementById('portal-retainer-amount').textContent = '$' + clientRetainers.reduce((a, r) => a + parseFloat(r.amount || 0), 0).toFixed(0) + '/mo';
+      document.getElementById('portal-outstanding').textContent = '$' + clientInvoices.filter(i => i.status !== 'paid').reduce((a, i) => a + parseFloat(i.amount || 0), 0).toFixed(0);
+
+      // Render services
+      const servicesHtml = clientServices.length > 0 ? clientServices.map(s => `
+        <div class="item-card">
+          <div class="item-header">
+            <div class="item-title">${s.name}</div>
+            <span class="status-badge status-${s.status}">${s.status}</span>
+          </div>
+          <p style="color: var(--text-muted); margin-bottom: 0.75rem;">${s.description || 'No description'}</p>
+          ${s.totalHours ? `
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: ${(s.hoursUsed / s.totalHours * 100)}%"></div>
+            </div>
+            <small style="color: var(--text-muted);">${s.hoursUsed}/${s.totalHours} hours used</small>
+          ` : ''}
+          <div class="item-meta">
+            <div><strong>Due:</strong> ${new Date(s.dueDate).toLocaleDateString()}</div>
+            <div><strong>Created:</strong> ${new Date(s.createdAt).toLocaleDateString()}</div>
+          </div>
+        </div>
+      `).join('') : '<div class="empty-state"><div class="empty-state-icon">📭</div><p>No services scheduled.</p></div>';
+      document.getElementById('portal-services').innerHTML = servicesHtml;
+
+      // Render retainers
+      const retainersHtml = clientRetainers.length > 0 ? clientRetainers.map(r => `
+        <div class="item-card">
+          <div class="item-header">
+            <div>
+              <div class="item-title">${r.serviceType}</div>
+              <small style="color: var(--text-muted);">Monthly Retainer</small>
+            </div>
+            <span class="status-badge status-${r.status}">${r.status}</span>
+          </div>
+          <div class="item-meta">
+            <div><strong>Amount:</strong> $${r.amount}/month</div>
+            <div><strong>Started:</strong> ${new Date(r.startDate).toLocaleDateString()}</div>
+            <div><strong>Renews:</strong> ${new Date(r.renewalDate).toLocaleDateString()}</div>
+          </div>
+        </div>
+      `).join('') : '<div class="empty-state"><div class="empty-state-icon">📭</div><p>No active retainers.</p></div>';
+      document.getElementById('portal-retainers').innerHTML = retainersHtml;
+
+      // Render invoices
+      const invoicesHtml = clientInvoices.length > 0 ? clientInvoices.map(i => `
+        <div class="item-card">
+          <div class="item-header">
+            <div>
+              <div class="item-title">${i.invoiceNumber}</div>
+              <small style="color: var(--text-muted);">Due: ${new Date(i.dueDate).toLocaleDateString()}</small>
+            </div>
+            <span class="status-badge status-${i.status === 'paid' ? 'paid' : 'unpaid'}">${i.status}</span>
+          </div>
+          <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent); margin: 1rem 0;">$${i.amount}</div>
+          <div class="item-meta">
+            <div><strong>Issued:</strong> ${new Date(i.issuedDate).toLocaleDateString()}</div>
+            <div><strong>Amount:</strong> $${i.amount}</div>
+          </div>
+          ${i.status !== 'paid' ? '<button class="download-btn" style="margin-top: 1rem;">Pay Now</button>' : ''}
+        </div>
+      `).join('') : '<div class="empty-state"><div class="empty-state-icon">📭</div><p>No invoices yet.</p></div>';
+      document.getElementById('portal-invoices').innerHTML = invoicesHtml;
+    }
+
+    loadPortalData();
+  </script>
+</body>
+</html>

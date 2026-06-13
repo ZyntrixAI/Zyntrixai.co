@@ -33,6 +33,7 @@
         <button class="nav-btn" data-tab="services" onclick="switchTab('services')">Services</button>
         <button class="nav-btn" data-tab="invoices" onclick="switchTab('invoices')">Invoices</button>
         <button class="nav-btn" data-tab="reporting" onclick="switchTab('reporting')">Reporting</button>
+        <button class="nav-btn" data-tab="automation" onclick="switchTab('automation')">Automation</button>
         <button class="nav-btn" data-tab="forms" onclick="switchTab('forms')">Forms</button>
         <button class="nav-btn" data-tab="enquiries" onclick="switchTab('enquiries')" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;">
           <span>Enquiries</span>
@@ -383,6 +384,15 @@
       <section id="tab-reporting" class="tab">
         <h1>Reporti<span class="fade">ng</span></h1>
         <div id="reporting-wrap"></div>
+      </section>
+
+      <!-- AUTOMATION -->
+      <section id="tab-automation" class="tab">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
+          <h1>Automa<span class="fade">tion</span></h1>
+          <button class="btn btn-primary btn-sm" onclick="openAutomationModal()">+ Create Rule</button>
+        </div>
+        <div id="automation-list"></div>
       </section>
 
       <!-- FORMS -->
@@ -884,6 +894,47 @@
       <div class="modal-footer">
         <button class="btn btn-ghost" onclick="closeInvoiceModal()">Cancel</button>
         <button class="btn btn-primary" onclick="saveInvoice()">Create Invoice</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 3C: AUTOMATION MODAL -->
+  <div id="automation-modal" class="modal hidden">
+    <div class="modal-box" style="max-width:540px">
+      <div class="modal-header">
+        <h2>Create Automation Rule</h2>
+        <button class="modal-close" onclick="closeAutomationModal()">×</button>
+      </div>
+      <div class="modal-body" style="padding:1.5rem">
+        <div class="form-group">
+          <label>When This Happens (Trigger) *</label>
+          <select id="auto-trigger">
+            <option value="">Select trigger...</option>
+            <option value="invoice_created">Invoice Created</option>
+            <option value="payment_due">Payment Due (7 days)</option>
+            <option value="payment_overdue">Payment Overdue</option>
+            <option value="retainer_renewal">Retainer Renewal</option>
+            <option value="service_complete">Service Completed</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Then Do This (Action) *</label>
+          <select id="auto-action">
+            <option value="">Select action...</option>
+            <option value="send_email">Send Email Reminder</option>
+            <option value="create_invoice">Create Invoice</option>
+            <option value="update_status">Update Lead Status</option>
+            <option value="send_reminder">Send SMS Reminder</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Details (optional)</label>
+          <textarea id="auto-details" rows="3" placeholder="Additional details for this automation..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" onclick="closeAutomationModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveAutomation()">Create Rule</button>
       </div>
     </div>
   </div>
