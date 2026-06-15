@@ -1,22 +1,22 @@
-/* Root variables - Dark Theme */
+/* Root variables - Dark Theme with Cyan Accent */
 :root {
-  --accent: #7c3aed;
-  --accent-dark: #6d28d9;
-  --gold: #7c3aed;
-  --bg: #0d1117;
-  --bg-secondary: #161b22;
-  --bg-tertiary: #1c2128;
-  --text: #e6edf3;
-  --text-secondary: #c9d1d9;
-  --text-muted: #8b949e;
-  --text-muted2: #6e7681;
-  --border: rgba(255,255,255,.06);
-  --border-light: rgba(255,255,255,.1);
-  --card-bg: #161b22;
-  --card-hover: #1c2128;
-  --border-hover: #7c3aed;
-  --radius: 12px;
-  --surface2: #0d1117;
+  --accent: #00c8ff;
+  --accent-dark: #00a8d9;
+  --gold: #00c8ff;
+  --bg: #0a0e1a;
+  --bg-secondary: #0f1420;
+  --bg-tertiary: #141929;
+  --text: #ffffff;
+  --text-secondary: #e0e0e0;
+  --text-muted: #a0a0a0;
+  --text-muted2: #808080;
+  --border: rgba(0,200,255,.15);
+  --border-light: rgba(0,200,255,.25);
+  --card-bg: #0f1420;
+  --card-hover: #141929;
+  --border-hover: #00c8ff;
+  --radius: 8px;
+  --surface2: #0a0e1a;
 }
 
 * {
@@ -129,14 +129,14 @@ nav {
 }
 
 .nav-btn:hover {
-  background: rgba(255,255,255,.04);
+  background: rgba(0,200,255,.08);
   color: var(--text);
 }
 
 .nav-btn.active {
-  background: rgba(124,58,237,.15);
+  background: rgba(0,200,255,.15);
   color: var(--text);
-  border: 1px solid rgba(124,58,237,.25);
+  border: 1px solid rgba(0,200,255,.3);
   font-weight: 500;
 }
 
