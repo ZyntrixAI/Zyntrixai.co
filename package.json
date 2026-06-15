@@ -11,9 +11,9 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "next build",
-    "dev": "next dev",
-    "start": "next start"
+    "build": "echo 'Static build - no build step needed'",
+    "dev": "echo 'Dev server not needed for static site'",
+    "start": "echo 'Static site - no start command needed'"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.101.0",
