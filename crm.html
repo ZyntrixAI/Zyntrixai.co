@@ -43,6 +43,7 @@
           <span>Follow-ups</span>
           <span id="followup-alert-badge" class="enq-badge hidden">0</span>
         </button>
+        <button class="nav-btn" data-tab="guide" onclick="switchTab('guide')">Client Guide</button>
         <button class="nav-btn" data-tab="settings" onclick="switchTab('settings')">Settings</button>
       </nav>
       <div id="status-badges" class="sidebar-status">
@@ -226,11 +227,17 @@
       <section id="tab-leads" class="tab">
         <div class="leads-header">
           <h1>All <span class="fade">Leads</span></h1>
-          <div class="leads-actions">
-            <button class="btn btn-ghost btn-sm" id="btn-import-csv" onclick="triggerImport()">⬆ Import CSV</button>
+          <div class="leads-actions" style="display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center">
+            <button class="btn btn-secondary btn-sm" id="btn-import-csv" onclick="triggerImport()" title="Import leads from CSV file" style="gap:0.4rem;display:flex;align-items:center">
+              📥 Import CSV
+            </button>
             <input type="file" id="csv-import-input" accept=".csv" class="hidden" onchange="handleImportFile(event)" />
-            <button class="btn btn-ghost btn-sm" onclick="exportLeadsCSV()">⬇ Export CSV</button>
-            <button class="btn btn-primary btn-sm" onclick="openOutreachModal()">Email Selected</button>
+            <button class="btn btn-secondary btn-sm" onclick="exportLeadsCSV()" title="Download leads as CSV" style="gap:0.4rem;display:flex;align-items:center">
+              📤 Export CSV
+            </button>
+            <button class="btn btn-primary btn-sm" onclick="openOutreachModal()" title="Send email to selected leads" style="gap:0.4rem;display:flex;align-items:center;margin-left:auto">
+              ✉️ Send Email
+            </button>
           </div>
         </div>
 
@@ -472,6 +479,89 @@
       <section id="tab-enquiries" class="tab">
         <h1>Client <span class="fade">Enquiries</span></h1>
         <div id="enquiries-list"></div>
+      </section>
+
+      <!-- CLIENT GUIDE -->
+      <section id="tab-guide" class="tab">
+        <div style="display:flex;align-items:center;gap:1.1rem;margin-bottom:0.5rem;">
+          <img src="logo.png" alt="Zyntrix" style="width:52px;height:52px;object-fit:contain;filter:drop-shadow(0 0 12px rgba(0,200,255,0.55));flex-shrink:0;" />
+          <h1 style="margin-bottom:0;">Client <span class="fade">Guide</span></h1>
+        </div>
+        <p style="color:var(--text-muted);font-size:0.88rem;margin-bottom:2rem;max-width:700px;">Share this with your client so they know exactly what to expect from first contact to launch.</p>
+
+        <div style="display:flex;flex-direction:column;gap:2rem;max-width:860px">
+
+          <div class="card" style="margin-bottom:0">
+            <div style="display:flex;align-items:flex-start;gap:1.25rem">
+              <div style="flex-shrink:0;width:36px;height:36px;border-radius:50%;background:rgba(0,200,255,0.1);border:1px solid rgba(0,200,255,0.3);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',sans-serif;font-size:0.65rem;font-weight:700;color:var(--accent)">01</div>
+              <div style="flex:1">
+                <h3 style="margin-bottom:0.75rem">Get in Touch</h3>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem">
+                  <li style="display:flex;gap:0.75rem;font-size:0.85rem;color:var(--text-muted)"><span style="color:var(--accent);flex-shrink:0">▸</span>Fill in our contact form or book a free 30-minute discovery call</li>
+                  <li style="display:flex;gap:0.75rem;font-size:0.85rem;color:var(--text-muted)"><span style="color:var(--accent);flex-shrink:0">▸</span>Tell us what you need — even if you're not sure yet</li>
+                  <li style="display:flex;gap:0.75rem;font-size:0.85rem;color:var(--text-muted)"><span style="color:var(--accent);flex-shrink:0">▸</span>Takes 2 minutes · Free · No commitment</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-bottom:0">
+            <div style="display:flex;align-items:flex-start;gap:1.25rem">
+              <div style="flex-shrink:0;width:36px;height:36px;border-radius:50%;background:rgba(0,200,255,0.1);border:1px solid rgba(0,200,255,0.3);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',sans-serif;font-size:0.65rem;font-weight:700;color:var(--accent)">02</div>
+              <div style="flex:1">
+                <h3 style="margin-bottom:0.75rem">Proposal & Kickoff</h3>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem">
+                  <li style="display:flex;gap:0.75rem;font-size:0.85rem;color:var(--text-muted)"><span style="color:var(--accent);flex-shrink:0">▸</span>Written proposal within 48 hours — fixed price, no hidden fees</li>
+                  <li style="display:flex;gap:0.75rem;font-size:0.85rem;color:var(--text-muted)"><span style="color:var(--accent);flex-shrink:0">▸</span>Approve and pay 50% deposit to get started</li>
+                  <li style="display:flex;gap:0.75rem;font-size:0.85rem;color:var(--text-muted)"><span style="color:var(--accent);flex-shrink:0">▸</span>We gather your logo, photos, brand colours, and content</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-bottom:0">
+            <div style="display:flex;align-items:flex-start;gap:1.25rem">
+              <div style="flex-shrink:0;width:36px;height:36px;border-radius:50%;background:rgba(0,200,255,0.1);border:1px solid rgba(0,200,255,0.3);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',sans-serif;font-size:0.65rem;font-weight:700;color:var(--accent)">03</div>
+              <div style="flex:1">
+                <h3 style="margin-bottom:0.75rem">Design & Build</h3>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem">
+                  <li style="display:flex;gap:0.75rem;font-size:0.85rem;color:var(--text-muted)"><span style="color:var(--accent);flex-shrink:0">▸</span>We design your full site — you see it before a single line is coded</li>
+                  <li style="display:flex;gap:0.75rem;font-size:0.85rem;color:var(--text-muted)"><span style="color:var(--accent);flex-shrink:0">▸</span>2 rounds of design revisions included at no extra cost</li>
+                  <li style="display:flex;gap:0.75rem;font-size:0.85rem;color:var(--text-muted)"><span style="color:var(--accent);flex-shrink:0">▸</span>Once approved, we build — clean code, fast, mobile-ready</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-bottom:0">
+            <div style="display:flex;align-items:flex-start;gap:1.25rem">
+              <div style="flex-shrink:0;width:36px;height:36px;border-radius:50%;background:rgba(0,200,255,0.1);border:1px solid rgba(0,200,255,0.3);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',sans-serif;font-size:0.65rem;font-weight:700;color:var(--accent)">04</div>
+              <div style="flex:1">
+                <h3 style="margin-bottom:0.75rem">Review & Go Live</h3>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem">
+                  <li style="display:flex;gap:0.75rem;font-size:0.85rem;color:var(--text-muted)"><span style="color:var(--accent);flex-shrink:0">▸</span>Private staging link so you can review every page and form</li>
+                  <li style="display:flex;gap:0.75rem;font-size:0.85rem;color:var(--text-muted)"><span style="color:var(--accent);flex-shrink:0">▸</span>Once happy, sign off and pay the remaining 50%</li>
+                  <li style="display:flex;gap:0.75rem;font-size:0.85rem;color:var(--text-muted)"><span style="color:var(--accent);flex-shrink:0">▸</span>We launch — domain, SSL, Google Analytics, and Search Console all set up</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-bottom:0">
+            <div style="display:flex;align-items:flex-start;gap:1.25rem">
+              <div style="flex-shrink:0;width:36px;height:36px;border-radius:50%;background:rgba(0,200,255,0.1);border:1px solid rgba(0,200,255,0.3);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',sans-serif;font-size:0.65rem;font-weight:700;color:var(--accent)">05</div>
+              <div style="flex:1">
+                <h3 style="margin-bottom:0.75rem">Handover & Support</h3>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem">
+                  <li style="display:flex;gap:0.75rem;font-size:0.85rem;color:var(--text-muted)"><span style="color:var(--accent);flex-shrink:0">▸</span>Full walkthrough — all logins, files, and docs delivered to you</li>
+                  <li style="display:flex;gap:0.75rem;font-size:0.85rem;color:var(--text-muted)"><span style="color:var(--accent);flex-shrink:0">▸</span>First month of support is free · Your site, your code, your data</li>
+                  <li style="display:flex;gap:0.75rem;font-size:0.85rem;color:var(--text-muted)"><span style="color:var(--accent);flex-shrink:0">▸</span>Optional $79/mo care plan — updates, security, and ongoing changes</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </section>
 
       <!-- SETTINGS -->
