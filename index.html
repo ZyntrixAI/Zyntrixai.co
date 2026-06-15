@@ -1208,7 +1208,6 @@
         <!-- DESIGN -->
         <div onclick="showPage('svc-design')" style="cursor:pointer;transition:all 0.3s;display:flex;flex-direction:column;gap:2rem;">
           <div style="padding:2rem;border:2px solid rgba(138,43,226,0.3);border-radius:8px;background:rgba(138,43,226,0.03);backdrop-filter:blur(10px);transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(138,43,226,0.6)';this.style.background='rgba(138,43,226,0.08)'" onmouseout="this.style.borderColor='rgba(138,43,226,0.3)';this.style.background='rgba(138,43,226,0.03)'">
-            <div style="font-size:3rem;margin-bottom:1rem;">🎨</div>
             <button class="btn-primary" onclick="event.stopPropagation();showPage('svc-design')" style="padding:0.7rem 1.2rem;font-size:0.8rem;width:100%;background:var(--blue);color:#000;">Explore Design →</button>
           </div>
           <div>
@@ -1220,7 +1219,6 @@
         <!-- DEVELOPMENT -->
         <div onclick="showPage('svc-dev')" style="cursor:pointer;transition:all 0.3s;display:flex;flex-direction:column;gap:2rem;">
           <div style="padding:2rem;border:2px solid rgba(0,200,255,0.3);border-radius:8px;background:rgba(0,200,255,0.03);backdrop-filter:blur(10px);transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(0,200,255,0.6)';this.style.background='rgba(0,200,255,0.08)'" onmouseout="this.style.borderColor='rgba(0,200,255,0.3)';this.style.background='rgba(0,200,255,0.03)'">
-            <div style="font-size:3rem;margin-bottom:1rem;">⚡</div>
             <button class="btn-primary" onclick="event.stopPropagation();showPage('svc-dev')" style="padding:0.7rem 1.2rem;font-size:0.8rem;width:100%;background:var(--blue);color:#000;">Explore Development →</button>
           </div>
           <div>
@@ -1232,7 +1230,6 @@
         <!-- ECOMMERCE -->
         <div onclick="showPage('svc-ecommerce')" style="cursor:pointer;transition:all 0.3s;display:flex;flex-direction:column;gap:2rem;">
           <div style="padding:2rem;border:2px solid rgba(76,175,80,0.3);border-radius:8px;background:rgba(76,175,80,0.03);backdrop-filter:blur(10px);transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(76,175,80,0.6)';this.style.background='rgba(76,175,80,0.08)'" onmouseout="this.style.borderColor='rgba(76,175,80,0.3)';this.style.background='rgba(76,175,80,0.03)'">
-            <div style="font-size:3rem;margin-bottom:1rem;">🛒</div>
             <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-ecommerce')" style="padding:0.7rem 1.2rem;font-size:0.8rem;width:100%;border:2px solid rgba(76,175,80,0.4);color:rgba(76,175,80,0.9);transition:all 0.2s;" onmouseover="this.style.background='rgba(76,175,80,0.1)';this.style.borderColor='rgba(76,175,80,0.6)'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(76,175,80,0.4)'">Explore E-Commerce →</button>
           </div>
           <div>
@@ -1248,40 +1245,34 @@
         <div style="margin-bottom:3rem;border-top:1px solid var(--border);padding-top:3rem;">
           <p style="font-size:0.82rem;color:var(--muted);letter-spacing:0.5px;text-transform:uppercase;margin:0;">We also offer:</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:3rem;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1.5rem;max-width:1100px;margin-left:auto;margin-right:auto;">
 
-          <div onclick="showPage('svc-seo')" style="cursor:pointer;transition:all 0.3s;display:flex;flex-direction:column;gap:1.5rem;">
-            <div style="display:flex;align-items:center;gap:1.5rem;padding:1.5rem;border:1px solid rgba(0,200,255,0.2);border-radius:8px;background:rgba(0,200,255,0.02);transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(0,200,255,0.4)';this.style.background='rgba(0,200,255,0.05)'" onmouseout="this.style.borderColor='rgba(0,200,255,0.2)';this.style.background='rgba(0,200,255,0.02)'">
-              <div style="font-size:2.5rem;flex-shrink:0;">🔍</div>
-              <div style="flex:1;">
-                <h4 style="font-size:0.95rem;font-weight:800;color:var(--text);margin:0 0 0.4rem 0;">SEO &amp; Growth</h4>
-                <p style="font-size:0.8rem;color:var(--muted);margin:0;">Get found on Google</p>
-              </div>
+          <article class="blog-card glow-card" style="cursor:pointer;" onclick="showPage('svc-seo')">
+            <div style="height:110px;overflow:hidden;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:3rem;background:rgba(0,200,255,0.06);">🔍</div>
+            <div style="padding:1.1rem 1.2rem;display:flex;flex-direction:column;flex:1;">
+              <span class="blog-cat" style="margin-bottom:0.5rem;">SERVICES</span>
+              <h3 style="font-size:0.95rem;font-weight:700;line-height:1.4;margin-bottom:0.5rem;flex:1;color:var(--text);">SEO &amp; Growth</h3>
+              <p style="font-size:0.85rem;color:var(--muted);line-height:1.55;margin:0;">20+ keywords tracked monthly. Real traffic, real leads.</p>
             </div>
-            <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;margin:0;">20+ keywords tracked monthly. Real traffic, real leads. Conversion reporting included.</p>
-          </div>
+          </article>
 
-          <div onclick="showPage('svc-branding')" style="cursor:pointer;transition:all 0.3s;display:flex;flex-direction:column;gap:1.5rem;">
-            <div style="display:flex;align-items:center;gap:1.5rem;padding:1.5rem;border:1px solid rgba(138,43,226,0.2);border-radius:8px;background:rgba(138,43,226,0.02);transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(138,43,226,0.4)';this.style.background='rgba(138,43,226,0.05)'" onmouseout="this.style.borderColor='rgba(138,43,226,0.2)';this.style.background='rgba(138,43,226,0.02)'">
-              <div style="font-size:2.5rem;flex-shrink:0;">✨</div>
-              <div style="flex:1;">
-                <h4 style="font-size:0.95rem;font-weight:800;color:var(--text);margin:0 0 0.4rem 0;">Logo &amp; Branding</h4>
-                <p style="font-size:0.8rem;color:var(--muted);margin:0;">Full identity system</p>
-              </div>
+          <article class="blog-card glow-card" style="cursor:pointer;" onclick="showPage('svc-branding')">
+            <div style="height:110px;overflow:hidden;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:3rem;background:rgba(138,43,226,0.06);">✨</div>
+            <div style="padding:1.1rem 1.2rem;display:flex;flex-direction:column;flex:1;">
+              <span class="blog-cat" style="margin-bottom:0.5rem;color:rgba(138,43,226,0.8);">SERVICES</span>
+              <h3 style="font-size:0.95rem;font-weight:700;line-height:1.4;margin-bottom:0.5rem;flex:1;color:var(--text);">Logo &amp; Branding</h3>
+              <p style="font-size:0.85rem;color:var(--muted);line-height:1.55;margin:0;">Full identity system with guidelines and deliverables.</p>
             </div>
-            <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;margin:0;">Logo, brand guidelines, color palettes, typography. Look premium from day one.</p>
-          </div>
+          </article>
 
-          <div onclick="showPage('svc-maintenance')" style="cursor:pointer;transition:all 0.3s;display:flex;flex-direction:column;gap:1.5rem;">
-            <div style="display:flex;align-items:center;gap:1.5rem;padding:1.5rem;border:1px solid rgba(76,175,80,0.2);border-radius:8px;background:rgba(76,175,80,0.02);transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(76,175,80,0.4)';this.style.background='rgba(76,175,80,0.05)'" onmouseout="this.style.borderColor='rgba(76,175,80,0.2)';this.style.background='rgba(76,175,80,0.02)'">
-              <div style="font-size:2.5rem;flex-shrink:0;">🔧</div>
-              <div style="flex:1;">
-                <h4 style="font-size:0.95rem;font-weight:800;color:var(--text);margin:0 0 0.4rem 0;">Ongoing Support</h4>
-                <p style="font-size:0.8rem;color:var(--muted);margin:0;">Monthly care plan</p>
-              </div>
+          <article class="blog-card glow-card" style="cursor:pointer;" onclick="showPage('svc-maintenance')">
+            <div style="height:110px;overflow:hidden;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:3rem;background:rgba(76,175,80,0.06);">🔧</div>
+            <div style="padding:1.1rem 1.2rem;display:flex;flex-direction:column;flex:1;">
+              <span class="blog-cat" style="margin-bottom:0.5rem;color:rgba(76,175,80,0.8);">SERVICES</span>
+              <h3 style="font-size:0.95rem;font-weight:700;line-height:1.4;margin-bottom:0.5rem;flex:1;color:var(--text);">Ongoing Support</h3>
+              <p style="font-size:0.85rem;color:var(--muted);line-height:1.55;margin:0;">Monthly care plan with updates and security.</p>
             </div>
-            <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;margin:0;">Maintenance, updates, security, backups. Your site stays fast, safe, and current.</p>
-          </div>
+          </article>
 
         </div>
       </div>
