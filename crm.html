@@ -404,73 +404,80 @@
 
       <!-- FORMS -->
       <section id="tab-forms" class="tab">
-        <h1>Website <span class="fade">Forms</span></h1>
-        <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:2rem;">Share these forms on your website to capture customer inquiries and information.</p>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:1100px;">
-          <!-- CONTACT FORM -->
-          <div class="card">
-            <h3>📧 Contact Form</h3>
-            <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.5rem;">For general inquiries and questions</p>
-            <div class="form-group">
-              <label>Full Name *</label>
-              <input type="text" id="contact-name" placeholder="John Smith" />
-            </div>
-            <div class="form-group">
-              <label>Email *</label>
-              <input type="email" id="contact-email" placeholder="john@example.com" />
-            </div>
-            <div class="form-group">
-              <label>Phone</label>
-              <input type="tel" id="contact-phone" placeholder="02 1234 5678" />
-            </div>
-            <div class="form-group">
-              <label>Message *</label>
-              <textarea id="contact-message" rows="5" placeholder="Tell us what you need..." style="font-family:inherit;line-height:1.6"></textarea>
-            </div>
-            <button class="btn btn-primary" onclick="submitContactForm()" style="width:100%;">Submit Contact Form</button>
-          </div>
-
-          <!-- CUSTOMER INFO FORM -->
-          <div class="card">
-            <h3>🏢 Customer Information</h3>
-            <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.5rem;">For collecting detailed business info</p>
-            <div class="form-group">
-              <label>Business Name *</label>
-              <input type="text" id="customer-business" placeholder="Your Business" />
-            </div>
-            <div class="form-group">
-              <label>Contact Name *</label>
-              <input type="text" id="customer-contact" placeholder="Your Name" />
-            </div>
-            <div class="form-group">
-              <label>Email *</label>
-              <input type="email" id="customer-email" placeholder="contact@business.com" />
-            </div>
-            <div class="form-group">
-              <label>Phone *</label>
-              <input type="tel" id="customer-phone" placeholder="02 1234 5678" />
-            </div>
-            <div class="form-group">
-              <label>Website</label>
-              <input type="url" id="customer-website" placeholder="https://yoursite.com" />
-            </div>
-            <div class="form-group">
-              <label>Business Category</label>
-              <input type="text" id="customer-category" placeholder="e.g. Plumber, Cafe, Salon" />
-            </div>
-            <div class="form-group">
-              <label>Service Required</label>
-              <textarea id="customer-service" rows="3" placeholder="What service are you interested in?" style="font-family:inherit;line-height:1.6"></textarea>
-            </div>
-            <button class="btn btn-primary" onclick="submitCustomerForm()" style="width:100%;">Submit Customer Info</button>
-          </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
+          <h1>Website <span class="fade">Forms</span></h1>
+          <button class="btn btn-primary btn-sm" onclick="openNewFormModal()">+ Create Form</button>
         </div>
 
-        <!-- SUBMISSIONS LIST -->
-        <div style="margin-top:3rem;">
-          <h3>Recent Submissions</h3>
-          <div id="forms-submissions-list" style="display:grid;gap:1rem;margin-top:1rem;"></div>
+        <!-- FORMS GRID -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem;margin-bottom:3rem">
+
+          <!-- CONTACT FORM CARD -->
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+              <div>
+                <h3 style="margin-bottom:0.3rem">📧 Contact Form</h3>
+                <p style="font-size:0.75rem;color:var(--text-muted);margin:0">For general inquiries</p>
+              </div>
+              <div style="display:flex;gap:0.5rem">
+                <button class="btn btn-ghost btn-sm" onclick="copyEmbedCode('contact')" title="Copy embed code">📋</button>
+                <button class="btn btn-ghost btn-sm" onclick="openFormSettings('contact')" title="Settings">⚙️</button>
+              </div>
+            </div>
+            <div style="background:var(--surface2);padding:1rem;border-radius:6px;margin-bottom:1rem">
+              <p style="font-size:0.7rem;color:var(--text-muted);margin:0 0 0.5rem 0;text-transform:uppercase;letter-spacing:1px">Submissions</p>
+              <div style="font-family:'Orbitron',sans-serif;font-size:1.8rem;font-weight:900;color:var(--accent)">42</div>
+            </div>
+            <button class="btn btn-primary" style="width:100%;margin-bottom:0.5rem" onclick="switchTab('leads')">View Submissions →</button>
+            <button class="btn btn-ghost btn-sm" style="width:100%" onclick="copyEmbedCode('contact')">Copy Embed Code</button>
+          </div>
+
+          <!-- CUSTOMER INFO FORM CARD -->
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+              <div>
+                <h3 style="margin-bottom:0.3rem">🏢 Customer Info</h3>
+                <p style="font-size:0.75rem;color:var(--text-muted);margin:0">Detailed business info</p>
+              </div>
+              <div style="display:flex;gap:0.5rem">
+                <button class="btn btn-ghost btn-sm" onclick="copyEmbedCode('customer')" title="Copy embed code">📋</button>
+                <button class="btn btn-ghost btn-sm" onclick="openFormSettings('customer')" title="Settings">⚙️</button>
+              </div>
+            </div>
+            <div style="background:var(--surface2);padding:1rem;border-radius:6px;margin-bottom:1rem">
+              <p style="font-size:0.7rem;color:var(--text-muted);margin:0 0 0.5rem 0;text-transform:uppercase;letter-spacing:1px">Submissions</p>
+              <div style="font-family:'Orbitron',sans-serif;font-size:1.8rem;font-weight:900;color:#22c55e">28</div>
+            </div>
+            <button class="btn btn-primary" style="width:100%;margin-bottom:0.5rem" onclick="switchTab('leads')">View Submissions →</button>
+            <button class="btn btn-ghost btn-sm" style="width:100%" onclick="copyEmbedCode('customer')">Copy Embed Code</button>
+          </div>
+
+          <!-- PROJECT REQUEST FORM CARD -->
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+              <div>
+                <h3 style="margin-bottom:0.3rem">🚀 Project Request</h3>
+                <p style="font-size:0.75rem;color:var(--text-muted);margin:0">Project scope & budget</p>
+              </div>
+              <div style="display:flex;gap:0.5rem">
+                <button class="btn btn-ghost btn-sm" onclick="copyEmbedCode('project')" title="Copy embed code">📋</button>
+                <button class="btn btn-ghost btn-sm" onclick="openFormSettings('project')" title="Settings">⚙️</button>
+              </div>
+            </div>
+            <div style="background:var(--surface2);padding:1rem;border-radius:6px;margin-bottom:1rem">
+              <p style="font-size:0.7rem;color:var(--text-muted);margin:0 0 0.5rem 0;text-transform:uppercase;letter-spacing:1px">Submissions</p>
+              <div style="font-family:'Orbitron',sans-serif;font-size:1.8rem;font-weight:900;color:#60a5fa">15</div>
+            </div>
+            <button class="btn btn-primary" style="width:100%;margin-bottom:0.5rem" onclick="switchTab('leads')">View Submissions →</button>
+            <button class="btn btn-ghost btn-sm" style="width:100%" onclick="copyEmbedCode('project')">Copy Embed Code</button>
+          </div>
+
+        </div>
+
+        <!-- RECENT SUBMISSIONS -->
+        <div>
+          <h3 style="margin-bottom:1.5rem">📥 Recent Submissions</h3>
+          <div id="forms-submissions-list" style="display:grid;gap:1rem"></div>
           <div id="forms-empty-state" style="text-align:center;padding:2rem;color:var(--text-muted);">No submissions yet</div>
         </div>
       </section>
