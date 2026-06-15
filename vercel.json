@@ -4,6 +4,10 @@
   "public": false,
   "builds": [
     {
+      "src": "index.html",
+      "use": "@vercel/static"
+    },
+    {
       "src": "crm.html",
       "use": "@vercel/static"
     },
