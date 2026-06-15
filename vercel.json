@@ -1,13 +1,6 @@
 {
   "version": 2,
-  "public": false,
-  "buildCommand": "echo 'Static site - no build needed'",
-  "outputDirectory": ".",
   "routes": [
-    {
-      "src": "/(.*)\\.html$",
-      "dest": "/$1.html"
-    },
     {
       "src": "/crm",
       "dest": "/crm.html"
