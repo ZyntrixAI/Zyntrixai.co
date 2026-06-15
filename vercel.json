@@ -1,16 +1,12 @@
 {
   "version": 2,
   "public": false,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "."
-      }
-    }
-  ],
+  "buildCommand": "echo 'Static site - no build needed'",
   "routes": [
+    {
+      "src": "/(.*)\\.html$",
+      "dest": "/$1.html"
+    },
     {
       "src": "/crm",
       "dest": "/crm.html"
