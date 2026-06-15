@@ -1204,59 +1204,38 @@
         <p class="s-sub" style="margin:0 auto;">We design, build, and grow websites for Australian businesses. Clear services, real results, no jargon.</p>
       </div>
 
-      <!-- FEATURED SERVICES - SHARP CARDS WITH BULLETS -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:4rem;max-width:1200px;margin:0 auto 6rem;padding:0 5%;">
+      <!-- FEATURED SERVICES - BLOG CARD STYLE -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1100px;margin:0 auto 6rem;padding:0 5%;">
 
         <!-- DESIGN -->
-        <div style="display:flex;flex-direction:column;gap:2rem;align-items:center;text-align:center;">
-          <div style="display:flex;align-items:center;gap:0.5rem;justify-content:center;">
-            <span style="font-size:0.8rem;color:var(--blue);">●</span>
-            <h3 style="font-size:1.3rem;font-weight:800;color:#fff;margin:0;letter-spacing:-0.02em;">Web Design</h3>
-            <span style="font-size:0.8rem;color:var(--blue);">●</span>
+        <article class="blog-card glow-card" onclick="showPage('svc-design')" style="cursor:pointer;">
+          <div style="height:110px;overflow:hidden;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:3rem;background:rgba(138,43,226,0.06);">🎨</div>
+          <div style="padding:1.1rem 1.2rem;display:flex;flex-direction:column;flex:1;">
+            <span class="blog-cat" style="margin-bottom:0.5rem;color:rgba(138,43,226,0.8);">SERVICES</span>
+            <h3 style="font-size:0.95rem;font-weight:700;line-height:1.4;margin-bottom:0.5rem;flex:1;color:var(--text);">Web Design</h3>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.55;margin:0;">Beautiful, conversion-focused designs that captivate. Pixel-perfect layouts that sell.</p>
           </div>
-          <div style="border:2px solid rgba(255,255,255,0.4);border-radius:0;padding:2rem;width:100%;min-height:120px;display:flex;align-items:center;justify-content:center;">
-            <p style="font-size:0.95rem;color:var(--muted);line-height:1.8;margin:0;">Beautiful, conversion-focused designs. Pixel-perfect layouts that captivate and sell.</p>
-          </div>
-          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.5rem;width:100%;text-align:left;">
-            <li style="font-size:0.85rem;color:var(--muted);display:flex;gap:0.5rem;"><span style="color:var(--blue);">•</span> Custom responsive layouts</li>
-            <li style="font-size:0.85rem;color:var(--muted);display:flex;gap:0.5rem;"><span style="color:var(--blue);">•</span> Mobile-first design</li>
-            <li style="font-size:0.85rem;color:var(--muted);display:flex;gap:0.5rem;"><span style="color:var(--blue);">•</span> Fast load times</li>
-          </ul>
-        </div>
+        </article>
 
         <!-- DEVELOPMENT -->
-        <div style="display:flex;flex-direction:column;gap:2rem;align-items:center;text-align:center;">
-          <div style="display:flex;align-items:center;gap:0.5rem;justify-content:center;">
-            <span style="font-size:0.8rem;color:var(--blue);">●</span>
-            <h3 style="font-size:1.3rem;font-weight:800;color:#fff;margin:0;letter-spacing:-0.02em;">Lightning Fast Code</h3>
-            <span style="font-size:0.8rem;color:var(--blue);">●</span>
+        <article class="blog-card glow-card" onclick="showPage('svc-dev')" style="cursor:pointer;">
+          <div style="height:110px;overflow:hidden;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:3rem;background:rgba(0,200,255,0.06);">⚡</div>
+          <div style="padding:1.1rem 1.2rem;display:flex;flex-direction:column;flex:1;">
+            <span class="blog-cat" style="margin-bottom:0.5rem;">SERVICES</span>
+            <h3 style="font-size:0.95rem;font-weight:700;line-height:1.4;margin-bottom:0.5rem;flex:1;color:var(--text);">Lightning Fast Code</h3>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.55;margin:0;">Hand-coded, optimized for speed. 90+ Lighthouse, mobile-ready, secure.</p>
           </div>
-          <div style="border:2px solid rgba(255,255,255,0.4);border-radius:0;padding:2rem;width:100%;min-height:120px;display:flex;align-items:center;justify-content:center;">
-            <p style="font-size:0.95rem;color:var(--muted);line-height:1.8;margin:0;">Hand-coded & optimized. 90+ Lighthouse score. No templates, no bloat.</p>
-          </div>
-          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.5rem;width:100%;text-align:left;">
-            <li style="font-size:0.85rem;color:var(--muted);display:flex;gap:0.5rem;"><span style="color:var(--blue);">•</span> 90+ Lighthouse performance</li>
-            <li style="font-size:0.85rem;color:var(--muted);display:flex;gap:0.5rem;"><span style="color:var(--blue);">•</span> SEO optimized</li>
-            <li style="font-size:0.85rem;color:var(--muted);display:flex;gap:0.5rem;"><span style="color:var(--blue);">•</span> Security first</li>
-          </ul>
-        </div>
+        </article>
 
         <!-- ECOMMERCE -->
-        <div style="display:flex;flex-direction:column;gap:2rem;align-items:center;text-align:center;">
-          <div style="display:flex;align-items:center;gap:0.5rem;justify-content:center;">
-            <span style="font-size:0.8rem;color:var(--blue);">●</span>
-            <h3 style="font-size:1.3rem;font-weight:800;color:#fff;margin:0;letter-spacing:-0.02em;">Online Stores</h3>
-            <span style="font-size:0.8rem;color:var(--blue);">●</span>
+        <article class="blog-card glow-card" onclick="showPage('svc-ecommerce')" style="cursor:pointer;">
+          <div style="height:110px;overflow:hidden;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:3rem;background:rgba(76,175,80,0.06);">🛒</div>
+          <div style="padding:1.1rem 1.2rem;display:flex;flex-direction:column;flex:1;">
+            <span class="blog-cat" style="margin-bottom:0.5rem;color:rgba(76,175,80,0.8);">SERVICES</span>
+            <h3 style="font-size:0.95rem;font-weight:700;line-height:1.4;margin-bottom:0.5rem;flex:1;color:var(--text);">Online Stores</h3>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.55;margin:0;">Ready-to-sell stores with payments, inventory, checkout. Operational day one.</p>
           </div>
-          <div style="border:2px solid rgba(255,255,255,0.4);border-radius:0;padding:2rem;width:100%;min-height:120px;display:flex;align-items:center;justify-content:center;">
-            <p style="font-size:0.95rem;color:var(--muted);line-height:1.8;margin:0;">Ready-to-sell stores with payments, inventory, and checkout. Live in days.</p>
-          </div>
-          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.5rem;width:100%;text-align:left;">
-            <li style="font-size:0.85rem;color:var(--muted);display:flex;gap:0.5rem;"><span style="color:var(--blue);">•</span> Payment processing</li>
-            <li style="font-size:0.85rem;color:var(--muted);display:flex;gap:0.5rem;"><span style="color:var(--blue);">•</span> Inventory management</li>
-            <li style="font-size:0.85rem;color:var(--muted);display:flex;gap:0.5rem;"><span style="color:var(--blue);">•</span> Analytics & tracking</li>
-          </ul>
-        </div>
+        </article>
 
       </div>
 
@@ -1267,7 +1246,7 @@
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1.5rem;max-width:1100px;margin-left:auto;margin-right:auto;">
 
-          <article class="blog-card" style="cursor:pointer;" onclick="showPage('svc-seo')">
+          <article class="blog-card glow-card" style="cursor:pointer;" onclick="showPage('svc-seo')">
             <div style="height:110px;overflow:hidden;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:3rem;background:rgba(0,200,255,0.06);">🔍</div>
             <div style="padding:1.1rem 1.2rem;display:flex;flex-direction:column;flex:1;">
               <span class="blog-cat" style="margin-bottom:0.5rem;">SERVICES</span>
