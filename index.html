@@ -208,12 +208,12 @@
         margin-top: 3rem;
       }
       .hw-item {
-        border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius);
+        border: 2px solid rgba(255,255,255,0.4); border-radius: var(--radius);
         padding: 0; position: relative; background: transparent; overflow: hidden; cursor: pointer;
         height: 280px; transition: background 0.2s, border-color 0.2s;
         width: min(540px, 100%);
       }
-      .hw-item:hover { border-color: rgba(255,255,255,0.4); }
+      .hw-item:hover { border-color: rgba(255,255,255,0.7); }
       .hw-item:hover { opacity: 0.8; }
       .hw-thumb { width: 100%; height: 100%; overflow: hidden; }
       .hw-info { display: none; }
@@ -243,8 +243,8 @@
         display: grid; grid-template-columns: repeat(3, 1fr);
         gap: 1.2rem; margin-top: 3rem;
       }
-      .testi-card { border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius); padding: 1.4rem 1.5rem; position: relative; background: transparent; display: flex; flex-direction: column; transition: background 0.2s, border-color 0.2s; }
-      .testi-card:hover { border-color: rgba(255,255,255,0.4); }
+      .testi-card { border: 2px solid rgba(255,255,255,0.4); border-radius: var(--radius); padding: 1.4rem 1.5rem; position: relative; background: transparent; display: flex; flex-direction: column; transition: background 0.2s, border-color 0.2s; }
+      .testi-card:hover { border-color: rgba(255,255,255,0.7); }
       .testi-stars { font-size: 0.65rem; letter-spacing: 2px; color: var(--blue); margin-bottom: 0.7rem; font-family: monospace; }
       .testi-q { font-size: 0.82rem; color: rgba(237,237,237,0.75); line-height: 1.7; flex: 1; margin-bottom: 1rem; }
       .testi-name { font-size: 0.82rem; font-weight: 600; color: #f7f8f8; }
@@ -322,7 +322,7 @@
       }
       .svc-feature-list li::before { content: '↗'; color: var(--blue); font-size: 0.72rem; flex-shrink: 0; }
       .svc-price-card {
-        border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius);
+        border: 2px solid rgba(255,255,255,0.4); border-radius: var(--radius);
         padding: 2rem; position: relative; background: transparent; transition: background 0.2s, border-color 0.2s; position: sticky; top: 80px;
         transition: background 0.2s, border-color 0.2s;
       }
@@ -599,15 +599,15 @@
       .about-list li { display: flex; gap: 0.8rem; align-items: flex-start; font-size: 0.9rem; color: var(--muted); padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
       .about-list li::before { content: '▹'; color: var(--blue); flex-shrink: 0; }
       .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 2.5rem; }
-      .value-card { border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius); padding: 2rem 1.8rem; position: relative; background: transparent; text-align: center; transition: background 0.2s, border-color 0.2s; }
-      .value-card:hover { border-color: rgba(255,255,255,0.4); }
+      .value-card { border: 2px solid rgba(255,255,255,0.4); border-radius: var(--radius); padding: 2rem 1.8rem; position: relative; background: transparent; text-align: center; transition: background 0.2s, border-color 0.2s; }
+      .value-card:hover { border-color: rgba(255,255,255,0.7); }
       .value-num { font-size: 0.62rem; font-family: monospace; color: var(--blue); letter-spacing: 2px; opacity: 0.5; margin-bottom: 1.2rem; transition: opacity 0.2s; }
       .value-card:hover .value-num { opacity: 1; }
       .value-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; color: #f7f8f8; letter-spacing: -0.01em; }
       .value-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
       .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.2rem; margin-top: 2.5rem; }
-      .team-card { border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius); padding: 2rem 1.5rem; position: relative; background: transparent; text-align: center; transition: background 0.2s, border-color 0.2s; }
-      .team-card:hover { border-color: rgba(255,255,255,0.4); }
+      .team-card { border: 2px solid rgba(255,255,255,0.4); border-radius: var(--radius); padding: 2rem 1.5rem; position: relative; background: transparent; text-align: center; transition: background 0.2s, border-color 0.2s; }
+      .team-card:hover { border-color: rgba(255,255,255,0.7); }
       .team-num { font-size: 0.62rem; font-family: monospace; color: var(--blue); letter-spacing: 2px; opacity: 0.5; margin-bottom: 1.2rem; transition: opacity 0.2s; }
       .team-card:hover .team-num { opacity: 1; }
       .team-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: #f7f8f8; letter-spacing: -0.01em; }
@@ -633,7 +633,7 @@
         outline: none; transition: all 0.2s ease; width: 100%;
       }
       .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-        border-color: rgba(255,255,255,0.4); background: rgba(0,200,255,0.06); box-shadow: 0 0 12px rgba(0,200,255,0.2);
+        border-color: rgba(255,255,255,0.7); background: rgba(0,200,255,0.06); box-shadow: 0 0 12px rgba(0,200,255,0.2);
       }
       .form-group textarea { resize: vertical; min-height: 120px; }
       .form-group select option { background: #111; }
@@ -655,8 +655,8 @@
 
       /* ── PORTFOLIO ── */
       .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding: 0 5% 5rem; }
-      .project-card { border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius); padding: 0; position: relative; background: transparent; overflow: hidden; transition: background 0.2s, border-color 0.2s; cursor: pointer; }
-      .project-card:hover { border-color: rgba(255,255,255,0.4); }
+      .project-card { border: 2px solid rgba(255,255,255,0.4); border-radius: var(--radius); padding: 0; position: relative; background: transparent; overflow: hidden; transition: background 0.2s, border-color 0.2s; cursor: pointer; }
+      .project-card:hover { border-color: rgba(255,255,255,0.7); }
       .project-mockup { height: 190px; overflow: hidden; border-bottom: 1px solid var(--border); }
       .project-info { padding: 1.4rem; }
       .project-tag { display: inline-block; font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); border: 1px solid rgba(0,200,255,0.2); border-radius: 999px; padding: 0.2rem 0.7rem; margin-bottom: 0.7rem; }
@@ -669,8 +669,8 @@
 
       /* ── PRICING ── */
       .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 1.5rem; padding: 2rem 5% 5rem; align-items: start; }
-      .pricing-card { border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius); padding: 1.4rem 1.6rem; position: relative; background: transparent; transition: background 0.2s, border-color 0.2s; }
-      .pricing-card:hover { border-color: rgba(255,255,255,0.4); }
+      .pricing-card { border: 2px solid rgba(255,255,255,0.4); border-radius: var(--radius); padding: 1.4rem 1.6rem; position: relative; background: transparent; transition: background 0.2s, border-color 0.2s; }
+      .pricing-card:hover { border-color: rgba(255,255,255,0.7); }
       .pricing-card.featured { border-color: var(--blue); }
       .pricing-card.featured { border-color: var(--blue); }
       .pricing-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--blue); color: #000; font-size: 0.6rem; font-weight: 700; letter-spacing: 2px; padding: 3px 12px; border-radius: 999px; white-space: nowrap; }
@@ -752,8 +752,8 @@
 
       /* ── BLOG ── */
       .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding: 0 5% 4rem; }
-      .blog-card { border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius); padding: 0; position: relative; background: transparent; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; transition: background 0.2s, border-color 0.2s; }
-      .blog-card:hover { border-color: rgba(255,255,255,0.4); }
+      .blog-card { border: 2px solid rgba(255,255,255,0.4); border-radius: var(--radius); padding: 0; position: relative; background: transparent; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; transition: background 0.2s, border-color 0.2s; }
+      .blog-card:hover { border-color: rgba(255,255,255,0.7); }
       .blog-thumb { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.15); flex-direction: column; gap: 0.4rem; }
       .blog-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
       .blog-cat { display: inline-block; font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); margin-bottom: 0.6rem; align-self: flex-start; font-weight: 600; }
@@ -1209,7 +1209,7 @@
 
         <!-- DESIGN -->
         <div onclick="showPage('svc-design')" style="cursor:pointer;transition:all 0.3s;display:flex;flex-direction:column;gap:2rem;">
-          <div style="padding:2rem;border:1px solid rgba(255,255,255,0.2);border-radius:0px;background:transparent;transition:background 0.2s, border-color 0.2s;position:relative;" onmouseover="this.style.borderColor='rgba(255,255,255,0.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'">
+          <div style="padding:2rem;border:1px solid rgba(255,255,255,0.2);border-radius:12px;background:transparent;transition:background 0.2s, border-color 0.2s;position:relative;" onmouseover="this.style.borderColor='rgba(255,255,255,0.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'">
             <button class="btn-primary" onclick="event.stopPropagation();showPage('svc-design')" style="padding:0.7rem 1.2rem;font-size:0.8rem;width:100%;background:var(--blue);color:#000;">Explore Design →</button>
           </div>
           <div>
@@ -1220,7 +1220,7 @@
 
         <!-- DEVELOPMENT -->
         <div onclick="showPage('svc-dev')" style="cursor:pointer;transition:all 0.3s;display:flex;flex-direction:column;gap:2rem;">
-          <div style="padding:2rem;border:1px solid rgba(255,255,255,0.2);border-radius:0px;background:transparent;transition:background 0.2s, border-color 0.2s;position:relative;" onmouseover="this.style.borderColor='rgba(255,255,255,0.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'">
+          <div style="padding:2rem;border:1px solid rgba(255,255,255,0.2);border-radius:12px;background:transparent;transition:background 0.2s, border-color 0.2s;position:relative;" onmouseover="this.style.borderColor='rgba(255,255,255,0.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'">
             <button class="btn-primary" onclick="event.stopPropagation();showPage('svc-dev')" style="padding:0.7rem 1.2rem;font-size:0.8rem;width:100%;background:var(--blue);color:#000;">Explore Development →</button>
           </div>
           <div>
@@ -1231,7 +1231,7 @@
 
         <!-- ECOMMERCE -->
         <div onclick="showPage('svc-ecommerce')" style="cursor:pointer;transition:all 0.3s;display:flex;flex-direction:column;gap:2rem;">
-          <div style="padding:2rem;border:1px solid rgba(255,255,255,0.2);border-radius:0px;background:transparent;transition:background 0.2s, border-color 0.2s;position:relative;" onmouseover="this.style.borderColor='rgba(255,255,255,0.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'">
+          <div style="padding:2rem;border:1px solid rgba(255,255,255,0.2);border-radius:12px;background:transparent;transition:background 0.2s, border-color 0.2s;position:relative;" onmouseover="this.style.borderColor='rgba(255,255,255,0.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'">
             <button class="btn-outline" onclick="event.stopPropagation();showPage('svc-ecommerce')" style="padding:0.7rem 1.2rem;font-size:0.8rem;width:100%;border:2px solid rgba(76,175,80,0.4);color:rgba(76,175,80,0.9);transition:all 0.2s;" onmouseover="this.style.background='rgba(76,175,80,0.1)';this.style.borderColor='rgba(76,175,80,0.6)'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(76,175,80,0.4)'">Explore E-Commerce →</button>
           </div>
           <div>
@@ -2762,7 +2762,7 @@
         </div>
 
         <!-- INFO SECTION -->
-        <div style="margin-top:3rem;border:2px solid rgba(0,200,255,0.4);border-radius:0px;background:transparent;overflow:hidden;max-width:700px;margin-left:auto;margin-right:auto;box-shadow:0 0 20px rgba(0,200,255,0.15), inset 0 0 20px rgba(0,200,255,0.05);">
+        <div style="margin-top:3rem;border:2px solid rgba(0,200,255,0.4);border-radius:12px;background:transparent;overflow:hidden;max-width:700px;margin-left:auto;margin-right:auto;box-shadow:0 0 20px rgba(0,200,255,0.15), inset 0 0 20px rgba(0,200,255,0.05);">
           <div style="padding:2rem 2.2rem;border-bottom:1px solid var(--border);">
             <span class="s-eyebrow" style="margin-bottom:0.8rem;">What's Included</span>
             <h3 style="font-size:1.2rem;font-weight:700;color:#f7f8f8;text-transform:none;letter-spacing:-0.01em;margin-bottom:1rem;">Every Package Comes With</h3>
