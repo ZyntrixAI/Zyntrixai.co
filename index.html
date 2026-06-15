@@ -749,12 +749,12 @@
       .faq-a { display: none; font-size: 0.88rem; color: var(--muted); line-height: 1.7; padding-bottom: 1.2rem; }
 
       /* ── BLOG ── */
-      .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; padding: 0 5% 4rem; }
+      .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding: 0 5% 4rem; }
       .blog-card { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; cursor: pointer; display: flex; flex-direction: column; transition: border-color 0.2s, background 0.2s; background: transparent; }
       .blog-card:hover { border-color: var(--border-hover); }
       .blog-thumb { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; border-bottom: 1px solid var(--border); flex-direction: column; gap: 0.4rem; }
       .blog-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
-      .blog-cat { display: inline-block; font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); border: 1px solid rgba(0,200,255,0.2); border-radius: 999px; padding: 0.2rem 0.7rem; margin-bottom: 0.8rem; align-self: flex-start; }
+      .blog-cat { display: inline-block; font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); margin-bottom: 0.6rem; align-self: flex-start; font-weight: 600; }
       .blog-card h3 { font-size: 0.95rem; font-weight: 600; line-height: 1.4; margin-bottom: 0.6rem; }
       .blog-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; flex: 1; }
       .blog-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--muted); padding-top: 1rem; border-top: 1px solid var(--border); margin-top: 1rem; }
@@ -793,7 +793,7 @@
         .svc-price-card { position: static; }
         .home-process { grid-template-columns: 1fr 1fr; }
         .testi-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .blog-grid { grid-template-columns: 1fr 1fr; }
+        .blog-grid { grid-template-columns: repeat(2, 1fr); }
         .about-layout { gap: 3rem; }
         .svcs-full, .services-grid { grid-template-columns: 1fr 1fr; }
         .pricing-grid { grid-template-columns: 1fr 1fr; }
