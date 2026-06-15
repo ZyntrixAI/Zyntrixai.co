@@ -1204,54 +1204,70 @@
         <p class="s-sub" style="margin:0 auto;">We design, build, and grow websites for Australian businesses. Clear services, real results, no jargon.</p>
       </div>
 
-      <!-- FEATURED SERVICES - BLOG CARD STYLE -->
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1100px;margin:0 auto 6rem;padding:0 5%;">
+      <!-- FEATURED SERVICES - CLEAN CARD STYLE -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1100px;margin:0 auto 3rem;padding:0 5%;">
 
         <!-- DESIGN -->
         <article class="blog-card glow-card" onclick="showPage('svc-design')" style="cursor:pointer;">
-          <div style="height:110px;overflow:hidden;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:3rem;background:rgba(138,43,226,0.06);">🎨</div>
+          <div style="height:110px;overflow:hidden;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:3rem;background:transparent;">🎨</div>
           <div style="padding:1.1rem 1.2rem;display:flex;flex-direction:column;flex:1;">
-            <span class="blog-cat" style="margin-bottom:0.5rem;color:rgba(138,43,226,0.8);">SERVICES</span>
+            <span class="blog-cat" style="margin-bottom:0.5rem;">SERVICES</span>
             <h3 style="font-size:0.95rem;font-weight:700;line-height:1.4;margin-bottom:0.5rem;flex:1;color:var(--text);">Web Design</h3>
-            <p style="font-size:0.85rem;color:var(--muted);line-height:1.55;margin-bottom:0.8rem;">Beautiful, conversion-focused designs that captivate. Pixel-perfect layouts that sell.</p>
-            <ul style="list-style:none;margin:0;padding:0;font-size:0.8rem;color:var(--muted);display:flex;flex-direction:column;gap:0.3rem;">
-              <li>• Custom responsive layouts</li>
-              <li>• Mobile-first design</li>
-              <li>• Brand-aligned visuals</li>
-            </ul>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.55;margin:0;">Beautiful, conversion-focused designs that captivate.</p>
           </div>
         </article>
 
         <!-- DEVELOPMENT -->
         <article class="blog-card glow-card" onclick="showPage('svc-dev')" style="cursor:pointer;">
-          <div style="height:110px;overflow:hidden;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:3rem;background:rgba(0,200,255,0.06);">⚡</div>
+          <div style="height:110px;overflow:hidden;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:3rem;background:transparent;">⚡</div>
           <div style="padding:1.1rem 1.2rem;display:flex;flex-direction:column;flex:1;">
             <span class="blog-cat" style="margin-bottom:0.5rem;">SERVICES</span>
             <h3 style="font-size:0.95rem;font-weight:700;line-height:1.4;margin-bottom:0.5rem;flex:1;color:var(--text);">Lightning Fast Code</h3>
-            <p style="font-size:0.85rem;color:var(--muted);line-height:1.55;margin-bottom:0.8rem;">Hand-coded, optimized for speed. 90+ Lighthouse, mobile-ready, secure.</p>
-            <ul style="list-style:none;margin:0;padding:0;font-size:0.8rem;color:var(--muted);display:flex;flex-direction:column;gap:0.3rem;">
-              <li>• 90+ Lighthouse score</li>
-              <li>• Pure HTML/CSS/JS code</li>
-              <li>• Security-first approach</li>
-            </ul>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.55;margin:0;">Hand-coded, optimized for speed and performance.</p>
           </div>
         </article>
 
         <!-- ECOMMERCE -->
         <article class="blog-card glow-card" onclick="showPage('svc-ecommerce')" style="cursor:pointer;">
-          <div style="height:110px;overflow:hidden;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:3rem;background:rgba(76,175,80,0.06);">🛒</div>
+          <div style="height:110px;overflow:hidden;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:3rem;background:transparent;">🛒</div>
           <div style="padding:1.1rem 1.2rem;display:flex;flex-direction:column;flex:1;">
-            <span class="blog-cat" style="margin-bottom:0.5rem;color:rgba(76,175,80,0.8);">SERVICES</span>
+            <span class="blog-cat" style="margin-bottom:0.5rem;">SERVICES</span>
             <h3 style="font-size:0.95rem;font-weight:700;line-height:1.4;margin-bottom:0.5rem;flex:1;color:var(--text);">Online Stores</h3>
-            <p style="font-size:0.85rem;color:var(--muted);line-height:1.55;margin-bottom:0.8rem;">Ready-to-sell stores with payments, inventory, checkout. Operational day one.</p>
-            <ul style="list-style:none;margin:0;padding:0;font-size:0.8rem;color:var(--muted);display:flex;flex-direction:column;gap:0.3rem;">
-              <li>• Payment processing ready</li>
-              <li>• Inventory management</li>
-              <li>• Live in days, not months</li>
-            </ul>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.55;margin:0;">Ready-to-sell stores with payments and inventory.</p>
           </div>
         </article>
 
+      </div>
+
+      <!-- SERVICE DETAILS - BULLET POINTS -->
+      <div style="max-width:1100px;margin:0 auto 6rem;padding:0 5%;display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;">
+        <div>
+          <h4 style="font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.5px;">Web Design</h4>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.5rem;">
+            <li style="font-size:0.85rem;color:var(--muted);display:flex;gap:0.6rem;"><span style="color:var(--blue);flex-shrink:0;">•</span> Custom responsive layouts</li>
+            <li style="font-size:0.85rem;color:var(--muted);display:flex;gap:0.6rem;"><span style="color:var(--blue);flex-shrink:0;">•</span> Mobile-first design</li>
+            <li style="font-size:0.85rem;color:var(--muted);display:flex;gap:0.6rem;"><span style="color:var(--blue);flex-shrink:0;">•</span> Brand-aligned visuals</li>
+            <li style="font-size:0.85rem;color:var(--muted);display:flex;gap:0.6rem;"><span style="color:var(--blue);flex-shrink:0;">•</span> Conversion-focused UX</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.5px;">Lightning Fast Code</h4>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.5rem;">
+            <li style="font-size:0.85rem;color:var(--muted);display:flex;gap:0.6rem;"><span style="color:var(--blue);flex-shrink:0;">•</span> 90+ Lighthouse score</li>
+            <li style="font-size:0.85rem;color:var(--muted);display:flex;gap:0.6rem;"><span style="color:var(--blue);flex-shrink:0;">•</span> Pure HTML/CSS/JS code</li>
+            <li style="font-size:0.85rem;color:var(--muted);display:flex;gap:0.6rem;"><span style="color:var(--blue);flex-shrink:0;">•</span> Security-first approach</li>
+            <li style="font-size:0.85rem;color:var(--muted);display:flex;gap:0.6rem;"><span style="color:var(--blue);flex-shrink:0;">•</span> SEO optimized</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.5px;">Online Stores</h4>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.5rem;">
+            <li style="font-size:0.85rem;color:var(--muted);display:flex;gap:0.6rem;"><span style="color:var(--blue);flex-shrink:0;">•</span> Payment processing ready</li>
+            <li style="font-size:0.85rem;color:var(--muted);display:flex;gap:0.6rem;"><span style="color:var(--blue);flex-shrink:0;">•</span> Inventory management</li>
+            <li style="font-size:0.85rem;color:var(--muted);display:flex;gap:0.6rem;"><span style="color:var(--blue);flex-shrink:0;">•</span> Live in days, not months</li>
+            <li style="font-size:0.85rem;color:var(--muted);display:flex;gap:0.6rem;"><span style="color:var(--blue);flex-shrink:0;">•</span> Full checkout experience</li>
+          </ul>
+        </div>
       </div>
 
       <!-- ADDITIONAL SERVICES - TRANSPARENT & MINIMAL -->
