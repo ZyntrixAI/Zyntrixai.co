@@ -2067,7 +2067,7 @@
         <h1 class="s-title">Websites that<br>win customers</h1>
         <p class="s-sub">A professionally designed website that looks great, matches your brand, and turns visitors into enquiries.</p>
         <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
-          <button class="btn-primary" onclick="showPage('booking')">Get a Quote</button>
+          <button class="btn-primary" onclick="openQuoteFormModal()">Get a Quote</button>
           <button class="btn-outline" onclick="showPage('services')">All Services</button>
         </div>
       </div>
@@ -2123,7 +2123,7 @@
         <h1 class="s-title">Fast, reliable<br>websites</h1>
         <p class="s-sub">Clean code, lightning-fast load times, and a site that works perfectly on every device — built to last.</p>
         <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
-          <button class="btn-primary" onclick="showPage('booking')">Get a Quote</button>
+          <button class="btn-primary" onclick="openQuoteFormModal()">Get a Quote</button>
           <button class="btn-outline" onclick="showPage('services')">All Services</button>
         </div>
       </div>
@@ -2179,7 +2179,7 @@
         <h1 class="s-title">Sell online,<br>24/7</h1>
         <p class="s-sub">A fully set-up online store with payments, checkout, and product management — ready to take orders from day one.</p>
         <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
-          <button class="btn-primary" onclick="showPage('booking')">Get a Quote</button>
+          <button class="btn-primary" onclick="openQuoteFormModal()">Get a Quote</button>
           <button class="btn-outline" onclick="showPage('services')">All Services</button>
         </div>
       </div>
@@ -2235,7 +2235,7 @@
         <h1 class="s-title">More customers<br>finding you</h1>
         <p class="s-sub">We make sure your business shows up when local customers search for the services you offer — every month.</p>
         <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
-          <button class="btn-primary" onclick="showPage('booking')">Get a Quote</button>
+          <button class="btn-primary" onclick="openQuoteFormModal()">Get a Quote</button>
           <button class="btn-outline" onclick="showPage('services')">All Services</button>
         </div>
       </div>
@@ -2291,7 +2291,7 @@
         <h1 class="s-title">A brand people<br>remember</h1>
         <p class="s-sub">A professional logo and brand identity that makes your business look established and trustworthy from day one.</p>
         <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
-          <button class="btn-primary" onclick="showPage('booking')">Get a Quote</button>
+          <button class="btn-primary" onclick="openQuoteFormModal()">Get a Quote</button>
           <button class="btn-outline" onclick="showPage('services')">All Services</button>
         </div>
       </div>
@@ -2347,7 +2347,7 @@
         <h1 class="s-title">Your website,<br>always running</h1>
         <p class="s-sub">Monthly care plans that keep your site updated, secure, and running perfectly — without you lifting a finger.</p>
         <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
-          <button class="btn-primary" onclick="showPage('booking')">Get a Quote</button>
+          <button class="btn-primary" onclick="openQuoteFormModal()">Get a Quote</button>
           <button class="btn-outline" onclick="showPage('services')">All Services</button>
         </div>
       </div>
@@ -2821,6 +2821,46 @@
       </div>
     </div>
 
+    <!-- QUOTE FORM MODAL -->
+    <div class="modal-overlay" id="quoteFormModal" onclick="closeQuoteFormModal(event)">
+      <div class="modal-panel" style="max-width:640px">
+        <div class="modal-header">
+          <div>
+            <h2 style="margin:0;font-size:1.4rem">Get a Quote</h2>
+            <p style="margin:0.3rem 0 0;font-size:0.85rem;color:var(--muted)">Tell us about your project and we'll respond within 48 hours</p>
+          </div>
+          <button class="modal-close" onclick="closeQuoteFormModal(null)">✕</button>
+        </div>
+        <div class="modal-body">
+          <form id="quoteFormInModal" style="display:grid;gap:1rem">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+              <div class="form-group">
+                <label>First Name *</label>
+                <input type="text" placeholder="John" required />
+              </div>
+              <div class="form-group">
+                <label>Last Name *</label>
+                <input type="text" placeholder="Smith" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" placeholder="john@example.com" required />
+            </div>
+            <div class="form-group">
+              <label>Business Name *</label>
+              <input type="text" placeholder="Your Business Name" required />
+            </div>
+            <div class="form-group">
+              <label>Tell us about your project</label>
+              <textarea rows="5" placeholder="What's your goal? What challenges are you facing?" style="font-family:inherit"></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width:100%">Send Quote Request</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <!-- Neural Vortex WebGL -->
     <script>
       (function () {
@@ -3279,6 +3319,21 @@
 
       document.addEventListener('keydown', e => {
         if (e.key === 'Escape') closePricingModal(null);
+      });
+
+      function openQuoteFormModal() {
+        document.getElementById('quoteFormModal').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeQuoteFormModal(e) {
+        if (e && e.target !== document.getElementById('quoteFormModal')) return;
+        document.getElementById('quoteFormModal').classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeQuoteFormModal(null);
       });
 
       function toggleFaq(el) {
