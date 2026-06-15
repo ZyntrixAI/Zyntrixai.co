@@ -1,33 +1,6 @@
 {
-  "name": "zyntrix-leads",
   "version": 2,
   "public": false,
-  "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "crm.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "client-portal.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "*.js",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "*.css",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "*.png",
-      "use": "@vercel/static"
-    }
-  ],
   "routes": [
     {
       "src": "/crm",
