@@ -406,79 +406,202 @@
       <section id="tab-forms" class="tab">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
           <h1>Website <span class="fade">Forms</span></h1>
-          <button class="btn btn-primary btn-sm" onclick="openNewFormModal()">+ Create Form</button>
+          <div style="display:flex;gap:0.5rem">
+            <button class="btn btn-ghost btn-sm" onclick="switchFormsView('grid')" id="viewGridBtn">📊 All Forms</button>
+            <button class="btn btn-primary btn-sm" onclick="switchFormsView('contact')">📧 Contact</button>
+            <button class="btn btn-ghost btn-sm" onclick="switchFormsView('quote')">🎯 Get Quote</button>
+          </div>
         </div>
 
-        <!-- FORMS GRID -->
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem;margin-bottom:3rem">
+        <!-- FORMS GRID VIEW -->
+        <div id="formsGridView">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem;margin-bottom:3rem">
 
-          <!-- CONTACT FORM CARD -->
-          <div class="card">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
-              <div>
-                <h3 style="margin-bottom:0.3rem">📧 Contact Form</h3>
-                <p style="font-size:0.75rem;color:var(--text-muted);margin:0">For general inquiries</p>
+            <!-- CONTACT FORM CARD -->
+            <div class="card" style="cursor:pointer;transition:all 0.2s" onclick="switchFormsView('contact')" onmouseover="this.style.borderColor='rgba(0,200,255,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+                <div>
+                  <h3 style="margin-bottom:0.3rem">📧 Contact Form</h3>
+                  <p style="font-size:0.75rem;color:var(--text-muted);margin:0">General inquiries</p>
+                </div>
+                <span style="font-size:0.7rem;background:rgba(0,200,255,0.1);color:var(--accent);padding:0.3rem 0.8rem;border-radius:4px">Active</span>
               </div>
-              <div style="display:flex;gap:0.5rem">
-                <button class="btn btn-ghost btn-sm" onclick="copyEmbedCode('contact')" title="Copy embed code">📋</button>
-                <button class="btn btn-ghost btn-sm" onclick="openFormSettings('contact')" title="Settings">⚙️</button>
+              <div style="background:var(--surface2);padding:1rem;border-radius:6px;margin-bottom:1rem">
+                <p style="font-size:0.7rem;color:var(--text-muted);margin:0 0 0.5rem 0;text-transform:uppercase;letter-spacing:1px">Form Views</p>
+                <div style="font-family:'Orbitron',sans-serif;font-size:1.8rem;font-weight:900;color:var(--accent)">847</div>
               </div>
+              <button class="btn btn-primary" style="width:100%">Use This Form →</button>
             </div>
-            <div style="background:var(--surface2);padding:1rem;border-radius:6px;margin-bottom:1rem">
-              <p style="font-size:0.7rem;color:var(--text-muted);margin:0 0 0.5rem 0;text-transform:uppercase;letter-spacing:1px">Submissions</p>
-              <div style="font-family:'Orbitron',sans-serif;font-size:1.8rem;font-weight:900;color:var(--accent)">42</div>
+
+            <!-- QUOTE FORM CARD -->
+            <div class="card" style="cursor:pointer;transition:all 0.2s" onclick="switchFormsView('quote')" onmouseover="this.style.borderColor='rgba(0,200,255,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+                <div>
+                  <h3 style="margin-bottom:0.3rem">🎯 Get Quote</h3>
+                  <p style="font-size:0.75rem;color:var(--text-muted);margin:0">Project details & pricing</p>
+                </div>
+                <span style="font-size:0.7rem;background:rgba(0,200,255,0.1);color:var(--accent);padding:0.3rem 0.8rem;border-radius:4px">Active</span>
+              </div>
+              <div style="background:var(--surface2);padding:1rem;border-radius:6px;margin-bottom:1rem">
+                <p style="font-size:0.7rem;color:var(--text-muted);margin:0 0 0.5rem 0;text-transform:uppercase;letter-spacing:1px">Submissions</p>
+                <div style="font-family:'Orbitron',sans-serif;font-size:1.8rem;font-weight:900;color:#22c55e">156</div>
+              </div>
+              <button class="btn btn-primary" style="width:100%">Use This Form →</button>
             </div>
-            <button class="btn btn-primary" style="width:100%;margin-bottom:0.5rem" onclick="switchTab('leads')">View Submissions →</button>
-            <button class="btn btn-ghost btn-sm" style="width:100%" onclick="copyEmbedCode('contact')">Copy Embed Code</button>
+
+            <!-- BOOKING FORM CARD -->
+            <div class="card" style="cursor:pointer;transition:all 0.2s" onclick="switchFormsView('booking')" onmouseover="this.style.borderColor='rgba(0,200,255,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+                <div>
+                  <h3 style="margin-bottom:0.3rem">📅 Booking Form</h3>
+                  <p style="font-size:0.75rem;color:var(--text-muted);margin:0">Consultations & discovery</p>
+                </div>
+                <span style="font-size:0.7rem;background:rgba(0,200,255,0.1);color:var(--accent);padding:0.3rem 0.8rem;border-radius:4px">Active</span>
+              </div>
+              <div style="background:var(--surface2);padding:1rem;border-radius:6px;margin-bottom:1rem">
+                <p style="font-size:0.7rem;color:var(--text-muted);margin:0 0 0.5rem 0;text-transform:uppercase;letter-spacing:1px">Bookings</p>
+                <div style="font-family:'Orbitron',sans-serif;font-size:1.8rem;font-weight:900;color:#60a5fa">34</div>
+              </div>
+              <button class="btn btn-primary" style="width:100%">Use This Form →</button>
+            </div>
+
           </div>
 
-          <!-- CUSTOMER INFO FORM CARD -->
-          <div class="card">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
-              <div>
-                <h3 style="margin-bottom:0.3rem">🏢 Customer Info</h3>
-                <p style="font-size:0.75rem;color:var(--text-muted);margin:0">Detailed business info</p>
-              </div>
-              <div style="display:flex;gap:0.5rem">
-                <button class="btn btn-ghost btn-sm" onclick="copyEmbedCode('customer')" title="Copy embed code">📋</button>
-                <button class="btn btn-ghost btn-sm" onclick="openFormSettings('customer')" title="Settings">⚙️</button>
-              </div>
-            </div>
-            <div style="background:var(--surface2);padding:1rem;border-radius:6px;margin-bottom:1rem">
-              <p style="font-size:0.7rem;color:var(--text-muted);margin:0 0 0.5rem 0;text-transform:uppercase;letter-spacing:1px">Submissions</p>
-              <div style="font-family:'Orbitron',sans-serif;font-size:1.8rem;font-weight:900;color:#22c55e">28</div>
-            </div>
-            <button class="btn btn-primary" style="width:100%;margin-bottom:0.5rem" onclick="switchTab('leads')">View Submissions →</button>
-            <button class="btn btn-ghost btn-sm" style="width:100%" onclick="copyEmbedCode('customer')">Copy Embed Code</button>
+          <!-- RECENT SUBMISSIONS -->
+          <div>
+            <h3 style="margin-bottom:1.5rem">📥 Recent Form Submissions</h3>
+            <div id="forms-submissions-list" style="display:grid;gap:1rem"></div>
+            <div id="forms-empty-state" style="text-align:center;padding:2rem;color:var(--text-muted);">No submissions yet</div>
           </div>
-
-          <!-- PROJECT REQUEST FORM CARD -->
-          <div class="card">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
-              <div>
-                <h3 style="margin-bottom:0.3rem">🚀 Project Request</h3>
-                <p style="font-size:0.75rem;color:var(--text-muted);margin:0">Project scope & budget</p>
-              </div>
-              <div style="display:flex;gap:0.5rem">
-                <button class="btn btn-ghost btn-sm" onclick="copyEmbedCode('project')" title="Copy embed code">📋</button>
-                <button class="btn btn-ghost btn-sm" onclick="openFormSettings('project')" title="Settings">⚙️</button>
-              </div>
-            </div>
-            <div style="background:var(--surface2);padding:1rem;border-radius:6px;margin-bottom:1rem">
-              <p style="font-size:0.7rem;color:var(--text-muted);margin:0 0 0.5rem 0;text-transform:uppercase;letter-spacing:1px">Submissions</p>
-              <div style="font-family:'Orbitron',sans-serif;font-size:1.8rem;font-weight:900;color:#60a5fa">15</div>
-            </div>
-            <button class="btn btn-primary" style="width:100%;margin-bottom:0.5rem" onclick="switchTab('leads')">View Submissions →</button>
-            <button class="btn btn-ghost btn-sm" style="width:100%" onclick="copyEmbedCode('project')">Copy Embed Code</button>
-          </div>
-
         </div>
 
-        <!-- RECENT SUBMISSIONS -->
-        <div>
-          <h3 style="margin-bottom:1.5rem">📥 Recent Submissions</h3>
-          <div id="forms-submissions-list" style="display:grid;gap:1rem"></div>
-          <div id="forms-empty-state" style="text-align:center;padding:2rem;color:var(--text-muted);">No submissions yet</div>
+        <!-- CONTACT FORM VIEW -->
+        <div id="formsContactView" style="display:none">
+          <button class="btn btn-ghost btn-sm" onclick="switchFormsView('grid')" style="margin-bottom:1.5rem">← Back to All Forms</button>
+          <div class="card" style="max-width:700px;margin:0 auto">
+            <h2 style="margin-bottom:1.5rem">📧 Contact Form</h2>
+            <form style="display:grid;gap:1.2rem">
+              <div class="form-group">
+                <label>Name *</label>
+                <input type="text" placeholder="John Smith" required />
+              </div>
+              <div class="form-group">
+                <label>Email *</label>
+                <input type="email" placeholder="john@example.com" required />
+              </div>
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" placeholder="04XX XXX XXX" />
+              </div>
+              <div class="form-group">
+                <label>Subject *</label>
+                <select required>
+                  <option value="">Select a subject</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="website">Website Design</option>
+                  <option value="support">Support</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Message *</label>
+                <textarea rows="6" placeholder="Tell us what you need..." required></textarea>
+              </div>
+              <button class="btn btn-primary" style="width:100%">Send Message</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- QUOTE FORM VIEW -->
+        <div id="formsQuoteView" style="display:none">
+          <button class="btn btn-ghost btn-sm" onclick="switchFormsView('grid')" style="margin-bottom:1.5rem">← Back to All Forms</button>
+          <div class="card" style="max-width:700px;margin:0 auto">
+            <h2 style="margin-bottom:1.5rem">🎯 Get a Quote</h2>
+            <form style="display:grid;gap:1.2rem">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+                <div class="form-group">
+                  <label>First Name *</label>
+                  <input type="text" placeholder="John" required />
+                </div>
+                <div class="form-group">
+                  <label>Last Name *</label>
+                  <input type="text" placeholder="Smith" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Business Name *</label>
+                <input type="text" placeholder="Your Business" required />
+              </div>
+              <div class="form-group">
+                <label>Email *</label>
+                <input type="email" placeholder="john@example.com" required />
+              </div>
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" placeholder="04XX XXX XXX" />
+              </div>
+              <div class="form-group">
+                <label>Services Interested In</label>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem">
+                  <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;text-transform:none;letter-spacing:0"><input type="checkbox" /> Web Design</label>
+                  <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;text-transform:none;letter-spacing:0"><input type="checkbox" /> Development</label>
+                  <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;text-transform:none;letter-spacing:0"><input type="checkbox" /> E-Commerce</label>
+                  <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;text-transform:none;letter-spacing:0"><input type="checkbox" /> SEO</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Tell Us About Your Project</label>
+                <textarea rows="5" placeholder="What's your goal? What challenges are you facing?" style="min-height:100px"></textarea>
+              </div>
+              <button class="btn btn-primary" style="width:100%">Send Quote Request</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- BOOKING FORM VIEW -->
+        <div id="formsBookingView" style="display:none">
+          <button class="btn btn-ghost btn-sm" onclick="switchFormsView('grid')" style="margin-bottom:1.5rem">← Back to All Forms</button>
+          <div class="card" style="max-width:700px;margin:0 auto">
+            <h2 style="margin-bottom:1.5rem">📅 Book a Call</h2>
+            <form style="display:grid;gap:1.2rem">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+                <div class="form-group">
+                  <label>First Name *</label>
+                  <input type="text" placeholder="John" required />
+                </div>
+                <div class="form-group">
+                  <label>Last Name *</label>
+                  <input type="text" placeholder="Smith" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Email *</label>
+                <input type="email" placeholder="john@example.com" required />
+              </div>
+              <div class="form-group">
+                <label>Phone *</label>
+                <input type="tel" placeholder="04XX XXX XXX" required />
+              </div>
+              <div class="form-group">
+                <label>Preferred Date *</label>
+                <input type="date" required />
+              </div>
+              <div class="form-group">
+                <label>Preferred Time *</label>
+                <select required>
+                  <option value="">Select a time</option>
+                  <option value="morning">9:00 AM – 12:00 PM</option>
+                  <option value="afternoon">12:00 PM – 3:00 PM</option>
+                  <option value="late">3:00 PM – 5:00 PM</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>What Would You Like to Discuss?</label>
+                <textarea rows="4" placeholder="Tell us what's on your mind..."></textarea>
+              </div>
+              <button class="btn btn-primary" style="width:100%">Book Call</button>
+            </form>
+          </div>
         </div>
       </section>
 
@@ -1035,6 +1158,27 @@
       </div>
     </div>
   </div>
+
+  <script>
+    function switchFormsView(view) {
+      // Hide all views
+      document.getElementById('formsGridView').style.display = 'none';
+      document.getElementById('formsContactView').style.display = 'none';
+      document.getElementById('formsQuoteView').style.display = 'none';
+      document.getElementById('formsBookingView').style.display = 'none';
+
+      // Show selected view
+      if (view === 'grid') {
+        document.getElementById('formsGridView').style.display = 'block';
+      } else if (view === 'contact') {
+        document.getElementById('formsContactView').style.display = 'block';
+      } else if (view === 'quote') {
+        document.getElementById('formsQuoteView').style.display = 'block';
+      } else if (view === 'booking') {
+        document.getElementById('formsBookingView').style.display = 'block';
+      }
+    }
+  </script>
 
 </body>
 </html>
