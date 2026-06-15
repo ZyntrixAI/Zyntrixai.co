@@ -1,22 +1,26 @@
-/* Root variables - Dark Theme with Cyan Accent */
+/* Root variables - ZyntrixAI Style */
 :root {
+  --blue: #00c8ff;
+  --bg: #08090a;
+  --text: #f7f8f8;
+  --muted: #8a8f98;
+  --muted2: #c8c8c8;
+  --border: #23252a;
+  --card-bg: #0f1011;
+  --card-hover: #131416;
+  --border-hover: #323334;
+  --radius: 6px;
+
   --accent: #00c8ff;
   --accent-dark: #00a8d9;
   --gold: #00c8ff;
-  --bg: #0a0e1a;
-  --bg-secondary: #0f1420;
-  --bg-tertiary: #141929;
-  --text: #ffffff;
-  --text-secondary: #e0e0e0;
-  --text-muted: #a0a0a0;
-  --text-muted2: #808080;
-  --border: rgba(0,200,255,.15);
+  --bg-secondary: #0f1011;
+  --bg-tertiary: #131416;
+  --text-secondary: #c8c8c8;
+  --text-muted: #8a8f98;
+  --text-muted2: #c8c8c8;
   --border-light: rgba(0,200,255,.25);
-  --card-bg: #0f1420;
-  --card-hover: #141929;
-  --border-hover: #00c8ff;
-  --radius: 8px;
-  --surface2: #0a0e1a;
+  --surface2: #08090a;
 }
 
 * {
@@ -33,12 +37,15 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Orbitron', system-ui, -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.7;
   overflow-x: hidden;
+  letter-spacing: 0.03em;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "cv01","ss03";
 }
 
 /* Layout */
@@ -87,12 +94,13 @@ body {
   align-items: center;
   gap: 0.5rem;
   font-family: 'Orbitron', sans-serif;
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--accent);
-  letter-spacing: 2px;
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 4px;
   margin-bottom: 1.5rem;
   padding: 0.5rem 0.8rem;
+  user-select: none;
 }
 
 .logo span {
@@ -115,27 +123,28 @@ nav {
   padding: 0.65rem 0.9rem;
   background: transparent;
   border: none;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  font-weight: 400;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
   text-align: left;
-  font-family: 'Inter', sans-serif;
-  border-radius: 8px;
+  font-family: 'Orbitron', sans-serif;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.7);
 }
 
 .nav-btn:hover {
   background: rgba(0,200,255,.08);
-  color: var(--text);
+  color: #fff;
 }
 
 .nav-btn.active {
-  background: rgba(0,200,255,.15);
-  color: var(--text);
+  background: rgba(0,200,255,.12);
+  color: #fff;
   border: 1px solid rgba(0,200,255,.3);
   font-weight: 500;
 }
