@@ -264,20 +264,18 @@
       /* ── HOME: PROCESS STEPS (kaev.ai 1px grid) ── */
       .home-process {
         display: grid; grid-template-columns: repeat(4, 1fr);
-        gap: 1px; background: var(--border);
-        border: 1px solid var(--border); border-radius: var(--radius);
-        overflow: hidden; margin-top: 3rem;
+        gap: 2rem; background: transparent;
+        border: none; border-radius: var(--radius);
+        overflow: visible; margin-top: 3rem;
       }
-      .hp-step { background: var(--card-bg); padding: 1.8rem 1.4rem; transition: background 0.2s; }
-      .hp-step:hover { background: var(--card-hover); }
+      .hp-step { background: #1a1a1a; padding: 2rem 1.8rem; transition: background 0.2s; border: 2px solid #ffffff; text-align: center; }
+      .hp-step:hover { background: #333333; }
       .hp-num {
-        font-size: 0.62rem; letter-spacing: 2px; color: #ffffff;
-        opacity: 0.45; margin-bottom: 1rem; font-weight: 700; font-family: monospace;
-        transition: opacity 0.2s;
+        display: none;
       }
       .hp-step:hover .hp-num { opacity: 1; }
-      .hp-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.6rem; color: #f7f8f8; margin-top: 0.8rem; }
-      .hp-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
+      .hp-title { font-size: 1rem; font-weight: 600; margin-bottom: 1rem; color: #ffffff; margin-top: 0; }
+      .hp-desc { font-size: 0.85rem; color: #ffffff; line-height: 1.7; }
 
       /* ── TESTIMONIALS ── */
       .testi-grid {
