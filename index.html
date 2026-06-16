@@ -425,8 +425,20 @@
 
       /* ── BLOG CARDS ── */
       .blog-grid {
-        display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+        display: grid; grid-template-columns: repeat(2, 1fr);
         gap: 2rem; margin-top: 3rem;
+      }
+      .blog-item {
+        display: flex; flex-direction: column;
+      }
+      .blog-bullets {
+        list-style: none; margin-top: 1rem; padding-left: 0;
+      }
+      .blog-bullets li {
+        font-size: 0.85rem; color: #555555; line-height: 1.8; display: flex; align-items: flex-start;
+      }
+      .blog-bullets li::before {
+        content: '•'; color: #333333; margin-right: 0.8rem; font-weight: bold;
       }
       .blog-card {
         background: #cccccc; border: 1px solid #ffffff; border-radius: 0;
@@ -973,46 +985,82 @@
       <section class="section">
         <div class="section-inner">
           <div class="blog-grid">
-            <div class="blog-card">
-              <div class="blog-icon">🎨</div>
-              <h3 class="blog-title">The Art of Web Design</h3>
-              <p class="blog-excerpt">Modern web design combines aesthetics with functionality. We focus on creating visually stunning websites that don't sacrifice performance or user experience. Every pixel counts.</p>
-              <div class="blog-read">Read more →</div>
+            <div class="blog-item">
+              <div class="blog-card">
+                <h3 class="blog-title">The Art of Web Design</h3>
+                <p class="blog-excerpt">Modern web design combines aesthetics with functionality. We focus on creating visually stunning websites that don't sacrifice performance or user experience. Every pixel counts.</p>
+                <div class="blog-read">Read more →</div>
+              </div>
+              <ul class="blog-bullets">
+                <li>Aesthetics with functionality</li>
+                <li>Visually stunning designs</li>
+                <li>User experience focused</li>
+              </ul>
             </div>
 
-            <div class="blog-card">
-              <div class="blog-icon">⚡</div>
-              <h3 class="blog-title">Performance Optimization</h3>
-              <p class="blog-excerpt">Speed matters. Sites that load in under 3 seconds have 40% higher conversion rates. We hand-code every project to achieve 92+ Lighthouse scores and lightning-fast load times.</p>
-              <div class="blog-read">Read more →</div>
+            <div class="blog-item">
+              <div class="blog-card">
+                <h3 class="blog-title">Performance Optimization</h3>
+                <p class="blog-excerpt">Speed matters. Sites that load in under 3 seconds have 40% higher conversion rates. We hand-code every project to achieve 92+ Lighthouse scores and lightning-fast load times.</p>
+                <div class="blog-read">Read more →</div>
+              </div>
+              <ul class="blog-bullets">
+                <li>92+ Lighthouse scores</li>
+                <li>Lightning-fast load times</li>
+                <li>Hand-coded optimization</li>
+              </ul>
             </div>
 
-            <div class="blog-card">
-              <div class="blog-icon">📱</div>
-              <h3 class="blog-title">Mobile-First Design</h3>
-              <p class="blog-excerpt">Over 60% of web traffic comes from mobile devices. We design every website mobile-first, ensuring your site looks perfect and functions flawlessly on all screen sizes.</p>
-              <div class="blog-read">Read more →</div>
+            <div class="blog-item">
+              <div class="blog-card">
+                <h3 class="blog-title">Mobile-First Design</h3>
+                <p class="blog-excerpt">Over 60% of web traffic comes from mobile devices. We design every website mobile-first, ensuring your site looks perfect and functions flawlessly on all screen sizes.</p>
+                <div class="blog-read">Read more →</div>
+              </div>
+              <ul class="blog-bullets">
+                <li>60%+ mobile traffic</li>
+                <li>Mobile-first approach</li>
+                <li>All screen sizes covered</li>
+              </ul>
             </div>
 
-            <div class="blog-card">
-              <div class="blog-icon">🔍</div>
-              <h3 class="blog-title">SEO Fundamentals</h3>
-              <p class="blog-excerpt">Good design means nothing if nobody can find you. Our websites are built with SEO best practices from day one—clean HTML, fast load times, and semantic structure.</p>
-              <div class="blog-read">Read more →</div>
+            <div class="blog-item">
+              <div class="blog-card">
+                <h3 class="blog-title">SEO Fundamentals</h3>
+                <p class="blog-excerpt">Good design means nothing if nobody can find you. Our websites are built with SEO best practices from day one—clean HTML, fast load times, and semantic structure.</p>
+                <div class="blog-read">Read more →</div>
+              </div>
+              <ul class="blog-bullets">
+                <li>SEO best practices</li>
+                <li>Clean semantic HTML</li>
+                <li>Search engine optimized</li>
+              </ul>
             </div>
 
-            <div class="blog-card">
-              <div class="blog-icon">💡</div>
-              <h3 class="blog-title">User Experience Strategy</h3>
-              <p class="blog-excerpt">Great UX isn't just about looking good—it's about making it easy for visitors to find what they need and take action. Conversion-focused design is our foundation.</p>
-              <div class="blog-read">Read more →</div>
+            <div class="blog-item">
+              <div class="blog-card">
+                <h3 class="blog-title">User Experience Strategy</h3>
+                <p class="blog-excerpt">Great UX isn't just about looking good—it's about making it easy for visitors to find what they need and take action. Conversion-focused design is our foundation.</p>
+                <div class="blog-read">Read more →</div>
+              </div>
+              <ul class="blog-bullets">
+                <li>Conversion-focused design</li>
+                <li>Intuitive navigation</li>
+                <li>Action-driven UX</li>
+              </ul>
             </div>
 
-            <div class="blog-card">
-              <div class="blog-icon">🚀</div>
-              <h3 class="blog-title">From Concept to Launch</h3>
-              <p class="blog-excerpt">Building a website involves discovery, design, development, testing, and launch. We guide you through each step, ensuring your project launches on time and exceeds expectations.</p>
-              <div class="blog-read">Read more →</div>
+            <div class="blog-item">
+              <div class="blog-card">
+                <h3 class="blog-title">From Concept to Launch</h3>
+                <p class="blog-excerpt">Building a website involves discovery, design, development, testing, and launch. We guide you through each step, ensuring your project launches on time and exceeds expectations.</p>
+                <div class="blog-read">Read more →</div>
+              </div>
+              <ul class="blog-bullets">
+                <li>Full project lifecycle</li>
+                <li>On-time delivery</li>
+                <li>Exceeds expectations</li>
+              </ul>
             </div>
           </div>
         </div>
