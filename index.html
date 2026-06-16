@@ -21,8 +21,8 @@
         --muted:   #555555;
         --muted2:  #1a1a1a;
         --border:  #999999;
-        --card-bg: #cccccc;
-        --card-hover: #b3b3b3;
+        --card-bg: #999999;
+        --card-hover: #777777;
         --border-hover: #888888;
         --radius:  6px;
       }
@@ -178,16 +178,16 @@
       .home-svc-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-        gap: 1px; background: #999999;
-        border: 1px solid #999999; margin-top: 3rem;
+        gap: 2rem; background: transparent;
+        border: none; margin-top: 3rem;
       }
       .svc-card {
-        background: #cccccc; padding: 1.6rem 1.4rem;
+        background: #999999; padding: 1.6rem 1.4rem;
         display: flex; flex-direction: column; align-items: center; text-align: center;
         cursor: pointer; transition: background 0.2s;
         border: none; border-radius: 0;
       }
-      .svc-card:hover { background: #b3b3b3; }
+      .svc-card:hover { background: #777777; }
       .svc-num {
         font-size: 0.65rem; font-weight: 700; letter-spacing: 2px;
         color: #ffffff; opacity: 0.5; font-family: monospace;
@@ -205,13 +205,13 @@
       .animated-cards-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-        gap: 3rem; margin-top: 3rem;
+        gap: 4rem; margin-top: 3rem;
       }
       .animated-card-wrapper {
         display: flex; flex-direction: column; align-items: center; text-align: center;
       }
       .animated-card {
-        background: #cccccc; padding: 2rem 1.8rem;
+        background: #999999; padding: 2rem 1.8rem;
         border: 2px solid #666666; border-radius: 0;
         box-shadow: 0 0 12px rgba(255,255,255,0.15), inset 0 0 12px rgba(255,255,255,0.05);
         display: flex; flex-direction: column; align-items: center; text-align: center;
@@ -318,13 +318,13 @@
       /* ── PRICING CARDS ── */
       .pricing-grid {
         display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-        gap: 3rem 2rem; margin-top: 3rem;
+        gap: 4rem 3rem; margin-top: 3rem;
       }
       .pricing-item {
         display: flex; flex-direction: column; align-items: center;
       }
       .pricing-card {
-        background: #cccccc; border: 1px solid #ffffff; border-radius: 0;
+        background: #999999; border: 1px solid #ffffff; border-radius: 0;
         box-shadow: 0 0 12px rgba(255,255,255,0.15), inset 0 0 12px rgba(255,255,255,0.05);
         padding: 1.8rem 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center;
         width: 100%; transition: all 0.3s; animation: glowPulse 3s ease-in-out infinite;
@@ -426,7 +426,7 @@
       /* ── BLOG CARDS ── */
       .blog-grid {
         display: grid; grid-template-columns: repeat(2, 1fr);
-        gap: 2rem; margin-top: 3rem;
+        gap: 3rem; margin-top: 3rem;
       }
       .blog-item {
         display: flex; flex-direction: column;
@@ -441,7 +441,7 @@
         content: '•'; color: #333333; margin-right: 0.8rem; font-weight: bold;
       }
       .blog-card {
-        background: #cccccc; border: 1px solid #ffffff; border-radius: 0;
+        background: #999999; border: 1px solid #ffffff; border-radius: 0;
         box-shadow: 0 0 12px rgba(255,255,255,0.15), inset 0 0 12px rgba(255,255,255,0.05);
         padding: 2rem; display: flex; flex-direction: column; transition: all 0.3s;
         animation: glowPulse 3s ease-in-out infinite;
