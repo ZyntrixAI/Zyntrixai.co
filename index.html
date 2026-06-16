@@ -56,34 +56,33 @@
         position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
         display: flex; align-items: center; justify-content: space-between;
         padding: 0 5%; height: 56px;
-        background: rgba(8,9,10,0); backdrop-filter: none;
-        border-bottom: 1px solid transparent;
+        background: #1a1a1a; backdrop-filter: none;
+        border-bottom: 1px solid #333333;
         transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s;
       }
       nav.scrolled {
-        background: rgba(8,9,10,0.85); backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px); border-bottom-color: var(--border);
+        background: #1a1a1a; backdrop-filter: none;
+        -webkit-backdrop-filter: none; border-bottom-color: #333333;
       }
       .nav-logo {
         font-family: 'Orbitron', sans-serif; font-size: 0.9rem; font-weight: 900;
-        letter-spacing: 4px; color: #fff; cursor: pointer; user-select: none;
+        letter-spacing: 4px; color: #ffffff; cursor: pointer; user-select: none;
       }
       .nav-links { display: flex; align-items: center; gap: 1.8rem; list-style: none; }
       .nav-links a {
-        font-size: 0.82rem; font-weight: 500; color: var(--muted);
+        font-size: 0.82rem; font-weight: 500; color: #cccccc;
         transition: color 0.15s; cursor: pointer;
-        text-shadow: 0 1px 8px rgba(0,0,0,0.7);
       }
-      .nav-links a:hover, .nav-links a.active { color: #fff; }
+      .nav-links a:hover, .nav-links a.active { color: #ffffff; }
       .nav-cta {
         padding: 0.45rem 1.2rem;
-        background: #999999; backdrop-filter: blur(12px);
-        border: 1px solid #888888;
-        color: #333333; border-radius: 999px; font-size: 0.78rem;
+        background: #ffffff; backdrop-filter: none;
+        border: 1px solid #ffffff;
+        color: #1a1a1a; border-radius: 999px; font-size: 0.78rem;
         font-weight: 500; cursor: pointer; transition: all 0.2s;
         white-space: nowrap;
       }
-      .nav-cta:hover { background: #777777; border-color: #666666; color: #333333; }
+      .nav-cta:hover { background: #cccccc; border-color: #cccccc; color: #1a1a1a; }
       .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
       .hamburger span { display: block; width: 22px; height: 1.5px; background: #fff; border-radius: 1px; transition: 0.25s; }
 
