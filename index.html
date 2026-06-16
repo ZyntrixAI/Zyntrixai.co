@@ -752,8 +752,8 @@
 
       /* ── BLOG ── */
       .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding: 0 5% 4rem; }
-      .blog-card { border: 2px solid rgba(255,255,255,0.4); border-radius: var(--radius); padding: 0; position: relative; background: transparent; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; transition: background 0.2s, border-color 0.2s; }
-      .blog-card:hover { border-color: rgba(255,255,255,0.7); }
+      .blog-card { border: 2px solid rgba(255,255,255,0.4); border-radius: var(--radius); padding: 0; position: relative; background: transparent; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; transition: background 0.2s, border-color 0.2s; box-shadow: none !important; }
+      .blog-card:hover { border-color: rgba(255,255,255,0.7); background: transparent; }
       .blog-thumb { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; flex-direction: column; gap: 0.4rem; }
       .blog-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
       .blog-cat { display: inline-block; font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); margin-bottom: 0.6rem; align-self: flex-start; font-weight: 600; }
@@ -1284,7 +1284,7 @@
 
           <article class="blog-card" style="cursor:pointer;" onclick="showPage('svc-branding')">
             <div style="padding:1.5rem 1.2rem;display:flex;flex-direction:column;flex:1;text-align:center;">
-              <span class="blog-cat" style="margin-bottom:0.5rem;color:rgba(138,43,226,0.8);">SERVICES</span>
+              <span class="blog-cat" style="margin-bottom:0.5rem;">SERVICES</span>
               <h3 style="font-size:0.95rem;font-weight:700;line-height:1.4;margin-bottom:0.5rem;flex:1;color:var(--text);">Logo &amp; Branding</h3>
               <p style="font-size:0.85rem;color:var(--muted);line-height:1.55;margin:0;">Full identity system with guidelines and deliverables.</p>
             </div>
@@ -1292,7 +1292,7 @@
 
           <article class="blog-card" onclick="showPage('svc-maintenance')" style="cursor:pointer;">
             <div style="padding:1.5rem 1.2rem;display:flex;flex-direction:column;flex:1;text-align:center;">
-              <span class="blog-cat" style="margin-bottom:0.5rem;color:rgba(76,175,80,0.8);">SERVICES</span>
+              <span class="blog-cat" style="margin-bottom:0.5rem;">SERVICES</span>
               <h3 style="font-size:0.95rem;font-weight:700;line-height:1.4;margin-bottom:0.5rem;flex:1;color:var(--text);">Ongoing Support</h3>
               <p style="font-size:0.85rem;color:var(--muted);line-height:1.55;margin:0;">Monthly care plan with updates and security.</p>
             </div>
