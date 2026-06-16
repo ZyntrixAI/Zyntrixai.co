@@ -30,7 +30,7 @@
       html { scroll-behavior: smooth; }
       body {
         font-family: 'Orbitron', system-ui, sans-serif;
-        background: var(--bg); color: #333333;
+        background: #f0f0f0 !important; color: #333333 !important;
         font-size: 14px; line-height: 1.7; overflow-x: hidden;
         letter-spacing: 0.03em;
         -webkit-font-smoothing: antialiased;
@@ -112,7 +112,7 @@
       }
       .s-title {
         font-size: clamp(1.9rem, 4vw, 3.2rem); font-weight: 700;
-        line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 1rem;
+        line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 1rem; color: #333333 !important;
         color: #ffffff;
       }
       .s-sub { font-size: 1rem; color: var(--muted); line-height: 1.8; max-width: 520px; }
@@ -140,8 +140,8 @@
       .hero-h1 {
         font-size: clamp(1.9rem, 4vw, 3.2rem); font-weight: 700;
         line-height: 1.12; letter-spacing: -0.01em; margin-bottom: 1.2rem;
-        max-width: 680px; color: #f7f8f8;
-        text-shadow: 0 2px 24px rgba(0,0,0,0.55);
+        max-width: 680px; color: #333333 !important;
+        text-shadow: none;
       }
       .hero-h1 em { font-style: normal; color: var(--blue); }
       .hero-p {
@@ -194,7 +194,7 @@
         margin-bottom: 1.2rem; transition: opacity 0.2s;
       }
       .svc-card:hover .svc-num { opacity: 1; }
-      .svc-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; color: #f7f8f8; }
+      .svc-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; color: #333333; }
       .svc-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; flex: 1; }
       .svc-price {
         font-size: 0.75rem; color: #ffffff; font-weight: 600;
@@ -227,7 +227,7 @@
         color: #ffffff; margin-bottom: 1.2rem; text-transform: uppercase; padding-bottom: 1.2rem;
         border-bottom: 1px solid rgba(255,255,255,0.2); width: 100%;
       }
-      .animated-card h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.8rem; color: #f7f8f8; }
+      .animated-card h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.8rem; color: #333333; }
       .animated-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
 
       /* ── SERVICE DETAILS UNDER CARD ── */
@@ -288,7 +288,7 @@
       .testi-card:hover { background: var(--card-hover); box-shadow: 0 0 30px rgba(0,0,0,0.15), inset 0 0 20px rgba(0,0,0,0.05); animation: glowPulse 1.5s ease-in-out infinite; }
       .testi-stars { font-size: 0.65rem; letter-spacing: 2px; color: #ffffff; margin-bottom: 0.7rem; font-family: monospace; }
       .testi-q { font-size: 0.82rem; color: rgba(237,237,237,0.75); line-height: 1.7; flex: 1; margin-bottom: 1rem; }
-      .testi-name { font-size: 0.82rem; font-weight: 600; color: #f7f8f8; }
+      .testi-name { font-size: 0.82rem; font-weight: 600; color: #333333; }
       .testi-co { font-size: 0.68rem; color: #ffffff; margin-top: 2px; font-family: monospace; }
 
       /* ── FOOTER ── */
@@ -349,7 +349,7 @@
         animation: cyanglow 1.5s ease-in-out infinite;
       }
       .pricing-tier { font-size: 0.65rem; letter-spacing: 2px; color: var(--blue); text-transform: uppercase; margin-bottom: 0.8rem; }
-      .pricing-name { font-size: 1.3rem; font-weight: 700; color: #f7f8f8; margin-bottom: 0.4rem; }
+      .pricing-name { font-size: 1.3rem; font-weight: 700; color: #333333; margin-bottom: 0.4rem; }
       .pricing-price { font-size: 2rem; font-weight: 700; color: var(--blue); margin-bottom: 0.2rem; }
       .pricing-period { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.5rem; }
       .pricing-btn { padding: 10px 20px; background: #999999; color: #333333; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center; font-size: 0.85rem; }
@@ -439,7 +439,7 @@
         animation: glowPulse 1.5s ease-in-out infinite;
       }
       .blog-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-      .blog-title { font-size: 1.2rem; font-weight: 700; color: #f7f8f8; margin-bottom: 1rem; }
+      .blog-title { font-size: 1.2rem; font-weight: 700; color: #333333; margin-bottom: 1rem; }
       .blog-excerpt { font-size: 0.9rem; color: var(--muted); line-height: 1.8; flex: 1; margin-bottom: 1.5rem; }
       .blog-read { font-size: 0.85rem; color: var(--blue); font-weight: 600; }
     </style>
