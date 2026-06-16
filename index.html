@@ -212,13 +212,16 @@
       .animated-cards-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-        gap: 2rem; margin-top: 3rem; margin-bottom: 4rem;
+        gap: 3rem; margin-top: 3rem;
+      }
+      .animated-card-wrapper {
+        display: flex; flex-direction: column; align-items: center; text-align: center;
       }
       .animated-card {
         position: relative; background: rgba(15,16,17,0.5); padding: 2rem 1.8rem;
         border: 2px solid rgba(255,255,255,0.4); border-radius: 6px;
         display: flex; flex-direction: column; align-items: center; text-align: center;
-        overflow: hidden;
+        overflow: hidden; width: 100%; max-width: 280px;
       }
       .animated-card::before {
         content: ''; position: absolute; top: 8px; right: 8px; width: 10px; height: 10px;
@@ -232,24 +235,17 @@
       .animated-card h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.8rem; color: #f7f8f8; }
       .animated-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
 
-      /* ── SERVICE DETAILS GRID ── */
-      .service-details-grid {
-        display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-        gap: 2rem; margin-top: 2rem;
+      /* ── SERVICE DETAILS UNDER CARD ── */
+      .card-details {
+        margin-top: 1.5rem; text-align: center;
       }
-      .service-detail {
-        padding: 1.5rem 0;
-      }
-      .service-detail h4 {
-        font-size: 1.1rem; font-weight: 700; color: #f7f8f8; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 1px;
-      }
-      .service-detail ul {
+      .card-details ul {
         list-style: none;
       }
-      .service-detail li {
-        font-size: 0.9rem; color: var(--muted); line-height: 2; display: flex; align-items: center;
+      .card-details li {
+        font-size: 0.85rem; color: var(--muted); line-height: 1.8; display: flex; align-items: center; justify-content: center;
       }
-      .service-detail li::before {
+      .card-details li::before {
         content: '•'; color: var(--blue); margin-right: 0.8rem; font-weight: bold;
       }
 
@@ -491,50 +487,52 @@
       <section class="section">
         <div class="section-inner">
           <div class="animated-cards-grid">
-            <div class="animated-card">
-              <div class="animated-card-label">Services</div>
-              <h3>Web Design</h3>
-              <p>Beautiful, conversion-focused designs that captivate.</p>
+            <div class="animated-card-wrapper">
+              <div class="animated-card">
+                <div class="animated-card-label">Services</div>
+                <h3>Web Design</h3>
+                <p>Beautiful, conversion-focused designs that captivate.</p>
+              </div>
+              <div class="card-details">
+                <ul>
+                  <li>Custom responsive layouts</li>
+                  <li>Mobile-first design</li>
+                  <li>Brand-aligned visuals</li>
+                  <li>Conversion-focused UX</li>
+                </ul>
+              </div>
             </div>
-            <div class="animated-card">
-              <div class="animated-card-label">Services</div>
-              <h3>Lightning Fast Code</h3>
-              <p>Hand-coded, optimized for speed and performance.</p>
-            </div>
-            <div class="animated-card">
-              <div class="animated-card-label">Services</div>
-              <h3>Online Stores</h3>
-              <p>Ready-to-sell stores with payments and inventory.</p>
-            </div>
-          </div>
 
-          <div class="service-details-grid">
-            <div class="service-detail">
-              <h4>Web Design</h4>
-              <ul>
-                <li>Custom responsive layouts</li>
-                <li>Mobile-first design</li>
-                <li>Brand-aligned visuals</li>
-                <li>Conversion-focused UX</li>
-              </ul>
+            <div class="animated-card-wrapper">
+              <div class="animated-card">
+                <div class="animated-card-label">Services</div>
+                <h3>Lightning Fast Code</h3>
+                <p>Hand-coded, optimized for speed and performance.</p>
+              </div>
+              <div class="card-details">
+                <ul>
+                  <li>92+ Lighthouse score</li>
+                  <li>Pure HTML/CSS/JS code</li>
+                  <li>Security-first approach</li>
+                  <li>SEO optimized</li>
+                </ul>
+              </div>
             </div>
-            <div class="service-detail">
-              <h4>Lightning Fast Code</h4>
-              <ul>
-                <li>92+ Lighthouse score</li>
-                <li>Pure HTML/CSS/JS code</li>
-                <li>Security-first approach</li>
-                <li>SEO optimized</li>
-              </ul>
-            </div>
-            <div class="service-detail">
-              <h4>Online Stores</h4>
-              <ul>
-                <li>Payment processing ready</li>
-                <li>Inventory management</li>
-                <li>Live in days, not months</li>
-                <li>Full checkout experience</li>
-              </ul>
+
+            <div class="animated-card-wrapper">
+              <div class="animated-card">
+                <div class="animated-card-label">Services</div>
+                <h3>Online Stores</h3>
+                <p>Ready-to-sell stores with payments and inventory.</p>
+              </div>
+              <div class="card-details">
+                <ul>
+                  <li>Payment processing ready</li>
+                  <li>Inventory management</li>
+                  <li>Live in days, not months</li>
+                  <li>Full checkout experience</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
