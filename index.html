@@ -1058,6 +1058,10 @@
     <script>
       // Page System
       function showPage(pageId) {
+        // Close all modals when navigating
+        document.getElementById('pricingModal')?.classList.remove('active');
+        document.getElementById('checkoutModal')?.classList.remove('active');
+
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         document.getElementById(`page-${pageId}`).classList.add('active');
         document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
@@ -1393,6 +1397,10 @@
       }
 
       document.addEventListener('DOMContentLoaded', () => {
+        // Ensure modals are closed on page load
+        document.getElementById('pricingModal')?.classList.remove('active');
+        document.getElementById('checkoutModal')?.classList.remove('active');
+
         const form = document.getElementById('checkoutForm');
         if (form) {
           form.addEventListener('submit', (e) => {
