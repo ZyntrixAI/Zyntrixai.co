@@ -978,7 +978,7 @@
       canvas.height = window.innerHeight;
 
       let particles = [];
-      const particleCount = 30;
+      const particleCount = 8;
 
       class Particle {
         constructor() {
@@ -1017,7 +1017,7 @@
 
       function animate() {
         ctx.globalAlpha = 1;
-        ctx.fillStyle = 'rgba(8,9,10,0.1)';
+        ctx.fillStyle = 'rgba(8,9,10,0.05)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         particles = particles.filter(p => p.update());
