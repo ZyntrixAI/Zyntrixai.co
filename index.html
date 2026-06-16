@@ -213,9 +213,13 @@
       }
       .animated-card {
         background: transparent; padding: 2rem 1.8rem;
-        border: 1px solid var(--border); border-radius: 0;
+        border: 1px solid #ffffff; border-radius: 0;
+        box-shadow: 0 0 12px rgba(255,255,255,0.15), inset 0 0 12px rgba(255,255,255,0.05);
         display: flex; flex-direction: column; align-items: center; text-align: center;
-        width: 100%; max-width: 280px; position: relative;
+        width: 100%; max-width: 280px; position: relative; transition: all 0.3s;
+      }
+      .animated-card:hover {
+        box-shadow: 0 0 20px rgba(255,255,255,0.3), inset 0 0 20px rgba(255,255,255,0.1);
       }
       .animated-card-label {
         font-size: 0.65rem; font-weight: 700; letter-spacing: 2px;
@@ -279,8 +283,8 @@
         display: grid; grid-template-columns: repeat(3, 1fr);
         gap: 1.2rem; margin-top: 3rem;
       }
-      .testi-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.2rem; display: flex; flex-direction: column; transition: background 0.2s, border-color 0.2s; }
-      .testi-card:hover { background: var(--card-hover); border-color: var(--border-hover); }
+      .testi-card { background: var(--card-bg); border: 1px solid #ffffff; border-radius: var(--radius); padding: 1rem 1.2rem; display: flex; flex-direction: column; transition: all 0.3s; box-shadow: 0 0 12px rgba(255,255,255,0.15), inset 0 0 12px rgba(255,255,255,0.05); }
+      .testi-card:hover { background: var(--card-hover); box-shadow: 0 0 20px rgba(255,255,255,0.3), inset 0 0 20px rgba(255,255,255,0.1); }
       .testi-stars { font-size: 0.65rem; letter-spacing: 2px; color: #ffffff; margin-bottom: 0.7rem; font-family: monospace; }
       .testi-q { font-size: 0.82rem; color: rgba(237,237,237,0.75); line-height: 1.7; flex: 1; margin-bottom: 1rem; }
       .testi-name { font-size: 0.82rem; font-weight: 600; color: #f7f8f8; }
@@ -317,12 +321,20 @@
         display: flex; flex-direction: column; align-items: center;
       }
       .pricing-card {
-        background: transparent; border: 1px solid var(--border); border-radius: 0;
+        background: transparent; border: 1px solid #ffffff; border-radius: 0;
+        box-shadow: 0 0 12px rgba(255,255,255,0.15), inset 0 0 12px rgba(255,255,255,0.05);
         padding: 1.8rem 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center;
-        width: 100%;
+        width: 100%; transition: all 0.3s;
+      }
+      .pricing-card:hover {
+        box-shadow: 0 0 20px rgba(255,255,255,0.3), inset 0 0 20px rgba(255,255,255,0.1);
       }
       .pricing-card.featured {
         border: 1px solid var(--blue); background: rgba(0,200,255,0.05);
+        box-shadow: 0 0 20px rgba(0,200,255,0.3), inset 0 0 20px rgba(0,200,255,0.1);
+      }
+      .pricing-card.featured:hover {
+        box-shadow: 0 0 30px rgba(0,200,255,0.5), inset 0 0 30px rgba(0,200,255,0.15);
       }
       .pricing-tier { font-size: 0.65rem; letter-spacing: 2px; color: var(--blue); text-transform: uppercase; margin-bottom: 0.8rem; }
       .pricing-name { font-size: 1.3rem; font-weight: 700; color: #f7f8f8; margin-bottom: 0.4rem; }
@@ -395,8 +407,12 @@
         gap: 2rem; margin-top: 3rem;
       }
       .blog-card {
-        background: transparent; border: 1px solid var(--border); border-radius: 0;
-        padding: 2rem; display: flex; flex-direction: column;
+        background: transparent; border: 1px solid #ffffff; border-radius: 0;
+        box-shadow: 0 0 12px rgba(255,255,255,0.15), inset 0 0 12px rgba(255,255,255,0.05);
+        padding: 2rem; display: flex; flex-direction: column; transition: all 0.3s;
+      }
+      .blog-card:hover {
+        box-shadow: 0 0 20px rgba(255,255,255,0.3), inset 0 0 20px rgba(255,255,255,0.1);
       }
       .blog-icon { font-size: 2.5rem; margin-bottom: 1rem; }
       .blog-title { font-size: 1.2rem; font-weight: 700; color: #f7f8f8; margin-bottom: 1rem; }
