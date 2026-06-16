@@ -78,11 +78,12 @@
         padding: 0.45rem 1.2rem;
         background: #ffffff; backdrop-filter: none;
         border: 1px solid #ffffff;
-        color: #1a1a1a; border-radius: 999px; font-size: 0.78rem;
+        color: #1a1a1a; border-radius: 0; font-size: 0.78rem;
         font-weight: 500; cursor: pointer; transition: all 0.2s;
         white-space: nowrap;
       }
       .nav-cta:hover { background: #cccccc; border-color: #cccccc; color: #1a1a1a; }
+      .nav-cta:active { background: #999999; border-color: #999999; }
       .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
       .hamburger span { display: block; width: 22px; height: 1.5px; background: #fff; border-radius: 1px; transition: 0.25s; }
 
@@ -159,20 +160,22 @@
       /* ── BUTTONS ── */
       .btn-primary {
         padding: 10px 22px; background: #999999; color: #333333;
-        border: none; border-radius: 999px; font-size: 0.85rem; font-weight: 700;
+        border: none; border-radius: 0; font-size: 0.85rem; font-weight: 700;
         cursor: pointer; transition: all 0.2s; white-space: nowrap;
       }
       .btn-primary:hover { background: #777777; transform: translateY(-1px); }
+      .btn-primary:active { background: #666666; transform: translateY(0); }
       .btn-primary:disabled { opacity: 0.55; cursor: not-allowed; }
       .btn-outline {
         padding: 10px 22px;
         background: rgba(8,9,10,0.55); backdrop-filter: blur(12px);
         color: var(--muted2); border: 1px solid rgba(255,255,255,0.18);
-        border-radius: 999px; font-size: 0.85rem; font-weight: 500;
+        border-radius: 0; font-size: 0.85rem; font-weight: 500;
         cursor: pointer; transition: all 0.2s; white-space: nowrap;
         text-shadow: 0 1px 8px rgba(0,0,0,0.6);
       }
       .btn-outline:hover { color: #fff; border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.06); }
+      .btn-outline:active { background: rgba(255,255,255,0.15); color: #fff; }
 
       /* ── HOME: SERVICE CARDS (kaev.ai 1px grid) ── */
       .home-svc-grid {
@@ -350,9 +353,11 @@
       .pricing-name { font-size: 1.3rem; font-weight: 700; color: #ffffff; margin-bottom: 0.4rem; }
       .pricing-price { font-size: 2rem; font-weight: 700; color: #ffffff; margin-bottom: 0.2rem; }
       .pricing-period { font-size: 0.8rem; color: #ffffff; margin-bottom: 1.5rem; }
-      .pricing-btn { padding: 10px 20px; background: #999999; color: #333333; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center; font-size: 0.85rem; }
+      .pricing-btn { padding: 10px 20px; background: #999999; color: #333333; border: none; border-radius: 0; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center; font-size: 0.85rem; }
       .pricing-btn:hover { background: #777777; transform: translateY(-2px); }
+      .pricing-btn:active { background: #666666; transform: translateY(0); }
       .pricing-card.featured .pricing-btn { background: #ffffff; color: #1a1a1a; }
+      .pricing-card.featured .pricing-btn:active { background: #e8e8e8; }
       .pricing-card { cursor: pointer; transition: all 0.3s; }
       .pricing-card:hover { transform: translateY(-4px); border-color: var(--blue); }
 
@@ -824,20 +829,20 @@
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                 <div>
                   <label style="display: block; color: #333333; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">First Name *</label>
-                  <input type="text" name="firstName" required style="width: 100%; padding: 0.8rem; background: #f0f0f0; border: 1px solid #999999; color: #333333; font-family: inherit; border-radius: 4px;" />
+                  <input type="text" name="firstName" required style="width: 100%; padding: 0.8rem; background: #f0f0f0; border: 1px solid #999999; color: #333333; font-family: inherit; border-radius: 0;" />
                 </div>
                 <div>
                   <label style="display: block; color: #333333; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Last Name *</label>
-                  <input type="text" name="lastName" required style="width: 100%; padding: 0.8rem; background: #f0f0f0; border: 1px solid #999999; color: #333333; font-family: inherit; border-radius: 4px;" />
+                  <input type="text" name="lastName" required style="width: 100%; padding: 0.8rem; background: #f0f0f0; border: 1px solid #999999; color: #333333; font-family: inherit; border-radius: 0;" />
                 </div>
               </div>
               <div>
                 <label style="display: block; color: #333333; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Email *</label>
-                <input type="email" name="email" required style="width: 100%; padding: 0.8rem; background: #f0f0f0; border: 1px solid #999999; color: #333333; font-family: inherit; border-radius: 4px;" />
+                <input type="email" name="email" required style="width: 100%; padding: 0.8rem; background: #f0f0f0; border: 1px solid #999999; color: #333333; font-family: inherit; border-radius: 0;" />
               </div>
               <div>
                 <label style="display: block; color: #333333; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Message *</label>
-                <textarea name="message" required style="width: 100%; padding: 0.8rem; background: #f0f0f0; border: 1px solid #999999; color: #333333; font-family: inherit; border-radius: 4px; min-height: 120px; resize: vertical;"></textarea>
+                <textarea name="message" required style="width: 100%; padding: 0.8rem; background: #f0f0f0; border: 1px solid #999999; color: #333333; font-family: inherit; border-radius: 0; min-height: 120px; resize: vertical;"></textarea>
               </div>
               <button type="submit" class="btn-primary" style="align-self: flex-start;">Send Message</button>
             </form>
