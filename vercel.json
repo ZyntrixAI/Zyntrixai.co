@@ -1,17 +1,19 @@
 {
   "version": 2,
-  "env": {
-    "BUILD_ID": "2026-06-16-rebuild-website",
-    "DEPLOYMENT_TIMESTAMP": "20260616-204200"
-  },
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ],
   "routes": [
     {
-      "src": "/crm",
-      "dest": "/crm.html"
+      "src": "/index.html",
+      "dest": "/index.html"
     },
     {
-      "src": "/portal",
-      "dest": "/client-portal.html"
+      "src": "/",
+      "dest": "/index.html"
     },
     {
       "src": "/(.*)",
