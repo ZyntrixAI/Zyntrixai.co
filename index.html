@@ -307,6 +307,43 @@
       .foot-links a { font-size: 0.75rem; color: #606060; cursor: pointer; transition: color 0.15s; }
       .foot-links a:hover { color: var(--text); }
       .foot-copy { font-size: 0.72rem; color: #707070; }
+
+      /* ── PRICING CARDS ── */
+      .pricing-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+        gap: 2rem; margin-top: 3rem;
+      }
+      .pricing-card {
+        background: transparent; border: 2px solid rgba(255,255,255,0.6); border-radius: 0;
+        padding: 2.5rem 2rem; display: flex; flex-direction: column;
+      }
+      .pricing-card.featured {
+        border: 2px solid var(--blue); background: rgba(0,200,255,0.05);
+      }
+      .pricing-tier { font-size: 0.75rem; letter-spacing: 2px; color: var(--blue); text-transform: uppercase; margin-bottom: 1rem; }
+      .pricing-name { font-size: 1.5rem; font-weight: 700; color: #f7f8f8; margin-bottom: 0.5rem; }
+      .pricing-price { font-size: 2.5rem; font-weight: 700; color: var(--blue); margin-bottom: 0.3rem; }
+      .pricing-period { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem; }
+      .pricing-features { list-style: none; flex: 1; margin-bottom: 2rem; }
+      .pricing-features li { font-size: 0.9rem; color: var(--muted); line-height: 2; padding-left: 1.5rem; position: relative; }
+      .pricing-features li::before { content: '✓'; position: absolute; left: 0; color: var(--blue); font-weight: bold; }
+      .pricing-btn { padding: 12px 24px; background: var(--blue); color: #000; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center; }
+      .pricing-btn:hover { background: #fff; transform: translateY(-2px); }
+      .pricing-card.featured .pricing-btn { background: var(--blue); }
+
+      /* ── BLOG CARDS ── */
+      .blog-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+        gap: 2rem; margin-top: 3rem;
+      }
+      .blog-card {
+        background: transparent; border: 2px solid rgba(255,255,255,0.6); border-radius: 0;
+        padding: 2rem; display: flex; flex-direction: column;
+      }
+      .blog-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+      .blog-title { font-size: 1.2rem; font-weight: 700; color: #f7f8f8; margin-bottom: 1rem; }
+      .blog-excerpt { font-size: 0.9rem; color: var(--muted); line-height: 1.8; flex: 1; margin-bottom: 1.5rem; }
+      .blog-read { font-size: 0.85rem; color: var(--blue); font-weight: 600; }
     </style>
   </head>
   <body>
@@ -316,7 +353,8 @@
       <div class="nav-logo" onclick="showPage('home')">ZYNTRIX</div>
       <ul class="nav-links" id="navLinks">
         <li><a onclick="showPage('services')">Services</a></li>
-        <li><a onclick="showPage('work')">Work</a></li>
+        <li><a onclick="showPage('pricing')">Pricing</a></li>
+        <li><a onclick="showPage('blog')">Blog</a></li>
         <li><a onclick="showPage('about')">About</a></li>
         <li><a onclick="showPage('contact')">Contact</a></li>
       </ul>
@@ -456,7 +494,8 @@
         </div>
         <div class="foot-links">
           <a onclick="showPage('services')">Services</a>
-          <a onclick="showPage('work')">Work</a>
+          <a onclick="showPage('pricing')">Pricing</a>
+          <a onclick="showPage('blog')">Blog</a>
           <a onclick="showPage('about')">About</a>
           <a onclick="showPage('contact')">Contact</a>
         </div>
@@ -693,6 +732,159 @@
           <a onclick="showPage('home')">Home</a>
           <a onclick="showPage('services')">Services</a>
           <a onclick="showPage('work')">Work</a>
+          <a onclick="showPage('contact')">Contact</a>
+        </div>
+        <p class="foot-copy">&copy; 2024 ZyntrixAI. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <!-- PRICING PAGE -->
+    <div id="page-pricing" class="page">
+      <section class="section" style="text-align: center;">
+        <div class="section-inner">
+          <div class="s-eyebrow">Pricing</div>
+          <h1 class="s-title">Simple, Transparent Pricing</h1>
+          <p class="s-sub">Choose the plan that fits your needs. All plans include ongoing support.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-inner">
+          <div class="pricing-grid">
+            <div class="pricing-card">
+              <div class="pricing-tier">Starter</div>
+              <h3 class="pricing-name">Web Design</h3>
+              <div class="pricing-price">$699</div>
+              <div class="pricing-period">per month</div>
+              <ul class="pricing-features">
+                <li>Custom responsive design</li>
+                <li>Up to 5 pages</li>
+                <li>Mobile optimization</li>
+                <li>SEO basics</li>
+                <li>2 rounds of revisions</li>
+              </ul>
+              <button class="pricing-btn" onclick="showPage('contact')">Get Started</button>
+            </div>
+
+            <div class="pricing-card featured">
+              <div class="pricing-tier">Growth</div>
+              <h3 class="pricing-name">Lightning Fast Code</h3>
+              <div class="pricing-price">$1,499</div>
+              <div class="pricing-period">per month</div>
+              <ul class="pricing-features">
+                <li>Everything in Starter</li>
+                <li>Up to 15 pages</li>
+                <li>Advanced performance</li>
+                <li>92+ Lighthouse score</li>
+                <li>Unlimited revisions</li>
+                <li>Priority support</li>
+              </ul>
+              <button class="pricing-btn" onclick="showPage('contact')">Get Started</button>
+            </div>
+
+            <div class="pricing-card">
+              <div class="pricing-tier">Enterprise</div>
+              <h3 class="pricing-name">Online Stores</h3>
+              <div class="pricing-price">$2,999</div>
+              <div class="pricing-period">per month</div>
+              <ul class="pricing-features">
+                <li>Everything in Growth</li>
+                <li>Unlimited pages</li>
+                <li>E-commerce setup</li>
+                <li>Payment processing</li>
+                <li>Inventory management</li>
+                <li>Dedicated account manager</li>
+              </ul>
+              <button class="pricing-btn" onclick="showPage('contact')">Get Started</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="foot-logo">
+          <span>ZYNTRIX</span>
+          <div class="foot-logo-dot" style="margin-left: 8px;"></div>
+        </div>
+        <div class="foot-links">
+          <a onclick="showPage('home')">Home</a>
+          <a onclick="showPage('services')">Services</a>
+          <a onclick="showPage('blog')">Blog</a>
+          <a onclick="showPage('about')">About</a>
+          <a onclick="showPage('contact')">Contact</a>
+        </div>
+        <p class="foot-copy">&copy; 2024 ZyntrixAI. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <!-- BLOG PAGE -->
+    <div id="page-blog" class="page">
+      <section class="section" style="text-align: center;">
+        <div class="section-inner">
+          <div class="s-eyebrow">Blog</div>
+          <h1 class="s-title">Web Design Insights</h1>
+          <p class="s-sub">Learn what goes into building beautiful, high-performing websites.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-inner">
+          <div class="blog-grid">
+            <div class="blog-card">
+              <div class="blog-icon">🎨</div>
+              <h3 class="blog-title">The Art of Web Design</h3>
+              <p class="blog-excerpt">Modern web design combines aesthetics with functionality. We focus on creating visually stunning websites that don't sacrifice performance or user experience. Every pixel counts.</p>
+              <div class="blog-read">Read more →</div>
+            </div>
+
+            <div class="blog-card">
+              <div class="blog-icon">⚡</div>
+              <h3 class="blog-title">Performance Optimization</h3>
+              <p class="blog-excerpt">Speed matters. Sites that load in under 3 seconds have 40% higher conversion rates. We hand-code every project to achieve 92+ Lighthouse scores and lightning-fast load times.</p>
+              <div class="blog-read">Read more →</div>
+            </div>
+
+            <div class="blog-card">
+              <div class="blog-icon">📱</div>
+              <h3 class="blog-title">Mobile-First Design</h3>
+              <p class="blog-excerpt">Over 60% of web traffic comes from mobile devices. We design every website mobile-first, ensuring your site looks perfect and functions flawlessly on all screen sizes.</p>
+              <div class="blog-read">Read more →</div>
+            </div>
+
+            <div class="blog-card">
+              <div class="blog-icon">🔍</div>
+              <h3 class="blog-title">SEO Fundamentals</h3>
+              <p class="blog-excerpt">Good design means nothing if nobody can find you. Our websites are built with SEO best practices from day one—clean HTML, fast load times, and semantic structure.</p>
+              <div class="blog-read">Read more →</div>
+            </div>
+
+            <div class="blog-card">
+              <div class="blog-icon">💡</div>
+              <h3 class="blog-title">User Experience Strategy</h3>
+              <p class="blog-excerpt">Great UX isn't just about looking good—it's about making it easy for visitors to find what they need and take action. Conversion-focused design is our foundation.</p>
+              <div class="blog-read">Read more →</div>
+            </div>
+
+            <div class="blog-card">
+              <div class="blog-icon">🚀</div>
+              <h3 class="blog-title">From Concept to Launch</h3>
+              <p class="blog-excerpt">Building a website involves discovery, design, development, testing, and launch. We guide you through each step, ensuring your project launches on time and exceeds expectations.</p>
+              <div class="blog-read">Read more →</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="foot-logo">
+          <span>ZYNTRIX</span>
+          <div class="foot-logo-dot" style="margin-left: 8px;"></div>
+        </div>
+        <div class="foot-links">
+          <a onclick="showPage('home')">Home</a>
+          <a onclick="showPage('services')">Services</a>
+          <a onclick="showPage('pricing')">Pricing</a>
+          <a onclick="showPage('about')">About</a>
           <a onclick="showPage('contact')">Contact</a>
         </div>
         <p class="foot-copy">&copy; 2024 ZyntrixAI. All rights reserved.</p>
