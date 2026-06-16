@@ -202,6 +202,57 @@
         margin-top: 1.4rem; font-family: monospace; letter-spacing: 0.5px; display: block;
       }
 
+      /* ── ANIMATED CARDS ── */
+      @keyframes moveDot {
+        0%,100% { top: 8px; right: 8px; }
+        25% { top: 8px; right: calc(100% - 20px); }
+        50% { top: calc(100% - 20px); right: calc(100% - 20px); }
+        75% { top: calc(100% - 20px); right: 8px; }
+      }
+      .animated-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+        gap: 2rem; margin-top: 3rem; margin-bottom: 4rem;
+      }
+      .animated-card {
+        position: relative; background: rgba(15,16,17,0.5); padding: 2rem 1.8rem;
+        border: 2px solid rgba(255,255,255,0.4); border-radius: 6px;
+        display: flex; flex-direction: column; align-items: center; text-align: center;
+        overflow: hidden;
+      }
+      .animated-card::before {
+        content: ''; position: absolute; top: 8px; right: 8px; width: 10px; height: 10px;
+        background: var(--blue); border-radius: 50%; box-shadow: 0 0 12px rgba(0,200,255,0.8);
+        animation: moveDot 4s linear infinite;
+      }
+      .animated-card-label {
+        font-size: 0.65rem; font-weight: 700; letter-spacing: 2px;
+        color: var(--blue); margin-bottom: 1rem; text-transform: uppercase;
+      }
+      .animated-card h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.8rem; color: #f7f8f8; }
+      .animated-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+
+      /* ── SERVICE DETAILS GRID ── */
+      .service-details-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+        gap: 2rem; margin-top: 2rem;
+      }
+      .service-detail {
+        padding: 1.5rem 0;
+      }
+      .service-detail h4 {
+        font-size: 1.1rem; font-weight: 700; color: #f7f8f8; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 1px;
+      }
+      .service-detail ul {
+        list-style: none;
+      }
+      .service-detail li {
+        font-size: 0.9rem; color: var(--muted); line-height: 2; display: flex; align-items: center;
+      }
+      .service-detail li::before {
+        content: '•'; color: var(--blue); margin-right: 0.8rem; font-weight: bold;
+      }
+
       /* ── HOME: WORK GRID ── */
       .home-work-grid {
         display: flex; justify-content: center;
@@ -439,42 +490,51 @@
 
       <section class="section">
         <div class="section-inner">
-          <div class="home-svc-grid">
-            <div class="svc-card" onclick="alert('Web Design - Coming Soon')">
-              <div class="svc-num">01</div>
+          <div class="animated-cards-grid">
+            <div class="animated-card">
+              <div class="animated-card-label">Services</div>
               <h3>Web Design</h3>
-              <p>Beautiful, high-converting designs that reflect your brand.</p>
-              <span class="svc-price">From $1,500</span>
+              <p>Beautiful, conversion-focused designs that captivate.</p>
             </div>
-            <div class="svc-card" onclick="alert('Development - Coming Soon')">
-              <div class="svc-num">02</div>
-              <h3>Development</h3>
-              <p>Fast, secure websites built with best practices.</p>
-              <span class="svc-price">From $2,000</span>
+            <div class="animated-card">
+              <div class="animated-card-label">Services</div>
+              <h3>Lightning Fast Code</h3>
+              <p>Hand-coded, optimized for speed and performance.</p>
             </div>
-            <div class="svc-card" onclick="alert('E-Commerce - Coming Soon')">
-              <div class="svc-num">03</div>
-              <h3>E-Commerce</h3>
-              <p>Online stores with payments and inventory.</p>
-              <span class="svc-price">From $3,500</span>
+            <div class="animated-card">
+              <div class="animated-card-label">Services</div>
+              <h3>Online Stores</h3>
+              <p>Ready-to-sell stores with payments and inventory.</p>
             </div>
-            <div class="svc-card" onclick="alert('SEO - Coming Soon')">
-              <div class="svc-num">04</div>
-              <h3>SEO</h3>
-              <p>Get found on Google and drive organic traffic.</p>
-              <span class="svc-price">From $500/mo</span>
+          </div>
+
+          <div class="service-details-grid">
+            <div class="service-detail">
+              <h4>Web Design</h4>
+              <ul>
+                <li>Custom responsive layouts</li>
+                <li>Mobile-first design</li>
+                <li>Brand-aligned visuals</li>
+                <li>Conversion-focused UX</li>
+              </ul>
             </div>
-            <div class="svc-card" onclick="alert('Branding - Coming Soon')">
-              <div class="svc-num">05</div>
-              <h3>Branding</h3>
-              <p>Logos, brand guidelines, and visual identity.</p>
-              <span class="svc-price">From $1,200</span>
+            <div class="service-detail">
+              <h4>Lightning Fast Code</h4>
+              <ul>
+                <li>92+ Lighthouse score</li>
+                <li>Pure HTML/CSS/JS code</li>
+                <li>Security-first approach</li>
+                <li>SEO optimized</li>
+              </ul>
             </div>
-            <div class="svc-card" onclick="alert('Support - Coming Soon')">
-              <div class="svc-num">06</div>
-              <h3>Support</h3>
-              <p>Ongoing maintenance, updates, and backups.</p>
-              <span class="svc-price">From $330/mo</span>
+            <div class="service-detail">
+              <h4>Online Stores</h4>
+              <ul>
+                <li>Payment processing ready</li>
+                <li>Inventory management</li>
+                <li>Live in days, not months</li>
+                <li>Full checkout experience</li>
+              </ul>
             </div>
           </div>
         </div>
