@@ -202,13 +202,7 @@
         margin-top: 1.4rem; font-family: monospace; letter-spacing: 0.5px; display: block;
       }
 
-      /* ── ANIMATED CARDS ── */
-      @keyframes moveDot {
-        0%,100% { top: 8px; right: 8px; }
-        25% { top: 8px; right: calc(100% - 20px); }
-        50% { top: calc(100% - 20px); right: calc(100% - 20px); }
-        75% { top: calc(100% - 20px); right: 8px; }
-      }
+      /* ── SERVICE CARDS ── */
       .animated-cards-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
@@ -218,19 +212,15 @@
         display: flex; flex-direction: column; align-items: center; text-align: center;
       }
       .animated-card {
-        position: relative; background: rgba(15,16,17,0.5); padding: 2rem 1.8rem;
-        border: 2px solid rgba(255,255,255,0.4); border-radius: 6px;
+        background: transparent; padding: 2rem 1.8rem;
+        border: 2px solid rgba(255,255,255,0.6); border-radius: 12px;
         display: flex; flex-direction: column; align-items: center; text-align: center;
-        overflow: hidden; width: 100%; max-width: 280px;
-      }
-      .animated-card::before {
-        content: ''; position: absolute; top: 8px; right: 8px; width: 10px; height: 10px;
-        background: var(--blue); border-radius: 50%; box-shadow: 0 0 12px rgba(0,200,255,0.8);
-        animation: moveDot 4s linear infinite;
+        width: 100%; max-width: 280px; position: relative;
       }
       .animated-card-label {
         font-size: 0.65rem; font-weight: 700; letter-spacing: 2px;
-        color: var(--blue); margin-bottom: 1rem; text-transform: uppercase;
+        color: var(--blue); margin-bottom: 1.2rem; text-transform: uppercase; padding-bottom: 1.2rem;
+        border-bottom: 1px solid rgba(255,255,255,0.2); width: 100%;
       }
       .animated-card h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.8rem; color: #f7f8f8; }
       .animated-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
