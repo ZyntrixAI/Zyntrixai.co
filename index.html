@@ -15,7 +15,7 @@
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
       :root {
-        --blue:    #00c8ff;
+        --blue:    #1a1a1a;
         --bg:      #f0f0f0;
         --text:    #333333;
         --muted:   #555555;
@@ -37,7 +37,7 @@
         font-feature-settings: "cv01","ss03";
       }
 
-      ::selection { color: var(--text); background-color: rgba(0,200,255,0.22); }
+      ::selection { color: var(--text); background-color: rgba(26,26,26,0.15); }
 
       #neuro-canvas {
         position: fixed; inset: 0; width: 100%; height: 100%;
@@ -100,14 +100,14 @@
       .s-eyebrow {
         display: inline-flex; align-items: center; gap: 8px;
         padding: 5px 12px; border-radius: 999px;
-        border: 1px solid rgba(0,200,255,0.18);
-        background: rgba(0,200,255,0.04);
+        border: 1px solid rgba(26,26,26,0.12);
+        background: rgba(26,26,26,0.03);
         font-size: 0.67rem; font-weight: 600; letter-spacing: 1.5px;
         text-transform: uppercase; color: var(--blue); margin-bottom: 1.2rem;
       }
       .s-eyebrow::before {
         content: ''; width: 5px; height: 5px; border-radius: 50%;
-        background: var(--blue); box-shadow: 0 0 6px rgba(0,200,255,0.6);
+        background: var(--blue); box-shadow: 0 0 6px rgba(26,26,26,0.4);
         flex-shrink: 0;
       }
       .s-title {
@@ -135,7 +135,7 @@
       }
       .hero-badge-dot {
         width: 5px; height: 5px; border-radius: 50%;
-        background: var(--blue); box-shadow: 0 0 6px rgba(0,200,255,0.6); flex-shrink: 0;
+        background: var(--blue); box-shadow: 0 0 6px rgba(26,26,26,0.4); flex-shrink: 0;
       }
       .hero-h1 {
         font-size: clamp(1.9rem, 4vw, 3.2rem); font-weight: 700;
@@ -187,7 +187,7 @@
         cursor: pointer; transition: background 0.2s;
         border: none; border-radius: 0;
       }
-      .svc-card:hover { background: rgba(0,200,255,0.04); }
+      .svc-card:hover { background: rgba(26,26,26,0.03); }
       .svc-num {
         font-size: 0.65rem; font-weight: 700; letter-spacing: 2px;
         color: #ffffff; opacity: 0.5; font-family: monospace;
@@ -334,13 +334,13 @@
         animation: glowPulse 1.5s ease-in-out infinite;
       }
       .pricing-card.featured {
-        border: 2px solid var(--blue); background: rgba(0,200,255,0.05);
-        box-shadow: 0 0 20px rgba(0,200,255,0.3), inset 0 0 20px rgba(0,200,255,0.1);
+        border: 2px solid var(--blue); background: rgba(26,26,26,0.03);
+        box-shadow: 0 0 20px rgba(26,26,26,0.15), inset 0 0 20px rgba(26,26,26,0.05);
         animation: glowPulse 3s ease-in-out infinite;
       }
       @keyframes cyanglow {
-        0%, 100% { box-shadow: 0 0 20px rgba(0,200,255,0.3), inset 0 0 20px rgba(0,200,255,0.1); }
-        50% { box-shadow: 0 0 30px rgba(0,200,255,0.5), inset 0 0 30px rgba(0,200,255,0.15); }
+        0%, 100% { box-shadow: 0 0 20px rgba(26,26,26,0.15), inset 0 0 20px rgba(26,26,26,0.05); }
+        50% { box-shadow: 0 0 30px rgba(26,26,26,0.25), inset 0 0 30px rgba(26,26,26,0.08); }
       }
       .pricing-card.featured {
         animation: cyanglow 3s ease-in-out infinite;
@@ -393,13 +393,13 @@
         display: flex; gap: 2rem; animation: scrollCarousel 30s linear infinite;
       }
       .tech-item {
-        flex-shrink: 0; padding: 1rem 1.8rem; background: rgba(0,200,255,0.08);
+        flex-shrink: 0; padding: 1rem 1.8rem; background: rgba(26,26,26,0.04);
         border: 1px solid var(--border); border-radius: 6px;
         color: #f7f8f8; font-weight: 600; white-space: nowrap;
         transition: all 0.3s;
       }
       .tech-item:hover {
-        background: rgba(0,200,255,0.15); border-color: var(--blue);
+        background: rgba(26,26,26,0.08); border-color: var(--blue);
         transform: translateY(-4px); color: var(--blue);
       }
       @keyframes scrollCarousel {
@@ -523,7 +523,7 @@
         </div>
       </section>
 
-      <section class="section" style="background: rgba(0,200,255,0.02);">
+      <section class="section" style="background: rgba(26,26,26,0.01);">
         <div class="section-inner">
           <div style="text-align: center; margin-bottom: 2rem;">
             <div class="s-eyebrow">Process</div>
