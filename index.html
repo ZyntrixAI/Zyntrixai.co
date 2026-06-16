@@ -361,6 +361,34 @@
       .modal-section li { font-size: 0.95rem; color: var(--muted); line-height: 2; display: flex; align-items: center; justify-content: center; }
       .modal-section li::before { content: '✓'; color: var(--blue); margin-right: 0.8rem; font-weight: bold; }
 
+      /* ── TECH CAROUSEL ── */
+      .tech-carousel-container {
+        overflow: hidden; margin: 3rem 0;
+      }
+      .tech-carousel {
+        display: flex; gap: 2rem; animation: scrollCarousel 30s linear infinite;
+      }
+      .tech-item {
+        flex-shrink: 0; padding: 1rem 1.8rem; background: rgba(0,200,255,0.08);
+        border: 1px solid var(--border); border-radius: 6px;
+        color: #f7f8f8; font-weight: 600; white-space: nowrap;
+        transition: all 0.3s;
+      }
+      .tech-item:hover {
+        background: rgba(0,200,255,0.15); border-color: var(--blue);
+        transform: translateY(-4px); color: var(--blue);
+      }
+      @keyframes scrollCarousel {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .tech-carousel {
+        animation: scrollCarousel 40s linear infinite;
+      }
+      .tech-carousel:hover {
+        animation-play-state: paused;
+      }
+
       /* ── BLOG CARDS ── */
       .blog-grid {
         display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
@@ -513,6 +541,51 @@
               <p class="testi-name">Emma Rodriguez</p>
               <p class="testi-co">Founder, Agency</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="text-align: center;">
+        <div class="section-inner">
+          <div class="s-eyebrow">Tech Stack</div>
+          <h2 class="s-title">Built with Modern Tools</h2>
+          <div class="s-line" style="margin: 1.5rem auto;"></div>
+        </div>
+
+        <div class="tech-carousel-container">
+          <div class="tech-carousel">
+            <div class="tech-item">HTML5</div>
+            <div class="tech-item">CSS3</div>
+            <div class="tech-item">JavaScript</div>
+            <div class="tech-item">React</div>
+            <div class="tech-item">Node.js</div>
+            <div class="tech-item">Next.js</div>
+            <div class="tech-item">Tailwind CSS</div>
+            <div class="tech-item">TypeScript</div>
+            <div class="tech-item">GitHub</div>
+            <div class="tech-item">Vercel</div>
+            <div class="tech-item">MongoDB</div>
+            <div class="tech-item">PostgreSQL</div>
+            <div class="tech-item">Firebase</div>
+            <div class="tech-item">APIs</div>
+            <div class="tech-item">WebGL</div>
+            <div class="tech-item">Canvas</div>
+            <div class="tech-item">HTML5</div>
+            <div class="tech-item">CSS3</div>
+            <div class="tech-item">JavaScript</div>
+            <div class="tech-item">React</div>
+            <div class="tech-item">Node.js</div>
+            <div class="tech-item">Next.js</div>
+            <div class="tech-item">Tailwind CSS</div>
+            <div class="tech-item">TypeScript</div>
+            <div class="tech-item">GitHub</div>
+            <div class="tech-item">Vercel</div>
+            <div class="tech-item">MongoDB</div>
+            <div class="tech-item">PostgreSQL</div>
+            <div class="tech-item">Firebase</div>
+            <div class="tech-item">APIs</div>
+            <div class="tech-item">WebGL</div>
+            <div class="tech-item">Canvas</div>
           </div>
         </div>
       </section>
