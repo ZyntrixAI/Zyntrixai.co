@@ -657,6 +657,7 @@
     <div id="page-services" class="page">
       <section class="section" style="text-align: center;">
         <div class="section-inner">
+          <button onclick="goBack()" style="align-self: flex-start; margin-bottom: 2rem; padding: 8px 16px; background: #1a1a1a; color: #ffffff; border: 1px solid #ffffff; border-radius: 0; font-size: 0.85rem; cursor: pointer;">← Back</button>
           <div class="s-eyebrow">Services</div>
           <h1 class="s-title">What we offer</h1>
           <p class="s-sub">Complete web solutions from design to launch and beyond.</p>
@@ -808,6 +809,7 @@
     <div id="page-contact" class="page">
       <section class="section" style="text-align: center;">
         <div class="section-inner">
+          <button onclick="goBack()" style="align-self: center; margin-bottom: 2rem; padding: 8px 16px; background: #1a1a1a; color: #ffffff; border: 1px solid #ffffff; border-radius: 0; font-size: 0.85rem; cursor: pointer;">← Back</button>
           <div class="s-eyebrow">Contact</div>
           <h1 class="s-title">Get in touch</h1>
           <p class="s-sub">Let's talk about your project.</p>
@@ -861,6 +863,7 @@
     <div id="page-booking" class="page">
       <section class="section" style="text-align: center;">
         <div class="section-inner">
+          <button onclick="goBack()" style="align-self: center; margin-bottom: 2rem; padding: 8px 16px; background: #1a1a1a; color: #ffffff; border: 1px solid #ffffff; border-radius: 0; font-size: 0.85rem; cursor: pointer;">← Back</button>
           <div class="s-eyebrow">Book a Call</div>
           <h1 class="s-title">Let's discuss your project</h1>
           <p class="s-sub">30 minutes to explore your vision and needs.</p>
@@ -894,6 +897,7 @@
     <div id="page-pricing" class="page">
       <section class="section" style="text-align: center;">
         <div class="section-inner">
+          <button onclick="goBack()" style="align-self: center; margin-bottom: 2rem; padding: 8px 16px; background: #1a1a1a; color: #ffffff; border: 1px solid #ffffff; border-radius: 0; font-size: 0.85rem; cursor: pointer;">← Back</button>
           <div class="s-eyebrow">Pricing</div>
           <h1 class="s-title">Simple, Transparent Pricing</h1>
           <p class="s-sub">Choose the plan that fits your needs. All plans include ongoing support.</p>
@@ -974,6 +978,7 @@
     <div id="page-blog" class="page">
       <section class="section" style="text-align: center;">
         <div class="section-inner">
+          <button onclick="goBack()" style="align-self: center; margin-bottom: 2rem; padding: 8px 16px; background: #1a1a1a; color: #ffffff; border: 1px solid #ffffff; border-radius: 0; font-size: 0.85rem; cursor: pointer;">← Back</button>
           <div class="s-eyebrow">Blog</div>
           <h1 class="s-title">Web Design Insights</h1>
           <p class="s-sub">Learn what goes into building beautiful, high-performing websites.</p>
@@ -1109,16 +1114,26 @@
 
     <script>
       // Page System
+      let previousPage = 'home';
+      let currentPage = 'home';
+
       function showPage(pageId) {
         // Close all modals when navigating
         document.getElementById('pricingModal')?.classList.remove('active');
         document.getElementById('checkoutModal')?.classList.remove('active');
+
+        previousPage = currentPage;
+        currentPage = pageId;
 
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         document.getElementById(`page-${pageId}`).classList.add('active');
         document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
         document.querySelector(`a[onclick="showPage('${pageId}')"]`)?.classList.add('active');
         window.scrollTo(0, 0);
+      }
+
+      function goBack() {
+        showPage(previousPage);
       }
 
       // Nav scroll effect
