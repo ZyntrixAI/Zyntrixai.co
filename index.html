@@ -1237,6 +1237,10 @@
             <textarea name="other" rows="3" style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0; resize: vertical;"></textarea>
           </div>
 
+          <div id="extraFieldsContainer"></div>
+
+          <button type="button" onclick="addExtraField()" style="width: 100%; padding: 0.8rem; background: #333333; color: #ffffff; border: 1px solid #555555; border-radius: 0; cursor: pointer; font-weight: 600; margin-top: 1rem;">+ Add More Information</button>
+
           <button type="submit" class="pricing-btn" style="width: 100%; margin-top: 1rem; background: #ffffff; color: #1a1a1a;">Submit Brief →</button>
         </form>
       </div>
@@ -1464,14 +1468,47 @@
       }
 
       let selectedPricingPlan = '';
+      let extraFieldCount = 0;
 
       function openBusinessForm(plan) {
         selectedPricingPlan = plan;
+        extraFieldCount = 0;
+        document.getElementById('extraFieldsContainer').innerHTML = '';
+        document.getElementById('businessForm').reset();
         document.getElementById('businessFormModal').classList.add('active');
       }
 
       function closeBusinessForm() {
         document.getElementById('businessFormModal').classList.remove('active');
+      }
+
+      function addExtraField() {
+        extraFieldCount++;
+        const container = document.getElementById('extraFieldsContainer');
+        const fieldDiv = document.createElement('div');
+        fieldDiv.id = `extraField-${extraFieldCount}`;
+        fieldDiv.style.cssText = 'margin-top: 1rem;';
+
+        fieldDiv.innerHTML = `
+          <div style="display: flex; gap: 0.5rem; align-items: flex-end;">
+            <div style="flex: 1;">
+              <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Field Label</label>
+              <input type="text" name="extraLabel-${extraFieldCount}" placeholder="e.g., Additional Notes" style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0;" />
+            </div>
+            <button type="button" onclick="removeExtraField(${extraFieldCount})" style="padding: 0.8rem 1rem; background: #555555; color: #ffffff; border: none; border-radius: 0; cursor: pointer; font-weight: 600;">Remove</button>
+          </div>
+          <label style="display: block; color: #ffffff; font-weight: 600; margin-top: 0.8rem; margin-bottom: 0.5rem; font-size: 0.9rem;">Field Value</label>
+          <textarea name="extraValue-${extraFieldCount}" rows="3" style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0; resize: vertical;"></textarea>
+        `;
+
+        container.appendChild(fieldDiv);
+      }
+
+      function removeExtraField(fieldNum) {
+        const field = document.getElementById(`extraField-${fieldNum}`);
+        if (field) {
+          field.remove();
+        }
       }
 
       document.getElementById('businessForm').addEventListener('submit', function(e) {
@@ -1480,7 +1517,20 @@
         const data = Object.fromEntries(formData);
         data.plan = selectedPricingPlan;
 
-        console.log('Business Information Submitted:', data);
+        // Collect extra fields
+        const extraFields = {};
+        for (let i = 1; i <= extraFieldCount; i++) {
+          const label = document.querySelector(`input[name="extraLabel-${i}"]`);
+          const value = document.querySelector(`textarea[name="extraValue-${i}"]`);
+          if (label && label.value.trim()) {
+            extraFields[label.value] = value ? value.value : '';
+          }
+        }
+        if (Object.keys(extraFields).length > 0) {
+          data.extraInformation = extraFields;
+        }
+
+        console.log('Client Briefing Submitted:', data);
         alert('Thank you! We will contact you soon to discuss your project.');
         closeBusinessForm();
         this.reset();
