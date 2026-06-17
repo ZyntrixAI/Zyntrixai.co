@@ -41,7 +41,7 @@
 
       #neuro-canvas {
         position: fixed; inset: 0; width: 100%; height: 100%;
-        z-index: 0; pointer-events: none; display: none;
+        z-index: 0; pointer-events: none; display: none; background: #f0f0f0;
       }
 
       a { color: inherit; text-decoration: none; }
@@ -1286,11 +1286,13 @@
         navLinks.classList.toggle('open');
       });
 
-      // Neural Vortex WebGL Background
+      // Neural Vortex WebGL Background (disabled - using simple white background instead)
+      // Uncomment below to enable WebGL if needed
+      /*
       const canvas = document.getElementById('neuro-canvas');
       const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
 
-      if (gl) {
+      if (gl) {*/
         const pointer = { x: 0, y: 0, tX: 0, tY: 0 };
 
         const vsSource = `
@@ -1423,6 +1425,7 @@
           }
         });
       }
+      */
 
       // Form handlers
       function handleContactForm(e) {
