@@ -42,30 +42,47 @@
       #neuro-canvas {
         position: fixed; inset: 0; width: 100%; height: 100%;
         z-index: 0; pointer-events: none;
-        background: linear-gradient(-45deg, #1a0033, #330066, #003366, #000033);
-        background-size: 400% 400%;
-        animation: neuralGradient 8s ease infinite;
+        background: radial-gradient(ellipse 100% 100% at 20% 50%, #5500ff 0%, transparent 40%),
+                    radial-gradient(ellipse 100% 100% at 80% 50%, #00ccff 0%, transparent 40%),
+                    radial-gradient(ellipse 100% 100% at 50% 100%, #ff00ff 0%, transparent 50%),
+                    linear-gradient(135deg, #0a0020 0%, #1a0a30 25%, #0a1a40 50%, #001a30 75%, #0a0020 100%);
+        background-size: 200% 200%, 200% 200%, 200% 200%, 400% 400%;
+        background-position: 0% 0%, 100% 100%, 50% 50%, 0% 0%;
+        animation: neuralFlow 12s ease-in-out infinite;
       }
 
-      @keyframes neuralGradient {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
+      @keyframes neuralFlow {
+        0% {
+          background-position: 0% 0%, 100% 100%, 50% 50%, 0% 0%;
+        }
+        50% {
+          background-position: 100% 100%, 0% 0%, 50% 0%, 50% 50%;
+        }
+        100% {
+          background-position: 0% 0%, 100% 100%, 50% 50%, 100% 100%;
+        }
       }
 
-      @keyframes neuralPulse {
-        0%, 100% { filter: brightness(1) saturate(1); }
-        50% { filter: brightness(1.2) saturate(1.3); }
+      @keyframes glow1 {
+        0%, 100% { filter: brightness(1) saturate(1) blur(0px); }
+        50% { filter: brightness(1.3) saturate(1.5) blur(2px); }
+      }
+
+      @keyframes glow2 {
+        0%, 100% { filter: brightness(1) saturate(1) blur(0px); }
+        50% { filter: brightness(1.2) saturate(1.3) blur(1px); }
       }
 
       #neuro-canvas::before {
         content: '';
         position: absolute;
         inset: 0;
-        background: radial-gradient(circle at 20% 50%, rgba(139, 0, 255, 0.3) 0%, transparent 50%),
-                    radial-gradient(circle at 80% 50%, rgba(0, 200, 255, 0.3) 0%, transparent 50%);
-        animation: neuralPulse 4s ease-in-out infinite;
+        background:
+          radial-gradient(circle at 25% 40%, rgba(170, 0, 255, 0.5) 0%, transparent 35%),
+          radial-gradient(circle at 75% 60%, rgba(0, 255, 200, 0.5) 0%, transparent 35%);
+        animation: glow1 6s ease-in-out infinite;
         pointer-events: none;
+        mix-blend-mode: screen;
       }
 
       #neuro-canvas::after {
@@ -73,10 +90,11 @@
         position: absolute;
         inset: 0;
         background:
-          radial-gradient(circle at 30% 30%, rgba(255, 0, 200, 0.2) 0%, transparent 40%),
-          radial-gradient(circle at 70% 70%, rgba(0, 255, 200, 0.2) 0%, transparent 40%);
-        animation: neuralPulse 6s ease-in-out infinite reverse;
+          radial-gradient(circle at 50% 50%, rgba(255, 0, 150, 0.3) 0%, transparent 45%),
+          radial-gradient(circle at 35% 65%, rgba(100, 200, 255, 0.2) 0%, transparent 40%);
+        animation: glow2 8s ease-in-out infinite reverse;
         pointer-events: none;
+        mix-blend-mode: screen;
       }
 
       a { color: inherit; text-decoration: none; }
