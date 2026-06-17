@@ -1324,6 +1324,11 @@
     </div>
 
     <script>
+      // Initialize - always start on home page
+      document.addEventListener('DOMContentLoaded', () => {
+        showPage('home');
+      });
+
       // Page System
       let previousPage = 'home';
       let currentPage = 'home';
