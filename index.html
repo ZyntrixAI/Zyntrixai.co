@@ -232,8 +232,8 @@
       .service-card-container .animated-card {
         border-radius: 0;
         overflow: hidden;
-        border: 2px solid #00d9ff;
-        box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+        border: 2px solid #333333;
+        box-shadow: none;
       }
 
       .card-info {
@@ -278,8 +278,8 @@
       }
       .animated-card {
         background: #1a1a1a; padding: 2rem 1.8rem;
-        border: 2px solid #00d9ff; border-radius: 0;
-        box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+        border: 2px solid #333333; border-radius: 0;
+        box-shadow: none;
         display: flex; flex-direction: column; align-items: center; text-align: center;
         width: 100%; max-width: 280px; position: relative; transition: all 0.3s;
         animation: glowPulse 3s ease-in-out infinite;
@@ -318,7 +318,7 @@
       .hw-item {
         background: var(--bg); overflow: hidden; cursor: pointer;
         position: relative; height: 280px; transition: opacity 0.2s;
-        width: min(540px, 100%); border: 2px solid #7700ff;
+        width: min(540px, 100%); border: 2px solid #333333;
         border-radius: 0;
       }
       .hw-item:hover { opacity: 0.8; }
@@ -334,7 +334,7 @@
         border: none; border-radius: var(--radius);
         overflow: visible; margin-top: 3rem;
       }
-      .hp-step { background: #1a1a1a; padding: 2rem 1.8rem; transition: background 0.2s; border: 2px solid #0099ff; text-align: center; border-radius: 0; }
+      .hp-step { background: #1a1a1a; padding: 2rem 1.8rem; transition: background 0.2s; border: 2px solid #333333; text-align: center; border-radius: 0; }
       .hp-step:hover { background: #333333; }
       .hp-num {
         display: none;
@@ -348,7 +348,7 @@
         display: grid; grid-template-columns: repeat(3, 1fr);
         gap: 1.2rem; margin-top: 3rem;
       }
-      .testi-card { background: var(--card-bg); border: 2px solid #00ffaa; border-radius: 0; padding: 1rem 1.2rem; display: flex; flex-direction: column; transition: all 0.3s; box-shadow: 0 0 20px rgba(0, 255, 170, 0.3); animation: glowPulse 3s ease-in-out infinite; }
+      .testi-card { background: var(--card-bg); border: 2px solid #333333; border-radius: 0; padding: 1rem 1.2rem; display: flex; flex-direction: column; transition: all 0.3s; box-shadow: none; animation: glowPulse 3s ease-in-out infinite; }
       .testi-card:hover { background: var(--card-hover); box-shadow: 0 0 30px rgba(0,0,0,0.15), inset 0 0 20px rgba(0,0,0,0.05); animation: glowPulse 1.5s ease-in-out infinite; }
       .testi-stars { font-size: 0.65rem; letter-spacing: 2px; color: #ffffff; margin-bottom: 0.7rem; font-family: monospace; }
       .testi-q { font-size: 0.82rem; color: rgba(237,237,237,0.75); line-height: 1.7; flex: 1; margin-bottom: 1rem; }
