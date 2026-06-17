@@ -1568,18 +1568,35 @@
       let currentPage = 'home';
 
       function showPage(pageId) {
-        // Close all modals when navigating
-        document.getElementById('pricingModal')?.classList.remove('active');
-        document.getElementById('checkoutModal')?.classList.remove('active');
+        try {
+          // Close all modals when navigating
+          document.getElementById('pricingModal')?.classList.remove('active');
+          document.getElementById('checkoutModal')?.classList.remove('active');
 
-        previousPage = currentPage;
-        currentPage = pageId;
+          previousPage = currentPage;
+          currentPage = pageId;
 
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.getElementById(`page-${pageId}`).classList.add('active');
-        document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-        document.querySelector(`a[onclick="showPage('${pageId}')"]`)?.classList.add('active');
-        window.scrollTo(0, 0);
+          // Hide all pages
+          document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+
+          // Show target page
+          const targetPage = document.getElementById(`page-${pageId}`);
+          if (targetPage) {
+            targetPage.classList.add('active');
+          } else {
+            console.error(`Page not found: page-${pageId}`);
+            return;
+          }
+
+          // Update active nav link
+          document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+          document.querySelector(`a[onclick="showPage('${pageId}')"]`)?.classList.add('active');
+
+          // Scroll to top
+          window.scrollTo(0, 0);
+        } catch (err) {
+          console.error('Error in showPage:', err);
+        }
       }
 
       function goBack() {
