@@ -59,7 +59,7 @@
       /* ── NAV ── */
       nav {
         position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-        display: none; align-items: center; justify-content: space-between;
+        display: flex; align-items: center; justify-content: space-between;
         padding: 0 5%; height: 56px;
         background: #1a1a1a; backdrop-filter: none;
         border-bottom: 1px solid #333333;
@@ -92,7 +92,7 @@
 
       /* ── PAGE SYSTEM ── */
       .page { display: none; min-height: 100vh; position: relative; z-index: 10; padding-top: 56px; }
-      .page.active { display: none; flex-direction: column; }
+      .page.active { display: flex; flex-direction: column; }
       .page.active > footer { margin-top: auto; }
 
       /* ── SHARED LAYOUT ── */
