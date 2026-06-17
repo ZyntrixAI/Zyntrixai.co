@@ -74,11 +74,12 @@
         letter-spacing: 4px; color: #ffffff; cursor: pointer; user-select: none;
       }
       .nav-links { display: flex; align-items: center; gap: 1.8rem; list-style: none; }
-      .nav-links a {
+      .nav-links button {
         font-size: 0.82rem; font-weight: 500; color: #cccccc;
         transition: color 0.15s; cursor: pointer;
+        background: none; border: none; padding: 0; font-family: inherit;
       }
-      .nav-links a:hover, .nav-links a.active { color: #ffffff; }
+      .nav-links button:hover, .nav-links button.active { color: #ffffff; }
       .nav-cta {
         padding: 0.45rem 1.2rem;
         background: #ffffff; backdrop-filter: none;
@@ -523,10 +524,10 @@
     <nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000;">
       <div class="nav-logo" onclick="showPage('home')">ZYNTRIX</div>
       <ul class="nav-links" id="navLinks">
-        <li><a onclick="showPage('services')">Services</a></li>
-        <li><a onclick="showPage('pricing')">Pricing</a></li>
-        <li><a onclick="showPage('blog')">Blog</a></li>
-        <li><a onclick="showPage('contact')">Contact</a></li>
+        <li><button onclick="showPage('services')">Services</button></li>
+        <li><button onclick="showPage('pricing')">Pricing</button></li>
+        <li><button onclick="showPage('blog')">Blog</button></li>
+        <li><button onclick="showPage('contact')">Contact</button></li>
       </ul>
       <button class="nav-cta" onclick="showPage('booking')">Book a Call</button>
       <button class="hamburger" id="hamburger">
@@ -1589,8 +1590,8 @@
           }
 
           // Update active nav link
-          document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-          document.querySelector(`a[onclick="showPage('${pageId}')"]`)?.classList.add('active');
+          document.querySelectorAll('.nav-links button').forEach(btn => btn.classList.remove('active'));
+          document.querySelector(`button[onclick="showPage('${pageId}')"]`)?.classList.add('active');
 
           // Scroll to top
           window.scrollTo(0, 0);
