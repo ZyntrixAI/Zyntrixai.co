@@ -351,11 +351,8 @@
       .pricing-name { font-size: 1.3rem; font-weight: 700; color: #ffffff; margin-bottom: 0.4rem; }
       .pricing-price { font-size: 2rem; font-weight: 700; color: #ffffff; margin-bottom: 0.2rem; }
       .pricing-period { font-size: 0.8rem; color: #ffffff; margin-bottom: 1.5rem; }
-      .pricing-btn { padding: 10px 20px; background: #999999; color: #333333; border: none; border-radius: 0; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center; font-size: 0.85rem; }
-      .pricing-btn:hover { background: #777777; transform: translateY(-2px); }
-      .pricing-btn:active { background: #666666; transform: translateY(0); }
+      .pricing-btn { padding: 10px 20px; background: #ffffff; color: #1a1a1a; border: none; border-radius: 0; font-weight: 600; cursor: pointer; text-align: center; font-size: 0.85rem; }
       .pricing-card.featured .pricing-btn { background: #ffffff; color: #1a1a1a; }
-      .pricing-card.featured .pricing-btn:active { background: #e8e8e8; }
       .pricing-card { cursor: pointer; transition: all 0.3s; }
       .pricing-card:hover { transform: translateY(-4px); border-color: var(--blue); }
 
@@ -908,7 +905,7 @@
         <div class="section-inner">
           <div class="pricing-grid">
             <div class="pricing-item">
-              <div class="pricing-card" onclick="openPricingModal('starter')">
+              <div class="pricing-card" onclick="openBusinessForm('starter')">
                 <div class="pricing-tier">01</div>
                 <h3 class="pricing-name">Web Design</h3>
                 <p style="font-size: 0.9rem; color: #ffffff; margin-bottom: 1rem; line-height: 1.6;">Beautiful, conversion-focused designs.</p>
@@ -924,7 +921,7 @@
             </div>
 
             <div class="pricing-item">
-              <div class="pricing-card featured" onclick="openCheckoutModal('growth')">
+              <div class="pricing-card featured" onclick="openBusinessForm('growth')">
                 <div class="pricing-tier">02</div>
                 <h3 class="pricing-name">Development</h3>
                 <p style="font-size: 0.9rem; color: #ffffff; margin-bottom: 1rem; line-height: 1.6;">Fast, reliable, hand-coded websites.</p>
@@ -940,7 +937,7 @@
             </div>
 
             <div class="pricing-item">
-              <div class="pricing-card" onclick="openCheckoutModal('enterprise')">
+              <div class="pricing-card" onclick="openBusinessForm('enterprise')">
                 <div class="pricing-tier">03</div>
                 <h3 class="pricing-name">Support</h3>
                 <p style="font-size: 0.9rem; color: #ffffff; margin-bottom: 1rem; line-height: 1.6;">Monthly maintenance & updates.</p>
@@ -1167,6 +1164,48 @@
       </div>
     </div>
 
+    <!-- BUSINESS INFORMATION FORM MODAL -->
+    <div id="businessFormModal" class="modal">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeBusinessForm()">✕</button>
+        <h2 class="modal-title">Project Information</h2>
+        <p style="color: #cccccc; margin-bottom: 1.5rem; text-align: center;">Tell us about your business</p>
+
+        <form id="businessForm" style="display: flex; flex-direction: column; gap: 1.2rem;">
+          <div>
+            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Your Name *</label>
+            <input type="text" name="clientName" required style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0;" />
+          </div>
+
+          <div>
+            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Business Name *</label>
+            <input type="text" name="businessName" required style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0;" />
+          </div>
+
+          <div>
+            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Email *</label>
+            <input type="email" name="email" required style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0;" />
+          </div>
+
+          <div>
+            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Phone Number *</label>
+            <input type="tel" name="phone" required style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0;" />
+          </div>
+
+          <div>
+            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Current Website/Links</label>
+            <input type="url" name="website" style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0;" placeholder="https://example.com" />
+          </div>
+
+          <div>
+            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Project Details</label>
+            <textarea name="projectDetails" style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0; min-height: 100px; resize: vertical;" placeholder="Tell us about your project..."></textarea>
+          </div>
+
+          <button type="submit" class="pricing-btn" style="width: 100%; margin-top: 1rem; background: #ffffff; color: #1a1a1a;">Submit →</button>
+        </form>
+      </div>
+    </div>
 
     <script>
       // Page System
@@ -1389,11 +1428,39 @@
         document.getElementById('pricingModal').classList.remove('active');
       }
 
+      let selectedPricingPlan = '';
+
+      function openBusinessForm(plan) {
+        selectedPricingPlan = plan;
+        document.getElementById('businessFormModal').classList.add('active');
+      }
+
+      function closeBusinessForm() {
+        document.getElementById('businessFormModal').classList.remove('active');
+      }
+
+      document.getElementById('businessForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData);
+        data.plan = selectedPricingPlan;
+
+        console.log('Business Information Submitted:', data);
+        alert('Thank you! We will contact you soon to discuss your project.');
+        closeBusinessForm();
+        this.reset();
+      });
+
       // Close modal when clicking outside
       window.addEventListener('click', (e) => {
-        const modal = document.getElementById('pricingModal');
-        if (e.target === modal) {
+        const pricingModal = document.getElementById('pricingModal');
+        const businessModal = document.getElementById('businessFormModal');
+
+        if (e.target === pricingModal) {
           closePricingModal();
+        }
+        if (e.target === businessModal) {
+          closeBusinessForm();
         }
       });
 
