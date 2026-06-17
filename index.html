@@ -214,8 +214,63 @@
       /* ── SERVICE CARDS ── */
       .animated-cards-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-        gap: 4rem; margin-top: 3rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem; margin-top: 3rem;
+      }
+      @media (max-width: 768px) {
+        .animated-cards-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .service-card-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .service-card-container .animated-card {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-info {
+        padding: 0;
+      }
+
+      .card-info h3 {
+        font-size: 1.4rem;
+        color: #1a1a1a;
+        margin-bottom: 0.5rem;
+      }
+
+      .card-info p {
+        color: #666666;
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+      }
+
+      .card-info ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+
+      .card-info li {
+        color: #333333;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .card-info li:before {
+        content: "•";
+        margin-right: 0.8rem;
+        color: #5500ff;
+        font-weight: bold;
       }
       .animated-card-wrapper {
         display: flex; flex-direction: column; align-items: center; text-align: center;
@@ -673,14 +728,13 @@
       <section class="section">
         <div class="section-inner">
           <div class="animated-cards-grid">
-            <div class="animated-card-wrapper">
-              <div class="animated-card">
-                <div class="animated-card-label">Services</div>
+            <!-- Web Design Card -->
+            <div class="service-card-container">
+              <div class="animated-card" style="background-image: url('https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop'); background-size: cover; background-position: center; min-height: 300px;"></div>
+              <div class="card-info">
                 <h3>Web Design</h3>
                 <p>Beautiful, conversion-focused designs that captivate.</p>
-              </div>
-              <div class="card-details">
-                <ul>
+                <ul style="margin-top: 1rem;">
                   <li>Custom responsive layouts</li>
                   <li>Mobile-first design</li>
                   <li>Brand-aligned visuals</li>
@@ -689,14 +743,13 @@
               </div>
             </div>
 
-            <div class="animated-card-wrapper">
-              <div class="animated-card">
-                <div class="animated-card-label">Services</div>
+            <!-- Lightning Fast Code Card -->
+            <div class="service-card-container">
+              <div class="animated-card" style="background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop'); background-size: cover; background-position: center; min-height: 300px;"></div>
+              <div class="card-info">
                 <h3>Lightning Fast Code</h3>
                 <p>Hand-coded, optimized for speed and performance.</p>
-              </div>
-              <div class="card-details">
-                <ul>
+                <ul style="margin-top: 1rem;">
                   <li>92+ Lighthouse score</li>
                   <li>Pure HTML/CSS/JS code</li>
                   <li>Security-first approach</li>
@@ -705,50 +758,32 @@
               </div>
             </div>
 
-            <div class="animated-card-wrapper">
-              <div class="animated-card" style="background: linear-gradient(135deg, rgba(79, 39, 245, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><linearGradient id=%22grad%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 style=%22stop-color:%234F27F5;stop-opacity:0.1%22 /><stop offset=%22100%25%22 style=%22stop-color:%238B5CF6;stop-opacity:0.1%22 /></linearGradient></defs><rect fill=%22url(%23grad)%22 width=%22100%22 height=%22100%22 /><circle cx=%2220%22 cy=%2220%22 r=%2215%22 fill=%224F27F5%22 opacity=%220.05%22 /><circle cx=%2280%22 cy=%2280%22 r=%2220%22 fill=%238B5CF6%22 opacity=%220.05%22 /></svg>'); background-position: center; background-size: cover; background-attachment: fixed;">
-                <div class="animated-card-label">Services</div>
-                <h3>Web Design</h3>
-                <p>Beautiful, conversion-focused designs that captivate.</p>
-              </div>
-              <div class="card-details">
-                <ul>
-                  <li>Custom responsive layouts</li>
-                  <li>Mobile-first design</li>
-                  <li>Brand-aligned visuals</li>
-                  <li>Conversion-focused UX</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="animated-card-wrapper">
-              <div class="animated-card" style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(34, 211, 238, 0.2) 100%), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><linearGradient id=%22grad2%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 style=%22stop-color:%2322C55E;stop-opacity:0.1%22 /><stop offset=%22100%25%22 style=%22stop-color:%2322D3EE;stop-opacity:0.1%22 /></linearGradient></defs><rect fill=%22url(%23grad2)%22 width=%22100%22 height=%22100%22 /><circle cx=%2230%22 cy=%2250%22 r=%2218%22 fill=%2322C55E%22 opacity=%220.05%22 /><circle cx=%2270%22 cy=%2230%22 r=%2216%22 fill=%2322D3EE%22 opacity=%220.05%22 /></svg>'); background-position: center; background-size: cover; background-attachment: fixed;">
-                <div class="animated-card-label">Services</div>
-                <h3>Lightning Fast Code</h3>
-                <p>Hand-coded, optimized for speed and performance.</p>
-              </div>
-              <div class="card-details">
-                <ul>
-                  <li>92+ Lighthouse score</li>
-                  <li>Pure HTML/CSS/JS code</li>
-                  <li>Security-first approach</li>
-                  <li>SEO optimized</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="animated-card-wrapper">
-              <div class="animated-card" style="background: linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><linearGradient id=%22grad3%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 style=%22stop-color:%23F97316;stop-opacity:0.1%22 /><stop offset=%22100%25%22 style=%22stop-color:%23EC4899;stop-opacity:0.1%22 /></linearGradient></defs><rect fill=%22url(%23grad3)%22 width=%22100%22 height=%22100%22 /><circle cx=%2225%22 cy=%2275%22 r=%2219%22 fill=%23F97316%22 opacity=%220.05%22 /><circle cx=%2275%22 cy=%2225%22 r=%2217%22 fill=%23EC4899%22 opacity=%220.05%22 /></svg>'); background-position: center; background-size: cover; background-attachment: fixed;">
-                <div class="animated-card-label">Services</div>
+            <!-- Online Stores Card -->
+            <div class="service-card-container">
+              <div class="animated-card" style="background-image: url('https://images.unsplash.com/photo-1460925895917-adf4e565eb13?w=800&h=600&fit=crop'); background-size: cover; background-position: center; min-height: 300px;"></div>
+              <div class="card-info">
                 <h3>Online Stores</h3>
                 <p>Ready-to-sell stores with payments and inventory.</p>
-              </div>
-              <div class="card-details">
-                <ul>
+                <ul style="margin-top: 1rem;">
                   <li>Payment processing ready</li>
                   <li>Inventory management</li>
                   <li>Live in days, not months</li>
                   <li>Full checkout experience</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- AI Optimization Card -->
+            <div class="service-card-container">
+              <div class="animated-card" style="background-image: url('https://images.unsplash.com/photo-1677442d019cecf8eea539a374c9055eebf0394d?w=800&h=600&fit=crop'); background-size: cover; background-position: center; min-height: 300px;"></div>
+              <div class="card-info">
+                <h3>AI Optimization</h3>
+                <p>Leverage cutting-edge AI for smarter web solutions.</p>
+                <ul style="margin-top: 1rem;">
+                  <li>AI-driven analytics</li>
+                  <li>Smart optimization tools</li>
+                  <li>Automated A/B testing</li>
+                  <li>Real-time performance tuning</li>
                 </ul>
               </div>
             </div>
