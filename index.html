@@ -1338,17 +1338,17 @@
             float p = clamp(length(pointer), 0., 1.);
             p = .5 * pow(1. - p, 2.);
             float t = .001 * u_time;
-            vec3 color = vec3(1.);
+            vec3 color = vec3(0.);
             float noise = neuro_shape(uv, t, p);
             noise = 1.2 * pow(noise, 3.);
             noise += pow(noise, 10.);
             noise = max(.0, noise - .5);
             noise *= (1. - length(vUv - .5));
-            color = vec3(0.2, 0.8, 0.95);
-            color = mix(color, vec3(0.8, 0.2, 0.9), 0.32 + 0.16 * sin(2.0 * u_scroll_progress + 1.2));
-            color += vec3(0.2, 0.9, 0.7) * sin(2.0 * u_scroll_progress + 1.5);
+            color = vec3(0.5, 0.15, 0.65);
+            color = mix(color, vec3(0.02, 0.7, 0.9), 0.32 + 0.16 * sin(2.0 * u_scroll_progress + 1.2));
+            color += vec3(0.15, 0.0, 0.6) * sin(2.0 * u_scroll_progress + 1.5);
             color = color * noise;
-            gl_FragColor = vec4(color, noise * 0.9);
+            gl_FragColor = vec4(color, noise);
           }
         `;
 
