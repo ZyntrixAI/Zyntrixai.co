@@ -1505,10 +1505,11 @@
       const SUPABASE_KEY = 'sb_publishable_IlnLPkGiInE0dA0j9vGo1g_whO-Kedk';
       const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-      // Initialize - always start on home page
+      // Initialize features when DOM is ready
       document.addEventListener('DOMContentLoaded', () => {
-        showPage('home');
         initializeFeatures();
+        // Ensure home page is visible
+        document.getElementById('page-home')?.classList.add('active');
       });
 
       // Initialize all features
