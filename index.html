@@ -1164,22 +1164,22 @@
       </div>
     </div>
 
-    <!-- BUSINESS INFORMATION FORM MODAL -->
+    <!-- CLIENT BRIEFING FORM MODAL -->
     <div id="businessFormModal" class="modal">
-      <div class="modal-content">
+      <div class="modal-content" style="max-width: 700px; max-height: 90vh; overflow-y: auto;">
         <button class="modal-close" onclick="closeBusinessForm()">✕</button>
-        <h2 class="modal-title">Project Information</h2>
-        <p style="color: #cccccc; margin-bottom: 1.5rem; text-align: center;">Tell us about your business</p>
+        <h2 class="modal-title">Client Briefing Form</h2>
+        <p style="color: #cccccc; margin-bottom: 1.5rem; text-align: center;">Tell us about your project</p>
 
         <form id="businessForm" style="display: flex; flex-direction: column; gap: 1.2rem;">
           <div>
-            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Your Name *</label>
-            <input type="text" name="clientName" required style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0;" />
+            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Name *</label>
+            <input type="text" name="name" required style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0;" />
           </div>
 
           <div>
-            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Business Name *</label>
-            <input type="text" name="businessName" required style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0;" />
+            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Company *</label>
+            <input type="text" name="company" required style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0;" />
           </div>
 
           <div>
@@ -1188,21 +1188,56 @@
           </div>
 
           <div>
-            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Phone Number *</label>
-            <input type="tel" name="phone" required style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0;" />
+            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Phone</label>
+            <input type="text" name="phone" style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0;" />
           </div>
 
           <div>
-            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Current Website/Links</label>
-            <input type="url" name="website" style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0;" placeholder="https://example.com" />
+            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Website</label>
+            <input type="text" name="website" style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0;" />
           </div>
 
           <div>
-            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Project Details</label>
-            <textarea name="projectDetails" style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0; min-height: 100px; resize: vertical;" placeholder="Tell us about your project..."></textarea>
+            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Project Description *</label>
+            <textarea name="project" rows="4" required style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0; resize: vertical;"></textarea>
           </div>
 
-          <button type="submit" class="pricing-btn" style="width: 100%; margin-top: 1rem; background: #ffffff; color: #1a1a1a;">Submit →</button>
+          <div>
+            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Project Objectives *</label>
+            <textarea name="objectives" rows="4" required style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0; resize: vertical;"></textarea>
+          </div>
+
+          <div>
+            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Target Audience *</label>
+            <textarea name="audience" rows="3" required style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0; resize: vertical;"></textarea>
+          </div>
+
+          <div>
+            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Key Competitors</label>
+            <textarea name="competitors" rows="3" style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0; resize: vertical;"></textarea>
+          </div>
+
+          <div>
+            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Project Budget</label>
+            <input type="text" name="budget" style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0;" />
+          </div>
+
+          <div>
+            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Desired Timeline</label>
+            <input type="text" name="timeline" style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0;" />
+          </div>
+
+          <div>
+            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Existing Brand Assets</label>
+            <textarea name="assets" rows="3" style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0; resize: vertical;"></textarea>
+          </div>
+
+          <div>
+            <label style="display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Other Relevant Information</label>
+            <textarea name="other" rows="3" style="width: 100%; padding: 0.8rem; background: #333333; border: 1px solid #555555; color: #ffffff; font-family: inherit; border-radius: 0; resize: vertical;"></textarea>
+          </div>
+
+          <button type="submit" class="pricing-btn" style="width: 100%; margin-top: 1rem; background: #ffffff; color: #1a1a1a;">Submit Brief →</button>
         </form>
       </div>
     </div>
