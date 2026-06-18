@@ -189,18 +189,44 @@
       /* ── BUTTONS ── */
       .btn-primary {
         padding: 10px 22px; background: #1a1a1a; color: #ffffff;
-        border: none; border-radius: 6px; font-size: 0.85rem; font-weight: 700;
+        border: 1.5px solid #00c8ff; border-radius: 0px; font-size: 0.85rem; font-weight: 700;
         cursor: pointer; transition: all 0.3s; white-space: nowrap;
+        position: relative; overflow: visible;
       }
-      .btn-primary:hover { background: #2a2a2a; box-shadow: 0 0 20px rgba(0,200,255,0.3); transform: translateY(-2px); }
+      .btn-primary::before, .btn-primary::after {
+        content: ''; position: absolute; width: 8px; height: 8px;
+        border: 1.5px solid #00c8ff; transition: all 0.3s ease;
+      }
+      .btn-primary::before {
+        top: -6px; left: -6px; border-right: none; border-bottom: none;
+      }
+      .btn-primary::after {
+        top: -6px; right: -6px; border-left: none; border-bottom: none;
+      }
+      .btn-primary:hover::before { top: -10px; left: -10px; }
+      .btn-primary:hover::after { top: -10px; right: -10px; }
+      .btn-primary:hover { background: #2a2a2a; box-shadow: 0 0 20px rgba(0,200,255,0.3); }
       .btn-primary:disabled { opacity: 0.55; cursor: not-allowed; }
       .btn-outline {
         padding: 10px 22px;
-        background: #1a1a1a; border: none;
-        color: #ffffff; border-radius: 6px; font-size: 0.85rem; font-weight: 500;
+        background: #1a1a1a; border: 1.5px solid #333333;
+        color: #ffffff; border-radius: 0px; font-size: 0.85rem; font-weight: 500;
         cursor: pointer; transition: all 0.3s; white-space: nowrap;
+        position: relative; overflow: visible;
       }
-      .btn-outline:hover { color: #ffffff; background: #2a2a2a; box-shadow: 0 0 20px rgba(0,200,255,0.3); transform: translateY(-2px); }
+      .btn-outline::before, .btn-outline::after {
+        content: ''; position: absolute; width: 8px; height: 8px;
+        border: 1.5px solid #333333; transition: all 0.3s ease;
+      }
+      .btn-outline::before {
+        top: -6px; left: -6px; border-right: none; border-bottom: none;
+      }
+      .btn-outline::after {
+        top: -6px; right: -6px; border-left: none; border-bottom: none;
+      }
+      .btn-outline:hover::before { top: -10px; left: -10px; border-color: #00c8ff; }
+      .btn-outline:hover::after { top: -10px; right: -10px; border-color: #00c8ff; }
+      .btn-outline:hover { color: #ffffff; background: #2a2a2a; box-shadow: 0 0 20px rgba(0,200,255,0.3); border-color: #00c8ff; }
       .back-button {
         position: fixed; top: 70px; left: 24px; z-index: 999;
         background: #1a1a1a; color: #1a1a1a; border: 3px solid #333333;
