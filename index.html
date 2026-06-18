@@ -63,7 +63,13 @@
       nav.scrolled {
         background: #1a1a1a; border-bottom-color: rgba(255,255,255,0.15);
       }
-      .nav-left { flex: 1; }
+      .nav-left { flex: 1; display: flex; align-items: center; }
+      .nav-cta-left {
+        background: #00c8ff; color: #1a1a1a; border: none;
+        padding: 0.45rem 1.2rem; border-radius: 6px; font-size: 0.78rem;
+        font-weight: 600; cursor: pointer; transition: all 0.3s;
+      }
+      .nav-cta-left:hover { background: #ffffff; box-shadow: 0 0 20px rgba(0,200,255,0.4); }
       .nav-right { flex: 1; display: flex; justify-content: flex-end; align-items: center; }
       .nav-logo {
         font-family: 'Orbitron', sans-serif; font-size: 0.9rem; font-weight: 900;
@@ -965,7 +971,9 @@
 
     <!-- NAV -->
     <nav>
-      <div class="nav-left"></div>
+      <div class="nav-left">
+        <button class="nav-cta-left" onclick="showPage('booking')">Start a Project</button>
+      </div>
       <div class="nav-logo" onclick="showPage('home')">ZyntrixAI</div>
       <div class="nav-right">
         <div class="dropdown">
