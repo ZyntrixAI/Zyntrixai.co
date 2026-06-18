@@ -47,7 +47,7 @@
       a { color: inherit; text-decoration: none; }
 
       ::-webkit-scrollbar { width: 5px; }
-      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-track { background: #1a1a1a; }
       ::-webkit-scrollbar-thumb { background: #23252a; border-radius: 999px; }
       ::-webkit-scrollbar-thumb:hover { background: #323334; }
 
@@ -129,7 +129,7 @@
         display: inline-flex; align-items: center; gap: 8px;
         padding: 6px 14px; border-radius: 0px;
         border: 2px solid rgba(0,200,255,0.4);
-        background: transparent;
+        background: #1a1a1a;
         font-size: 0.67rem; font-weight: 600; letter-spacing: 1.5px;
         text-transform: uppercase; color: var(--blue); margin-bottom: 1.2rem;
         box-shadow: 0 0 12px rgba(0,200,255,0.15);
@@ -242,12 +242,12 @@
         margin-top: 3rem;
       }
       .hw-item {
-        border: 2px solid rgba(255,255,255,0.4); border-radius: var(--radius);
-        padding: 0; position: relative; background: transparent; overflow: hidden; cursor: pointer;
+        border: 1px solid #333333; border-radius: var(--radius);
+        padding: 0; position: relative; background: #1a1a1a; overflow: hidden; cursor: pointer;
         height: 280px; transition: background 0.2s, border-color 0.2s;
         width: min(540px, 100%);
       }
-      .hw-item:hover { border-color: rgba(255,255,255,0.7); }
+      .hw-item:hover { border-color: #00c8ff; }
       .hw-item:hover { opacity: 0.8; }
       .hw-thumb { width: 100%; height: 100%; overflow: hidden; }
       .hw-info { display: none; }
@@ -261,7 +261,7 @@
         border: 1px solid var(--border); border-radius: var(--radius);
         overflow: hidden; margin-top: 3rem;
       }
-      .hp-step { background: transparent; padding: 2.5rem 1.75rem; transition: background 0.2s; }
+      .hp-step { background: #1a1a1a; padding: 2.5rem 1.75rem; transition: background 0.2s; }
       .hp-step:hover { background: rgba(0,200,255,0.05); }
       .hp-num {
         font-size: 0.62rem; letter-spacing: 2px; color: var(--blue);
@@ -277,12 +277,12 @@
         display: grid; grid-template-columns: repeat(3, 1fr);
         gap: 1.2rem; margin-top: 3rem;
       }
-      .testi-card { border: 2px solid rgba(255,255,255,0.4); border-radius: var(--radius); padding: 1.4rem 1.5rem; position: relative; background: transparent; display: flex; flex-direction: column; transition: background 0.2s, border-color 0.2s; }
-      .testi-card:hover { border-color: rgba(255,255,255,0.7); }
-      .testi-stars { font-size: 0.65rem; letter-spacing: 2px; color: var(--blue); margin-bottom: 0.7rem; font-family: monospace; }
-      .testi-q { font-size: 0.82rem; color: rgba(237,237,237,0.75); line-height: 1.7; flex: 1; margin-bottom: 1rem; }
-      .testi-name { font-size: 0.82rem; font-weight: 600; color: #f7f8f8; }
-      .testi-co { font-size: 0.68rem; color: var(--blue); margin-top: 2px; font-family: monospace; }
+      .testi-card { border: 1px solid #333333; border-radius: var(--radius); padding: 1.4rem 1.5rem; position: relative; background: #1a1a1a; display: flex; flex-direction: column; transition: all 0.3s; }
+      .testi-card:hover { border-color: #00c8ff; background: #2a2a2a; box-shadow: 0 0 20px rgba(0,200,255,0.2); }
+      .testi-stars { font-size: 0.65rem; letter-spacing: 2px; color: #00c8ff; margin-bottom: 0.7rem; font-family: monospace; }
+      .testi-q { font-size: 0.82rem; color: #cccccc; line-height: 1.7; flex: 1; margin-bottom: 1rem; }
+      .testi-name { font-size: 0.82rem; font-weight: 600; color: #ffffff; }
+      .testi-co { font-size: 0.68rem; color: #00c8ff; margin-top: 2px; font-family: monospace; }
 
       /* ── FOOTER ── */
       footer {
@@ -356,8 +356,8 @@
       }
       .svc-feature-list li::before { content: '↗'; color: var(--blue); font-size: 0.72rem; flex-shrink: 0; }
       .svc-price-card {
-        border: 2px solid rgba(255,255,255,0.4); border-radius: var(--radius);
-        padding: 2rem; position: relative; background: transparent; transition: background 0.2s, border-color 0.2s; position: sticky; top: 80px;
+        border: 1px solid #333333; border-radius: var(--radius);
+        padding: 2rem; position: relative; background: #1a1a1a; transition: background 0.2s, border-color 0.2s; position: sticky; top: 80px;
         transition: background 0.2s, border-color 0.2s;
       }
       .svc-price-card:hover { border-color: var(--border-hover); }
@@ -407,10 +407,10 @@
         max-width: 700px; margin: 2.5rem auto 0;
       }
       .build-step {
-        border: 2px solid rgba(255,255,255,0.4); border-radius: 12px; padding: 2rem 2.5rem;
+        border: 1px solid #333333; border-radius: 12px; padding: 2rem 2.5rem;
         text-align: center; margin-bottom: 1.2rem;
         transition: background 0.2s, border-color 0.2s;
-        background: transparent; border-radius: var(--radius);
+        background: #1a1a1a; border-radius: var(--radius);
       }
       .build-step:last-child { margin-bottom: 0; }
       .build-step:hover { background: rgba(0,200,255,0.05); border-color: var(--border-hover); }
@@ -486,7 +486,7 @@
         padding: 2rem; cursor: pointer;
         transition: border-color 0.2s ease, background-color 0.2s ease;
         display: flex; flex-direction: column; align-items: center; text-align: center;
-        background: transparent;
+        background: #1a1a1a;
         box-shadow: rgba(0,0,0,0.4) 0px 2px 4px 0px;
       }
       .svc-card:hover, .service-card:hover {
@@ -604,13 +604,13 @@
       }
       .tech-badge {
         padding: 0.55rem 1.4rem; border: 1px solid var(--border); border-radius: 999px;
-        font-size: 0.78rem; color: var(--muted); background: transparent;
+        font-size: 0.78rem; color: var(--muted); background: #1a1a1a;
         white-space: nowrap; transition: all 0.2s; cursor: default; flex-shrink: 0;
       }
       .tech-badge:hover { border-color: var(--blue); color: var(--blue); background: rgba(0,200,255,0.05); }
 
       /* ── PRICE BAR ── */
-      .price-bar { text-align: center; border: 2px solid rgba(255,255,255,0.4); border-radius: 14px; padding: 3rem 2rem; margin: 0 5% 5rem; }
+      .price-bar { text-align: center; border: 1px solid #333333; border-radius: 14px; padding: 3rem 2rem; margin: 0 5% 5rem; }
       .price-bar .s-eyebrow { justify-content: center; display: flex; }
       .big-price { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin: 0.5rem 0 0.3rem; }
       .big-price span { font-size: 1rem; font-weight: 400; color: var(--muted); }
@@ -627,21 +627,21 @@
 
       /* ── ABOUT ── */
       .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; padding: 3rem 5%; }
-      .about-visual { border: 2px solid rgba(255,255,255,0.4); border-radius: 20px; width: 220px; height: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; font-family: 'Orbitron', sans-serif; font-size: 1.4rem; font-weight: 900; color: #fff; letter-spacing: 8px; margin: 0 auto; }
+      .about-visual { border: 1px solid #333333; border-radius: 20px; width: 220px; height: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; font-family: 'Orbitron', sans-serif; font-size: 1.4rem; font-weight: 900; color: #fff; letter-spacing: 8px; margin: 0 auto; }
       .about-visual img { width: 140px; height: 140px; object-fit: contain; }
       .about-list { list-style: none; margin-top: 1.5rem; }
       .about-list li { display: flex; gap: 0.8rem; align-items: flex-start; font-size: 0.9rem; color: var(--muted); padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
       .about-list li::before { content: '▹'; color: var(--blue); flex-shrink: 0; }
       .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 2.5rem; }
-      .value-card { border: 2px solid rgba(255,255,255,0.4); border-radius: var(--radius); padding: 2rem 1.8rem; position: relative; background: transparent; text-align: center; transition: background 0.2s, border-color 0.2s; }
-      .value-card:hover { border-color: rgba(255,255,255,0.7); }
+      .value-card { border: 1px solid #333333; border-radius: var(--radius); padding: 2rem 1.8rem; position: relative; background: #1a1a1a; text-align: center; transition: background 0.2s, border-color 0.2s; }
+      .value-card:hover { border-color: #00c8ff; }
       .value-num { font-size: 0.62rem; font-family: monospace; color: var(--blue); letter-spacing: 2px; opacity: 0.5; margin-bottom: 1.2rem; transition: opacity 0.2s; }
       .value-card:hover .value-num { opacity: 1; }
       .value-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; color: #f7f8f8; letter-spacing: -0.01em; }
       .value-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
       .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.2rem; margin-top: 2.5rem; }
-      .team-card { border: 2px solid rgba(255,255,255,0.4); border-radius: var(--radius); padding: 2rem 1.5rem; position: relative; background: transparent; text-align: center; transition: background 0.2s, border-color 0.2s; }
-      .team-card:hover { border-color: rgba(255,255,255,0.7); }
+      .team-card { border: 1px solid #333333; border-radius: var(--radius); padding: 2rem 1.5rem; position: relative; background: #1a1a1a; text-align: center; transition: background 0.2s, border-color 0.2s; }
+      .team-card:hover { border-color: #00c8ff; }
       .team-num { font-size: 0.62rem; font-family: monospace; color: var(--blue); letter-spacing: 2px; opacity: 0.5; margin-bottom: 1.2rem; transition: opacity 0.2s; }
       .team-card:hover .team-num { opacity: 1; }
       .team-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: #f7f8f8; letter-spacing: -0.01em; }
@@ -661,13 +661,13 @@
       .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
       .form-group label { font-size: 0.72rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
       .form-group input, .form-group textarea, .form-group select {
-        background: transparent; border: 1px solid rgba(0,200,255,0.25);
+        background: #1a1a1a; border: 1px solid rgba(0,200,255,0.25);
         border-radius: 0px; padding: 12px 14px; color: var(--text);
         font-family: 'Orbitron', system-ui, sans-serif; font-size: 0.875rem;
         outline: none; transition: all 0.2s ease; width: 100%;
       }
       .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-        border-color: rgba(255,255,255,0.7); background: rgba(0,200,255,0.06); box-shadow: 0 0 12px rgba(0,200,255,0.2);
+        border-color: #00c8ff; background: rgba(0,200,255,0.06); box-shadow: 0 0 12px rgba(0,200,255,0.2);
       }
       .form-group textarea { resize: vertical; min-height: 120px; }
       .form-group select option { background: #111; }
@@ -689,8 +689,8 @@
 
       /* ── PORTFOLIO ── */
       .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding: 0 5% 5rem; }
-      .project-card { border: 2px solid rgba(255,255,255,0.4); border-radius: var(--radius); padding: 0; position: relative; background: transparent; overflow: hidden; transition: background 0.2s, border-color 0.2s; cursor: pointer; }
-      .project-card:hover { border-color: rgba(255,255,255,0.7); }
+      .project-card { border: 1px solid #333333; border-radius: var(--radius); padding: 0; position: relative; background: #1a1a1a; overflow: hidden; transition: background 0.2s, border-color 0.2s; cursor: pointer; }
+      .project-card:hover { border-color: #00c8ff; }
       .project-mockup { height: 190px; overflow: hidden; border-bottom: 1px solid var(--border); }
       .project-info { padding: 1.4rem; }
       .project-tag { display: inline-block; font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); border: 1px solid rgba(0,200,255,0.2); border-radius: 999px; padding: 0.2rem 0.7rem; margin-bottom: 0.7rem; }
@@ -698,13 +698,13 @@
       .project-info p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.9rem; }
       .project-link { font-size: 0.82rem; color: var(--blue); transition: opacity 0.2s; }
       .project-link:hover { opacity: 0.75; }
-      .filter-btn { padding: 0.4rem 1.1rem; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.78rem; border-radius: 999px; cursor: pointer; transition: all 0.2s; font-family: 'Orbitron', system-ui, sans-serif; }
+      .filter-btn { padding: 0.4rem 1.1rem; border: 1px solid var(--border); background: #1a1a1a; color: var(--muted); font-size: 0.78rem; border-radius: 999px; cursor: pointer; transition: all 0.2s; font-family: 'Orbitron', system-ui, sans-serif; }
       .filter-btn:hover, .filter-btn.active { border-color: var(--blue); color: var(--blue); }
 
       /* ── PRICING ── */
       .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 1.5rem; padding: 2rem 5% 5rem; align-items: start; }
-      .pricing-card { border: 2px solid rgba(255,255,255,0.4); border-radius: var(--radius); padding: 1.4rem 1.6rem; position: relative; background: transparent; transition: background 0.2s, border-color 0.2s; }
-      .pricing-card:hover { border-color: rgba(255,255,255,0.7); }
+      .pricing-card { border: 1px solid #333333; border-radius: var(--radius); padding: 1.4rem 1.6rem; position: relative; background: #1a1a1a; transition: background 0.2s, border-color 0.2s; }
+      .pricing-card:hover { border-color: #00c8ff; }
       .pricing-card.featured { border-color: var(--blue); }
       .pricing-card.featured { border-color: var(--blue); }
       .pricing-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--blue); color: #000; font-size: 0.6rem; font-weight: 700; letter-spacing: 2px; padding: 3px 12px; border-radius: 999px; white-space: nowrap; }
@@ -755,7 +755,7 @@
       .modal-billing { font-size: 0.7rem; color: var(--muted); font-family: monospace; }
       .modal-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin: 1.2rem 0; }
       .modal-section-label { font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); font-family: monospace; margin-bottom: 0.8rem; margin-top: 1.4rem; display: block; }
-      .modal-features { list-style: none; display: flex; flex-direction: column; gap: 0; margin-bottom: 1.2rem; background: transparent; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+      .modal-features { list-style: none; display: flex; flex-direction: column; gap: 0; margin-bottom: 1.2rem; background: #1a1a1a; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
       .modal-features li { display: flex; gap: 0.8rem; font-size: 0.84rem; padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); transition: background 0.15s; }
       .modal-features li:last-child { border-bottom: none; }
       .modal-features li:hover { background: rgba(0,200,255,0.05); }
@@ -764,7 +764,7 @@
       .modal-features li.off { color: rgba(255,255,255,0.22); }
       .modal-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 1.4rem 0; }
       .modal-meta-item {
-        background: transparent; border: 1px solid var(--border);
+        background: #1a1a1a; border: 1px solid var(--border);
         border-radius: var(--radius); padding: 1rem 1.1rem;
         position: relative; overflow: hidden;
         transition: background 0.2s, border-color 0.2s;
@@ -786,8 +786,8 @@
 
       /* ── BLOG ── */
       .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding: 0 5% 4rem; }
-      .blog-card { border: 2px solid rgba(255,255,255,0.4); border-radius: var(--radius); padding: 0; position: relative; background: transparent; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; transition: background 0.2s, border-color 0.2s; }
-      .blog-card:hover { border-color: rgba(255,255,255,0.7); }
+      .blog-card { border: 1px solid #333333; border-radius: var(--radius); padding: 0; position: relative; background: #1a1a1a; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; transition: background 0.2s, border-color 0.2s; }
+      .blog-card:hover { border-color: #00c8ff; }
       .blog-thumb { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.15); flex-direction: column; gap: 0.4rem; }
       .blog-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
       .blog-cat { display: inline-block; font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); margin-bottom: 0.6rem; align-self: flex-start; font-weight: 600; }
@@ -1929,7 +1929,7 @@
                     value="Web Design"
                     style="
                       width: auto;
-                      background: transparent;
+                      background: #1a1a1a;
                       border: 1px solid var(--border);
                     "
                   />
@@ -1951,7 +1951,7 @@
                     value="Web Development"
                     style="
                       width: auto;
-                      background: transparent;
+                      background: #1a1a1a;
                       border: 1px solid var(--border);
                     "
                   />
@@ -1973,7 +1973,7 @@
                     value="E-Commerce Store"
                     style="
                       width: auto;
-                      background: transparent;
+                      background: #1a1a1a;
                       border: 1px solid var(--border);
                     "
                   />
@@ -1995,7 +1995,7 @@
                     value="SEO & Growth"
                     style="
                       width: auto;
-                      background: transparent;
+                      background: #1a1a1a;
                       border: 1px solid var(--border);
                     "
                   />
@@ -2017,7 +2017,7 @@
                     value="Branding & Identity"
                     style="
                       width: auto;
-                      background: transparent;
+                      background: #1a1a1a;
                       border: 1px solid var(--border);
                     "
                   />
@@ -2039,7 +2039,7 @@
                     value="Maintenance & Support"
                     style="
                       width: auto;
-                      background: transparent;
+                      background: #1a1a1a;
                       border: 1px solid var(--border);
                     "
                   />
