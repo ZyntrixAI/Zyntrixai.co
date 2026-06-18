@@ -179,6 +179,18 @@
         max-width: 400px; line-height: 1.8; margin-bottom: 2rem;
       }
       .hero-btns { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-bottom: 5rem; justify-content: center; }
+      .hero-btns .btn-primary:first-child {
+        background: #1a1a1a; color: #ffffff;
+      }
+      .hero-btns .btn-primary:first-child:hover {
+        background: #2a2a2a;
+      }
+      .hero-btns .btn-primary:last-child {
+        background: transparent; color: #1a1a1a;
+      }
+      .hero-btns .btn-primary:last-child:hover {
+        background: rgba(0,200,255,0.1); color: #1a1a1a;
+      }
       .hero-stats {
         display: flex; gap: 3rem; flex-wrap: wrap; justify-content: center;
         padding-top: 2.5rem; width: 100%;
