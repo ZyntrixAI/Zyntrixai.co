@@ -16,16 +16,15 @@
 
       :root {
         --blue:    #00c8ff;
-        --bg:      #ffffff;
-        --text:    #1a1a1a;
-        --muted:   #666666;
-        --muted2:  #333333;
-        --border:  #e0e0e0;
-        --card-bg: #1a1a1a;
-        --card-hover: #2a2a2a;
-        --card-text: #ffffff;
-        --border-hover: #00c8ff;
-        --radius:  12px;
+        --bg:      #08090a;
+        --text:    #f7f8f8;
+        --muted:   #8a8f98;
+        --muted2:  #c8c8c8;
+        --border:  #23252a;
+        --card-bg: #0f1011;
+        --card-hover: #131416;
+        --border-hover: #323334;
+        --radius:  6px;
       }
 
       html { scroll-behavior: smooth; }
@@ -57,32 +56,34 @@
         position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
         display: flex; align-items: center; justify-content: space-between;
         padding: 0 5%; height: 56px;
-        background: #1a1a1a; backdrop-filter: none;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-        transition: background 0.3s ease, border-color 0.3s ease;
+        background: rgba(8,9,10,0); backdrop-filter: none;
+        border-bottom: 1px solid transparent;
+        transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s;
       }
       nav.scrolled {
-        background: #1a1a1a; border-bottom-color: rgba(255,255,255,0.15);
+        background: rgba(8,9,10,0.85); backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px); border-bottom-color: var(--border);
       }
       .nav-logo {
         font-family: 'Orbitron', sans-serif; font-size: 0.9rem; font-weight: 900;
-        letter-spacing: 4px; color: #ffffff; cursor: pointer; user-select: none;
+        letter-spacing: 4px; color: #fff; cursor: pointer; user-select: none;
       }
       .nav-links { display: flex; align-items: center; gap: 1.8rem; list-style: none; }
       .nav-links a {
-        font-size: 0.82rem; font-weight: 500; color: #e0e0e0;
+        font-size: 0.82rem; font-weight: 500; color: var(--muted);
         transition: color 0.15s; cursor: pointer;
+        text-shadow: 0 1px 8px rgba(0,0,0,0.7);
       }
-      .nav-links a:hover, .nav-links a.active { color: #ffffff; }
+      .nav-links a:hover, .nav-links a.active { color: #fff; }
       .nav-cta {
         padding: 0.45rem 1.2rem;
-        background: #00c8ff; backdrop-filter: none;
-        border: none;
-        color: #1a1a1a; border-radius: 6px; font-size: 0.78rem;
-        font-weight: 600; cursor: pointer; transition: all 0.2s;
-        white-space: nowrap;
+        background: rgba(8,9,10,0.55); backdrop-filter: blur(12px);
+        border: 1px solid rgba(255,255,255,0.18);
+        color: var(--text); border-radius: 999px; font-size: 0.78rem;
+        font-weight: 500; cursor: pointer; transition: all 0.2s;
+        white-space: nowrap; text-shadow: 0 1px 8px rgba(0,0,0,0.6);
       }
-      .nav-cta:hover { background: #ffffff; color: #1a1a1a; box-shadow: 0 0 20px rgba(0,200,255,0.4); }
+      .nav-cta:hover { background: rgba(0,200,255,0.12); border-color: rgba(0,200,255,0.4); color: #fff; }
       .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
       .hamburger span { display: block; width: 22px; height: 1.5px; background: #fff; border-radius: 1px; transition: 0.25s; }
 
@@ -113,7 +114,7 @@
       }
       .s-title {
         font-size: clamp(1.9rem, 4vw, 3.2rem); font-weight: 700;
-        line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 1rem; color: #ffffff;
+        line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 1rem; color: #f7f8f8;
       }
       .s-sub { font-size: 1rem; color: var(--muted); line-height: 1.8; max-width: 520px; }
       .s-line { width: 36px; height: 1px; background: var(--blue); margin: 1rem 0 2.5rem; }
@@ -140,7 +141,7 @@
       .hero-h1 {
         font-size: clamp(1.9rem, 4vw, 3.2rem); font-weight: 700;
         line-height: 1.12; letter-spacing: -0.01em; margin-bottom: 1.2rem;
-        max-width: 680px; color: #ffffff;
+        max-width: 680px; color: #f7f8f8;
         text-shadow: 0 2px 24px rgba(0,0,0,0.55);
       }
       .hero-h1 em { font-style: normal; color: var(--blue); }
@@ -158,21 +159,28 @@
 
       /* ── BUTTONS ── */
       .btn-primary {
-        padding: 10px 22px; background: var(--blue); color: #000;
-        border: none; border-radius: 999px; font-size: 0.85rem; font-weight: 700;
-        cursor: pointer; transition: all 0.2s; white-space: nowrap;
+        padding: 10px 22px; background: #1a1a1a; color: #ffffff;
+        border: 1px solid #333333; border-radius: 6px; font-size: 0.85rem; font-weight: 700;
+        cursor: pointer; transition: all 0.3s; white-space: nowrap;
       }
-      .btn-primary:hover { background: #fff; box-shadow: 0 0 24px rgba(0,200,255,0.3); transform: translateY(-1px); }
+      .btn-primary:hover { background: #2a2a2a; border-color: #00c8ff; box-shadow: 0 0 20px rgba(0,200,255,0.3); transform: translateY(-2px); }
       .btn-primary:disabled { opacity: 0.55; cursor: not-allowed; }
       .btn-outline {
         padding: 10px 22px;
-        background: rgba(8,9,10,0.55); backdrop-filter: blur(12px);
-        color: var(--muted2); border: 1px solid rgba(255,255,255,0.18);
-        border-radius: 999px; font-size: 0.85rem; font-weight: 500;
-        cursor: pointer; transition: all 0.2s; white-space: nowrap;
-        text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+        background: #1a1a1a; border: 1px solid #333333;
+        color: #ffffff; border-radius: 6px; font-size: 0.85rem; font-weight: 500;
+        cursor: pointer; transition: all 0.3s; white-space: nowrap;
       }
-      .btn-outline:hover { color: #fff; border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.06); }
+      .btn-outline:hover { color: #ffffff; border-color: #00c8ff; background: #2a2a2a; box-shadow: 0 0 20px rgba(0,200,255,0.3); transform: translateY(-2px); }
+      .back-button {
+        position: fixed; top: 70px; left: 24px; z-index: 999;
+        background: #1a1a1a; color: #ffffff; border: 1px solid #333333;
+        padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 600;
+        transition: all 0.3s; font-family: 'Orbitron', sans-serif; letter-spacing: 1px;
+        display: none;
+      }
+      .back-button.show { display: block; }
+      .back-button:hover { background: #2a2a2a; border-color: #00c8ff; box-shadow: 0 0 20px rgba(0,200,255,0.3); }
 
       /* ── HOME: SERVICE CARDS (kaev.ai 1px grid) ── */
       .home-svc-grid {
@@ -182,38 +190,23 @@
         border: 1px solid var(--border); margin-top: 3rem;
       }
       .svc-card {
-        background: var(--card-bg); padding: 2.2rem 1.8rem;
+        background: var(--bg); padding: 2.2rem 1.8rem;
         display: flex; flex-direction: column; align-items: center; text-align: center;
-        cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 2px solid var(--border); border-radius: 12px;
-        position: relative; overflow: hidden;
-        box-shadow: 0 4px 12px rgba(0, 200, 255, 0.08);
+        cursor: pointer; transition: background 0.2s;
+        border: none; border-radius: 0;
       }
-      .svc-card::before {
-        content: ''; position: absolute; inset: 0;
-        background: linear-gradient(135deg, rgba(0, 200, 255, 0.1), transparent);
-        opacity: 0; transition: opacity 0.3s;
-        pointer-events: none;
-      }
-      .svc-card:hover {
-        border-color: var(--blue); background: var(--card-hover);
-        box-shadow: 0 0 24px rgba(0, 200, 255, 0.3), inset 0 0 20px rgba(0, 200, 255, 0.05);
-        transform: translateY(-4px);
-      }
-      .svc-card:hover::before { opacity: 1; }
+      .svc-card:hover { }
       .svc-num {
         font-size: 0.65rem; font-weight: 700; letter-spacing: 2px;
         color: var(--blue); opacity: 0.5; font-family: monospace;
         margin-bottom: 1.2rem; transition: opacity 0.2s;
-        position: relative; z-index: 1;
       }
       .svc-card:hover .svc-num { opacity: 1; }
-      .svc-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; color: #ffffff; position: relative; z-index: 1; }
-      .svc-card p { font-size: 0.85rem; color: #cccccc; line-height: 1.65; flex: 1; position: relative; z-index: 1; }
+      .svc-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; color: #f7f8f8; }
+      .svc-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; flex: 1; }
       .svc-price {
         font-size: 0.75rem; color: var(--blue); font-weight: 600;
         margin-top: 1.4rem; font-family: monospace; letter-spacing: 0.5px; display: block;
-        position: relative; z-index: 1;
       }
 
       /* ── HOME: WORK GRID ── */
@@ -249,7 +242,7 @@
         transition: opacity 0.2s;
       }
       .hp-step:hover .hp-num { opacity: 1; }
-      .hp-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.6rem; color: #ffffff; margin-top: 0.8rem; }
+      .hp-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.6rem; color: #f7f8f8; margin-top: 0.8rem; }
       .hp-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
 
       /* ── TESTIMONIALS ── */
@@ -261,7 +254,7 @@
       .testi-card:hover { border-color: rgba(255,255,255,0.7); }
       .testi-stars { font-size: 0.65rem; letter-spacing: 2px; color: var(--blue); margin-bottom: 0.7rem; font-family: monospace; }
       .testi-q { font-size: 0.82rem; color: rgba(237,237,237,0.75); line-height: 1.7; flex: 1; margin-bottom: 1rem; }
-      .testi-name { font-size: 0.82rem; font-weight: 600; color: #ffffff; }
+      .testi-name { font-size: 0.82rem; font-weight: 600; color: #f7f8f8; }
       .testi-co { font-size: 0.68rem; color: var(--blue); margin-top: 2px; font-family: monospace; }
 
       /* ── FOOTER ── */
@@ -342,7 +335,7 @@
       }
       .svc-price-card:hover { border-color: var(--border-hover); }
       .svc-price-label { font-size: 0.62rem; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); font-family: monospace; margin-bottom: 0.8rem; display: block; }
-      .svc-big-price { font-size: 3rem; font-weight: 700; color: #ffffff; line-height: 1; margin-bottom: 0.6rem; }
+      .svc-big-price { font-size: 3rem; font-weight: 700; color: #f7f8f8; line-height: 1; margin-bottom: 0.6rem; }
       .svc-big-price sup { font-size: 1.4rem; vertical-align: top; margin-top: 0.4rem; }
       .svc-price-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.7; margin-bottom: 2rem; }
 
@@ -403,7 +396,7 @@
         content: ''; width: 5px; height: 5px; border-radius: 50%;
         background: var(--blue); box-shadow: 0 0 6px rgba(0,200,255,0.5);
       }
-      .build-step h4 { font-size: 1rem; font-weight: 700; color: #ffffff; margin-bottom: 0.55rem; letter-spacing: -0.01em; }
+      .build-step h4 { font-size: 1rem; font-weight: 700; color: #f7f8f8; margin-bottom: 0.55rem; letter-spacing: -0.01em; }
       .build-step p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; max-width: 520px; margin: 0 auto; }
 
       /* ── SERVICES GRID (full page) ── */
@@ -441,7 +434,7 @@
       }
       .svc-row:hover .svc-row-num { opacity: 1; }
       .svc-row-body h3 {
-        font-size: 1.05rem; font-weight: 600; color: #ffffff;
+        font-size: 1.05rem; font-weight: 600; color: #f7f8f8;
         margin-bottom: 0.3rem;
       }
       .svc-row-body p {
@@ -617,14 +610,14 @@
       .value-card:hover { border-color: rgba(255,255,255,0.7); }
       .value-num { font-size: 0.62rem; font-family: monospace; color: var(--blue); letter-spacing: 2px; opacity: 0.5; margin-bottom: 1.2rem; transition: opacity 0.2s; }
       .value-card:hover .value-num { opacity: 1; }
-      .value-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; color: #ffffff; letter-spacing: -0.01em; }
+      .value-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; color: #f7f8f8; letter-spacing: -0.01em; }
       .value-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
       .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.2rem; margin-top: 2.5rem; }
       .team-card { border: 2px solid rgba(255,255,255,0.4); border-radius: var(--radius); padding: 2rem 1.5rem; position: relative; background: transparent; text-align: center; transition: background 0.2s, border-color 0.2s; }
       .team-card:hover { border-color: rgba(255,255,255,0.7); }
       .team-num { font-size: 0.62rem; font-family: monospace; color: var(--blue); letter-spacing: 2px; opacity: 0.5; margin-bottom: 1.2rem; transition: opacity 0.2s; }
       .team-card:hover .team-num { opacity: 1; }
-      .team-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: #ffffff; letter-spacing: -0.01em; }
+      .team-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: #f7f8f8; letter-spacing: -0.01em; }
       .team-card span { font-size: 0.78rem; color: var(--blue); }
 
       /* ── CONTACT ── */
@@ -966,6 +959,9 @@
       </button>
     </nav>
 
+    <!-- Back Button -->
+    <button class="back-button" id="backBtn" onclick="goBack()">← Back</button>
+
     <!-- ══════════════ HOME ══════════════ -->
     <div id="page-home" class="page active">
 
@@ -1080,7 +1076,7 @@
       <section class="section" style="padding-top:clamp(40px,5vw,64px);padding-bottom:clamp(64px,8vw,100px);">
         <div class="section-inner" style="padding-top:clamp(60px,8vw,100px);text-align:center;display:flex;flex-direction:column;align-items:center;">
           <span class="s-eyebrow">05 / Start a Project</span>
-          <h2 style="font-size:clamp(1.9rem,4vw,3.2rem);font-weight:700;line-height:1.06;letter-spacing:-0.03em;margin-bottom:1.2rem;color:#ffffff;">
+          <h2 style="font-size:clamp(1.9rem,4vw,3.2rem);font-weight:700;line-height:1.06;letter-spacing:-0.03em;margin-bottom:1.2rem;color:#f7f8f8;">
             Let's build<br>something great.
           </h2>
           <p style="color:var(--muted);font-size:1rem;line-height:1.8;max-width:400px;margin-bottom:2.5rem;">
@@ -2914,7 +2910,7 @@
         <div style="margin-top:3rem;border:2px solid rgba(0,200,255,0.4);border-radius:12px;background:transparent;overflow:hidden;max-width:700px;margin-left:auto;margin-right:auto;box-shadow:0 0 20px rgba(0,200,255,0.15), inset 0 0 20px rgba(0,200,255,0.05);">
           <div style="padding:2rem 2.2rem;border-bottom:1px solid var(--border);">
             <span class="s-eyebrow" style="margin-bottom:0.8rem;">What's Included</span>
-            <h3 style="font-size:1.2rem;font-weight:700;color:#ffffff;text-transform:none;letter-spacing:-0.01em;margin-bottom:1rem;">Every Package Comes With</h3>
+            <h3 style="font-size:1.2rem;font-weight:700;color:#f7f8f8;text-transform:none;letter-spacing:-0.01em;margin-bottom:1rem;">Every Package Comes With</h3>
           </div>
           <div style="padding:2rem 2.2rem;">
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
@@ -2939,7 +2935,7 @@
             </div>
             <div style="margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border);">
               <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;">
-                <strong style="color:#ffffff;">Not sure which package is right?</strong> All packages include unlimited revisions until you're happy, full ownership of your site, and our complete support through launch. We'll help you choose the right fit based on your goals and timeline.
+                <strong style="color:#f7f8f8;">Not sure which package is right?</strong> All packages include unlimited revisions until you're happy, full ownership of your site, and our complete support through launch. We'll help you choose the right fit based on your goals and timeline.
               </p>
             </div>
           </div>
@@ -3172,7 +3168,10 @@
         if (link) link.classList.add("active");
         window.scrollTo(0, 0);
         document.getElementById("navLinks").classList.remove("open");
+        const backBtn = document.getElementById("backBtn");
+        if (id === "home") { backBtn.classList.remove("show"); } else { backBtn.classList.add("show"); }
       }
+      function goBack() { showPage("home"); }
 
       // ── Portfolio card data ───────────────────────────────────────────────
       const portfolioCards = [
