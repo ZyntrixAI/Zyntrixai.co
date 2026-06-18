@@ -54,7 +54,7 @@
       /* ── NAV ── */
       nav {
         position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-        display: flex; align-items: center; justify-content: space-between;
+        display: flex; align-items: center; justify-content: center;
         padding: 0 5%; height: 56px;
         background: #1a1a1a; backdrop-filter: none;
         border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -63,10 +63,33 @@
       nav.scrolled {
         background: #1a1a1a; border-bottom-color: rgba(255,255,255,0.15);
       }
+      .nav-left { flex: 1; }
+      .nav-right { flex: 1; display: flex; justify-content: flex-end; align-items: center; }
       .nav-logo {
         font-family: 'Orbitron', sans-serif; font-size: 0.9rem; font-weight: 900;
         letter-spacing: 4px; color: #fff; cursor: pointer; user-select: none;
+        flex: 0;
       }
+      .dropdown { position: relative; }
+      .dropdown-btn {
+        background: #1a1a1a; color: #ffffff; border: 1px solid #333333;
+        padding: 0.45rem 1rem; border-radius: 6px; font-size: 0.82rem;
+        font-weight: 600; cursor: pointer; transition: all 0.3s;
+      }
+      .dropdown-btn:hover { border-color: #00c8ff; color: #00c8ff; }
+      .dropdown-menu {
+        display: none; position: absolute; top: 56px; right: 0;
+        background: #2a2a2a; border: 1px solid #333333; border-radius: 6px;
+        min-width: 200px; z-index: 1001; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      }
+      .dropdown-menu.show { display: flex; flex-direction: column; }
+      .dropdown-menu a {
+        padding: 0.6rem 1rem; color: #ffffff; cursor: pointer;
+        transition: all 0.2s; border: none; background: none;
+        font-family: inherit; text-align: left; font-size: 0.85rem;
+      }
+      .dropdown-menu a:hover { background: #333333; color: #00c8ff; }
+      .dropdown-menu a.nav-cta { background: #00c8ff; color: #1a1a1a; font-weight: 600; }
       .nav-links { display: flex; align-items: center; gap: 1.8rem; list-style: none; }
       .nav-links a {
         font-size: 0.82rem; font-weight: 500; color: #ffffff;
@@ -942,19 +965,23 @@
 
     <!-- NAV -->
     <nav>
+      <div class="nav-left"></div>
       <div class="nav-logo" onclick="showPage('home')">ZyntrixAI</div>
-      <ul class="nav-links" id="navLinks">
-        <li><a onclick="showPage('services')" data-page="services">Services</a></li>
-        <li><a onclick="showPage('portfolio')" data-page="portfolio">Work</a></li>
-        <li><a onclick="showPage('pricing')" data-page="pricing">Pricing</a></li>
-        <li><a onclick="showPage('blog')" data-page="blog">Blog</a></li>
-        <li><a onclick="showPage('about')" data-page="about">About</a></li>
-        <li><a onclick="showPage('contact')" data-page="contact">Contact</a></li>
-      </ul>
-      <button class="nav-cta" onclick="showPage('booking')">Start a Project</button>
-      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-right">
+        <div class="dropdown">
+          <button class="dropdown-btn" id="dropdownBtn">Menu ▼</button>
+          <div class="dropdown-menu" id="dropdownMenu">
+            <a onclick="showPage('services')" data-page="services">Services</a>
+            <a onclick="showPage('portfolio')" data-page="portfolio">Work</a>
+            <a onclick="showPage('pricing')" data-page="pricing">Pricing</a>
+            <a onclick="showPage('blog')" data-page="blog">Blog</a>
+            <a onclick="showPage('about')" data-page="about">About</a>
+            <a onclick="showPage('contact')" data-page="contact">Contact</a>
+            <hr style="border: none; border-top: 1px solid #333; margin: 0.5rem 0;">
+            <a class="nav-cta" style="display: block; padding: 0.6rem 1rem; margin: 0;" onclick="showPage('booking')">Start a Project</a>
+          </div>
+        </div>
+      </div>
     </nav>
 
     <!-- Back Button -->
@@ -3543,8 +3570,21 @@
       }
 
       function toggleMenu() {
-        document.getElementById("navLinks").classList.toggle("open");
+        const menu = document.getElementById("dropdownMenu");
+        menu.classList.toggle("show");
       }
+      document.getElementById("dropdownBtn").addEventListener("click", toggleMenu);
+      document.querySelectorAll(".dropdown-menu a").forEach(link => {
+        link.addEventListener("click", () => {
+          document.getElementById("dropdownMenu").classList.remove("show");
+        });
+      });
+      document.addEventListener("click", (e) => {
+        const dropdown = document.querySelector(".dropdown");
+        if (!dropdown.contains(e.target)) {
+          document.getElementById("dropdownMenu").classList.remove("show");
+        }
+      });
 
       async function submitContact(e) {
         e.preventDefault();
