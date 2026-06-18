@@ -56,13 +56,12 @@
         position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
         display: flex; align-items: center; justify-content: space-between;
         padding: 0 5%; height: 56px;
-        background: rgba(8,9,10,0); backdrop-filter: none;
-        border-bottom: 1px solid transparent;
-        transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s;
+        background: #1a1a1a; backdrop-filter: none;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        transition: border-color 0.3s ease;
       }
       nav.scrolled {
-        background: rgba(8,9,10,0.85); backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px); border-bottom-color: var(--border);
+        background: #1a1a1a; border-bottom-color: rgba(255,255,255,0.15);
       }
       .nav-logo {
         font-family: 'Orbitron', sans-serif; font-size: 0.9rem; font-weight: 900;
