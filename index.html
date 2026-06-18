@@ -1745,7 +1745,7 @@
             pointer.x += (pointer.tX - pointer.x) * 0.2;
             pointer.y += (pointer.tY - pointer.y) * 0.2;
 
-            gl.clearColor(0, 0, 0, 0);
+            gl.clearColor(1, 1, 1, 1);
             gl.clear(gl.COLOR_BUFFER_BIT);
             gl.uniform1f(uniforms.u_time, currentTime);
             gl.uniform2f(uniforms.u_pointer_position, pointer.x / window.innerWidth, 1 - pointer.y / window.innerHeight);
