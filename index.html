@@ -3118,6 +3118,8 @@
         window.addEventListener("resize", resize);
 
         function render() {
+          gl.clearColor(1, 1, 1, 1);
+          gl.clear(gl.COLOR_BUFFER_BIT);
           pointer.x += (pointer.tX - pointer.x) * 0.2;
           pointer.y += (pointer.tY - pointer.y) * 0.2;
           gl.uniform1f(uTime, performance.now());
