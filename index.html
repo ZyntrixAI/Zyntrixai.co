@@ -16,15 +16,15 @@
 
       :root {
         --blue:    #00c8ff;
-        --bg:      #08090a;
-        --text:    #f7f8f8;
-        --muted:   #8a8f98;
-        --muted2:  #c8c8c8;
-        --border:  #23252a;
-        --card-bg: #0f1011;
-        --card-hover: #131416;
-        --border-hover: #323334;
-        --radius:  6px;
+        --bg:      #ffffff;
+        --text:    #1a1a1a;
+        --muted:   #666666;
+        --muted2:  #333333;
+        --border:  #e0e0e0;
+        --card-bg: #f9f9f9;
+        --card-hover: #f0f0f0;
+        --border-hover: #00c8ff;
+        --radius:  12px;
       }
 
       html { scroll-behavior: smooth; }
@@ -183,23 +183,38 @@
         border: 1px solid var(--border); margin-top: 3rem;
       }
       .svc-card {
-        background: var(--bg); padding: 2.2rem 1.8rem;
+        background: var(--card-bg); padding: 2.2rem 1.8rem;
         display: flex; flex-direction: column; align-items: center; text-align: center;
-        cursor: pointer; transition: background 0.2s;
-        border: none; border-radius: 0;
+        cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 2px solid var(--border); border-radius: 12px;
+        position: relative; overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 200, 255, 0.08);
       }
-      .svc-card:hover { }
+      .svc-card::before {
+        content: ''; position: absolute; inset: 0;
+        background: linear-gradient(135deg, rgba(0, 200, 255, 0.1), transparent);
+        opacity: 0; transition: opacity 0.3s;
+        pointer-events: none;
+      }
+      .svc-card:hover {
+        border-color: var(--blue); background: var(--card-hover);
+        box-shadow: 0 0 24px rgba(0, 200, 255, 0.3), inset 0 0 20px rgba(0, 200, 255, 0.05);
+        transform: translateY(-4px);
+      }
+      .svc-card:hover::before { opacity: 1; }
       .svc-num {
         font-size: 0.65rem; font-weight: 700; letter-spacing: 2px;
         color: var(--blue); opacity: 0.5; font-family: monospace;
         margin-bottom: 1.2rem; transition: opacity 0.2s;
+        position: relative; z-index: 1;
       }
       .svc-card:hover .svc-num { opacity: 1; }
-      .svc-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; color: #f7f8f8; }
-      .svc-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; flex: 1; }
+      .svc-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; color: var(--text); position: relative; z-index: 1; }
+      .svc-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; flex: 1; position: relative; z-index: 1; }
       .svc-price {
         font-size: 0.75rem; color: var(--blue); font-weight: 600;
         margin-top: 1.4rem; font-family: monospace; letter-spacing: 0.5px; display: block;
+        position: relative; z-index: 1;
       }
 
       /* ── HOME: WORK GRID ── */
