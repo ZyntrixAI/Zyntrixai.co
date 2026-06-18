@@ -1614,23 +1614,20 @@
         navLinks.classList.toggle('open');
       });
 
-      // Neural Vortex WebGL Background (disabled - using simple white background instead)
-      // Neural Noise WebGL Background (NeuralNoise Component)
+      // Neural Noise WebGL Background
       const canvas = document.getElementById('neuro-canvas');
       const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
       const pointer = { x: 0, y: 0, tX: 0, tY: 0 };
-      const config = { color: [0.5, 0.15, 0.65], opacity: 0.95, speed: 0.001 };
+      const config = { color: [0.9, 0.2, 0.4], opacity: 0.95, speed: 0.001 };
       let uniforms = {};
-      let animationId;
 
       if (gl) {
-
         const vsSource = `
           precision mediump float;
-          attribute vec2 a_position;
           varying vec2 vUv;
+          attribute vec2 a_position;
           void main() {
-            vUv = .5 * (a_position + 1.);
+            vUv = 0.5 * (a_position + 1.0);
             gl_Position = vec4(a_position, 0.0, 1.0);
           }
         `;
@@ -1682,7 +1679,7 @@
           }
         `;
 
-        const compileShader = (source, type) => {
+        function createShader(source, type) {
           const shader = gl.createShader(type);
           gl.shaderSource(shader, source);
           gl.compileShader(shader);
@@ -1691,73 +1688,85 @@
             return null;
           }
           return shader;
-        };
+        }
 
-        const vertexShader = compileShader(vsSource, gl.VERTEX_SHADER);
-        const fragmentShader = compileShader(fsSource, gl.FRAGMENT_SHADER);
-
-        const program = gl.createProgram();
-        gl.attachShader(program, vertexShader);
-        gl.attachShader(program, fragmentShader);
-        gl.linkProgram(program);
-        gl.useProgram(program);
-
-        const vertices = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]);
-        const vertexBuffer = gl.createBuffer();
-        gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
-
-        const positionLocation = gl.getAttribLocation(program, 'a_position');
-        gl.enableVertexAttribArray(positionLocation);
-        gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
-
-        uniforms.u_time = gl.getUniformLocation(program, 'u_time');
-        uniforms.u_ratio = gl.getUniformLocation(program, 'u_ratio');
-        uniforms.u_pointer_position = gl.getUniformLocation(program, 'u_pointer_position');
-        uniforms.u_color = gl.getUniformLocation(program, 'u_color');
-        uniforms.u_speed = gl.getUniformLocation(program, 'u_speed');
-
-        gl.uniform3f(uniforms.u_color, config.color[0], config.color[1], config.color[2]);
-        gl.uniform1f(uniforms.u_speed, config.speed);
-
-        const resizeCanvas = () => {
-          const devicePixelRatio = Math.min(window.devicePixelRatio, 2);
-          canvas.width = window.innerWidth * devicePixelRatio;
-          canvas.height = window.innerHeight * devicePixelRatio;
-          gl.viewport(0, 0, canvas.width, canvas.height);
-          gl.uniform1f(uniforms.u_ratio, canvas.width / canvas.height);
-        };
-
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        const render = () => {
-          const currentTime = performance.now();
-          pointer.x += (pointer.tX - pointer.x) * 0.2;
-          pointer.y += (pointer.tY - pointer.y) * 0.2;
-
-          gl.clearColor(0, 0, 0, 0);
-          gl.clear(gl.COLOR_BUFFER_BIT);
-          gl.uniform1f(uniforms.u_time, currentTime);
-          gl.uniform2f(uniforms.u_pointer_position, pointer.x / window.innerWidth, 1 - pointer.y / window.innerHeight);
-
-          gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-          animationId = requestAnimationFrame(render);
-        };
-
-        render();
-
-        window.addEventListener('pointermove', (e) => {
-          pointer.tX = e.clientX;
-          pointer.tY = e.clientY;
-        });
-
-        window.addEventListener('touchmove', (e) => {
-          if (e.touches[0]) {
-            pointer.tX = e.touches[0].clientX;
-            pointer.tY = e.touches[0].clientY;
+        function createProgram(vs, fs) {
+          const program = gl.createProgram();
+          gl.attachShader(program, vs);
+          gl.attachShader(program, fs);
+          gl.linkProgram(program);
+          if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+            console.error('Program error:', gl.getProgramInfoLog(program));
+            return null;
           }
-        });
+          return program;
+        }
+
+        const vertexShader = createShader(vsSource, gl.VERTEX_SHADER);
+        const fragmentShader = createShader(fsSource, gl.FRAGMENT_SHADER);
+        const program = createProgram(vertexShader, fragmentShader);
+
+        if (!program) {
+          console.error('Failed to create WebGL program');
+        } else {
+          gl.useProgram(program);
+
+          const vertices = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]);
+          const vertexBuffer = gl.createBuffer();
+          gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+          gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+
+          const positionLocation = gl.getAttribLocation(program, 'a_position');
+          gl.enableVertexAttribArray(positionLocation);
+          gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+
+          uniforms.u_time = gl.getUniformLocation(program, 'u_time');
+          uniforms.u_ratio = gl.getUniformLocation(program, 'u_ratio');
+          uniforms.u_pointer_position = gl.getUniformLocation(program, 'u_pointer_position');
+          uniforms.u_color = gl.getUniformLocation(program, 'u_color');
+          uniforms.u_speed = gl.getUniformLocation(program, 'u_speed');
+
+          gl.uniform3f(uniforms.u_color, config.color[0], config.color[1], config.color[2]);
+          gl.uniform1f(uniforms.u_speed, config.speed);
+
+          function resizeCanvas() {
+            const devicePixelRatio = Math.min(window.devicePixelRatio, 2);
+            canvas.width = window.innerWidth * devicePixelRatio;
+            canvas.height = window.innerHeight * devicePixelRatio;
+            gl.viewport(0, 0, canvas.width, canvas.height);
+            gl.uniform1f(uniforms.u_ratio, canvas.width / canvas.height);
+          }
+
+          resizeCanvas();
+          window.addEventListener('resize', resizeCanvas);
+
+          function render() {
+            const currentTime = performance.now();
+            pointer.x += (pointer.tX - pointer.x) * 0.2;
+            pointer.y += (pointer.tY - pointer.y) * 0.2;
+
+            gl.clearColor(0, 0, 0, 0);
+            gl.clear(gl.COLOR_BUFFER_BIT);
+            gl.uniform1f(uniforms.u_time, currentTime);
+            gl.uniform2f(uniforms.u_pointer_position, pointer.x / window.innerWidth, 1 - pointer.y / window.innerHeight);
+
+            gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+            requestAnimationFrame(render);
+          }
+
+          render();
+
+          const updateMousePosition = (x, y) => {
+            pointer.tX = x;
+            pointer.tY = y;
+          };
+
+          window.addEventListener('pointermove', (e) => updateMousePosition(e.clientX, e.clientY));
+          window.addEventListener('touchmove', (e) => {
+            if (e.targetTouches[0]) updateMousePosition(e.targetTouches[0].clientX, e.targetTouches[0].clientY);
+          });
+          window.addEventListener('click', (e) => updateMousePosition(e.clientX, e.clientY));
+        }
       } else {
         console.warn('WebGL not supported');
       }
