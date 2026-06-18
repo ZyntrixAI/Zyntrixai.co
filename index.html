@@ -1670,12 +1670,11 @@
             float t = u_speed * u_time;
             vec3 col = vec3(0.0);
             float noise = neuro_shape(uv, t, p);
-            noise = 1.2 * pow(noise, 3.0);
-            noise += pow(noise, 10.0);
-            noise = max(0.0, noise - 0.5);
-            noise *= (1.0 - length(vUv - 0.5));
-            col = u_color * noise;
-            gl_FragColor = vec4(col, noise);
+            noise = 2.0 * pow(noise, 2.5);
+            noise += pow(noise, 8.0);
+            noise = max(0.0, noise - 0.3);
+            col = u_color * noise * 2.5;
+            gl_FragColor = vec4(col, clamp(noise * 1.5, 0.0, 1.0));
           }
         `;
 
