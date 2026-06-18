@@ -937,7 +937,13 @@
         .faq-a { font-size: 0.82rem; }
 
         /* Inline pricing tier cards — single column, lowest to highest */
-        #pricingTiersGrid {
+        #pricingTiersGrid > div div[style*="color:var(--muted)"] {
+        color: #cccccc !important;
+      }
+      #pricingTiersGrid > div p {
+        color: #cccccc !important;
+      }
+      #pricingTiersGrid {
           grid-template-columns: 1fr !important;
           padding: 0 16px !important;
           gap: 0.9rem !important;
