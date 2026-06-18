@@ -154,30 +154,35 @@
       .hero {
         min-height: calc(100vh - 56px); display: flex; flex-direction: column;
         justify-content: center; align-items: center; text-align: center;
-        padding: 6rem 5% 5rem;
+        padding: 6rem 5% 5rem; background: #1a1a1a;
+        position: relative; overflow: hidden;
       }
+      .hero::before {
+        content: ''; position: absolute; inset: 0;
+        background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 50%, rgba(0,200,255,0.05) 100%);
+        pointer-events: none;
+      }
+      .hero > * { position: relative; z-index: 1; }
       .hero-badge {
         display: inline-flex; align-items: center; gap: 10px;
         padding: 5px 14px; border-radius: 999px;
-        border: 1px solid rgba(255,255,255,0.14);
-        background: rgba(8,9,10,0.6); backdrop-filter: blur(12px);
-        font-size: 0.62rem; font-weight: 500; color: var(--muted2);
+        border: 1px solid rgba(0,200,255,0.4);
+        background: rgba(0,200,255,0.08); backdrop-filter: blur(12px);
+        font-size: 0.62rem; font-weight: 500; color: #00c8ff;
         margin-bottom: 1.5rem; letter-spacing: 0.3px;
-        text-shadow: 0 1px 8px rgba(0,0,0,0.6);
       }
       .hero-badge-dot {
         width: 5px; height: 5px; border-radius: 50%;
-        background: var(--blue); box-shadow: 0 0 6px rgba(0,200,255,0.6); flex-shrink: 0;
+        background: #00c8ff; box-shadow: 0 0 8px rgba(0,200,255,0.8); flex-shrink: 0;
       }
       .hero-h1 {
         font-size: clamp(1.9rem, 4vw, 3.2rem); font-weight: 700;
         line-height: 1.12; letter-spacing: -0.01em; margin-bottom: 1.2rem;
-        max-width: 680px; color: #f7f8f8;
-        text-shadow: 0 2px 24px rgba(0,0,0,0.55);
+        max-width: 680px; color: #ffffff;
       }
-      .hero-h1 em { font-style: normal; color: var(--blue); }
+      .hero-h1 em { font-style: normal; color: #00c8ff; }
       .hero-p {
-        font-size: 0.82rem; color: var(--muted);
+        font-size: 0.82rem; color: #cccccc;
         max-width: 400px; line-height: 1.8; margin-bottom: 2rem;
       }
       .hero-btns { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 5rem; justify-content: center; }
