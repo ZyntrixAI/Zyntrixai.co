@@ -2964,6 +2964,288 @@
 
     </div>
 
+    <!-- ══════════════ AI TOOLS PAGES ══════════════ -->
+
+    <div id="page-ai-tools" class="page">
+      <div style="text-align:center;padding:3rem 5%;background:#1a1a1a;margin-bottom:3rem;">
+        <h1 style="font-size:2.5rem;font-weight:900;color:#ffffff;margin-bottom:1rem;">AI Automation Tools</h1>
+        <p style="font-size:1.1rem;color:#ffffff;max-width:600px;margin:0 auto;">Free AI tools to analyze websites, generate content, get smart quotes, and scope projects — powered by Claude AI.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;padding:3rem 5%;max-width:1200px;margin:0 auto;">
+
+        <div style="background:#ffffff;border:2px solid #1a1a1a;padding:2rem;text-align:center;cursor:pointer;transition:all 0.3s;border-radius:8px;" onclick="showPage('tool-analyzer')" onmouseover="this.style.borderColor='#00c8ff';this.style.boxShadow='0 0 20px rgba(0,200,255,0.2)'" onmouseout="this.style.borderColor='#1a1a1a';this.style.boxShadow='none'">
+          <div style="font-size:3rem;margin-bottom:1rem;">📊</div>
+          <h3 style="font-size:1.3rem;font-weight:700;color:#1a1a1a;margin-bottom:0.8rem;">Website Analyzer</h3>
+          <p style="font-size:0.9rem;color:#666666;margin-bottom:1.5rem;">Paste any URL and get a detailed SEO, performance & conversion audit powered by AI.</p>
+          <button class="btn-primary" style="width:100%;" onclick="event.stopPropagation();showPage('tool-analyzer')">Try Free →</button>
+        </div>
+
+        <div style="background:#ffffff;border:2px solid #1a1a1a;padding:2rem;text-align:center;cursor:pointer;transition:all 0.3s;border-radius:8px;" onclick="showPage('tool-content')" onmouseover="this.style.borderColor='#00c8ff';this.style.boxShadow='0 0 20px rgba(0,200,255,0.2)'" onmouseout="this.style.borderColor='#1a1a1a';this.style.boxShadow='none'">
+          <div style="font-size:3rem;margin-bottom:1rem;">✨</div>
+          <h3 style="font-size:1.3rem;font-weight:700;color:#1a1a1a;margin-bottom:0.8rem;">Content Generator</h3>
+          <p style="font-size:0.9rem;color:#666666;margin-bottom:1.5rem;">Generate blog ideas, social posts, meta tags, and email sequences instantly.</p>
+          <button class="btn-primary" style="width:100%;" onclick="event.stopPropagation();showPage('tool-content')">Create Content →</button>
+        </div>
+
+        <div style="background:#ffffff;border:2px solid #1a1a1a;padding:2rem;text-align:center;cursor:pointer;transition:all 0.3s;border-radius:8px;" onclick="showPage('tool-quote')" onmouseover="this.style.borderColor='#00c8ff';this.style.boxShadow='0 0 20px rgba(0,200,255,0.2)'" onmouseout="this.style.borderColor='#1a1a1a';this.style.boxShadow='none'">
+          <div style="font-size:3rem;margin-bottom:1rem;">💰</div>
+          <h3 style="font-size:1.3rem;font-weight:700;color:#1a1a1a;margin-bottom:0.8rem;">Smart Quote</h3>
+          <p style="font-size:0.9rem;color:#666666;margin-bottom:1.5rem;">AI-powered project recommendation & pricing based on your specific needs.</p>
+          <button class="btn-primary" style="width:100%;" onclick="event.stopPropagation();showPage('tool-quote')">Get Quote →</button>
+        </div>
+
+        <div style="background:#ffffff;border:2px solid #1a1a1a;padding:2rem;text-align:center;cursor:pointer;transition:all 0.3s;border-radius:8px;" onclick="showPage('tool-onboard')" onmouseover="this.style.borderColor='#00c8ff';this.style.boxShadow='0 0 20px rgba(0,200,255,0.2)'" onmouseout="this.style.borderColor='#1a1a1a';this.style.boxShadow='none'">
+          <div style="font-size:3rem;margin-bottom:1rem;">📋</div>
+          <h3 style="font-size:1.3rem;font-weight:700;color:#1a1a1a;margin-bottom:0.8rem;">Project Scoping</h3>
+          <p style="font-size:0.9rem;color:#666666;margin-bottom:1.5rem;">Get a detailed project roadmap, timeline, and scope document in seconds.</p>
+          <button class="btn-primary" style="width:100%;" onclick="event.stopPropagation();showPage('tool-onboard')">Start Plan →</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TOOL: WEBSITE ANALYZER -->
+    <div id="page-tool-analyzer" class="page">
+      <div style="border-bottom:1px solid #23252a;padding:1rem 5%;"><button class="svc-back" onclick="showPage('ai-tools')">← Back to Tools</button></div>
+      <div style="max-width:900px;margin:0 auto;padding:3rem 5%;">
+        <h1 style="font-size:2rem;font-weight:900;color:#ffffff;margin-bottom:1rem;">AI Website Analyzer</h1>
+        <p style="font-size:1rem;color:#ffffff;margin-bottom:2rem;">Paste any website URL and get an AI-powered audit of SEO, performance, and conversion potential.</p>
+
+        <div style="background:#1a1a1a;border:2px solid rgba(0,200,255,0.2);border-radius:12px;padding:2rem;margin-bottom:2rem;">
+          <div class="form-group">
+            <label>Website URL</label>
+            <input id="analyzer-url" type="url" placeholder="https://example.com" style="font-size:1rem;" />
+          </div>
+          <button class="btn-primary" style="width:100%;margin-top:1rem;" onclick="analyzeWebsite()">Analyze Website</button>
+        </div>
+
+        <div id="analyzer-loading" style="display:none;text-align:center;padding:2rem;">
+          <p style="color:#00c8ff;font-size:1.1rem;">🔍 Analyzing website... this may take 10-15 seconds</p>
+        </div>
+
+        <div id="analyzer-results" style="display:none;">
+          <div style="background:#ffffff;border-radius:12px;padding:2.5rem;color:#1a1a1a;">
+            <h2 style="font-size:1.5rem;margin-bottom:2rem;">Analysis Results</h2>
+
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:3rem;">
+              <div style="background:linear-gradient(135deg, #ff6b6b, #ff8787);border-radius:12px;padding:1.5rem;color:white;text-align:center;">
+                <div style="font-size:2.5rem;font-weight:900;" id="score-seo">0</div>
+                <div style="font-size:0.9rem;margin-top:0.5rem;">SEO Score</div>
+              </div>
+              <div style="background:linear-gradient(135deg, #4ecdc4, #44b9aa);border-radius:12px;padding:1.5rem;color:white;text-align:center;">
+                <div style="font-size:2.5rem;font-weight:900;" id="score-perf">0</div>
+                <div style="font-size:0.9rem;margin-top:0.5rem;">Performance</div>
+              </div>
+              <div style="background:linear-gradient(135deg, #00c8ff, #0080ff);border-radius:12px;padding:1.5rem;color:white;text-align:center;">
+                <div style="font-size:2.5rem;font-weight:900;" id="score-conv">0</div>
+                <div style="font-size:0.9rem;margin-top:0.5rem;">Conversion</div>
+              </div>
+            </div>
+
+            <div style="margin-bottom:2rem;">
+              <h3 style="color:#1a1a1a;font-weight:700;margin-bottom:1rem;">Issues Found</h3>
+              <div id="analyzer-issues" style="display:flex;flex-direction:column;gap:0.8rem;"></div>
+            </div>
+
+            <div style="margin-bottom:2rem;">
+              <h3 style="color:#1a1a1a;font-weight:700;margin-bottom:1rem;">Recommendations</h3>
+              <div id="analyzer-recs" style="display:flex;flex-direction:column;gap:0.8rem;"></div>
+            </div>
+
+            <div style="background:#f5f5f5;border-radius:12px;padding:1.5rem;">
+              <h3 style="color:#1a1a1a;font-weight:700;margin-bottom:1rem;">Competitor Insights</h3>
+              <div id="analyzer-competitors" style="color:#666666;line-height:1.8;"></div>
+            </div>
+          </div>
+
+          <button class="btn-primary" style="width:100%;margin-top:2rem;" onclick="showPage('booking')">Get Help Fixing These →</button>
+        </div>
+
+        <div id="analyzer-error" style="display:none;background:rgba(255,107,107,0.1);border:2px solid rgba(255,107,107,0.3);border-radius:12px;padding:1.5rem;color:#ff6b6b;text-align:center;"></div>
+      </div>
+    </div>
+
+    <!-- TOOL: CONTENT GENERATOR -->
+    <div id="page-tool-content" class="page">
+      <div style="border-bottom:1px solid #23252a;padding:1rem 5%;"><button class="svc-back" onclick="showPage('ai-tools')">← Back to Tools</button></div>
+      <div style="max-width:900px;margin:0 auto;padding:3rem 5%;">
+        <h1 style="font-size:2rem;font-weight:900;color:#ffffff;margin-bottom:1rem;">AI Content Generator</h1>
+        <p style="font-size:1rem;color:#ffffff;margin-bottom:2rem;">Generate SEO content instantly — blog ideas, social posts, meta tags, and more.</p>
+
+        <div style="background:#1a1a1a;border:2px solid rgba(0,200,255,0.2);border-radius:12px;padding:2rem;margin-bottom:2rem;">
+          <div class="form-group">
+            <label>Business Name</label>
+            <input id="content-business" type="text" placeholder="Your Business" />
+          </div>
+          <div class="form-group">
+            <label>Industry / Niche</label>
+            <select id="content-niche">
+              <option value="">Select an industry</option>
+              <option value="fitness">Fitness & Gym</option>
+              <option value="law">Legal Services</option>
+              <option value="restaurant">Restaurant & Food</option>
+              <option value="beauty">Beauty & Wellness</option>
+              <option value="realestate">Real Estate</option>
+              <option value="tech">Tech & Software</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Content Type</label>
+            <select id="content-type">
+              <option value="blog">Blog Post Ideas</option>
+              <option value="social">Social Media Posts</option>
+              <option value="meta">Meta Tags & Descriptions</option>
+              <option value="email">Email Sequences</option>
+              <option value="faq">FAQ Section</option>
+            </select>
+          </div>
+          <button class="btn-primary" style="width:100%;margin-top:1rem;" onclick="generateContent()">Generate Content</button>
+        </div>
+
+        <div id="content-loading" style="display:none;text-align:center;padding:2rem;">
+          <p style="color:#00c8ff;font-size:1.1rem;">✍️ Creating content for you...</p>
+        </div>
+
+        <div id="content-results" style="display:none;background:#ffffff;border-radius:12px;padding:2.5rem;color:#1a1a1a;"></div>
+
+        <div id="content-error" style="display:none;background:rgba(255,107,107,0.1);border:2px solid rgba(255,107,107,0.3);border-radius:12px;padding:1.5rem;color:#ff6b6b;text-align:center;"></div>
+      </div>
+    </div>
+
+    <!-- TOOL: SMART QUOTE -->
+    <div id="page-tool-quote" class="page">
+      <div style="border-bottom:1px solid #23252a;padding:1rem 5%;"><button class="svc-back" onclick="showPage('ai-tools')">← Back to Tools</button></div>
+      <div style="max-width:900px;margin:0 auto;padding:3rem 5%;">
+        <h1 style="font-size:2rem;font-weight:900;color:#ffffff;margin-bottom:1rem;">Smart Quote Generator</h1>
+        <p style="font-size:1rem;color:#ffffff;margin-bottom:2rem;">AI analyzes your needs and generates a personalized quote with breakdown and ROI estimate.</p>
+
+        <div style="background:#1a1a1a;border:2px solid rgba(0,200,255,0.2);border-radius:12px;padding:2rem;margin-bottom:2rem;">
+          <div class="form-group">
+            <label>Business Name *</label>
+            <input id="quote-business" type="text" placeholder="Your Business" required />
+          </div>
+          <div class="form-group">
+            <label>Industry *</label>
+            <select id="quote-niche" required>
+              <option value="">Select an industry</option>
+              <option value="fitness">Fitness & Gym</option>
+              <option value="law">Legal Services</option>
+              <option value="restaurant">Restaurant & Food</option>
+              <option value="beauty">Beauty & Wellness</option>
+              <option value="realestate">Real Estate</option>
+              <option value="tech">Tech & Software</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Services Needed</label>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-top:0.3rem;">
+              <label style="display:flex;gap:0.5rem;align-items:center;">
+                <input type="checkbox" value="Web Design" style="accent-color:#00c8ff;" /> Web Design
+              </label>
+              <label style="display:flex;gap:0.5rem;align-items:center;">
+                <input type="checkbox" value="Web Development" style="accent-color:#00c8ff;" /> Web Development
+              </label>
+              <label style="display:flex;gap:0.5rem;align-items:center;">
+                <input type="checkbox" value="SEO" style="accent-color:#00c8ff;" /> SEO
+              </label>
+              <label style="display:flex;gap:0.5rem;align-items:center;">
+                <input type="checkbox" value="E-Commerce" style="accent-color:#00c8ff;" /> E-Commerce
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Do you have an existing website?</label>
+            <select id="quote-website">
+              <option value="no">No, starting fresh</option>
+              <option value="yes">Yes, revamp existing</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Key Challenges / Goals</label>
+            <textarea id="quote-problems" placeholder="e.g., need more leads, want online sales, current site is outdated" style="min-height:80px;"></textarea>
+          </div>
+          <button class="btn-primary" style="width:100%;margin-top:1rem;" onclick="generateSmartQuote()">Generate Quote</button>
+        </div>
+
+        <div id="quote-loading" style="display:none;text-align:center;padding:2rem;">
+          <p style="color:#00c8ff;font-size:1.1rem;">💭 Analyzing your project... generating quote...</p>
+        </div>
+
+        <div id="quote-results" style="display:none;">
+          <div style="background:linear-gradient(135deg, #00c8ff, #0055ff);border-radius:12px;padding:2.5rem;color:white;margin-bottom:2rem;">
+            <div style="font-size:0.9rem;opacity:0.9;margin-bottom:0.5rem;" id="quote-tier">Starter Package</div>
+            <div style="font-size:3.5rem;font-weight:900;margin-bottom:0.5rem;" id="quote-price">$3,500</div>
+            <div style="font-size:1.1rem;opacity:0.95;margin-bottom:1.5rem;" id="quote-timeline">3-5 weeks to delivery</div>
+            <div id="quote-reasoning" style="font-size:0.95rem;line-height:1.7;"></div>
+          </div>
+
+          <div style="background:#ffffff;border-radius:12px;padding:2rem;color:#1a1a1a;margin-bottom:2rem;">
+            <h3 style="margin-bottom:1.5rem;">Cost Breakdown</h3>
+            <div id="quote-breakdown" style="display:grid;gap:1rem;"></div>
+          </div>
+
+          <div style="background:#1a1a1a;border-radius:12px;padding:2rem;color:#ffffff;margin-bottom:2rem;">
+            <h3 style="margin-bottom:1rem;">Project Details</h3>
+            <div id="quote-details" style="display:flex;flex-direction:column;gap:0.8rem;font-size:0.95rem;line-height:1.7;"></div>
+          </div>
+
+          <button class="btn-primary" style="width:100%;" onclick="showPage('booking')">Lock In This Quote →</button>
+        </div>
+
+        <div id="quote-error" style="display:none;background:rgba(255,107,107,0.1);border:2px solid rgba(255,107,107,0.3);border-radius:12px;padding:1.5rem;color:#ff6b6b;text-align:center;"></div>
+      </div>
+    </div>
+
+    <!-- TOOL: PROJECT ONBOARDING -->
+    <div id="page-tool-onboard" class="page">
+      <div style="border-bottom:1px solid #23252a;padding:1rem 5%;"><button class="svc-back" onclick="showPage('ai-tools')">← Back to Tools</button></div>
+      <div style="max-width:900px;margin:0 auto;padding:3rem 5%;">
+        <h1 style="font-size:2rem;font-weight:900;color:#ffffff;margin-bottom:1rem;">Project Scoping Tool</h1>
+        <p style="font-size:1rem;color:#ffffff;margin-bottom:2rem;">AI generates a detailed project roadmap, phases, timeline, and deliverables.</p>
+
+        <div style="background:#1a1a1a;border:2px solid rgba(0,200,255,0.2);border-radius:12px;padding:2rem;margin-bottom:2rem;">
+          <div class="form-group">
+            <label>Business Name *</label>
+            <input id="onboard-business" type="text" placeholder="Your Business" required />
+          </div>
+          <div class="form-group">
+            <label>Industry *</label>
+            <select id="onboard-niche" required>
+              <option value="">Select an industry</option>
+              <option value="fitness">Fitness & Gym</option>
+              <option value="law">Legal Services</option>
+              <option value="restaurant">Restaurant & Food</option>
+              <option value="beauty">Beauty & Wellness</option>
+              <option value="realestate">Real Estate</option>
+              <option value="tech">Tech & Software</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Current Website Status</label>
+            <select id="onboard-website">
+              <option value="none">No website yet</option>
+              <option value="exists">Have an existing site</option>
+              <option value="redesign">Need a complete redesign</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Project Goals & Vision</label>
+            <textarea id="onboard-goals" placeholder="What do you want to achieve? e.g., increase leads, build brand, sell products" style="min-height:100px;"></textarea>
+          </div>
+          <button class="btn-primary" style="width:100%;margin-top:1rem;" onclick="generateOnboarding()">Generate Scope</button>
+        </div>
+
+        <div id="onboard-loading" style="display:none;text-align:center;padding:2rem;">
+          <p style="color:#00c8ff;font-size:1.1rem;">📐 Building your project plan...</p>
+        </div>
+
+        <div id="onboard-results" style="display:none;background:#ffffff;border-radius:12px;padding:2.5rem;color:#1a1a1a;"></div>
+
+        <div id="onboard-error" style="display:none;background:rgba(255,107,107,0.1);border:2px solid rgba(255,107,107,0.3);border-radius:12px;padding:1.5rem;color:#ff6b6b;text-align:center;"></div>
+      </div>
+    </div>
+
     <!-- ══════════════ PRICING ══════════════ -->
 
     <!-- ── PRICING MODAL ── -->
@@ -3718,6 +4000,232 @@
         } finally {
           btn.textContent = "Send Quote";
           btn.disabled = false;
+        }
+      }
+
+      // ════════════════════════════════════════════════════════════════════════════
+      // 🤖 AI AUTOMATION TOOL FUNCTIONS
+      // ════════════════════════════════════════════════════════════════════════════
+
+      async function analyzeWebsite() {
+        const url = document.getElementById('analyzer-url').value.trim();
+        if (!url) { alert('Please enter a URL'); return; }
+
+        document.getElementById('analyzer-loading').style.display = 'block';
+        document.getElementById('analyzer-results').style.display = 'none';
+        document.getElementById('analyzer-error').style.display = 'none';
+
+        try {
+          const res = await fetch('http://localhost:3000/api/ai/analyze-website', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ url })
+          });
+          const data = await res.json();
+
+          if (data.error) throw new Error(data.error);
+
+          const a = data.analysis;
+          document.getElementById('score-seo').textContent = a.seoScore || 0;
+          document.getElementById('score-perf').textContent = a.performanceScore || 0;
+          document.getElementById('score-conv').textContent = a.conversionScore || 0;
+
+          document.getElementById('analyzer-issues').innerHTML = (a.issues || []).map(i =>
+            `<div style="background:#ffe8e8;border-left:4px solid #ff6b6b;padding:1rem;border-radius:6px;"><strong style="color:#ff6b6b;">⚠</strong> ${i}</div>`
+          ).join('');
+
+          document.getElementById('analyzer-recs').innerHTML = (a.recommendations || []).map(r =>
+            `<div style="background:#e8f5ff;border-left:4px solid #00c8ff;padding:1rem;border-radius:6px;"><strong style="color:#00c8ff;">✓</strong> ${r}</div>`
+          ).join('');
+
+          document.getElementById('analyzer-competitors').innerHTML = (a.competitors || []).map((c, i) =>
+            `<p><strong>${i + 1}.</strong> ${c}</p>`
+          ).join('');
+
+          document.getElementById('analyzer-loading').style.display = 'none';
+          document.getElementById('analyzer-results').style.display = 'block';
+        } catch (err) {
+          document.getElementById('analyzer-error').textContent = '✕ ' + err.message;
+          document.getElementById('analyzer-error').style.display = 'block';
+          document.getElementById('analyzer-loading').style.display = 'none';
+        }
+      }
+
+      async function generateContent() {
+        const businessName = document.getElementById('content-business').value.trim();
+        const niche = document.getElementById('content-niche').value;
+        const contentType = document.getElementById('content-type').value;
+
+        if (!businessName || !niche) { alert('Please fill in all fields'); return; }
+
+        document.getElementById('content-loading').style.display = 'block';
+        document.getElementById('content-results').style.display = 'none';
+        document.getElementById('content-error').style.display = 'none';
+
+        try {
+          const res = await fetch('http://localhost:3000/api/ai/generate-content', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ businessName, niche, contentType })
+          });
+          const data = await res.json();
+          if (data.error) throw new Error(data.error);
+
+          let html = `<h3 style="color:#1a1a1a;margin-bottom:1.5rem;">${contentType === 'blog' ? 'Blog Ideas' : contentType === 'social' ? 'Social Posts' : contentType === 'meta' ? 'Meta Tags' : contentType === 'email' ? 'Email Sequences' : 'FAQ Questions'}</h3>`;
+
+          if (Array.isArray(data.content)) {
+            data.content.forEach((item, i) => {
+              html += `<div style="background:#f5f5f5;border-radius:8px;padding:1.2rem;margin-bottom:1rem;">`;
+              Object.entries(item).forEach(([k, v]) => {
+                html += `<p style="margin:0.3rem 0;"><strong>${k}:</strong> ${v}</p>`;
+              });
+              html += `</div>`;
+            });
+          } else {
+            Object.entries(data.content).forEach(([k, v]) => {
+              html += `<div style="background:#f5f5f5;border-radius:8px;padding:1.2rem;margin-bottom:1rem;"><strong>${k}:</strong><p>${typeof v === 'object' ? JSON.stringify(v, null, 2) : v}</p></div>`;
+            });
+          }
+
+          document.getElementById('content-results').innerHTML = html;
+          document.getElementById('content-loading').style.display = 'none';
+          document.getElementById('content-results').style.display = 'block';
+        } catch (err) {
+          document.getElementById('content-error').textContent = '✕ ' + err.message;
+          document.getElementById('content-error').style.display = 'block';
+          document.getElementById('content-loading').style.display = 'none';
+        }
+      }
+
+      async function generateSmartQuote() {
+        const businessName = document.getElementById('quote-business').value.trim();
+        const niche = document.getElementById('quote-niche').value;
+        const hasWebsite = document.getElementById('quote-website').value === 'yes';
+        const currentProblems = document.getElementById('quote-problems').value.trim();
+
+        const services = Array.from(document.querySelectorAll('#quote-form-services input:checked')).map(c => c.value).join(', ') || 'General Website';
+
+        if (!businessName || !niche) { alert('Please fill in required fields'); return; }
+
+        document.getElementById('quote-loading').style.display = 'block';
+        document.getElementById('quote-results').style.display = 'none';
+        document.getElementById('quote-error').style.display = 'none';
+
+        try {
+          const res = await fetch('http://localhost:3000/api/ai/smart-quote', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ businessName, niche, services, hasWebsite, currentProblems })
+          });
+          const data = await res.json();
+          if (data.error) throw new Error(data.error);
+
+          const q = data.quote;
+          document.getElementById('quote-tier').textContent = q.recommendedTier ? q.recommendedTier.charAt(0).toUpperCase() + q.recommendedTier.slice(1) + ' Package' : 'Custom Quote';
+          document.getElementById('quote-price').textContent = q.price || '$3,500';
+          document.getElementById('quote-timeline').textContent = (q.timeline || 3) + ' weeks to delivery';
+          document.getElementById('quote-reasoning').textContent = q.reasoning || 'Based on your project scope and requirements.';
+
+          let breakdown = '';
+          if (q.breakdown) {
+            Object.entries(q.breakdown).forEach(([k, v]) => {
+              breakdown += `<div style="display:flex;justify-content:space-between;padding:0.8rem 0;border-bottom:1px solid #e0e0e0;"><span>${k.charAt(0).toUpperCase() + k.slice(1)}</span><strong>$${v}</strong></div>`;
+            });
+          }
+          document.getElementById('quote-breakdown').innerHTML = breakdown;
+
+          let details = '';
+          if (q.upsells) {
+            details += '<p><strong>Suggested Additions:</strong></p>' + q.upsells.map(u => `<p>• ${u}</p>`).join('');
+          }
+          if (q.roi) {
+            details += `<p><strong>Estimated Monthly Lead Value:</strong> ${q.roi}</p>`;
+          }
+          document.getElementById('quote-details').innerHTML = details;
+
+          document.getElementById('quote-loading').style.display = 'none';
+          document.getElementById('quote-results').style.display = 'block';
+        } catch (err) {
+          document.getElementById('quote-error').textContent = '✕ ' + err.message;
+          document.getElementById('quote-error').style.display = 'block';
+          document.getElementById('quote-loading').style.display = 'none';
+        }
+      }
+
+      async function generateOnboarding() {
+        const businessName = document.getElementById('onboard-business').value.trim();
+        const niche = document.getElementById('onboard-niche').value;
+        const currentWebsite = document.getElementById('onboard-website').value;
+        const goals = document.getElementById('onboard-goals').value.trim();
+
+        if (!businessName || !niche || !goals) { alert('Please fill in all fields'); return; }
+
+        document.getElementById('onboard-loading').style.display = 'block';
+        document.getElementById('onboard-results').style.display = 'none';
+        document.getElementById('onboard-error').style.display = 'none';
+
+        try {
+          const res = await fetch('http://localhost:3000/api/ai/onboarding', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ businessName, niche, currentWebsite, goals })
+          });
+          const data = await res.json();
+          if (data.error) throw new Error(data.error);
+
+          const s = data.scope;
+          let html = `<h2 style="color:#1a1a1a;margin-bottom:1.5rem;">Project Scope for ${businessName}</h2>`;
+
+          if (s.projectPhases) {
+            html += '<h3 style="color:#1a1a1a;margin:1.5rem 0 1rem;">Project Phases</h3>';
+            s.projectPhases.forEach(p => {
+              html += `<div style="background:#f5f5f5;border-radius:8px;padding:1.2rem;margin-bottom:1rem;">
+                <h4 style="color:#00c8ff;margin-bottom:0.5rem;">${p.name}</h4>
+                <p><strong>Duration:</strong> ${p.duration}</p>
+                <p><strong>Deliverables:</strong> ${p.deliverables}</p>
+              </div>`;
+            });
+          }
+
+          if (s.estimatedCost) {
+            html += '<h3 style="color:#1a1a1a;margin:1.5rem 0 1rem;">Estimated Costs</h3>';
+            Object.entries(s.estimatedCost).forEach(([k, v]) => {
+              html += `<p style="padding:0.5rem 0;"><strong>${k}:</strong> $${v}</p>`;
+            });
+          }
+
+          if (s.timeline) {
+            html += `<p style="margin:1rem 0;"><strong>Total Timeline:</strong> ${s.timeline} weeks</p>`;
+          }
+
+          if (s.risks) {
+            html += '<h3 style="color:#1a1a1a;margin:1.5rem 0 1rem;">Potential Challenges</h3>';
+            s.risks.forEach(r => {
+              html += `<p style="margin:0.3rem 0;">⚠ ${r}</p>`;
+            });
+          }
+
+          if (s.successMetrics) {
+            html += '<h3 style="color:#1a1a1a;margin:1.5rem 0 1rem;">Success Metrics</h3>';
+            s.successMetrics.forEach(m => {
+              html += `<p style="margin:0.3rem 0;">✓ ${m}</p>`;
+            });
+          }
+
+          if (s.questions) {
+            html += '<h3 style="color:#1a1a1a;margin:1.5rem 0 1rem;">Questions for You</h3>';
+            s.questions.forEach(q => {
+              html += `<p style="margin:0.3rem 0; font-size:0.9rem;">• ${q}</p>`;
+            });
+          }
+
+          document.getElementById('onboard-results').innerHTML = html;
+          document.getElementById('onboard-loading').style.display = 'none';
+          document.getElementById('onboard-results').style.display = 'block';
+        } catch (err) {
+          document.getElementById('onboard-error').textContent = '✕ ' + err.message;
+          document.getElementById('onboard-error').style.display = 'block';
+          document.getElementById('onboard-loading').style.display = 'none';
         }
       }
     </script>

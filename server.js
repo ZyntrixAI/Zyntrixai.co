@@ -6,7 +6,12 @@ const cheerio  = require('cheerio');
 const nodemailer = require('nodemailer');
 const path     = require('path');
 const crypto   = require('crypto');
+const Anthropic = require('@anthropic-ai/sdk');
 const { saveBooking } = require('./supabase-client');
+
+const client = new Anthropic({
+  apiKey: process.env.CLAUDE_API_KEY,
+});
 
 const app = express();
 app.use(cors());
@@ -1316,6 +1321,193 @@ app.post('/api/process-email', async (req, res) => {
 
   } catch (err) {
     console.error('process-email error:', err.message);
+  }
+});
+
+// ════════════════════════════════════════════════════════════════════════════════
+// 🤖 AI AUTOMATION FEATURES
+// ════════════════════════════════════════════════════════════════════════════════
+
+// 1️⃣ AI WEBSITE ANALYZER
+app.post('/api/ai/analyze-website', async (req, res) => {
+  try {
+    const { url } = req.body;
+    if (!url) return res.json({ error: 'URL required' });
+
+    const scraped = await scrapeWebsite(url);
+    if (!scraped) return res.json({ error: 'Could not access website' });
+
+    const analysisPrompt = `Analyze this website and provide a detailed SEO/performance/conversion audit:
+
+Website Content:
+- Title: ${scraped.title}
+- H1: ${scraped.h1}
+- Description: ${scraped.description}
+- Key sections: ${scraped.h2s.join(', ')}
+
+Provide a JSON response with:
+1. seoScore (1-100): Overall SEO health
+2. performanceScore (1-100): Loading speed & performance estimate
+3. conversionScore (1-100): Sales/lead capture potential
+4. issues: Array of 5 key problems
+5. recommendations: Array of 5 specific fixes
+6. competitors: 2-3 competitor analysis points
+7. estimatedTraffic: Monthly visitor estimate
+
+Be specific and actionable.`;
+
+    const message = await client.messages.create({
+      model: 'claude-3-5-sonnet-20241022',
+      max_tokens: 1024,
+      messages: [{ role: 'user', content: analysisPrompt }]
+    });
+
+    const responseText = message.content[0].type === 'text' ? message.content[0].text : '';
+    const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+    const analysis = jsonMatch ? JSON.parse(jsonMatch[0]) : { error: 'Parse failed' };
+
+    res.json({ success: true, analysis, scraped });
+  } catch (err) {
+    console.error('analyze-website:', err.message);
+    res.json({ error: err.message });
+  }
+});
+
+// 2️⃣ AI CONTENT GENERATOR
+app.post('/api/ai/generate-content', async (req, res) => {
+  try {
+    const { businessName, niche, contentType } = req.body;
+
+    const typePrompts = {
+      blog: `Write 5 SEO-optimized blog post ideas for a ${niche} business called "${businessName}". Format as JSON array with { title, keyword, description }.`,
+
+      social: `Generate 10 compelling LinkedIn/Twitter posts for a ${niche} business. Mix value content with CTAs. Return as JSON array with { platform, content, hashtags, cta }.`,
+
+      meta: `Generate SEO meta titles and descriptions (50-160 chars) for these pages: Home, Services, About, Contact, Pricing. Return as JSON object with { page: { title, description } }.`,
+
+      email: `Write a 3-email nurture sequence for ${businessName} (${niche}). Each email should drive action. Return as JSON array with { subject, body, cta }.`,
+
+      faq: `Generate 10 FAQ questions and answers for a ${niche} business called "${businessName}". Return as JSON array with { question, answer }.`
+    };
+
+    const prompt = typePrompts[contentType] || typePrompts.blog;
+
+    const message = await client.messages.create({
+      model: 'claude-3-5-sonnet-20241022',
+      max_tokens: 2048,
+      messages: [{ role: 'user', content: prompt }]
+    });
+
+    const responseText = message.content[0].type === 'text' ? message.content[0].text : '';
+    const jsonMatch = responseText.match(/\[[\s\S]*\]|\{[\s\S]*\}/);
+    const content = jsonMatch ? JSON.parse(jsonMatch[0]) : { error: 'Parse failed' };
+
+    res.json({ success: true, content, type: contentType });
+  } catch (err) {
+    console.error('generate-content:', err.message);
+    res.json({ error: err.message });
+  }
+});
+
+// 3️⃣ AI ONBOARDING QUESTIONNAIRE
+app.post('/api/ai/onboarding', async (req, res) => {
+  try {
+    const { businessName, niche, currentWebsite, goals } = req.body;
+
+    const onboardingPrompt = `You are a web agency strategist. Based on this info:
+- Business: ${businessName}
+- Industry: ${niche}
+- Current Site: ${currentWebsite || 'None'}
+- Goals: ${goals}
+
+Generate a detailed project scope document in JSON with:
+1. projectPhases: [ { name, duration, deliverables } ]
+2. estimatedCost: { design, development, seo, maintenance }
+3. timeline: Estimated weeks to completion
+4. risks: Potential challenges
+5. successMetrics: How we'll measure ROI
+6. questions: 5 clarifying questions for the client
+
+Be realistic and detailed.`;
+
+    const message = await client.messages.create({
+      model: 'claude-3-5-sonnet-20241022',
+      max_tokens: 2048,
+      messages: [{ role: 'user', content: onboardingPrompt }]
+    });
+
+    const responseText = message.content[0].type === 'text' ? message.content[0].text : '';
+    const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+    const scope = jsonMatch ? JSON.parse(jsonMatch[0]) : { error: 'Parse failed' };
+
+    res.json({ success: true, scope });
+  } catch (err) {
+    console.error('onboarding:', err.message);
+    res.json({ error: err.message });
+  }
+});
+
+// 4️⃣ AI SMART QUOTE GENERATOR
+app.post('/api/ai/smart-quote', async (req, res) => {
+  try {
+    const { businessName, niche, services, hasWebsite, currentProblems } = req.body;
+
+    const quotePrompt = `Generate a professional project quote for:
+- Business: ${businessName} (${niche})
+- Services needed: ${services}
+- Has existing site: ${hasWebsite}
+- Key challenges: ${currentProblems}
+
+Return JSON with:
+1. recommendedTier: "starter" | "professional" | "enterprise"
+2. price: Total project cost
+3. breakdown: { design, dev, seo, hosting, maintenance }
+4. timeline: Weeks to delivery
+5. reasoning: 2-3 sentences explaining why this tier fits
+6. upsells: 2 services to upsell
+7. roi: Estimated monthly lead value
+
+Be specific about numbers and value.`;
+
+    const message = await client.messages.create({
+      model: 'claude-3-5-sonnet-20241022',
+      max_tokens: 1024,
+      messages: [{ role: 'user', content: quotePrompt }]
+    });
+
+    const responseText = message.content[0].type === 'text' ? message.content[0].text : '';
+    const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+    const quote = jsonMatch ? JSON.parse(jsonMatch[0]) : { error: 'Parse failed' };
+
+    res.json({ success: true, quote, recommendation: quote });
+  } catch (err) {
+    console.error('smart-quote:', err.message);
+    res.json({ error: err.message });
+  }
+});
+
+// 5️⃣ AI CHAT ASSISTANT
+app.post('/api/ai/chat', async (req, res) => {
+  try {
+    const { message, context = {} } = req.body;
+
+    const systemPrompt = `You are ZyntrixAI's friendly web design chatbot. You help answer questions about web design, SEO, pricing, and services.
+Context: ${JSON.stringify(context)}
+Be helpful, concise, and always guide toward booking a free consultation. If asked about pricing, give ranges but suggest a custom quote.`;
+
+    const response = await client.messages.create({
+      model: 'claude-3-5-sonnet-20241022',
+      max_tokens: 500,
+      system: systemPrompt,
+      messages: [{ role: 'user', content: message }]
+    });
+
+    const reply = response.content[0].type === 'text' ? response.content[0].text : '';
+
+    res.json({ success: true, reply });
+  } catch (err) {
+    console.error('chat:', err.message);
+    res.json({ error: err.message });
   }
 });
 
